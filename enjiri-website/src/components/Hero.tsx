@@ -95,17 +95,17 @@ export default function Hero() {
         {/* CTAs */}
         <div className="animate-fade-in-up animate-delay-700 flex flex-col items-center justify-center gap-5 sm:flex-row">
           <a
-            href="/donate"
+            href="/contact"
             className="btn-ripple group relative overflow-hidden rounded-full bg-gold px-10 py-4 text-sm font-bold uppercase tracking-[0.2em] text-maroon-dark transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,199,44,0.35)]"
           >
-            <span className="relative z-10">Heartfelt Giving</span>
+            <span className="relative z-10">Plan Your Visit</span>
             <div className="absolute inset-0 -translate-x-full bg-gold-light transition-transform duration-500 group-hover:translate-x-0" />
           </a>
           <a
-            href="/about"
+            href="/sermons"
             className="group rounded-full border border-white/15 px-10 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition-all duration-500 hover:border-gold/40 hover:bg-white/5 hover:text-white"
           >
-            Discover Our Mission
+            Watch Online
             <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
               &rarr;
             </span>
