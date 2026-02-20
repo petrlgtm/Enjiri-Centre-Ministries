@@ -98,7 +98,7 @@ export default function Hero() {
             href="/donate"
             className="btn-ripple group relative overflow-hidden rounded-full bg-gold px-10 py-4 text-sm font-bold uppercase tracking-[0.2em] text-maroon-dark transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,199,44,0.35)]"
           >
-            <span className="relative z-10">Donate Now</span>
+            <span className="relative z-10">Heartfelt Giving</span>
             <div className="absolute inset-0 -translate-x-full bg-gold-light transition-transform duration-500 group-hover:translate-x-0" />
           </a>
           <a

@@ -164,7 +164,7 @@ export default function DonatePage() {
               </div>
 
               <a href="#" className="group relative inline-block overflow-hidden rounded-full bg-gold px-14 py-4 text-sm font-bold uppercase tracking-[0.2em] text-maroon-dark transition-all hover:shadow-[0_0_50px_rgba(255,199,44,0.35)]">
-                <span className="relative z-10">Donate Now</span>
+                <span className="relative z-10">Heartfelt Giving</span>
                 <div className="absolute inset-0 -translate-x-full bg-gold-light transition-transform duration-500 group-hover:translate-x-0" />
               </a>
 

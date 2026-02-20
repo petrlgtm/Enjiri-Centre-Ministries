@@ -158,7 +158,7 @@ export default function Header() {
               style={{ transitionDelay: isOpen ? `${navLinks.length * 80}ms` : "0ms" }}
               onClick={closeMenu}
             >
-              Donate Now
+              Heartfelt Giving
             </Link>
           </nav>
         </div>
