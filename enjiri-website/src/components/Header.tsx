@@ -9,7 +9,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "Our Church Services", href: "/services" },
   { label: "Sermons", href: "/sermons" },
   { label: "Events", href: "/events" },
   { label: "Donate", href: "/donate" },
