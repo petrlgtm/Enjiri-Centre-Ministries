@@ -36,7 +36,7 @@ export default function Footer() {
             <div>
               <div className="mb-5 flex items-center gap-3">
                 <Image
-                  src="/logo.jpeg"
+                  src="/Enjiri-Centre-Ministries/logo.jpeg"
                   alt="Enjiri Center"
                   width={44}
                   height={44}

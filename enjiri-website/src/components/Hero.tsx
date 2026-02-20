@@ -57,7 +57,7 @@ export default function Hero() {
         <div className="animate-fade-in-scale mb-2 flex justify-center">
           <div className="relative">
             <Image
-              src="/logo.jpeg"
+              src="/Enjiri-Centre-Ministries/logo.jpeg"
               alt="Enjiri Center"
               width={100}
               height={100}

@@ -44,7 +44,7 @@ export default function Header() {
           <Link href="/" className="group flex items-center gap-3">
             <div className="relative">
               <Image
-                src="/logo.jpeg"
+                src="/Enjiri-Centre-Ministries/logo.jpeg"
                 alt="Enjiri Center Logo"
                 width={48}
                 height={48}
