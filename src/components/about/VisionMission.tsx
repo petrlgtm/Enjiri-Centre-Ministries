@@ -8,6 +8,7 @@ import {
   HiStar,
   HiShieldCheck,
   HiHeart,
+  HiBookOpen,
 } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -111,6 +112,38 @@ export default function VisionMission() {
           <p className="mt-3 text-sm italic text-gold-dark/70">
             Acts 2:36, John 14:6
           </p>
+        </motion.div>
+
+        {/* Statement of Faith */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
+            <HiBookOpen className="text-gold-dark" size={24} />
+          </div>
+          <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
+            Statement of Faith
+          </h3>
+          <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
+            We are a ministry called to evangelize, equip and disciple people locally
+            and internationally with the approach of God&apos;s Word through love.
+          </p>
+          <ul className="mt-4 space-y-3">
+            {[
+              "We believe in the Triune God. God the Father, God the Son and God the Holy Spirit.",
+              "We believe in the death, burial and resurrection of the Lord Jesus Christ.",
+              "We believe in the baptism of water and the baptism of the Holy Spirit.",
+            ].map((belief) => (
+              <li key={belief} className="flex items-start gap-3 text-[0.95rem] leading-[1.85] text-cream-body">
+                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-dark" />
+                <span>{belief}</span>
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
         {/* Core Values */}

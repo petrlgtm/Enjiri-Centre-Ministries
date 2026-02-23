@@ -6,7 +6,17 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const testimonials = [
+interface TestimonyProp {
+  quote: string;
+  name: string;
+  role: string;
+}
+
+interface TestimonialsCarouselProps {
+  testimonies?: TestimonyProp[] | null;
+}
+
+const fallbackTestimonials: TestimonyProp[] = [
   {
     quote:
       "Enjiri Center Ministries changed my life. The teachings are grounded in the Word and the community feels like family.",
@@ -35,17 +45,18 @@ const testimonials = [
 
 const AUTOPLAY_MS = 6000;
 
-export default function TestimonialsCarousel() {
+export default function TestimonialsCarousel({ testimonies }: TestimonialsCarouselProps) {
+  const displayTestimonials = testimonies && testimonies.length > 0 ? testimonies : fallbackTestimonials;
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % testimonials.length);
-  }, []);
+    setCurrent((prev) => (prev + 1) % displayTestimonials.length);
+  }, [displayTestimonials.length]);
 
   const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  }, []);
+    setCurrent((prev) => (prev - 1 + displayTestimonials.length) % displayTestimonials.length);
+  }, [displayTestimonials.length]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -84,7 +95,7 @@ export default function TestimonialsCarousel() {
                 className="text-center"
               >
                 <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-[1.8] text-cream-heading/80 sm:text-2xl">
-                  &ldquo;{testimonials[current].quote}&rdquo;
+                  &ldquo;{displayTestimonials[current].quote}&rdquo;
                 </p>
                 <div className="mx-auto mt-6 flex items-center justify-center gap-3">
                   <span className="h-px w-8 bg-gold-dark/30" />
@@ -93,10 +104,10 @@ export default function TestimonialsCarousel() {
                 </div>
                 <footer className="mt-4">
                   <p className="text-sm font-bold text-cream-heading">
-                    {testimonials[current].name}
+                    {displayTestimonials[current].name}
                   </p>
                   <p className="mt-0.5 text-xs font-medium text-cream-muted">
-                    {testimonials[current].role}
+                    {displayTestimonials[current].role}
                   </p>
                 </footer>
               </motion.blockquote>
@@ -114,7 +125,7 @@ export default function TestimonialsCarousel() {
             </button>
 
             <div className="flex items-center gap-2">
-              {testimonials.map((_, i) => (
+              {displayTestimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}

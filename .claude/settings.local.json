@@ -14,7 +14,15 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git config:*)",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(gh api:*)",
+      "Bash(git add src/app/contact/page.tsx && git commit -m \"$\\(cat <<'EOF'\nfix: add Web3Forms access key to contact form\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin master 2>&1)",
+      "Bash(npx sanity@latest:*)",
+      "mcp__Sanity__list_projects",
+      "Bash(curl:*)",
+      "Bash(SANITY_AUTH_TOKEN=skQod2jXCRnq1qyMI0mlRiLpBLL9TvzapY5EOLXMTh5sTY4g7RK1wCxLY7WwUj8FKMeMaxLp9dGpnSMbv8G3hiWAfdeyMbFe3fDZyPPjicmJAsc5KqLB80dFUfy2xDWZ0rOPqlg0pU32LUcDAWIYBI3QklAo5KD4swyJ2885U2jDmwRyzNSV npx sanity@latest:*)",
+      "Bash(SANITY_AUTH_TOKEN=skknIIZlyrIdoKJ1AhpcIxag3AnSnb4QBO9Fc2aXVAkAoUZ92Aa2EWH4HzcxWanaxQlxzByPvuXMTNKdOdO5UXIvOzPYcSUR08m3D8YaB92Ph3G6NGGvn78HwFRQmZWWA5y6p26fy7KYoOo4ZDayNMFM3ddU7vxihirmt3anaLLwG1qjIkLD npx sanity@latest:*)"
     ]
   }
 }

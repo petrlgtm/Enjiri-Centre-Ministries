@@ -6,7 +6,27 @@ import { HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
-export default function LeadershipHighlight() {
+interface LeaderProp {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+}
+
+interface LeadershipHighlightProps {
+  leader?: LeaderProp | null;
+}
+
+const fallbackLeader: LeaderProp = {
+  name: "Our Pastor",
+  role: "Lead Pastor",
+  bio: "Our leadership team is dedicated to shepherding the flock with wisdom, compassion, and unwavering commitment to the Word of God. Guided by the Holy Spirit, we strive to equip every believer for the work of ministry.",
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=70",
+};
+
+export default function LeadershipHighlight({ leader }: LeadershipHighlightProps) {
+  const displayLeader = leader || fallbackLeader;
+
   return (
     <section className="relative overflow-hidden py-28">
 
@@ -22,8 +42,8 @@ export default function LeadershipHighlight() {
             {/* Image */}
             <div className="relative h-64 lg:h-auto lg:w-5/12">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=70"
-                alt="Lead Pastor"
+                src={displayLeader.image}
+                alt={displayLeader.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
@@ -38,8 +58,12 @@ export default function LeadershipHighlight() {
               </span>
 
               <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
-                Led by Faith, Serving with Love
+                {displayLeader.name}
               </h3>
+
+              <p className="mt-1 text-sm font-semibold text-gold">
+                {displayLeader.role}
+              </p>
 
               <div className="mt-4 flex items-center gap-2">
                 <span className="h-px w-10 bg-gold/50" />
@@ -48,9 +72,7 @@ export default function LeadershipHighlight() {
               </div>
 
               <p className="mt-5 max-w-lg text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
-                Our leadership team is dedicated to shepherding the flock with wisdom,
-                compassion, and unwavering commitment to the Word of God. Guided by the
-                Holy Spirit, we strive to equip every believer for the work of ministry.
+                {displayLeader.bio}
               </p>
 
               <div className="mt-8">

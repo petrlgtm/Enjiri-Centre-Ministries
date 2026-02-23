@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  HiHeart,
-  HiGlobe,
-  HiUserGroup,
-  HiSparkles,
-  HiStar,
-  HiAcademicCap,
-} from "react-icons/hi";
+import Link from "next/link";
+import { HiHeart, HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import CountUp from "@/components/ui/CountUp";
 import Button from "@/components/ui/Button";
+import { charityPrograms } from "@/data/charityPrograms";
 
 export const metadata: Metadata = {
   title: "Charity",
@@ -21,52 +16,13 @@ export const metadata: Metadata = {
     "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
 };
 
-const charityPrograms = [
-  {
-    icon: HiGlobe,
-    title: "Gospel Crusades",
-    description:
-      "Large-scale evangelistic events preaching Christ and restoring hope across East Africa and beyond.",
-  },
-  {
-    icon: HiSparkles,
-    title: "Revival Prayer Summits",
-    description:
-      "Organized prayer gatherings and revival meetings that bring spiritual renewal and hope to communities.",
-  },
-  {
-    icon: HiHeart,
-    title: "Community Outreach",
-    description:
-      "Reaching underserved communities with practical support, meeting needs in different locations across Uganda.",
-  },
-  {
-    icon: HiUserGroup,
-    title: "Community Dinners",
-    description:
-      "Hosting communal meals that bring people together, foster fellowship, and provide nourishment to those in need.",
-  },
-  {
-    icon: HiAcademicCap,
-    title: "Capacity Building & Discipleship",
-    description:
-      "Equipping believers through discipleship trainings, leadership development, and Miracle Bible College programs.",
-  },
-  {
-    icon: HiStar,
-    title: "Women's Summit — My Legacy",
-    description:
-      "Annual women's summit empowering women of faith through teaching, fellowship, and spiritual growth.",
-  },
-];
-
 export default function CharityPage() {
   return (
     <>
       {/* SECTION 1 — Hero */}
       <PageHeader
         label="How We Give Back"
-        title="Our Charity Mission"
+        title="Our Outreach Mission"
         description="Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."
       />
 
@@ -133,7 +89,7 @@ export default function CharityPage() {
 
       <SectionDivider accent />
 
-      {/* SECTION 3 — Programs Grid */}
+      {/* SECTION 3 — Programs Visual Grid */}
       <section className="relative overflow-hidden py-28 lg:py-32">
         <div className="absolute inset-0 bg-cream" />
 
@@ -145,22 +101,46 @@ export default function CharityPage() {
             onCream
           />
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:auto-rows-[220px]">
             {charityPrograms.map((program) => (
-              <div
+              <Link
                 key={program.title}
-                className="card-hover card-premium group rounded-2xl border border-black/[0.06] bg-white p-6"
+                href={`/charity/${program.slug}`}
+                className={`group relative overflow-hidden rounded-2xl ${program.span}`}
               >
-                <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
-                  <program.icon size={22} />
+                {/* Background image */}
+                <Image
+                  src={program.image}
+                  alt={program.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
+
+                {/* Content */}
+                <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                    <program.icon size={18} />
+                  </div>
+                  <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+                    {program.title}
+                  </h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
+                    {program.description}
+                  </p>
+                  {/* Learn More indicator */}
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold opacity-0 transition-all duration-500 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
+                    Learn More <HiArrowRight size={12} />
+                  </span>
                 </div>
-                <h3 className="mt-4 text-sm font-bold text-cream-heading">
-                  {program.title}
-                </h3>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-cream-body">
-                  {program.description}
-                </p>
-              </div>
+
+                {/* Bottom gold line on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5">
+                  <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
+                </div>
+              </Link>
             ))}
           </div>
         </Container>

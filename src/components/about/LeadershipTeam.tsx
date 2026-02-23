@@ -5,16 +5,41 @@ import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const leaders = [
+interface LeaderProp {
+  name: string;
+  role: string;
+  bio: string | string[];
+  image: string;
+}
+
+interface LeadershipTeamProps {
+  leaders?: LeaderProp[] | null;
+}
+
+const fallbackLeaders: LeaderProp[] = [
   {
     name: "Evangelist Peter Kalagi",
     role: "President, Enjiri Center Ministries",
-    bio: "God called Evangelist Kalagi Peter into the ministry of evangelism at the age of 14. Starting from serving in choir, PA systems, youth, and outreach evangelism, he grew through prayer, fasting, and studying the Word of God. After leadership training at Miracle Bible College, his passion for winning souls continued to grow. He has travelled extensively preaching and teaching, leading many souls to Christ both locally and internationally — with bodies healed supernaturally and hearts set free by the power of Almighty God.",
+    bio: [
+      "God called Evangelist Kalagi Peter into the ministry of evangelism at the age of 14. He never knew anything about preaching, but the fire to evangelize to people never stopped burning on the inside of him.",
+      "In 2004 Evangelist Kalagi joined a local church in Uganda, Africa; there he started ministering in church through different ministerial departments such as the Choir, the PA system, Youth and Outreach Evangelizing. It was through all those areas of ministry he learnt how to speak in the congregation of the church.",
+      "In 2012 Evangelist Kalagi joined Miracle Center Cathedral, there he learnt many things about ministry operations which developed through prayer and fasting, and much indulgent studying of the Word of God which became his daily bread to date.",
+      "In 2014 Evangelist Kalagi joined the ministerial department of hospitality through which he enjoyed serving the people of God within his local church as well as the community.",
+      "Following hospitality, Evangelist Kalagi's hunger for the things of God continued to grow and so he later joined the leadership training at Miracle Bible College. His passion for winning souls and ever showing the love of God never ceased. The mandate on his life to preach the gospel of Jesus Christ kept increasing.",
+      "Evangelist Kalagi started holding crusades on a small scale, through hospital outreach, visiting the orphans, the elderly, schools and started house to house fellowships. The fire of God never ceased from manifesting throughout his life and ministry, with bodies healed supernaturally and hearts set free by the Power of Almighty God. Evangelist Kalagi has travelled extensively preaching and teaching, leading many souls to Christ both locally and internationally.",
+    ],
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70",
   },
 ];
 
-export default function LeadershipTeam() {
+function getBioParagraphs(bio: string | string[]): string[] {
+  if (Array.isArray(bio)) return bio;
+  return bio.split("\n").filter((p) => p.trim().length > 0);
+}
+
+export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
+  const displayLeaders = leaders && leaders.length > 0 ? leaders : fallbackLeaders;
+
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
       <Container>
@@ -37,8 +62,8 @@ export default function LeadershipTeam() {
             <div className="flex flex-col sm:flex-row">
               <div className="relative h-72 sm:h-auto sm:w-[45%] overflow-hidden">
                 <Image
-                  src={leaders[0].image}
-                  alt={leaders[0].name}
+                  src={displayLeaders[0].image}
+                  alt={displayLeaders[0].name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   sizes="(max-width: 640px) 100vw, 45vw"
@@ -51,22 +76,26 @@ export default function LeadershipTeam() {
                   President &amp; Founder
                 </span>
                 <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
-                  {leaders[0].name}
+                  {displayLeaders[0].name}
                 </h3>
                 <p className="mt-1 text-sm font-semibold text-gold">
-                  {leaders[0].role}
+                  {displayLeaders[0].role}
                 </p>
-                <p className="mt-4 text-sm leading-[1.75] text-foreground/70">
-                  {leaders[0].bio}
-                </p>
+                <div className="mt-4 space-y-3">
+                  {getBioParagraphs(displayLeaders[0].bio).map((paragraph, i) => (
+                    <p key={i} className="text-sm leading-[1.75] text-foreground/70">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
 
           {/* Other leaders — 3-column grid */}
-          {leaders.length > 1 && (
+          {displayLeaders.length > 1 && (
             <div className="grid gap-6 sm:grid-cols-3">
-              {leaders.slice(1).map((leader, index) => (
+              {displayLeaders.slice(1).map((leader, index) => (
                 <motion.div
                   key={leader.name}
                   initial={{ opacity: 0, y: 30 }}
@@ -97,9 +126,13 @@ export default function LeadershipTeam() {
                     <p className="mt-1 text-sm font-semibold text-gold">
                       {leader.role}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground/70">
-                      {leader.bio}
-                    </p>
+                    <div className="mt-3 space-y-2">
+                      {getBioParagraphs(leader.bio).map((paragraph, i) => (
+                        <p key={i} className="text-sm leading-relaxed text-foreground/70">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               ))}

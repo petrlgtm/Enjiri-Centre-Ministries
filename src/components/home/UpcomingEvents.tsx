@@ -8,7 +8,22 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
-const placeholderEvents = [
+interface EventProp {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  image: string;
+  accent?: string;
+  featured?: boolean;
+}
+
+interface UpcomingEventsProps {
+  events?: EventProp[] | null;
+}
+
+const placeholderEvents: EventProp[] = [
   {
     title: "Sunday Worship Service",
     date: "Every Sunday",
@@ -95,8 +110,9 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
   );
 }
 
-export default function UpcomingEvents() {
+export default function UpcomingEvents({ events }: UpcomingEventsProps) {
   const countdown = useCountdown();
+  const displayEvents = events && events.length > 0 ? events : placeholderEvents;
 
   return (
     <section className="relative py-32">
@@ -113,7 +129,7 @@ export default function UpcomingEvents() {
         {/* Featured event: wide horizontal card. Others: side by side below */}
         <div className="space-y-6">
           {/* Featured — horizontal layout */}
-          {placeholderEvents.filter(e => e.featured).map((event) => (
+          {displayEvents.filter(e => e.featured).map((event) => (
             <motion.div
               key={event.title}
               initial={{ opacity: 0, y: 40 }}
@@ -134,7 +150,7 @@ export default function UpcomingEvents() {
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent || "from-gold to-gold-dark"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>
@@ -177,48 +193,60 @@ export default function UpcomingEvents() {
             </motion.div>
           ))}
 
-          {/* Non-featured — 2 column grid */}
+          {/* Non-featured — 2 column grid with background images */}
           <div className="grid gap-6 md:grid-cols-2">
-            {placeholderEvents.filter(e => !e.featured).map((event, index) => (
+            {displayEvents.filter(e => !e.featured).map((event, index) => (
               <motion.div
                 key={event.title}
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="card-hover card-premium group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
+                className="card-hover group relative h-72 overflow-hidden rounded-3xl border border-white/[0.06] sm:h-80"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-all duration-[900ms] group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
+                {/* Full background image */}
+                <Image
+                  src={event.image}
+                  alt={event.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-all duration-[900ms] group-hover:scale-110"
+                />
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 bg-navy/65 transition-colors duration-500 group-hover:bg-navy/55" />
+
+                {/* Content overlay */}
+                <div className="relative flex h-full flex-col justify-between p-6">
+                  {/* Top — date badge */}
+                  <div>
+                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent || "from-gold-dark to-gold"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[1.1rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">{event.title}</h3>
-                  <div className="mt-3 space-y-2">
-                    {[{ icon: HiClock, text: event.time }, { icon: HiLocationMarker, text: event.location }].map((item) => (
-                      <div key={item.text} className="flex items-center gap-2.5 text-sm text-[var(--gray-500)]">
-                        <item.icon className="shrink-0 text-gold/70" size={15} />
-                        <span>{item.text}</span>
-                      </div>
-                    ))}
+
+                  {/* Bottom — text content */}
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+                      {event.title}
+                    </h3>
+                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+                      {[{ icon: HiClock, text: event.time }, { icon: HiLocationMarker, text: event.location }].map((item) => (
+                        <div key={item.text} className="flex items-center gap-2 text-sm text-foreground/70">
+                          <item.icon className="shrink-0 text-gold" size={14} />
+                          <span>{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-2.5 text-[0.85rem] leading-relaxed text-foreground/60">
+                      {event.description}
+                    </p>
                   </div>
-                  <p className="mt-3 text-[0.85rem] leading-relaxed text-[var(--gray-500)]">{event.description}</p>
                 </div>
-                <div className="relative h-0.5 w-full bg-[var(--gray-50)]">
-                  <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gradient-to-r from-gold-light via-gold to-gold-light transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
+
+                {/* Bottom gold line on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent">
+                  <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
                 </div>
               </motion.div>
             ))}

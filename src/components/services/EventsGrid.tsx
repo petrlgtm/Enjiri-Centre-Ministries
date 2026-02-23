@@ -12,6 +12,7 @@ interface EventItem {
   description: string;
   category?: string;
   rsvpUrl?: string;
+  image?: string;
 }
 
 interface EventsGridProps {

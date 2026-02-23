@@ -1,5 +1,13 @@
 import { groq } from "next-sanity";
 
+// Shared image fragment for consistent image querying
+const imageFields = `
+  asset->{ _id, url, metadata { lqip, dimensions } },
+  alt,
+  hotspot,
+  crop
+`;
+
 // Sermons
 export const allSermonsQuery = groq`
   *[_type == "sermon"] | order(date desc) {
@@ -12,7 +20,7 @@ export const allSermonsQuery = groq`
     description,
     videoUrl,
     audioUrl,
-    thumbnail,
+    thumbnail { ${imageFields} },
     tags
   }
 `;
@@ -28,8 +36,9 @@ export const sermonBySlugQuery = groq`
     description,
     videoUrl,
     audioUrl,
-    thumbnail,
-    tags
+    thumbnail { ${imageFields} },
+    tags,
+    body
   }
 `;
 
@@ -41,7 +50,7 @@ export const latestSermonsQuery = groq`
     date,
     speaker,
     series,
-    thumbnail
+    thumbnail { ${imageFields} }
   }
 `;
 
@@ -50,12 +59,32 @@ export const upcomingEventsQuery = groq`
   *[_type == "event" && date >= now()] | order(date asc) {
     _id,
     title,
+    "slug": slug.current,
     date,
     endDate,
     location,
     description,
-    image,
-    isRecurring
+    image { ${imageFields} },
+    isRecurring,
+    featured,
+    category,
+    rsvpUrl
+  }
+`;
+
+export const homepageEventsQuery = groq`
+  *[_type == "event" && date >= now()] | order(date asc) [0...3] {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    endDate,
+    location,
+    description,
+    image { ${imageFields} },
+    isRecurring,
+    featured,
+    category
   }
 `;
 
@@ -66,7 +95,24 @@ export const latestEventsQuery = groq`
     date,
     location,
     description,
-    image
+    image { ${imageFields} }
+  }
+`;
+
+export const eventBySlugQuery = groq`
+  *[_type == "event" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    endDate,
+    location,
+    description,
+    body,
+    image { ${imageFields} },
+    isRecurring,
+    category,
+    rsvpUrl
   }
 `;
 
@@ -77,7 +123,18 @@ export const allLeadersQuery = groq`
     name,
     role,
     bio,
-    image
+    featured,
+    image { ${imageFields} }
+  }
+`;
+
+export const featuredLeaderQuery = groq`
+  *[_type == "leader" && featured == true] | order(order asc) [0] {
+    _id,
+    name,
+    role,
+    bio,
+    image { ${imageFields} }
   }
 `;
 
@@ -87,8 +144,8 @@ export const siteSettingsQuery = groq`
     churchName,
     tagline,
     description,
-    logo,
-    heroImage,
+    logo { ${imageFields} },
+    heroImage { ${imageFields} },
     address,
     phone,
     email,
@@ -104,7 +161,7 @@ export const allTestimoniesQuery = groq`
     quote,
     name,
     role,
-    image
+    image { ${imageFields} }
   }
 `;
 
@@ -113,9 +170,10 @@ export const allMinistriesQuery = groq`
   *[_type == "ministry"] | order(order asc) {
     _id,
     title,
+    "slug": slug.current,
     description,
     icon,
-    image,
+    image { ${imageFields} },
     ctaText,
     ctaUrl
   }
@@ -126,11 +184,12 @@ export const upcomingEventsWithCategoryQuery = groq`
   *[_type == "event" && date >= now()] | order(date asc) {
     _id,
     title,
+    "slug": slug.current,
     date,
     endDate,
     location,
     description,
-    image,
+    image { ${imageFields} },
     isRecurring,
     category,
     rsvpUrl

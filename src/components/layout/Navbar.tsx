@@ -193,11 +193,12 @@ export default function Navbar() {
         </Container>
       </motion.nav>
 
-      {/* Social Links Bar — hidden on home page (Hero covers viewport) */}
+      {/* Social Links Bar — only visible on homepage */}
+      {pathname === "/" && (
       <motion.div
         initial={{ y: -100 }}
         animate={{
-          y: hidden && !isOpen ? -100 : 0,
+          y: hidden || isOpen ? -100 : 0,
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-[80px] lg:top-[96px] left-0 right-0 z-[49] transition-all duration-700"
@@ -226,37 +227,20 @@ export default function Navbar() {
           </Container>
         </div>
       </motion.div>
+      )}
 
       {/* Mobile Full-Screen Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            initial={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+            animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
+            exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            {/* Backdrop with mesh gradient */}
             <div className="absolute inset-0 bg-navy/[0.98]" />
-            <div className="absolute inset-0 mesh-gradient opacity-50" />
             <div className="noise-overlay absolute inset-0" />
-
-            {/* Floating decorative orbs */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.08, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="absolute -top-20 -right-20 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-gold to-transparent"
-              style={{ filter: "blur(80px)" }}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.05, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="absolute -bottom-20 -left-20 h-[300px] w-[300px] rounded-full bg-gradient-to-tr from-gold to-transparent"
-              style={{ filter: "blur(60px)" }}
-            />
 
             {/* Nav Content */}
             <div className="relative flex h-full flex-col items-center justify-center px-8">
@@ -266,12 +250,12 @@ export default function Navbar() {
                   return (
                     <motion.div
                       key={link.href}
-                      initial={{ opacity: 0, x: -40, filter: "blur(10px)" }}
-                      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, x: 20, filter: "blur(5px)" }}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
                       transition={{
-                        delay: 0.08 * i,
-                        duration: 0.6,
+                        delay: 0.1 + 0.06 * i,
+                        duration: 0.5,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
@@ -279,11 +263,10 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "group relative block py-3 text-center font-[family-name:var(--font-playfair)] text-4xl font-medium transition-all duration-300",
+                          "group relative block py-2.5 text-center font-[family-name:var(--font-playfair)] text-2xl font-medium transition-all duration-300",
                           isActive ? "text-gold" : "text-foreground/60 hover:text-foreground"
                         )}
                       >
-                        {/* Number prefix */}
                         <span className="mr-3 inline-block font-sans text-xs font-medium text-gold/30 transition-colors duration-300 group-hover:text-gold/60">
                           0{i + 1}
                         </span>
@@ -302,7 +285,8 @@ export default function Navbar() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, duration: 0.5 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-10"
                 >
                   <Button
@@ -320,6 +304,7 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
                 className="mt-12 flex items-center gap-4 text-[12px] tracking-[0.1em] text-foreground/40"
               >
@@ -330,38 +315,15 @@ export default function Navbar() {
                 <span>FRI 6PM</span>
               </motion.div>
 
-              {/* Social Icons */}
+              {/* Bottom decorative cross */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="mt-8 flex items-center gap-3"
-              >
-                {socialLinks.map((social, i) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.65 + i * 0.05, type: "spring", bounce: 0.5 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-foreground/40 transition-all duration-300 hover:border-gold/30 hover:text-gold hover:shadow-[0_0_20px_rgba(201,168,76,0.15)]"
-                  >
-                    <social.icon size={14} />
-                  </motion.a>
-                ))}
-              </motion.div>
-
-              {/* Bottom decorative elements */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute bottom-12 flex items-center gap-3"
               >
-                <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />
+                <span className="h-px w-12 bg-gold/20" />
                 <svg
                   width="20"
                   height="20"
@@ -376,7 +338,7 @@ export default function Navbar() {
                   <line x1="12" y1="2" x2="12" y2="22" />
                   <line x1="5" y1="8" x2="19" y2="8" />
                 </svg>
-                <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
+                <span className="h-px w-12 bg-gold/20" />
               </motion.div>
             </div>
           </motion.div>

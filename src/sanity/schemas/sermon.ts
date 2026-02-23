@@ -1,76 +1,105 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
+import { MicrophoneIcon } from "@sanity/icons";
 
 export default defineType({
   name: "sermon",
   title: "Sermon",
   type: "document",
+  icon: MicrophoneIcon,
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      description: "The sermon title as it will appear on the website",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 96 },
-      validation: (Rule) => Rule.required(),
+      description:
+        "URL-friendly identifier — click Generate to auto-create from the title",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "date",
       title: "Date",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      description: "When this sermon was preached",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "speaker",
       title: "Speaker",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      description:
+        'Full name and title of the speaker (e.g. "Pastor Peter Kalagi")',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "series",
       title: "Series",
       type: "string",
+      description:
+        'If this sermon is part of a series, enter the series name (e.g. "Living by Faith")',
     }),
     defineField({
       name: "description",
       title: "Description",
       type: "text",
       rows: 4,
+      description:
+        "A short summary of the sermon (1-3 sentences). Shown on the sermons listing page.",
     }),
     defineField({
       name: "videoUrl",
       title: "Video URL",
       type: "url",
-      description: "YouTube or Vimeo URL",
+      description:
+        "YouTube or Vimeo link to the sermon video (e.g. https://youtube.com/watch?v=...)",
     }),
     defineField({
       name: "audioUrl",
       title: "Audio URL",
       type: "url",
+      description: "Direct link to the sermon audio file (MP3 or streaming URL)",
     }),
     defineField({
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",
       options: { hotspot: true },
+      description:
+        "Sermon cover image displayed on cards — recommended size 800x450px (16:9 ratio)",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          description: "Describe the image for screen readers and SEO",
+          validation: (rule) =>
+            rule.warning("Alt text improves accessibility and SEO"),
+        }),
+      ],
     }),
     defineField({
       name: "tags",
       title: "Tags",
       type: "array",
-      of: [{ type: "string" }],
+      of: [defineArrayMember({ type: "string" })],
       options: { layout: "tags" },
+      description:
+        'Add tags to help people find this sermon (e.g. "faith", "prayer", "healing")',
     }),
     defineField({
       name: "body",
       title: "Sermon Notes",
       type: "array",
-      of: [{ type: "block" }],
-      description: "Full sermon notes in rich text",
+      of: [defineArrayMember({ type: "block" })],
+      description:
+        "Full sermon notes or transcript in rich text — shown on the sermon detail page",
     }),
   ],
   orderings: [
@@ -84,7 +113,18 @@ export default defineType({
     select: {
       title: "title",
       subtitle: "speaker",
+      date: "date",
       media: "thumbnail",
+    },
+    prepare({ title, subtitle, date, media }) {
+      const formattedDate = date
+        ? new Date(date).toLocaleDateString()
+        : "No date";
+      return {
+        title,
+        subtitle: `${subtitle} — ${formattedDate}`,
+        media,
+      };
     },
   },
 });
