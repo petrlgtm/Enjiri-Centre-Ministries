@@ -169,22 +169,27 @@ export default function SermonPlayerPanel({
         ref={containerRef}
       >
         {/* Header bar */}
-        <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
-          <div className="flex items-center gap-3 min-w-0">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] px-4 py-3 sm:px-5">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
             <div className="flex h-2 w-2 shrink-0 rounded-full bg-gold animate-pulse" />
-            <p className="text-sm font-bold text-foreground truncate">{title}</p>
-            <span className="hidden sm:inline text-xs text-[var(--gray-400)]">
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-foreground truncate">{title}</p>
+              <p className="text-[11px] text-[var(--gray-400)] truncate sm:hidden">
+                {speaker} &middot; {date}
+              </p>
+            </div>
+            <span className="hidden sm:inline text-xs text-[var(--gray-400)] shrink-0">
               {speaker} &middot; {date}
             </span>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Mode toggle */}
             <div className="flex rounded-full bg-[var(--gray-50)] p-0.5 border border-white/[0.06]">
               <button
                 onClick={() => setMode("video")}
                 className={cn(
-                  "rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-300",
+                  "rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-3.5",
                   mode === "video"
                     ? "bg-gold text-navy shadow-sm"
                     : "text-[var(--gray-500)] hover:text-foreground"
@@ -195,7 +200,7 @@ export default function SermonPlayerPanel({
               <button
                 onClick={() => setMode("audio")}
                 className={cn(
-                  "rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-300",
+                  "rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-3.5",
                   mode === "audio"
                     ? "bg-gold text-navy shadow-sm"
                     : "text-[var(--gray-500)] hover:text-foreground"
@@ -208,10 +213,10 @@ export default function SermonPlayerPanel({
             {/* Close */}
             <button
               onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--gray-400)] transition-colors hover:bg-white/[0.06] hover:text-foreground"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.06] text-[var(--gray-400)] transition-colors hover:bg-red-500/20 hover:text-red-400"
               aria-label="Close player"
             >
-              <HiX size={18} />
+              <HiX size={20} />
             </button>
           </div>
         </div>

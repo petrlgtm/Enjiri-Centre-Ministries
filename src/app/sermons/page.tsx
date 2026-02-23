@@ -98,10 +98,18 @@ function SermonsContent() {
     }
   }, [searchParams]);
 
-  // Scroll to player when selected
+  // Scroll to player when selected — delay to let the panel animate open,
+  // and offset for the fixed navbar height
   useEffect(() => {
     if (selectedSlug && playerRef.current) {
-      playerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      const timer = setTimeout(() => {
+        const el = playerRef.current;
+        if (!el) return;
+        const navbarHeight = window.innerWidth >= 1024 ? 96 : 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
+        window.scrollTo({ top, behavior: "smooth" });
+      }, 550);
+      return () => clearTimeout(timer);
     }
   }, [selectedSlug]);
 
