@@ -20,9 +20,9 @@ export default function AboutPage() {
         description="A community of believers united in faith, love, and the mission to reach the world with the gospel of Christ."
       />
       <ChurchHistory />
-      <SectionDivider variant="gold-fade" fromColor="var(--navy)" toColor="var(--gray-50)" />
+      <SectionDivider variant="gold-fade" fromColor="var(--background)" toColor="var(--cream)" />
       <VisionMission />
-      <SectionDivider variant="curve" fromColor="var(--gray-50)" toColor="var(--navy)" />
+      <SectionDivider variant="curve" fromColor="var(--cream)" toColor="var(--background)" />
       <LeadershipTeam />
     </>
   );

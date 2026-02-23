@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CountUp from "@/components/ui/CountUp";
+import DonationSelector from "@/components/donate/DonationSelector";
 
 export const metadata: Metadata = {
   title: "Donate",
@@ -53,21 +54,23 @@ export default function DonatePage() {
         <div className="pointer-events-none absolute -left-40 top-20 h-[350px] w-[350px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" /></div>
         <Container>
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-            {/* LEFT — Text Content */}
+            {/* LEFT — Text Content + Amount Selector */}
             <div className="lg:w-1/2">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--gold-muted)] ring-1 ring-gold/20">
                 <HiHeart className="text-gold" size={28} />
               </div>
 
               <h2 className="mt-6 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
-                Online Donations Coming Soon
+                Make a Difference Today
               </h2>
 
               <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-[var(--gray-400)]">
-                We are setting up secure online donation options for your
-                convenience. In the meantime, you can give during our services or
-                contact us for giving options.
+                Choose an amount below or enter a custom amount. Online giving
+                coming soon — contact us for current giving options.
               </p>
+
+              {/* Amount Selector + Toggle */}
+              <DonationSelector />
 
               <div className="card-premium mt-8 max-w-md rounded-2xl border border-white/[0.06] bg-[var(--gray-50)] p-6">
                 <h3 className="font-bold text-foreground">How to Give</h3>
@@ -156,10 +159,33 @@ export default function DonatePage() {
         </Container>
       </section>
 
-      {/* SECTION 3 — Impact Areas (Split, Reversed) */}
+      {/* SECTION 3 — Trust Badges */}
+      <section className="py-12">
+        <Container>
+          <div className="flex flex-wrap items-center justify-center gap-8 text-center">
+            {[
+              { label: "Secure Giving", detail: "Bank-level encryption" },
+              { label: "Tax Deductible", detail: "Registered ministry" },
+              { label: "100% Transparent", detail: "Annual financial reports" },
+            ].map((badge) => (
+              <div key={badge.label} className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--gold-muted)] text-gold">
+                  <HiHeart size={16} />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-foreground">{badge.label}</p>
+                  <p className="text-[11px] text-[var(--gray-400)]">{badge.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* SECTION 4 — Impact Areas (Split, Reversed) */}
       <section className="relative overflow-hidden py-28">
-        <div className="absolute inset-0 bg-[var(--gray-50)]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
+        <div className="absolute inset-0 bg-cream" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">
           <div className="flex flex-col-reverse gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
@@ -216,21 +242,22 @@ export default function DonatePage() {
                 title="Your Giving Makes an Impact"
                 subtitle="Every contribution supports the advancement of God's kingdom."
                 centered={false}
+                onCream
               />
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {impactAreas.map((area) => (
                   <div
                     key={area.title}
-                    className="card-hover card-premium group rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6"
+                    className="card-hover card-premium group rounded-2xl border border-black/[0.06] bg-white p-6"
                   >
-                    <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--gold-muted)] text-gold transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
+                    <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
                       <area.icon size={22} />
                     </div>
-                    <h3 className="mt-4 text-sm font-bold text-foreground">
+                    <h3 className="mt-4 text-sm font-bold text-cream-heading">
                       {area.title}
                     </h3>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--gray-400)]">
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-cream-body">
                       {area.description}
                     </p>
                   </div>

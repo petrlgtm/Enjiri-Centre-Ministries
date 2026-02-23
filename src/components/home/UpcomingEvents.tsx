@@ -44,34 +44,33 @@ const placeholderEvents = [
   },
 ];
 
+function calcCountdown() {
+  const now = new Date();
+  const nextSunday = new Date(now);
+  const daysUntilSunday = (7 - now.getDay()) % 7 || 7;
+  nextSunday.setDate(now.getDate() + daysUntilSunday);
+  nextSunday.setHours(9, 0, 0, 0);
+
+  if (now.getDay() === 0 && now.getHours() < 12) {
+    nextSunday.setDate(now.getDate());
+  }
+
+  const diff = nextSunday.getTime() - now.getTime();
+  if (diff <= 0) return { days: 0, hours: 0, mins: 0, secs: 0 };
+
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    mins: Math.floor((diff / (1000 * 60)) % 60),
+    secs: Math.floor((diff / 1000) % 60),
+  };
+}
+
 function useCountdown() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+  const [timeLeft, setTimeLeft] = useState(() => calcCountdown());
 
   useEffect(() => {
-    function calc() {
-      const now = new Date();
-      const nextSunday = new Date(now);
-      const daysUntilSunday = (7 - now.getDay()) % 7 || 7;
-      nextSunday.setDate(now.getDate() + daysUntilSunday);
-      nextSunday.setHours(9, 0, 0, 0);
-
-      if (now.getDay() === 0 && now.getHours() < 12) {
-        nextSunday.setDate(now.getDate());
-      }
-
-      const diff = nextSunday.getTime() - now.getTime();
-      if (diff <= 0) return { days: 0, hours: 0, mins: 0, secs: 0 };
-
-      return {
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        mins: Math.floor((diff / (1000 * 60)) % 60),
-        secs: Math.floor((diff / 1000) % 60),
-      };
-    }
-
-    setTimeLeft(calc());
-    const interval = setInterval(() => setTimeLeft(calc()), 1000);
+    const interval = setInterval(() => setTimeLeft(calcCountdown()), 1000);
     return () => clearInterval(interval);
   }, []);
 

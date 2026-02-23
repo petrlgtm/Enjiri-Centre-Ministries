@@ -13,6 +13,8 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit";
   icon?: React.ReactNode;
+  disabled?: boolean;
+  ariaLabel?: string;
 }
 
 export default function Button({
@@ -24,9 +26,11 @@ export default function Button({
   onClick,
   type = "button",
   icon,
+  disabled = false,
+  ariaLabel,
 }: ButtonProps) {
   const baseStyles =
-    "group relative inline-flex items-center justify-center font-medium tracking-wide rounded-full transition-all duration-500 cursor-pointer overflow-hidden";
+    "group relative inline-flex items-center justify-center font-medium tracking-wide rounded-full transition-all duration-500 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
 
   const variants = {
     primary:
@@ -45,7 +49,11 @@ export default function Button({
     lg: "px-9 py-4 text-[15px] gap-3",
   };
 
-  const classes = cn(baseStyles, variants[variant], sizes[size], className);
+  const disabledStyles = disabled
+    ? "opacity-50 pointer-events-none cursor-not-allowed"
+    : "";
+
+  const classes = cn(baseStyles, variants[variant], sizes[size], disabledStyles, className);
 
   const inner = (
     <>
@@ -70,10 +78,10 @@ export default function Button({
     </>
   );
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <motion.div whileTap={{ scale: 0.96 }}>
-        <Link href={href} className={classes}>
+        <Link href={href} className={classes} aria-label={ariaLabel}>
           {inner}
         </Link>
       </motion.div>
@@ -82,10 +90,12 @@ export default function Button({
 
   return (
     <motion.button
-      whileTap={{ scale: 0.96 }}
+      whileTap={disabled ? undefined : { scale: 0.96 }}
       type={type}
       onClick={onClick}
       className={classes}
+      disabled={disabled}
+      aria-label={ariaLabel}
     >
       {inner}
     </motion.button>

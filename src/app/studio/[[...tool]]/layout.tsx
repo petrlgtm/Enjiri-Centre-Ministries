@@ -2,6 +2,10 @@ export const metadata = {
   title: "Sanity Studio | Enjiri Center Ministries",
 };
 
+export function generateStaticParams() {
+  return [{ tool: [] }];
+}
+
 export default function StudioLayout({
   children,
 }: {

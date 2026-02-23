@@ -31,10 +31,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
+
+  // Close mobile nav when route changes — use microtask to satisfy react-hooks/set-state-in-effect
+  useEffect(() => {
+    queueMicrotask(() => setIsOpen(false));
+  }, [pathname]);
 
   const handleScroll = useCallback(() => {
     const currentY = window.scrollY;
@@ -57,10 +61,6 @@ export default function Navbar() {
   }, [handleScroll]);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -69,38 +69,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Announcement Bar */}
-      <AnimatePresence>
-        {!announcementDismissed && (
-          <motion.div
-            initial={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-0 left-0 right-0 z-[60] overflow-hidden"
-          >
-            <div className="relative bg-navy-light">
-              {/* Subtle shimmer across announcement */}
-              <div className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_5s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-gold/[0.04] to-transparent" />
-              <div className="flex items-center justify-center px-4 py-2.5 text-[13px] tracking-wide text-gold/80">
-                <span className="relative mr-2.5 inline-block h-1.5 w-1.5 rounded-full bg-gold">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-gold opacity-50" />
-                </span>
-                <span>
-                  Join us this Sunday at 9:00 AM &mdash; Main Sanctuary
-                </span>
-                <button
-                  onClick={() => setAnnouncementDismissed(true)}
-                  className="ml-4 flex h-5 w-5 items-center justify-center rounded-full text-gold/40 transition-all duration-200 hover:bg-white/5 hover:text-gold/70 hover:rotate-90"
-                  aria-label="Dismiss announcement"
-                >
-                  <HiX size={12} />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Main Navbar */}
       <motion.nav
         initial={{ y: -100 }}
@@ -109,8 +77,7 @@ export default function Navbar() {
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed left-0 right-0 z-50 transition-all duration-700",
-          announcementDismissed ? "top-0" : "top-[38px]",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
           scrolled
             ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/[0.06]"
             : "bg-transparent border-b border-transparent"
@@ -131,20 +98,10 @@ export default function Navbar() {
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </div>
               <div className="hidden sm:block">
-                <span
-                  className={cn(
-                    "block text-[15px] font-bold tracking-wide transition-colors duration-500",
-                    scrolled ? "text-foreground" : "text-foreground"
-                  )}
-                >
+                <span className="block text-[15px] font-bold tracking-wide text-foreground transition-colors duration-500">
                   ENJIRI CENTER
                 </span>
-                <span
-                  className={cn(
-                    "block text-[10px] font-medium tracking-[0.25em] transition-colors duration-500",
-                    scrolled ? "text-gold/80" : "text-gold/80"
-                  )}
-                >
+                <span className="block text-[10px] font-medium tracking-[0.25em] text-gold/80 transition-colors duration-500">
                   MINISTRIES INTL
                 </span>
               </div>
@@ -164,8 +121,6 @@ export default function Navbar() {
                       "relative px-4 py-2 text-[13px] font-medium uppercase tracking-[0.1em] transition-all duration-300",
                       isActive
                         ? "text-gold"
-                        : scrolled
-                        ? "text-foreground/60 hover:text-foreground"
                         : "text-foreground/60 hover:text-foreground"
                     )}
                   >
@@ -173,10 +128,7 @@ export default function Navbar() {
                     {hoveredLink === link.href && !isActive && (
                       <motion.span
                         layoutId="nav-hover-bg"
-                        className={cn(
-                          "absolute inset-0 rounded-xl",
-                          scrolled ? "bg-white/[0.06]" : "bg-white/[0.06]"
-                        )}
+                        className="absolute inset-0 rounded-xl bg-white/[0.06]"
                         transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
                       />
                     )}
@@ -191,12 +143,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <div
-                className={cn(
-                  "ml-5 pl-5 border-l transition-colors duration-500",
-                  scrolled ? "border-white/10" : "border-white/10"
-                )}
-              >
+              <div className="ml-5 pl-5 border-l border-white/10 transition-colors duration-500">
                 <div className="btn-magnetic">
                   <Button href="/donate" variant="primary" size="sm">
                     Give Online
@@ -212,8 +159,6 @@ export default function Navbar() {
                 "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:hidden",
                 isOpen
                   ? "bg-white/10 text-foreground"
-                  : scrolled
-                  ? "text-foreground hover:bg-white/10"
                   : "text-foreground hover:bg-white/10"
               )}
               aria-label="Toggle menu"
@@ -254,16 +199,12 @@ export default function Navbar() {
           y: hidden && !isOpen ? -100 : 0,
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className={cn(
-          "fixed left-0 right-0 z-[49] transition-all duration-700",
-          announcementDismissed ? "top-[80px] lg:top-[96px]" : "top-[118px] lg:top-[134px]",
-          scrolled ? "opacity-100" : "opacity-100"
-        )}
+        className="fixed top-[80px] lg:top-[96px] left-0 right-0 z-[49] transition-all duration-700"
       >
-        <div className="bg-navy-light/90 backdrop-blur-sm border-b border-white/[0.06]">
+        <div className="bg-cream border-b border-black/[0.06]">
           <Container>
             <div className="flex h-10 items-center justify-between">
-              <span className="text-[12px] font-medium tracking-wide text-foreground/50">
+              <span className="text-[12px] font-medium tracking-wide text-cream-muted">
                 Follow us
               </span>
               <div className="flex items-center gap-2">
@@ -274,7 +215,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-foreground/50 transition-all duration-200 hover:bg-white/[0.06] hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
                   >
                     <social.icon size={15} />
                   </a>

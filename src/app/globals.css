@@ -36,8 +36,13 @@
   --gray-900: #f0ece4;
 
   /* Warm tones */
-  --cream: #f0ece4;
+  --cream: #fffbf5;
   --warm-white: #faf7f2;
+
+  /* Cream section text (dark text for light backgrounds) */
+  --cream-heading: #1a1714;
+  --cream-body: #4a4238;
+  --cream-muted: #6b6359;
 
   /* Premium Easing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -60,6 +65,9 @@
   --color-red-dark: var(--red-dark);
   --color-cream: var(--cream);
   --color-warm-white: var(--warm-white);
+  --color-cream-heading: var(--cream-heading);
+  --color-cream-body: var(--cream-body);
+  --color-cream-muted: var(--cream-muted);
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
 }
@@ -68,6 +76,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  zoom: 0.8;
 }
 
 body {
@@ -1062,4 +1071,18 @@ body {
   transform: rotate(45deg);
   border: 1.5px solid var(--gold);
   opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════════════
+   REDUCED MOTION — Accessibility
+   ═══════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

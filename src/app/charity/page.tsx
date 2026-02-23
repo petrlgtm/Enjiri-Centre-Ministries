@@ -139,30 +139,31 @@ export default function CharityPage() {
 
       {/* SECTION 3 — Programs Grid */}
       <section className="relative overflow-hidden py-28 lg:py-32">
-        <div className="absolute inset-0 bg-[var(--gray-50)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.04),transparent_50%)]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
+        <div className="absolute inset-0 bg-cream" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(138,109,27,0.05),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(138,109,27,0.04),transparent_50%)]" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
 
         <Container className="relative">
           <SectionHeading
             label="Our Programs"
             title="How We Serve Communities"
             subtitle="Through faith-driven initiatives, we bring practical help and spiritual hope to those who need it most."
+            onCream
           />
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {charityPrograms.map((program) => (
               <div
                 key={program.title}
-                className="card-hover card-premium group rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6"
+                className="card-hover card-premium group rounded-2xl border border-black/[0.06] bg-white p-6"
               >
-                <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--gold-muted)] text-gold transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
+                <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
                   <program.icon size={22} />
                 </div>
-                <h3 className="mt-4 text-sm font-bold text-foreground">
+                <h3 className="mt-4 text-sm font-bold text-cream-heading">
                   {program.title}
                 </h3>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--gray-400)]">
+                <p className="mt-1.5 text-[13px] leading-relaxed text-cream-body">
                   {program.description}
                 </p>
               </div>
@@ -173,7 +174,7 @@ export default function CharityPage() {
 
       <SectionDivider
         variant="gold-fade"
-        fromColor="var(--gray-50)"
+        fromColor="var(--cream)"
         toColor="var(--background)"
       />
 

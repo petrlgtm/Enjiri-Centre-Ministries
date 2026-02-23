@@ -96,3 +96,43 @@ export const siteSettingsQuery = groq`
     serviceSchedule
   }
 `;
+
+// Testimonies
+export const allTestimoniesQuery = groq`
+  *[_type == "testimony"] | order(order asc) {
+    _id,
+    quote,
+    name,
+    role,
+    image
+  }
+`;
+
+// Ministries
+export const allMinistriesQuery = groq`
+  *[_type == "ministry"] | order(order asc) {
+    _id,
+    title,
+    description,
+    icon,
+    image,
+    ctaText,
+    ctaUrl
+  }
+`;
+
+// Events with category (for filtering)
+export const upcomingEventsWithCategoryQuery = groq`
+  *[_type == "event" && date >= now()] | order(date asc) {
+    _id,
+    title,
+    date,
+    endDate,
+    location,
+    description,
+    image,
+    isRecurring,
+    category,
+    rsvpUrl
+  }
+`;

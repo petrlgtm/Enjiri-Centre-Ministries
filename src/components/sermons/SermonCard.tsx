@@ -44,7 +44,7 @@ export default function SermonCard({
     >
       <Link
         href={`/sermons/${slug}`}
-        className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] shadow-sm ring-1 ring-transparent transition-all duration-500 hover:shadow-xl hover:shadow-black/20 hover:ring-gold/15"
+        className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] shadow-sm ring-1 ring-transparent transition-all duration-500 hover:shadow-xl hover:shadow-black/20 hover:ring-2 hover:ring-gold/30"
       >
         {/* Thumbnail */}
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -62,7 +62,7 @@ export default function SermonCard({
 
           {/* Play button with pulse */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative">
+            <div className="relative" role="img" aria-label={`Play sermon: ${title}`}>
               <div className="absolute inset-0 rounded-full bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
               <motion.div
                 whileHover={{ scale: 1.15 }}
@@ -72,6 +72,11 @@ export default function SermonCard({
                 <HiPlay size={24} className="ml-0.5" />
               </motion.div>
             </div>
+          </div>
+
+          {/* Overlay title on thumbnail */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 pt-10 bg-gradient-to-t from-navy/80 to-transparent pointer-events-none">
+            <h4 className="text-sm font-bold text-white/90 line-clamp-2 drop-shadow-sm">{title}</h4>
           </div>
 
           {/* Series badge */}

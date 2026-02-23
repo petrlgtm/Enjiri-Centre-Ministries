@@ -37,9 +37,9 @@ const coreValues = [
 
 export default function VisionMission() {
   return (
-    <section className="relative overflow-hidden bg-[var(--gray-50)] py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(201,168,76,0.05),transparent_50%),radial-gradient(ellipse_at_80%_70%,rgba(196,125,42,0.04),transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
+    <section className="relative overflow-hidden bg-cream py-24 lg:py-32">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(138,109,27,0.05),transparent_50%),radial-gradient(ellipse_at_80%_70%,rgba(138,109,27,0.04),transparent_50%)]" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
 
       <Container>
         {/* Vision & Mission — side by side */}
@@ -50,18 +50,18 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-8 lg:p-10"
+            className="rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gold-muted)] border border-gold/10">
-              <HiEye className="text-gold" size={24} />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
+              <HiEye className="text-gold-dark" size={24} />
             </div>
-            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground">
+            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
               Our Vision
             </h3>
-            <p className="mt-4 text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
+            <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
               Preaching Christ and Restoring Hope through the power of the Holy Spirit.
             </p>
-            <p className="mt-3 text-sm italic text-gold/70">
+            <p className="mt-3 text-sm italic text-gold-dark/70">
               Colossians 1:27, 1 Corinthians 2:4
             </p>
           </motion.div>
@@ -72,19 +72,19 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-8 lg:p-10"
+            className="rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gold-muted)] border border-gold/10">
-              <HiLightBulb className="text-gold" size={24} />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
+              <HiLightBulb className="text-gold-dark" size={24} />
             </div>
-            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground">
+            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
               Our Mission
             </h3>
-            <p className="mt-4 text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
+            <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
               Ministering the Gospel of our Lord Jesus Christ through repentance
               and remission of sins to all nations.
             </p>
-            <p className="mt-3 text-sm italic text-gold/70">
+            <p className="mt-3 text-sm italic text-gold-dark/70">
               Luke 24:47
             </p>
           </motion.div>
@@ -96,21 +96,21 @@ export default function VisionMission() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-8 lg:p-10"
+          className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gold-muted)] border border-gold/10">
-            <HiGlobe className="text-gold" size={24} />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
+            <HiGlobe className="text-gold-dark" size={24} />
           </div>
-          <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground">
+          <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
             Our Commission
           </h3>
-          <p className="mt-4 text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
+          <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
             Proclaiming to all the Nations that God made Jesus both Lord and Christ,
             who is the only way, the truth and the Life. Who never came to condemn
             the world but to save and give Eternal Life through His death, burial
             and triumphant resurrection. He paid the ultimate sacrifice for all mankind.
           </p>
-          <p className="mt-3 text-sm italic text-gold/70">
+          <p className="mt-3 text-sm italic text-gold-dark/70">
             Acts 2:36, John 14:6
           </p>
         </motion.div>
@@ -121,6 +121,7 @@ export default function VisionMission() {
             label="What Guides Us"
             title="Core Values"
             className="mb-12"
+            onCream
           />
 
           <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
@@ -135,15 +136,15 @@ export default function VisionMission() {
                   delay: index * 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6 text-center transition-all duration-300 hover:border-gold/20 hover:shadow-md"
+                className="group rounded-2xl border border-black/[0.06] bg-white p-6 text-center transition-all duration-300 hover:border-gold-dark/20 hover:shadow-md"
               >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gold-muted)] text-gold transition-all duration-400 group-hover:bg-gold group-hover:text-black group-hover:shadow-[0_0_16px_rgba(201,168,76,0.2)]">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 text-gold-dark transition-all duration-400 group-hover:bg-gold group-hover:text-black group-hover:shadow-[0_0_16px_rgba(201,168,76,0.2)]">
                   <value.icon size={22} />
                 </div>
-                <h4 className="mt-4 font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                <h4 className="mt-4 font-bold text-cream-heading transition-colors duration-300 group-hover:text-gold-dark">
                   {value.title}
                 </h4>
-                <p className="mt-2 text-sm leading-[1.7] text-[var(--gray-400)]">
+                <p className="mt-2 text-sm leading-[1.7] text-cream-body">
                   {value.description}
                 </p>
               </motion.div>

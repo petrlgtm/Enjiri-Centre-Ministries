@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   label?: string;
   centered?: boolean;
   light?: boolean;
+  onCream?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export default function SectionHeading({
   label,
   centered = true,
   light = false,
+  onCream = false,
   className,
 }: SectionHeadingProps) {
   return (
@@ -36,9 +38,11 @@ export default function SectionHeading({
           transition={{ duration: 0.5, delay: 0.1 }}
           className={cn(
             "mb-5 inline-block rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em]",
-            light
-              ? "bg-gold/15 text-gold-light border border-gold/10"
-              : "bg-[var(--gold-muted)] text-gold-dark border border-gold/10"
+            onCream
+              ? "bg-gold-dark/10 text-gold-dark border border-gold-dark/15"
+              : light
+                ? "bg-gold/15 text-gold-light border border-gold/10"
+                : "bg-[var(--gold-muted)] text-gold-dark border border-gold/10"
           )}
         >
           {label}
@@ -47,7 +51,7 @@ export default function SectionHeading({
       <h2
         className={cn(
           "font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] leading-[1.12]",
-          light ? "text-foreground" : "text-foreground"
+          onCream ? "text-cream-heading" : "text-foreground"
         )}
       >
         {title}
@@ -64,9 +68,9 @@ export default function SectionHeading({
           centered ? "justify-center origin-center" : ""
         )}
       >
-        <span className="h-px w-10 bg-gold/50" />
+        <span className={cn("h-px w-10", onCream ? "bg-gold-dark/40" : "bg-gold/50")} />
         <span className="h-1.5 w-1.5 rounded-full bg-red" />
-        <span className="h-px w-20 bg-gradient-to-r from-gold to-transparent" />
+        <span className={cn("h-px w-20 bg-gradient-to-r", onCream ? "from-gold-dark/40 to-transparent" : "from-gold to-transparent")} />
       </motion.div>
 
       {subtitle && (
@@ -78,7 +82,7 @@ export default function SectionHeading({
           className={cn(
             "mt-5 max-w-2xl text-[1.05rem] leading-[1.75]",
             centered && "mx-auto",
-            light ? "text-gray-300" : "text-[var(--gray-400)]"
+            onCream ? "text-cream-body" : light ? "text-gray-300" : "text-[var(--gray-400)]"
           )}
         >
           {subtitle}

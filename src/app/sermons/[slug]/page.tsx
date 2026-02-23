@@ -5,6 +5,7 @@ import {
   HiCalendar,
   HiUser,
   HiCollection,
+  HiDocumentText,
 } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SermonPlayer from "@/components/sermons/SermonPlayer";
@@ -17,6 +18,8 @@ const placeholderSermons: Record<
     date: string;
     series: string;
     description: string;
+    speakerBio?: string;
+    notes?: string;
     videoUrl?: string;
     audioUrl?: string;
   }
@@ -28,6 +31,10 @@ const placeholderSermons: Record<
     series: "Living by Faith",
     description:
       "In this powerful sermon, Pastor John explores what it means to walk in the purpose God has designed for each of us. Drawing from Jeremiah 29:11 and Ephesians 2:10, we discover that God has a unique plan for every believer — a plan filled with hope and a future. Learn how to identify your calling, overcome distractions, and step boldly into the destiny God has prepared for you.",
+    speakerBio:
+      "Pastor John has served in ministry for over 15 years, leading with passion and deep commitment to God's Word. His heart is to see every believer walk in their God-given purpose.",
+    notes:
+      "Key Scripture: Jeremiah 29:11, Ephesians 2:10. Three pillars of walking in purpose: 1) Hearing God's voice through prayer and His Word. 2) Stepping out in faith despite uncertainty. 3) Trusting God's timing over your own.",
   },
   "the-power-of-prayer": {
     title: "The Power of Prayer",
@@ -36,6 +43,10 @@ const placeholderSermons: Record<
     series: "Living by Faith",
     description:
       "Prayer is the lifeline of every believer. In this teaching, we examine how prayer transforms our relationship with God and unlocks His power in our lives. From the model prayer Jesus taught His disciples to the fervent prayers of the early church, discover the keys to an effective and powerful prayer life.",
+    speakerBio:
+      "Pastor John has served in ministry for over 15 years, leading with passion and deep commitment to God's Word. His heart is to see every believer walk in their God-given purpose.",
+    notes:
+      "Key Scripture: Matthew 6:9-13, James 5:16. Prayer types covered: Intercession, Thanksgiving, Petition, and Warfare prayer.",
   },
   "grace-that-transforms": {
     title: "Grace That Transforms",
@@ -44,12 +55,18 @@ const placeholderSermons: Record<
     series: "Amazing Grace",
     description:
       "God's grace is not just about forgiveness — it's about transformation. In this message, we explore how the grace of God changes us from the inside out, empowering us to live lives that honor Him. From Paul's testimony to the woman at the well, see how grace meets us where we are and takes us where God wants us to be.",
+    notes:
+      "Key Scripture: 2 Corinthians 12:9, Ephesians 2:8-9. Grace is unmerited favor — it cannot be earned, only received.",
   },
 };
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export function generateStaticParams() {
+  return Object.keys(placeholderSermons).map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -87,9 +104,14 @@ export default async function SermonDetailPage({ params }: Props) {
     );
   }
 
-  // Get related sermons (other sermons from the placeholderSermons list, excluding the current one)
+  // Related sermons: prefer same series, then other sermons
   const relatedSermons = Object.entries(placeholderSermons)
     .filter(([key]) => key !== slug)
+    .sort(([, a], [, b]) => {
+      if (a.series === sermon.series && b.series !== sermon.series) return -1;
+      if (b.series === sermon.series && a.series !== sermon.series) return 1;
+      return 0;
+    })
     .slice(0, 2);
 
   return (
@@ -134,7 +156,7 @@ export default async function SermonDetailPage({ params }: Props) {
       <section className="py-16 lg:py-20">
         <Container>
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-            {/* LEFT — Player + Description */}
+            {/* LEFT — Player + Description + Notes */}
             <div className="lg:w-7/12">
               <SermonPlayer
                 videoUrl={sermon.videoUrl}
@@ -154,9 +176,26 @@ export default async function SermonDetailPage({ params }: Props) {
                   {sermon.description}
                 </p>
               </div>
+
+              {/* Sermon Notes */}
+              {sermon.notes && (
+                <div className="mt-10 rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gold-muted)] text-gold">
+                      <HiDocumentText size={16} />
+                    </div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--gray-400)]">
+                      Sermon Notes
+                    </h3>
+                  </div>
+                  <p className="mt-4 text-[0.9rem] leading-[1.85] text-[var(--gray-500)]">
+                    {sermon.notes}
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* RIGHT — Info Card + Related */}
+            {/* RIGHT — Info Card + Speaker Bio + Related */}
             <div className="lg:w-5/12">
               {/* Info Card */}
               <div className="rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] p-6 shadow-sm">
@@ -212,9 +251,29 @@ export default async function SermonDetailPage({ params }: Props) {
                 </div>
               </div>
 
+              {/* Speaker Bio Card */}
+              {sermon.speakerBio && (
+                <div className="mt-6 rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] p-6 shadow-sm">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--gray-400)]">
+                    About the Speaker
+                  </h3>
+                  <div className="mt-4 flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--gold-muted)] text-gold">
+                      <HiUser size={20} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white">{sermon.speaker}</p>
+                      <p className="mt-2 text-[0.85rem] leading-[1.75] text-[var(--gray-500)]">
+                        {sermon.speakerBio}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Related Sermons */}
               {relatedSermons.length > 0 && (
-                <div className="mt-8">
+                <div className="mt-6">
                   <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--gray-400)]">
                     Related Sermons
                   </h3>
@@ -228,9 +287,15 @@ export default async function SermonDetailPage({ params }: Props) {
                         <p className="text-sm font-bold text-white transition-colors duration-300 group-hover:text-gold">
                           {relatedSermon.title}
                         </p>
-                        <p className="mt-1 text-[11px] font-medium tracking-wide text-[var(--gray-400)]">
-                          {relatedSermon.series}
-                        </p>
+                        <div className="mt-1 flex items-center gap-2 text-[11px] font-medium tracking-wide text-[var(--gray-400)]">
+                          <span>{relatedSermon.series}</span>
+                          {relatedSermon.series === sermon.series && (
+                            <>
+                              <span className="h-1 w-1 rounded-full bg-gold/40" />
+                              <span className="text-gold/60">Same Series</span>
+                            </>
+                          )}
+                        </div>
                       </Link>
                     ))}
                   </div>

@@ -45,6 +45,26 @@ export default defineType({
       type: "boolean",
       initialValue: false,
     }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Worship", value: "worship" },
+          { title: "Youth", value: "youth" },
+          { title: "Outreach", value: "outreach" },
+          { title: "Fellowship", value: "fellowship" },
+          { title: "Conference", value: "conference" },
+        ],
+      },
+    }),
+    defineField({
+      name: "rsvpUrl",
+      title: "RSVP URL",
+      type: "url",
+      description: "External link for event registration",
+    }),
   ],
   orderings: [
     {

@@ -24,3 +24,48 @@ export function getYouTubeEmbedUrl(url: string): string | null {
   );
   return match ? `https://www.youtube.com/embed/${match[1]}` : null;
 }
+
+export function generateICS({
+  title,
+  date,
+  endDate,
+  location,
+  description,
+}: {
+  title: string;
+  date: string;
+  endDate?: string;
+  location?: string;
+  description?: string;
+}): string {
+  const formatICSDate = (d: string) =>
+    new Date(d)
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .replace(/\.\d{3}/, "");
+
+  const dtStart = formatICSDate(date);
+  const dtEnd = endDate
+    ? formatICSDate(endDate)
+    : formatICSDate(
+        new Date(new Date(date).getTime() + 2 * 60 * 60 * 1000).toISOString()
+      );
+
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Enjiri Center Ministries//EN",
+    "BEGIN:VEVENT",
+    `DTSTART:${dtStart}`,
+    `DTEND:${dtEnd}`,
+    `SUMMARY:${title}`,
+    location ? `LOCATION:${location}` : "",
+    description ? `DESCRIPTION:${description.replace(/\n/g, "\\n")}` : "",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ]
+    .filter(Boolean)
+    .join("\r\n");
+
+  return `data:text/calendar;charset=utf-8,${encodeURIComponent(lines)}`;
+}

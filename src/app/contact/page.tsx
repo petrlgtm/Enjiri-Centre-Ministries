@@ -39,7 +39,7 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/30 focus:border-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]";
+    "w-full rounded-2xl border border-black/[0.08] bg-white px-4 py-3.5 text-sm text-cream-heading outline-none transition-all duration-300 placeholder:text-cream-muted/60 focus:border-gold-dark focus:bg-white focus:shadow-[0_0_0_3px_rgba(138,109,27,0.1)]";
 
   return (
     <>
@@ -124,8 +124,8 @@ export default function ContactPage() {
 
       {/* Section 2 — Form + Social (split, reversed) */}
       <section className="relative overflow-hidden py-28 section-glow">
-        <div className="absolute inset-0 bg-[var(--gray-50)]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
+        <div className="absolute inset-0 bg-cream" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
             {/* Left — form */}
@@ -141,30 +141,31 @@ export default function ContactPage() {
                 title="Send Us a Message"
                 subtitle="Fill out the form and we'll get back to you as soon as possible."
                 centered={false}
+                onCream
               />
 
               {/* Form container with gold corner accent */}
-              <div className="relative rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] p-8 card-premium">
+              <div className="relative rounded-3xl border border-black/[0.06] bg-white p-8 card-premium">
                 {/* Decorative gold corner accent — top-left */}
                 <div className="absolute top-0 left-0 h-16 w-16 overflow-hidden rounded-tl-3xl">
-                  <div className="absolute -top-px -left-px h-[3px] w-10 rounded-full bg-gradient-to-r from-gold to-transparent" />
-                  <div className="absolute -top-px -left-px h-10 w-[3px] rounded-full bg-gradient-to-b from-gold to-transparent" />
+                  <div className="absolute -top-px -left-px h-[3px] w-10 rounded-full bg-gradient-to-r from-gold-dark to-transparent" />
+                  <div className="absolute -top-px -left-px h-10 w-[3px] rounded-full bg-gradient-to-b from-gold-dark to-transparent" />
                 </div>
 
                 {submitted ? (
-                  <div className="rounded-2xl border border-gold/20 bg-gold/[0.06] p-10 text-center">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/10">
-                      <HiMail className="text-gold" size={24} />
+                  <div className="rounded-2xl border border-gold-dark/20 bg-gold-dark/[0.06] p-10 text-center">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-dark/10">
+                      <HiMail className="text-gold-dark" size={24} />
                     </div>
-                    <h3 className="mt-4 text-xl font-bold text-foreground">
+                    <h3 className="mt-4 text-xl font-bold text-cream-heading">
                       Message Sent!
                     </h3>
-                    <p className="mt-2 text-foreground/70">
+                    <p className="mt-2 text-cream-body">
                       Thank you for reaching out. We&apos;ll respond as soon as possible.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="mt-5 text-sm font-medium text-gold underline underline-offset-2"
+                      className="mt-5 text-sm font-medium text-gold-dark underline underline-offset-2"
                     >
                       Send another message
                     </button>
@@ -173,7 +174,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
-                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
+                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-cream-heading">
                           Full Name
                         </label>
                         <input
@@ -187,7 +188,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
+                        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-cream-heading">
                           Email Address
                         </label>
                         <input
@@ -202,7 +203,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-foreground">
+                      <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-cream-heading">
                         Subject
                       </label>
                       <input
@@ -216,7 +217,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
+                      <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-cream-heading">
                         Message
                       </label>
                       <textarea
@@ -246,9 +247,9 @@ export default function ContactPage() {
               className="space-y-6 lg:w-5/12"
             >
               {/* Follow Us card */}
-              <div className="rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6">
-                <h3 className="font-bold text-foreground">Follow Us</h3>
-                <p className="mt-1 text-sm text-[var(--gray-500)]">
+              <div className="rounded-2xl border border-black/[0.06] bg-white p-6">
+                <h3 className="font-bold text-cream-heading">Follow Us</h3>
+                <p className="mt-1 text-sm text-cream-muted">
                   Stay connected on social media
                 </p>
                 <div className="mt-4 flex gap-3">
@@ -256,7 +257,7 @@ export default function ContactPage() {
                     <a
                       key={social.label}
                       href={social.href}
-                      className="icon-breathe flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-foreground transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-black"
+                      className="icon-breathe flex h-11 w-11 items-center justify-center rounded-xl bg-gold-dark/10 text-cream-body transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-black"
                       aria-label={social.label}
                       target="_blank"
                       rel="noopener noreferrer"

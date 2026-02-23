@@ -65,6 +65,13 @@ export default defineType({
       of: [{ type: "string" }],
       options: { layout: "tags" },
     }),
+    defineField({
+      name: "body",
+      title: "Sermon Notes",
+      type: "array",
+      of: [{ type: "block" }],
+      description: "Full sermon notes in rich text",
+    }),
   ],
   orderings: [
     {
