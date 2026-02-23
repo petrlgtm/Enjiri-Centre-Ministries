@@ -99,13 +99,9 @@ export default function UpcomingEvents() {
   const countdown = useCountdown();
 
   return (
-    <section className="section-glow relative py-32">
+    <section className="relative py-32">
       <div className="absolute inset-0 bg-navy" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_30%_80%,rgba(201,168,76,0.05),transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
 
-      <div className="pointer-events-none absolute -left-40 bottom-20 h-[350px] w-[350px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" /></div>
-      <div className="pointer-events-none absolute -right-32 top-32 h-[300px] w-[300px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-bl from-red to-transparent" style={{ animationDelay: "-3s" }} /></div>
 
       <Container className="relative">
         <SectionHeading

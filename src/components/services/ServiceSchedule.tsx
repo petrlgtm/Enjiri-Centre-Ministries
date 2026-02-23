@@ -38,10 +38,7 @@ const schedule = [
 
 export default function ServiceSchedule() {
   return (
-    <section className="section-glow relative overflow-hidden py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_25%,rgba(196,125,42,0.04),transparent_50%),radial-gradient(ellipse_at_40%_75%,rgba(201,168,76,0.04),transparent_50%)]" />
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-[0.04]"><div className="morph-blob h-full w-full bg-gradient-to-bl from-gold to-transparent" /></div>
-      <div className="pointer-events-none absolute -left-32 top-20 h-[350px] w-[350px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-tr from-red to-transparent" style={{ animationDelay: "-4s" }} /></div>
+    <section className="relative overflow-hidden py-32">
       <Container>
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           {/* Left side */}

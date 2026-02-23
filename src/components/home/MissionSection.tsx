@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { HiHeart, HiBookOpen, HiGlobe, HiUserGroup } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -51,29 +50,9 @@ const values = [
 ];
 
 export default function MissionSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const decorY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-28 lg:py-32">
+    <section className="relative overflow-hidden py-28 lg:py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.04),transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
-
-      {/* Floating decorative blobs — gold + red */}
-      <motion.div
-        style={{ y: decorY }}
-        className="pointer-events-none absolute -right-20 top-20 h-[400px] w-[400px] rounded-full opacity-[0.04]"
-      >
-        <div className="morph-blob h-full w-full bg-gradient-to-br from-gold to-transparent" />
-      </motion.div>
-      <div className="pointer-events-none absolute -left-32 bottom-40 h-[350px] w-[350px] rounded-full opacity-[0.03]">
-        <div className="morph-blob h-full w-full bg-gradient-to-tr from-red to-transparent" style={{ animationDelay: "-5s" }} />
-      </div>
 
       <Container className="relative">
         <SectionHeading

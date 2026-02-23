@@ -51,8 +51,6 @@ export default function ContactPage() {
 
       {/* Section 1 — Contact Info + Image (split) */}
       <section className="relative overflow-hidden py-28">
-        <div className="dot-grid-animated absolute inset-0" />
-        <div className="pointer-events-none absolute -right-40 -top-20 h-[400px] w-[400px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-bl from-gold to-transparent" /></div>
         <Container>
           <div className="flex flex-col-reverse gap-12 lg:flex-row lg:items-start lg:gap-16">
             {/* Left — contact info cards in 2x2 grid */}
@@ -123,7 +121,7 @@ export default function ContactPage() {
       </section>
 
       {/* Section 2 — Form + Social (split, reversed) */}
-      <section className="relative overflow-hidden py-28 section-glow">
+      <section className="relative overflow-hidden py-28">
         <div className="absolute inset-0 bg-cream" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">

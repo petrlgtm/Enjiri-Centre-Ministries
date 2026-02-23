@@ -17,7 +17,6 @@ const leaders = [
 export default function LeadershipTeam() {
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_65%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_35%_80%,rgba(201,168,76,0.04),transparent_50%)]" />
       <Container>
         <SectionHeading
           label="Our Shepherds"

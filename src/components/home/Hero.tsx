@@ -91,7 +91,7 @@ export default function Hero() {
       <div className="noise-overlay absolute inset-0 pointer-events-none" />
 
       {/* ── Content ── */}
-      <Container className="relative z-10 flex h-full flex-col justify-center pt-[140px] pb-24 lg:pt-[156px] lg:pb-28">
+      <Container className="relative z-10 flex h-full flex-col justify-center pt-[130px] pb-20 sm:pt-[140px] sm:pb-24 lg:pt-[156px] lg:pb-28">
         <div className="max-w-2xl">
 
           {/* Badge */}
@@ -100,9 +100,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-gold/20 bg-gold/[0.08] px-5 py-2 text-[12px] font-medium tracking-[0.15em] text-gold/90 backdrop-blur-md">
+            <span className="relative inline-flex items-center gap-1.5 min-[375px]:gap-2 overflow-hidden rounded-full border border-gold/20 bg-gold/[0.08] px-3 min-[375px]:px-4 sm:px-5 py-2 text-[10px] min-[375px]:text-[11px] sm:text-[12px] font-medium tracking-[0.08em] min-[375px]:tracking-[0.12em] sm:tracking-[0.15em] text-gold/90 backdrop-blur-md">
               <span className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_3s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
-              <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-light opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-red-light" />
               </span>

@@ -56,8 +56,6 @@ export default function TestimonialsCarousel() {
   return (
     <section className="relative overflow-hidden py-28">
       <div className="absolute inset-0 bg-cream" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(138,109,27,0.05),transparent_55%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
 
       <Container className="relative">
         <SectionHeading

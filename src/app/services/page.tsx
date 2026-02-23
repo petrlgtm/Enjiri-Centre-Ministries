@@ -74,13 +74,10 @@ export default function ServicesPage() {
 
       <ServiceSchedule />
 
-      <SectionDivider variant="gold-fade" fromColor="var(--background)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" accent />
 
-      <section className="section-glow relative py-28 overflow-hidden">
+      <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-cream" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_25%_25%,rgba(138,109,27,0.04),transparent_50%),radial-gradient(ellipse_at_75%_75%,rgba(138,109,27,0.04),transparent_50%)]" />
-        <div className="dot-grid-animated absolute inset-0" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">
           <SectionHeading
             label="Mark Your Calendar"

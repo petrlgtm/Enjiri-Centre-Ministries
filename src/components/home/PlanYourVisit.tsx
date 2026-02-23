@@ -29,7 +29,6 @@ export default function PlanYourVisit() {
   return (
     <section className="relative overflow-hidden py-28">
       <div className="absolute inset-0 bg-cream" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(138,109,27,0.06),transparent_55%)]" />
       <Container className="relative">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           {/* Left — Image */}

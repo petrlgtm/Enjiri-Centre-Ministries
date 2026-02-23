@@ -49,7 +49,6 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(196,125,42,0.12),transparent_50%),radial-gradient(ellipse_at_80%_80%,rgba(201,168,76,0.10),transparent_50%)]" />
       {/* Newsletter Signup */}
       <NewsletterSignup />
 
@@ -60,10 +59,6 @@ export default function Footer() {
       <div className="relative bg-navy">
         {/* Subtle noise */}
         <div className="noise-overlay absolute inset-0" />
-        {/* Subtle blob decoration */}
-        <div className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] opacity-[0.02]">
-          <div className="morph-blob h-full w-full bg-gradient-to-bl from-gold to-transparent" />
-        </div>
 
         <Container className="relative py-20">
           <div className="grid gap-12 lg:grid-cols-12">

@@ -15,25 +15,25 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SectionDivider variant="wave" fromColor="var(--navy)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" />
       <SnapshotBand />
-      <SectionDivider variant="gold-fade" fromColor="var(--cream)" toColor="var(--gray-50)" />
+      <SectionDivider from="cream" to="dark" accent />
       <MissionSection />
-      <SectionDivider variant="curve" fromColor="var(--gray-50)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" />
       <PlanYourVisit />
-      <SectionDivider variant="gold-fade" fromColor="var(--cream)" toColor="var(--gray-50)" />
+      <SectionDivider from="cream" to="dark" accent />
       <LatestSermons />
-      <SectionDivider variant="angle" fromColor="var(--gray-50)" toColor="var(--navy)" />
+      <SectionDivider from="dark" to="dark" accent />
       <UpcomingEvents />
-      <SectionDivider variant="wave" fromColor="var(--navy)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" accent />
       <MinistriesGrid />
-      <SectionDivider variant="gold-fade" fromColor="var(--cream)" toColor="var(--background)" />
+      <SectionDivider from="cream" to="dark" />
       <LeadershipHighlight />
-      <SectionDivider variant="curve" fromColor="var(--background)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" accent />
       <TestimonialsCarousel />
-      <SectionDivider variant="angle" fromColor="var(--cream)" toColor="var(--navy)" />
+      <SectionDivider from="cream" to="dark" />
       <DonateBand />
-      <SectionDivider variant="wave" fromColor="var(--navy)" toColor="var(--cream)" />
+      <SectionDivider from="dark" to="cream" accent />
       <ContactInfoCard />
     </>
   );

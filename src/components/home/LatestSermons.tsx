@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { HiPlay, HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -40,30 +39,9 @@ const placeholderSermons = [
 ];
 
 export default function LatestSermons() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const decorX = useTransform(scrollYProgress, [0, 1], [-80, 80]);
-
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-32">
+    <section className="relative overflow-hidden py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(201,168,76,0.05),transparent_50%),radial-gradient(ellipse_at_85%_70%,rgba(196,125,42,0.04),transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
-      <div className="dot-grid-animated absolute inset-0" />
-
-      {/* Floating decorative blobs — gold + red */}
-      <motion.div
-        style={{ x: decorX }}
-        className="pointer-events-none absolute -left-32 top-1/3 h-[350px] w-[350px] opacity-[0.04]"
-      >
-        <div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" style={{ animationDelay: "-4s" }} />
-      </motion.div>
-      <div className="pointer-events-none absolute -right-24 bottom-1/4 h-[300px] w-[300px] opacity-[0.03]">
-        <div className="morph-blob h-full w-full bg-gradient-to-bl from-red to-transparent" style={{ animationDelay: "-7s" }} />
-      </div>
 
       <Container className="relative">
         <SectionHeading

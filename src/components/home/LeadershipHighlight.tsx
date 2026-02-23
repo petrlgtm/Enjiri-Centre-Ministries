@@ -9,7 +9,6 @@ import Button from "@/components/ui/Button";
 export default function LeadershipHighlight() {
   return (
     <section className="relative overflow-hidden py-28">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(201,168,76,0.04),transparent_55%)]" />
 
       <Container className="relative">
         <motion.div

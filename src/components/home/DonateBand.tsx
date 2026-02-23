@@ -33,11 +33,7 @@ export default function DonateBand() {
 
       {/* Overlay layers */}
       <div className="absolute inset-0 bg-navy/85" />
-      <div className="absolute inset-0 mesh-gradient-animated opacity-60" />
       <div className="noise-overlay absolute inset-0" />
-      <div className="aurora-bg" style={{ opacity: 0.5 }} />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">

@@ -157,12 +157,7 @@ function SermonsContent() {
         description="Watch or listen to our sermons and be encouraged by the teaching of God's Word."
       />
 
-      <section className="section-glow relative overflow-hidden py-28">
-        <div className="dot-grid-animated absolute inset-0" />
-        <div className="pointer-events-none absolute -left-40 top-40 h-[400px] w-[400px] rounded-full opacity-[0.02]">
-          <div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" />
-        </div>
-
+      <section className="relative overflow-hidden py-28">
         <Container>
           {/* Player panel */}
           <div ref={playerRef}>

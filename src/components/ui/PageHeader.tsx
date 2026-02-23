@@ -45,36 +45,23 @@ export default function PageHeader({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-28">
-      {/* Background layers */}
+      {/* Background */}
       <div className="absolute inset-0 bg-navy" />
-      <motion.div style={{ y: bgY }} className="absolute inset-0 mesh-gradient-animated" />
 
       {/* Noise texture */}
       <div className="noise-overlay absolute inset-0" />
 
-      {/* Pattern grid */}
+      {/* Subtle pattern grid */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.03 }}
         transition={{ duration: 1.5 }}
         className="pattern-grid absolute inset-0"
       />
-
-      {/* Morphing blob accents — red + gold */}
-      <div className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] opacity-[0.06]">
-        <div className="morph-blob h-full w-full bg-gradient-to-bl from-red to-transparent" />
-      </div>
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-[400px] w-[400px] opacity-[0.05]">
-        <div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" style={{ animationDelay: "-6s" }} />
-      </div>
-      <div className="pointer-events-none absolute top-1/2 -left-20 h-[350px] w-[350px] opacity-[0.04]">
-        <div className="morph-blob h-full w-full bg-gradient-to-r from-red to-transparent" style={{ animationDelay: "-9s" }} />
-      </div>
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy to-transparent" />

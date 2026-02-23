@@ -27,7 +27,6 @@ export default function DonatePage() {
       />
 
       <section className="relative overflow-hidden py-14 sm:py-20 md:py-28">
-        <div className="dot-grid-animated absolute inset-0" />
         <Container>
           <div className="mx-auto max-w-2xl">
             <h2 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground min-[375px]:text-2xl sm:text-3xl">

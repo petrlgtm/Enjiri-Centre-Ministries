@@ -70,14 +70,10 @@ export default function CharityPage() {
         description="Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."
       />
 
-      <SectionDivider variant="gold-fade" />
+      <SectionDivider from="dark" to="dark" accent />
 
       {/* SECTION 2 — Mission (Split Layout) */}
       <section className="relative overflow-hidden py-28">
-        <div className="dot-grid-animated absolute inset-0" />
-        <div className="pointer-events-none absolute -left-40 top-20 h-[350px] w-[350px] rounded-full opacity-[0.03]">
-          <div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" />
-        </div>
         <Container>
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Text Content */}
@@ -135,13 +131,11 @@ export default function CharityPage() {
         </Container>
       </section>
 
-      <SectionDivider variant="curve" />
+      <SectionDivider from="dark" to="cream" accent />
 
       {/* SECTION 3 — Programs Grid */}
       <section className="relative overflow-hidden py-28 lg:py-32">
         <div className="absolute inset-0 bg-cream" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(138,109,27,0.05),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(138,109,27,0.04),transparent_50%)]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
 
         <Container className="relative">
           <SectionHeading
@@ -172,19 +166,10 @@ export default function CharityPage() {
         </Container>
       </section>
 
-      <SectionDivider
-        variant="gold-fade"
-        fromColor="var(--cream)"
-        toColor="var(--background)"
-      />
+      <SectionDivider from="cream" to="dark" accent />
 
       {/* SECTION 4 — #IAMASOULWINNER Campaign Spotlight */}
       <section className="relative overflow-hidden py-28">
-        <div className="dot-grid-animated absolute inset-0" />
-        <div className="pointer-events-none absolute -right-40 top-20 h-[400px] w-[400px] rounded-full opacity-[0.03]">
-          <div className="morph-blob h-full w-full bg-gradient-to-bl from-red to-transparent" />
-        </div>
-
         <Container>
           <div className="flex flex-col-reverse gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
@@ -313,7 +298,7 @@ export default function CharityPage() {
           <div className="relative overflow-hidden rounded-3xl">
             <div className="relative p-10 sm:p-14">
               <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 mesh-gradient" />
+              <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
 
               <div className="relative">
@@ -355,7 +340,7 @@ export default function CharityPage() {
           <div className="relative overflow-hidden rounded-3xl">
             <div className="relative p-10 sm:p-12">
               <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 mesh-gradient" />
+              <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
               <div className="relative text-center">
                 <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
@@ -378,7 +363,7 @@ export default function CharityPage() {
           <div className="mt-6 relative overflow-hidden rounded-3xl">
             <div className="relative p-10 sm:p-12">
               <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 mesh-gradient" />
+              <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
               <div className="relative text-center">
                 <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
@@ -411,7 +396,7 @@ export default function CharityPage() {
           />
         </div>
         <div className="absolute inset-0 bg-navy/85" />
-        <div className="absolute inset-0 mesh-gradient opacity-60" />
+        <div className="absolute inset-0 bg-navy" />
         <div className="noise-overlay absolute inset-0" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 

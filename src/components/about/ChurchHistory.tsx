@@ -22,7 +22,6 @@ const timeline = [
 export default function ChurchHistory() {
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_25%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_25%_75%,rgba(201,168,76,0.04),transparent_50%)]" />
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
           {/* Left: Image + Stats */}

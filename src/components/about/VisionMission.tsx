@@ -38,8 +38,6 @@ const coreValues = [
 export default function VisionMission() {
   return (
     <section className="relative overflow-hidden bg-cream py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(138,109,27,0.05),transparent_50%),radial-gradient(ellipse_at_80%_70%,rgba(138,109,27,0.04),transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
 
       <Container>
         {/* Vision & Mission — side by side */}
