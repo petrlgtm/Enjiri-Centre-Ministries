@@ -205,10 +205,10 @@ export default function Navbar() {
         <div className="bg-cream border-b border-black/[0.06]">
           <Container>
             <div className="flex h-10 items-center justify-between">
-              <span className="text-[12px] font-medium tracking-wide text-cream-muted">
+              <span className="hidden min-[360px]:inline text-[12px] font-medium tracking-wide text-cream-muted">
                 Follow us
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 min-[360px]:gap-2">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
