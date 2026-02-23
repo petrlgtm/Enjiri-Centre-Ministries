@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [sanity-content-update]
+  schedule:
+    # Auto-rebuild every 2 hours to pick up new Sanity content
+    - cron: "0 */2 * * *"
 
 permissions:
   contents: read
