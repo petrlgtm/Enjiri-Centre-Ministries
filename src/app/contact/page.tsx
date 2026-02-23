@@ -30,12 +30,34 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const inputClasses =
@@ -150,7 +172,7 @@ export default function ContactPage() {
                   <div className="absolute -top-px -left-px h-10 w-[3px] rounded-full bg-gradient-to-b from-gold-dark to-transparent" />
                 </div>
 
-                {submitted ? (
+                {status === "sent" ? (
                   <div className="rounded-2xl border border-gold-dark/20 bg-gold-dark/[0.06] p-10 text-center">
                     <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-dark/10">
                       <HiMail className="text-gold-dark" size={24} />
@@ -162,7 +184,7 @@ export default function ContactPage() {
                       Thank you for reaching out. We&apos;ll respond as soon as possible.
                     </p>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => setStatus("idle")}
                       className="mt-5 text-sm font-medium text-gold-dark underline underline-offset-2"
                     >
                       Send another message
@@ -228,8 +250,13 @@ export default function ContactPage() {
                         placeholder="Your message..."
                       />
                     </div>
-                    <Button type="submit" variant="primary" size="lg">
-                      Send Message
+                    {status === "error" && (
+                      <p className="text-sm text-red-500">
+                        Something went wrong. Please try again or email us directly at info@enjiriministries.org
+                      </p>
+                    )}
+                    <Button type="submit" variant="primary" size="lg" disabled={status === "sending"}>
+                      {status === "sending" ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
                 )}

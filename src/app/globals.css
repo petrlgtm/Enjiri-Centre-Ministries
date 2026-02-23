@@ -957,6 +957,7 @@ body {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   transition: background 0.6s ease;
+  pointer-events: none;
 }
 
 .card-premium:hover::before {
