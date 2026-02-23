@@ -81,9 +81,7 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
           scrolled
             ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/[0.06]"
-            : pathname === "/"
-              ? "bg-gradient-to-b from-navy/70 to-transparent backdrop-blur-sm border-b border-transparent"
-              : "bg-transparent border-b border-transparent"
+            : "bg-transparent border-b border-transparent"
         )}
       >
         <Container>
@@ -199,7 +197,7 @@ export default function Navbar() {
       <motion.div
         initial={{ y: -100 }}
         animate={{
-          y: hidden && !isOpen || pathname === "/" ? -100 : 0,
+          y: hidden && !isOpen ? -100 : 0,
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-[80px] lg:top-[96px] left-0 right-0 z-[49] transition-all duration-700"
