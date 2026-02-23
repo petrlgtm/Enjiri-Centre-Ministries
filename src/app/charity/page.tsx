@@ -70,7 +70,7 @@ export default function CharityPage() {
         description="Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."
       />
 
-      <SectionDivider from="dark" to="dark" accent />
+      <SectionDivider accent />
 
       {/* SECTION 2 — Mission (Split Layout) */}
       <section className="relative overflow-hidden py-28">
@@ -131,7 +131,7 @@ export default function CharityPage() {
         </Container>
       </section>
 
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
 
       {/* SECTION 3 — Programs Grid */}
       <section className="relative overflow-hidden py-28 lg:py-32">
@@ -166,7 +166,7 @@ export default function CharityPage() {
         </Container>
       </section>
 
-      <SectionDivider from="cream" to="dark" accent />
+      <SectionDivider accent />
 
       {/* SECTION 4 — #IAMASOULWINNER Campaign Spotlight */}
       <section className="relative overflow-hidden py-28">

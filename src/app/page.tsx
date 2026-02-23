@@ -15,25 +15,25 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SectionDivider from="dark" to="cream" />
+      <SectionDivider />
       <SnapshotBand />
-      <SectionDivider from="cream" to="dark" accent />
+      <SectionDivider accent />
       <MissionSection />
-      <SectionDivider from="dark" to="cream" />
+      <SectionDivider />
       <PlanYourVisit />
-      <SectionDivider from="cream" to="dark" accent />
+      <SectionDivider accent />
       <LatestSermons />
-      <SectionDivider from="dark" to="dark" accent />
+      <SectionDivider accent />
       <UpcomingEvents />
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
       <MinistriesGrid />
-      <SectionDivider from="cream" to="dark" />
+      <SectionDivider />
       <LeadershipHighlight />
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
       <TestimonialsCarousel />
-      <SectionDivider from="cream" to="dark" />
+      <SectionDivider />
       <DonateBand />
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
       <ContactInfoCard />
     </>
   );

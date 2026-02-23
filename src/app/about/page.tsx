@@ -20,9 +20,9 @@ export default function AboutPage() {
         description="A community of believers united in faith, love, and the mission to reach the world with the gospel of Christ."
       />
       <ChurchHistory />
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
       <VisionMission />
-      <SectionDivider from="cream" to="dark" accent />
+      <SectionDivider accent />
       <LeadershipTeam />
     </>
   );

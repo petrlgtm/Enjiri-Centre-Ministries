@@ -74,7 +74,7 @@ export default function ServicesPage() {
 
       <ServiceSchedule />
 
-      <SectionDivider from="dark" to="cream" accent />
+      <SectionDivider accent />
 
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-cream" />
