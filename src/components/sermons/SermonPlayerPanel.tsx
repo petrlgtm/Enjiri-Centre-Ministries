@@ -168,56 +168,59 @@ export default function SermonPlayerPanel({
         className="mb-10 overflow-hidden rounded-3xl border border-gold/20 bg-[var(--gray-100)] shadow-gold-glow"
         ref={containerRef}
       >
-        {/* Header bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] px-4 py-3 sm:px-5">
-          <div className="flex items-center gap-3 min-w-0 flex-1">
-            <div className="flex h-2 w-2 shrink-0 rounded-full bg-gold animate-pulse" />
-            <div className="min-w-0">
-              <p className="text-sm font-bold text-foreground truncate">{title}</p>
-              <p className="text-[11px] text-[var(--gray-400)] truncate sm:hidden">
-                {speaker} &middot; {date}
-              </p>
+        {/* Control bar — above iframe, high z-index to prevent iframe touch steal */}
+        <div className="relative z-20 border-b border-white/[0.06] px-4 py-3 sm:px-5">
+          {/* Row 1: Title + Close */}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="flex h-2 w-2 shrink-0 rounded-full bg-gold animate-pulse" />
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-foreground truncate">{title}</p>
+                <p className="text-[11px] text-[var(--gray-400)] truncate">
+                  {speaker} &middot; {date}
+                </p>
+              </div>
             </div>
-            <span className="hidden sm:inline text-xs text-[var(--gray-400)] shrink-0">
-              {speaker} &middot; {date}
-            </span>
+
+            {/* Close — always visible, large touch target */}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onClose(); }}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-[var(--gray-300)] transition-colors active:bg-red-500/30 active:text-red-400 hover:bg-red-500/20 hover:text-red-400"
+              aria-label="Close player"
+            >
+              <HiX size={22} />
+            </button>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {/* Mode toggle */}
-            <div className="flex rounded-full bg-[var(--gray-50)] p-0.5 border border-white/[0.06]">
+          {/* Row 2: Mode toggle — full width on mobile for easy tapping */}
+          <div className="mt-3 flex items-center gap-2">
+            <div className="flex flex-1 rounded-full bg-[var(--gray-50)] p-1 border border-white/[0.06]">
               <button
-                onClick={() => setMode("video")}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setMode("video"); }}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-3.5",
+                  "flex-1 rounded-full py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
                   mode === "video"
                     ? "bg-gold text-navy shadow-sm"
-                    : "text-[var(--gray-500)] hover:text-foreground"
+                    : "text-[var(--gray-500)] active:text-foreground hover:text-foreground"
                 )}
               >
                 Video
               </button>
               <button
-                onClick={() => setMode("audio")}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setMode("audio"); }}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-3.5",
+                  "flex-1 rounded-full py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
                   mode === "audio"
                     ? "bg-gold text-navy shadow-sm"
-                    : "text-[var(--gray-500)] hover:text-foreground"
+                    : "text-[var(--gray-500)] active:text-foreground hover:text-foreground"
                 )}
               >
-                Audio
+                Audio Only
               </button>
             </div>
-
-            {/* Close */}
-            <button
-              onClick={onClose}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.06] text-[var(--gray-400)] transition-colors hover:bg-red-500/20 hover:text-red-400"
-              aria-label="Close player"
-            >
-              <HiX size={20} />
-            </button>
           </div>
         </div>
 
@@ -229,7 +232,7 @@ export default function SermonPlayerPanel({
               "transition-all duration-500",
               mode === "video"
                 ? "aspect-video"
-                : "h-0 overflow-hidden"
+                : "h-0 overflow-hidden pointer-events-none"
             )}
           >
             <div id={playerElementId} className="h-full w-full" />
@@ -243,10 +246,10 @@ export default function SermonPlayerPanel({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="flex flex-col sm:flex-row items-center gap-6 p-6"
+                className="flex flex-col sm:flex-row items-center gap-5 p-5 sm:gap-6 sm:p-6"
               >
                 {/* Thumbnail */}
-                <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl shadow-premium">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl shadow-premium sm:h-28 sm:w-28">
                   {thumbnail ? (
                     <Image
                       src={thumbnail}
@@ -296,12 +299,13 @@ export default function SermonPlayerPanel({
                   {/* Playback controls */}
                   <div className="mt-4 flex items-center gap-3">
                     <button
+                      type="button"
                       onClick={togglePlay}
                       disabled={!playerReady}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-navy shadow-sm transition-transform hover:scale-105 disabled:opacity-50"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-navy shadow-sm transition-transform active:scale-95 hover:scale-105 disabled:opacity-50"
                       aria-label={isPlaying ? "Pause" : "Play"}
                     >
-                      {isPlaying ? <HiPause size={20} /> : <HiPlay size={20} className="ml-0.5" />}
+                      {isPlaying ? <HiPause size={22} /> : <HiPlay size={22} className="ml-0.5" />}
                     </button>
 
                     {/* Progress bar */}
@@ -332,9 +336,10 @@ export default function SermonPlayerPanel({
 
                     {/* Volume */}
                     <button
+                      type="button"
                       onClick={toggleMute}
                       disabled={!playerReady}
-                      className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--gray-400)] transition-colors hover:text-foreground disabled:opacity-50"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--gray-400)] transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
                       aria-label={isMuted ? "Unmute" : "Mute"}
                     >
                       {isMuted ? <HiVolumeOff size={18} /> : <HiVolumeUp size={18} />}
@@ -348,11 +353,12 @@ export default function SermonPlayerPanel({
 
         {/* Video mode bottom bar — compact controls */}
         {mode === "video" && (
-          <div className="flex items-center gap-3 border-t border-white/[0.06] px-5 py-2.5">
+          <div className="relative z-20 flex items-center gap-3 border-t border-white/[0.06] px-4 py-2.5 sm:px-5">
             <button
+              type="button"
               onClick={togglePlay}
               disabled={!playerReady}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors hover:bg-gold/20 disabled:opacity-50"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors active:bg-gold/30 hover:bg-gold/20 disabled:opacity-50"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? <HiPause size={16} /> : <HiPlay size={16} className="ml-0.5" />}
@@ -380,9 +386,10 @@ export default function SermonPlayerPanel({
             </span>
 
             <button
+              type="button"
               onClick={toggleMute}
               disabled={!playerReady}
-              className="flex h-7 w-7 items-center justify-center rounded-full text-[var(--gray-400)] transition-colors hover:text-foreground disabled:opacity-50"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[var(--gray-400)] transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
               aria-label={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? <HiVolumeOff size={15} /> : <HiVolumeUp size={15} />}
