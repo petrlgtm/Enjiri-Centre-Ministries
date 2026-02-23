@@ -88,7 +88,7 @@ export default function LatestSermons() {
               className={index === 1 ? "md:mt-12" : ""}
             >
               <Link
-                href={`/sermons/${sermon.slug}`}
+                href={`/sermons?play=${sermon.slug}`}
                 className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
               >
                 {/* Thumbnail */}

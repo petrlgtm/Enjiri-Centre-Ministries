@@ -1074,6 +1074,16 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   SERMON PLAYER PROGRESS BAR
+   ═══════════════════════════════════════════════════ */
+.sermon-progress {
+  transition: height 0.2s ease;
+}
+.sermon-progress:hover {
+  height: 0.625rem;
+}
+
+/* ═══════════════════════════════════════════════════
    REDUCED MOTION — Accessibility
    ═══════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {

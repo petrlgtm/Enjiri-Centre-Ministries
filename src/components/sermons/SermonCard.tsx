@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { HiPlay, HiArrowRight } from "react-icons/hi";
+import { HiPlay, HiMusicNote } from "react-icons/hi";
+import { cn } from "@/lib/utils";
 
 const fallbackImages = [
   "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=70",
@@ -21,6 +21,8 @@ interface SermonCardProps {
   thumbnail?: string;
   videoUrl?: string;
   index?: number;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 export default function SermonCard({
@@ -30,13 +32,11 @@ export default function SermonCard({
   series,
   slug,
   thumbnail,
-  videoUrl,
   index = 0,
+  isActive = false,
+  onClick,
 }: SermonCardProps) {
   const imageUrl = thumbnail || fallbackImages[index % fallbackImages.length];
-  const href = videoUrl
-    ? `/sermons/${slug}`
-    : `/sermons/${slug}`;
 
   return (
     <motion.div
@@ -49,9 +49,16 @@ export default function SermonCard({
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <Link
-        href={href}
-        className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] shadow-sm ring-1 ring-transparent transition-all duration-500 hover:shadow-xl hover:shadow-black/20 hover:ring-2 hover:ring-gold/30"
+      <button
+        type="button"
+        onClick={onClick}
+        data-slug={slug}
+        className={cn(
+          "card-3d card-premium group block w-full overflow-hidden rounded-3xl border bg-[var(--gray-100)] text-left shadow-sm ring-1 transition-all duration-500 hover:shadow-xl hover:shadow-black/20",
+          isActive
+            ? "border-gold/40 ring-gold/30 shadow-gold-glow"
+            : "border-white/[0.06] ring-transparent hover:ring-2 hover:ring-gold/30"
+        )}
       >
         {/* Thumbnail */}
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -94,6 +101,16 @@ export default function SermonCard({
               </span>
             </div>
           )}
+
+          {/* Now Playing badge */}
+          {isActive && (
+            <div className="absolute top-3 right-3">
+              <span className="flex items-center gap-1.5 rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold tracking-wide text-navy">
+                <HiMusicNote size={12} className="animate-pulse" />
+                Now Playing
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -109,11 +126,11 @@ export default function SermonCard({
 
           {/* Hover CTA */}
           <div className="mt-4 flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-wider text-gold opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-            <span>Listen</span>
-            <HiArrowRight size={11} />
+            <span>{isActive ? "Playing" : "Listen"}</span>
+            <HiPlay size={11} />
           </div>
         </div>
-      </Link>
+      </button>
     </motion.div>
   );
 }

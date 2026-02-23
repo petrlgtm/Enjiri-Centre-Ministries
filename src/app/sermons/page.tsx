@@ -1,31 +1,31 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import SermonCard from "@/components/sermons/SermonCard";
-import SermonFilter from "@/components/sermons/SermonFilter";
-import { fetchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
-import { formatDate } from "@/lib/utils";
+import SermonFilter, { type DateRange } from "@/components/sermons/SermonFilter";
+import SermonPlayerPanel from "@/components/sermons/SermonPlayerPanel";
+import { fetchYouTubeVideos, searchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
+import { formatDate, getYouTubeVideoId } from "@/lib/utils";
 
 const CHANNEL_ID = "UCFStM9EkCFD3h8b4xtlHIOQ";
 
 const placeholderSermons = [
-  { title: "Walking in God's Purpose", speaker: "Pastor John", date: "February 16, 2026", series: "Living by Faith", slug: "walking-in-gods-purpose" },
-  { title: "The Power of Prayer", speaker: "Pastor John", date: "February 9, 2026", series: "Living by Faith", slug: "the-power-of-prayer" },
-  { title: "Grace That Transforms", speaker: "Guest Speaker", date: "February 2, 2026", series: "Amazing Grace", slug: "grace-that-transforms" },
-  { title: "The Heart of Worship", speaker: "Pastor Jane", date: "January 26, 2026", series: "Amazing Grace", slug: "the-heart-of-worship" },
-  { title: "Standing on God's Promises", speaker: "Pastor John", date: "January 19, 2026", series: "Unshakeable Faith", slug: "standing-on-gods-promises" },
-  { title: "Faith Over Fear", speaker: "Pastor John", date: "January 12, 2026", series: "Unshakeable Faith", slug: "faith-over-fear" },
-  { title: "The Blessing of Generosity", speaker: "Elder David", date: "January 5, 2026", series: "Living by Faith", slug: "the-blessing-of-generosity" },
-  { title: "New Beginnings in Christ", speaker: "Pastor John", date: "December 29, 2025", series: "New Season", slug: "new-beginnings-in-christ" },
-  { title: "The Christmas Story", speaker: "Pastor John", date: "December 25, 2025", series: "New Season", slug: "the-christmas-story" },
+  { title: "Walking in God's Purpose", speaker: "Pastor John", date: "February 16, 2026", rawDate: "2026-02-16T10:00:00Z", slug: "walking-in-gods-purpose" },
+  { title: "The Power of Prayer", speaker: "Pastor John", date: "February 9, 2026", rawDate: "2026-02-09T10:00:00Z", slug: "the-power-of-prayer" },
+  { title: "Grace That Transforms", speaker: "Guest Speaker", date: "February 2, 2026", rawDate: "2026-02-02T10:00:00Z", slug: "grace-that-transforms" },
+  { title: "The Heart of Worship", speaker: "Pastor Jane", date: "January 26, 2026", rawDate: "2026-01-26T10:00:00Z", slug: "the-heart-of-worship" },
+  { title: "Standing on God's Promises", speaker: "Pastor John", date: "January 19, 2026", rawDate: "2026-01-19T10:00:00Z", slug: "standing-on-gods-promises" },
+  { title: "Faith Over Fear", speaker: "Pastor John", date: "January 12, 2026", rawDate: "2026-01-12T10:00:00Z", slug: "faith-over-fear" },
 ];
 
 interface SermonItem {
   title: string;
   speaker: string;
   date: string;
+  rawDate: string;
   series?: string;
   slug: string;
   thumbnail?: string;
@@ -37,18 +37,36 @@ function youtubeToSermon(video: YouTubeVideo): SermonItem {
     title: video.title,
     speaker: video.channelTitle,
     date: formatDate(video.publishedAt),
+    rawDate: video.publishedAt,
     slug: video.id,
     thumbnail: video.thumbnail,
     videoUrl: video.videoUrl,
   };
 }
 
-export default function SermonsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSeries, setSelectedSeries] = useState("");
-  const [youtubeSermons, setYoutubeSermons] = useState<SermonItem[]>([]);
-  const [loading, setLoading] = useState(true);
+function filterByDateRange(sermons: SermonItem[], range: DateRange): SermonItem[] {
+  if (range === "all") return sermons;
+  const now = new Date();
+  const cutoff = new Date();
+  if (range === "month") cutoff.setDate(now.getDate() - 30);
+  else if (range === "3months") cutoff.setDate(now.getDate() - 90);
+  else if (range === "year") cutoff.setFullYear(now.getFullYear() - 1);
+  return sermons.filter((s) => new Date(s.rawDate) >= cutoff);
+}
 
+function SermonsContent() {
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [dateRange, setDateRange] = useState<DateRange>("all");
+  const [youtubeSermons, setYoutubeSermons] = useState<SermonItem[]>([]);
+  const [searchResults, setSearchResults] = useState<SermonItem[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
+
+  // Load channel videos
   useEffect(() => {
     let cancelled = false;
     async function load() {
@@ -65,19 +83,52 @@ export default function SermonsPage() {
     return () => { cancelled = true; };
   }, []);
 
-  const sermons: SermonItem[] = youtubeSermons.length > 0 ? youtubeSermons : placeholderSermons;
+  // Deep-link: ?play=VIDEO_ID
+  useEffect(() => {
+    const playParam = searchParams.get("play");
+    if (playParam) {
+      setSelectedSlug(playParam);
+    }
+  }, [searchParams]);
 
-  const seriesList = useMemo(() => {
-    return Array.from(new Set(sermons.map((s) => s.series).filter(Boolean) as string[]));
-  }, [sermons]);
+  // Scroll to player when selected
+  useEffect(() => {
+    if (selectedSlug && playerRef.current) {
+      playerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedSlug]);
 
-  const filteredSermons = useMemo(() => {
-    return sermons.filter((sermon) => {
-      const matchSearch = sermon.title.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchSeries = !selectedSeries || sermon.series === selectedSeries;
-      return matchSearch && matchSeries;
-    });
-  }, [sermons, searchQuery, selectedSeries]);
+  // Debounced YouTube search
+  const handleSearchChange = useCallback((value: string) => {
+    setSearchQuery(value);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    if (value.length < 3) {
+      setSearchResults(null);
+      setSearching(false);
+      return;
+    }
+
+    setSearching(true);
+    debounceRef.current = setTimeout(async () => {
+      const results = await searchYouTubeVideos(value, CHANNEL_ID);
+      setSearchResults(results.length > 0 ? results.map(youtubeToSermon) : []);
+      setSearching(false);
+    }, 500);
+  }, []);
+
+  const baseSermons: SermonItem[] = searchResults ?? (youtubeSermons.length > 0 ? youtubeSermons : placeholderSermons);
+  const filteredSermons = useMemo(() => filterByDateRange(baseSermons, dateRange), [baseSermons, dateRange]);
+
+  const selectedSermon: SermonItem | null = selectedSlug
+    ? (youtubeSermons.find((s) => s.slug === selectedSlug) ??
+       baseSermons.find((s) => s.slug === selectedSlug) ??
+       null)
+    : null;
+
+  const videoId = selectedSermon
+    ? (getYouTubeVideoId(selectedSermon.videoUrl ?? "") ?? selectedSermon.slug)
+    : null;
 
   return (
     <>
@@ -94,15 +145,28 @@ export default function SermonsPage() {
         </div>
 
         <Container>
+          {/* Player panel */}
+          <div ref={playerRef}>
+            {selectedSermon && videoId && (
+              <SermonPlayerPanel
+                videoId={videoId}
+                title={selectedSermon.title}
+                thumbnail={selectedSermon.thumbnail}
+                speaker={selectedSermon.speaker}
+                date={selectedSermon.date}
+                onClose={() => setSelectedSlug(null)}
+              />
+            )}
+          </div>
+
           <SermonFilter
             searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            selectedSeries={selectedSeries}
-            onSeriesChange={setSelectedSeries}
-            seriesList={seriesList}
+            onSearchChange={handleSearchChange}
+            dateRange={dateRange}
+            onDateRangeChange={setDateRange}
           />
 
-          {loading && youtubeSermons.length === 0 ? (
+          {(loading && youtubeSermons.length === 0) || searching ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="aspect-[4/5] animate-pulse rounded-3xl bg-[var(--gray-100)]" />
@@ -111,7 +175,13 @@ export default function SermonsPage() {
           ) : filteredSermons.length > 0 ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredSermons.map((sermon, index) => (
-                <SermonCard key={sermon.slug} {...sermon} index={index} />
+                <SermonCard
+                  key={sermon.slug}
+                  {...sermon}
+                  index={index}
+                  isActive={selectedSlug === sermon.slug}
+                  onClick={() => setSelectedSlug(sermon.slug)}
+                />
               ))}
             </div>
           ) : (
@@ -124,5 +194,19 @@ export default function SermonsPage() {
         </Container>
       </section>
     </>
+  );
+}
+
+export default function SermonsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-40 text-center">
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-gold border-t-transparent" />
+        </div>
+      }
+    >
+      <SermonsContent />
+    </Suspense>
   );
 }
