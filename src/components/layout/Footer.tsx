@@ -12,8 +12,8 @@ import logoImg from "@/../public/images/logo.jpeg";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/services", label: "Services" },
-  { href: "/charity", label: "Charity" },
+  { href: "/services", label: "Events" },
+  { href: "/charity", label: "Outreach" },
   { href: "/sermons", label: "Sermons" },
   { href: "/donate", label: "Give" },
   { href: "/contact", label: "Contact" },

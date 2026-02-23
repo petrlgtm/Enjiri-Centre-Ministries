@@ -15,8 +15,8 @@ import logoImg from "@/../public/images/logo.jpeg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/charity", label: "Charity" },
+  { href: "/services", label: "Events" },
+  { href: "/charity", label: "Outreach" },
   { href: "/sermons", label: "Sermons" },
   { href: "/contact", label: "Contact" },
 ];
