@@ -7,7 +7,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import EventsGrid from "@/components/services/EventsGrid";
 import { fetchSanity } from "@/lib/sanity-helpers";
 import { upcomingEventsQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { cardImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ const fallbackEvents = [
     location: "Main Sanctuary",
     description: "Join us for a powerful time of worship, praise, and the Word of God.",
     category: "worship",
-    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop",
   },
   {
     title: "Youth Conference 2026",
@@ -47,7 +47,7 @@ const fallbackEvents = [
     location: "Church Grounds",
     description: "A life-changing conference for young people. Theme: 'Rising Above'.",
     category: "youth",
-    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80&fm=webp&fit=crop",
   },
   {
     title: "Community Outreach",
@@ -56,7 +56,7 @@ const fallbackEvents = [
     location: "Various Locations",
     description: "Serving our community with food, clothing, and the love of Christ.",
     category: "outreach",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&fm=webp&fit=crop",
   },
   {
     title: "Easter Celebration",
@@ -65,7 +65,7 @@ const fallbackEvents = [
     location: "Main Sanctuary",
     description: "Celebrate the resurrection of our Lord Jesus Christ with the entire church family.",
     category: "worship",
-    image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80&fm=webp&fit=crop",
   },
   {
     title: "Women's Conference",
@@ -74,7 +74,7 @@ const fallbackEvents = [
     location: "Fellowship Hall",
     description: "A two-day conference empowering women in faith, purpose, and destiny.",
     category: "conference",
-    image: "https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=80&fm=webp&fit=crop",
   },
   {
     title: "Marriage Retreat",
@@ -83,7 +83,7 @@ const fallbackEvents = [
     location: "Off-site Venue",
     description: "Strengthen your marriage through fellowship, workshops, and the Word.",
     category: "fellowship",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fm=webp&fit=crop",
   },
 ];
 
@@ -99,7 +99,7 @@ export default async function ServicesPage() {
         description: e.description || "",
         category: e.category || "worship",
         rsvpUrl: e.rsvpUrl,
-        image: e.image ? urlFor(e.image).width(600).url() : "",
+        image: e.image ? cardImage(e.image) : "",
       })).filter((e) => e.image)
     : null;
 

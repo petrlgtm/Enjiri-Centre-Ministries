@@ -9,19 +9,19 @@ import Container from "@/components/ui/Container";
 
 const HERO_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1400&q=80",
+    src: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1400&q=80&fm=webp&fit=crop",
     alt: "Worship service with raised hands",
   },
   {
-    src: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1400&q=80",
+    src: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1400&q=80&fm=webp&fit=crop",
     alt: "Beautiful church interior with warm lighting",
   },
   {
-    src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1400&q=80",
+    src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1400&q=80&fm=webp&fit=crop",
     alt: "Congregation gathered together in prayer",
   },
   {
-    src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1400&q=80",
+    src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1400&q=80&fm=webp&fit=crop",
     alt: "Community fellowship and togetherness",
   },
 ];

@@ -17,7 +17,7 @@ import {
   allTestimoniesQuery,
   allMinistriesQuery,
 } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { cardImage, portraitImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 
 interface SanityImage {
@@ -75,7 +75,7 @@ export default async function HomePage() {
     time: formatTime(e.date) + (e.endDate ? ` - ${formatTime(e.endDate)}` : ""),
     location: e.location || "TBD",
     description: e.description || "",
-    image: e.image ? urlFor(e.image).width(600).url() : "",
+    image: e.image ? cardImage(e.image) : "",
     accent: e.featured ? "from-gold to-gold-dark" : "from-gold-dark to-gold",
     featured: e.featured || false,
   })).filter((e) => e.image);
@@ -85,7 +85,7 @@ export default async function HomePage() {
         name: leaders[0].name,
         role: leaders[0].role,
         bio: leaders[0].bio || "",
-        image: leaders[0].image ? urlFor(leaders[0].image).width(600).url() : "",
+        image: leaders[0].image ? portraitImage(leaders[0].image) : "",
       }
     : undefined;
 

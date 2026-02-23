@@ -157,7 +157,7 @@ export default function Footer() {
               {/* Static Map Image */}
               <div className="mt-5 overflow-hidden rounded-xl border border-white/[0.06] transition-all duration-500 hover:border-gold/10">
                 <Image
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=60"
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=75&fm=webp&fit=crop"
                   alt="Location"
                   width={300}
                   height={150}

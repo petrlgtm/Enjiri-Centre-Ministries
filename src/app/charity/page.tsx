@@ -69,7 +69,7 @@ export default function CharityPage() {
             <div className="lg:w-1/2">
               <div className="relative h-56 overflow-hidden rounded-3xl transition-transform duration-700 hover:scale-[1.02] lg:h-[400px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=70"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop"
                   alt="Community outreach and charity programs in East Africa"
                   fill
                   className="object-cover"
@@ -156,7 +156,7 @@ export default function CharityPage() {
             <div className="lg:w-1/2">
               <div className="relative h-56 overflow-hidden rounded-3xl lg:h-[450px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=70"
+                  src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80&fm=webp&fit=crop"
                   alt="Soul Winner Campaign — community outreach"
                   fill
                   className="object-cover"
@@ -368,7 +368,7 @@ export default function CharityPage() {
       <section className="relative overflow-hidden py-28">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=70"
+            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80&fm=webp&fit=crop"
             alt="Community gathering and worship"
             fill
             sizes="100vw"

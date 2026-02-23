@@ -34,7 +34,7 @@ export default function ChurchHistory() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
               <Image
-                src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=70"
+                src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"
                 alt="Church worship service"
                 fill
                 className="object-cover"

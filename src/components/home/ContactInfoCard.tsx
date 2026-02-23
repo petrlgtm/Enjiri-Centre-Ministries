@@ -107,7 +107,7 @@ export default function ContactInfoCard() {
           >
             <div className="relative h-64 overflow-hidden rounded-3xl border border-black/[0.06] shadow-lg lg:h-[380px]">
               <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=70"
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80&fm=webp&fit=crop"
                 alt="Map location of Enjiri Center"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

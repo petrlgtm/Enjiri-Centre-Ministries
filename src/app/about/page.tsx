@@ -6,7 +6,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { fetchSanity } from "@/lib/sanity-helpers";
 import { allLeadersQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { portraitImage } from "@/sanity/image";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -29,7 +29,7 @@ export default async function AboutPage() {
     name: l.name,
     role: l.role,
     bio: l.bio || "",
-    image: l.image ? urlFor(l.image).width(400).url() : "",
+    image: l.image ? portraitImage(l.image, 500) : "",
   })).filter((l) => l.image);
 
   return (

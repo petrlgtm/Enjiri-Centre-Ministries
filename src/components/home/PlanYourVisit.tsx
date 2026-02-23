@@ -41,7 +41,7 @@ export default function PlanYourVisit() {
           >
             <div className="relative h-64 overflow-hidden rounded-3xl shadow-lg lg:h-[420px]">
               <Image
-                src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=70"
+                src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop"
                 alt="Church interior with warm lighting"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

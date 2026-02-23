@@ -21,7 +21,7 @@ const fallbackLeader: LeaderProp = {
   name: "Our Pastor",
   role: "Lead Pastor",
   bio: "Our leadership team is dedicated to shepherding the flock with wisdom, compassion, and unwavering commitment to the Word of God. Guided by the Holy Spirit, we strive to equip every believer for the work of ministry.",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=70",
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fm=webp&fit=crop",
 };
 
 export default function LeadershipHighlight({ leader }: LeadershipHighlightProps) {

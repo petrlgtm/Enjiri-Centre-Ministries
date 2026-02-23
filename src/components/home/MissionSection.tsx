@@ -14,7 +14,7 @@ const values = [
     number: "01",
     description:
       "Experience heartfelt worship that draws you closer to God and transforms your life from the inside out.",
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80&fm=webp&fit=crop",
     accent: "from-gold/20 to-gold/5",
     iconBg: "bg-gold/10 group-hover:bg-gold",
     href: "/services",
@@ -25,7 +25,7 @@ const values = [
     number: "02",
     description:
       "Grounded in the Word of God, our teachings equip you for daily living and spiritual growth.",
-    image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80&fm=webp&fit=crop",
     accent: "from-red/15 to-red/5",
     iconBg: "bg-red/10 group-hover:bg-red",
     href: "/sermons",
@@ -36,7 +36,7 @@ const values = [
     number: "03",
     description:
       "Impacting communities and nations through missions, charity, and the gospel of Jesus Christ.",
-    image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80&fm=webp&fit=crop",
     accent: "from-gold/15 to-gold/5",
     iconBg: "bg-gold/10 group-hover:bg-gold",
     href: "/charity",
@@ -47,7 +47,7 @@ const values = [
     number: "04",
     description:
       "A family of believers connected by love, supporting one another through every season of life.",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fm=webp&fit=crop",
     accent: "from-red/20 to-red/5",
     iconBg: "bg-red/10 group-hover:bg-red",
     href: "/about",

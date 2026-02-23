@@ -31,7 +31,7 @@ const placeholderEvents: EventProp[] = [
     location: "Main Sanctuary",
     description:
       "Join us for a powerful time of worship, praise, and the Word of God.",
-    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=80&fm=webp&fit=crop",
     accent: "from-gold to-gold-dark",
     featured: true,
   },
@@ -42,7 +42,7 @@ const placeholderEvents: EventProp[] = [
     location: "Church Grounds",
     description:
       "A life-changing conference for young people. Theme: 'Rising Above'.",
-    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=80&fm=webp&fit=crop",
     accent: "from-gold-dark to-gold",
     featured: false,
   },
@@ -53,7 +53,7 @@ const placeholderEvents: EventProp[] = [
     location: "Various Locations",
     description:
       "Serving our community with food, clothing, and the love of Christ.",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80&fm=webp&fit=crop",
     accent: "from-red to-red-light",
     featured: false,
   },

@@ -44,7 +44,7 @@ export default function CallToAction() {
       {/* Background image with parallax + scale */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-[-20%]">
         <Image
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=70"
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"
           alt="Community"
           fill
           sizes="100vw"

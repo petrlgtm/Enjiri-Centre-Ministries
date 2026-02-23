@@ -15,7 +15,7 @@ import { formatDate, getYouTubeVideoId } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 const featuredFallbackImage =
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80";
+  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80&fm=webp&fit=crop";
 
 const CHANNEL_ID = "UCFStM9EkCFD3h8b4xtlHIOQ";
 

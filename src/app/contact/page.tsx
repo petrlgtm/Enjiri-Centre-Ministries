@@ -115,7 +115,7 @@ export default function ContactPage() {
             >
               <div className="relative h-64 overflow-hidden rounded-3xl lg:h-[500px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=70"
+                  src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=80&fm=webp&fit=crop"
                   alt="Church location scenery"
                   fill
                   className="object-cover"

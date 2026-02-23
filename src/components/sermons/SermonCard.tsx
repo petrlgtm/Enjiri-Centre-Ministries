@@ -6,10 +6,10 @@ import { HiPlay, HiMusicNote } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 
 const fallbackImages = [
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=70",
-  "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=70",
-  "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=70",
-  "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&q=70",
+  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=80&fm=webp&fit=crop",
+  "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=80&fm=webp&fit=crop",
+  "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80&fm=webp&fit=crop",
+  "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&q=80&fm=webp&fit=crop",
 ];
 
 interface SermonCardProps {

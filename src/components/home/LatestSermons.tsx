@@ -16,7 +16,7 @@ const placeholderSermons = [
     series: "Living by Faith",
     duration: "42:15",
     slug: "walking-in-gods-purpose",
-    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=80&fm=webp&fit=crop",
   },
   {
     title: "The Power of Prayer",
@@ -25,7 +25,7 @@ const placeholderSermons = [
     series: "Living by Faith",
     duration: "38:20",
     slug: "the-power-of-prayer",
-    image: "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=80&fm=webp&fit=crop",
   },
   {
     title: "Grace That Transforms",
@@ -34,7 +34,7 @@ const placeholderSermons = [
     series: "Amazing Grace",
     duration: "45:08",
     slug: "grace-that-transforms",
-    image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80&fm=webp&fit=crop",
   },
 ];
 

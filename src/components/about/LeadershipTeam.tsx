@@ -28,7 +28,7 @@ const fallbackLeaders: LeaderProp[] = [
       "Following hospitality, Evangelist Kalagi's hunger for the things of God continued to grow and so he later joined the leadership training at Miracle Bible College. His passion for winning souls and ever showing the love of God never ceased. The mandate on his life to preach the gospel of Jesus Christ kept increasing.",
       "Evangelist Kalagi started holding crusades on a small scale, through hospital outreach, visiting the orphans, the elderly, schools and started house to house fellowships. The fire of God never ceased from manifesting throughout his life and ministry, with bodies healed supernaturally and hearts set free by the Power of Almighty God. Evangelist Kalagi has travelled extensively preaching and teaching, leading many souls to Christ both locally and internationally.",
     ],
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fm=webp&fit=crop",
   },
 ];
 
