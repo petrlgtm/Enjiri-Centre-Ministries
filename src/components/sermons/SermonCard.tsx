@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { HiPlay, HiArrowRight } from "react-icons/hi";
 
-const sermonImages = [
+const fallbackImages = [
   "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=70",
   "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=70",
   "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=70",
@@ -18,6 +18,8 @@ interface SermonCardProps {
   date: string;
   series?: string;
   slug: string;
+  thumbnail?: string;
+  videoUrl?: string;
   index?: number;
 }
 
@@ -27,9 +29,14 @@ export default function SermonCard({
   date,
   series,
   slug,
+  thumbnail,
+  videoUrl,
   index = 0,
 }: SermonCardProps) {
-  const imageUrl = sermonImages[index % sermonImages.length];
+  const imageUrl = thumbnail || fallbackImages[index % fallbackImages.length];
+  const href = videoUrl
+    ? `/sermons/${slug}`
+    : `/sermons/${slug}`;
 
   return (
     <motion.div
@@ -43,7 +50,7 @@ export default function SermonCard({
       }}
     >
       <Link
-        href={`/sermons/${slug}`}
+        href={href}
         className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)] shadow-sm ring-1 ring-transparent transition-all duration-500 hover:shadow-xl hover:shadow-black/20 hover:ring-2 hover:ring-gold/30"
       >
         {/* Thumbnail */}
@@ -81,7 +88,7 @@ export default function SermonCard({
 
           {/* Series badge */}
           {series && (
-            <div className="absolute bottom-3 left-3">
+            <div className="absolute top-3 left-3">
               <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
                 {series}
               </span>
@@ -91,7 +98,7 @@ export default function SermonCard({
 
         {/* Content */}
         <div className="p-6">
-          <h3 className="text-[1.05rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+          <h3 className="text-[1.05rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold line-clamp-2">
             {title}
           </h3>
           <div className="mt-2.5 flex items-center gap-2 text-sm text-[var(--gray-500)]">

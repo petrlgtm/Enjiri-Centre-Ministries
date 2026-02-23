@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import SermonCard from "@/components/sermons/SermonCard";
 import SermonFilter from "@/components/sermons/SermonFilter";
+import { fetchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
+import { formatDate } from "@/lib/utils";
+
+const CHANNEL_ID = "UCYourChannelId"; // Replace with actual channel ID
 
 const placeholderSermons = [
   { title: "Walking in God's Purpose", speaker: "Pastor John", date: "February 16, 2026", series: "Living by Faith", slug: "walking-in-gods-purpose" },
@@ -18,21 +22,62 @@ const placeholderSermons = [
   { title: "The Christmas Story", speaker: "Pastor John", date: "December 25, 2025", series: "New Season", slug: "the-christmas-story" },
 ];
 
+interface SermonItem {
+  title: string;
+  speaker: string;
+  date: string;
+  series?: string;
+  slug: string;
+  thumbnail?: string;
+  videoUrl?: string;
+}
+
+function youtubeToSermon(video: YouTubeVideo): SermonItem {
+  return {
+    title: video.title,
+    speaker: video.channelTitle,
+    date: formatDate(video.publishedAt),
+    slug: video.id,
+    thumbnail: video.thumbnail,
+    videoUrl: video.videoUrl,
+  };
+}
+
 export default function SermonsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSeries, setSelectedSeries] = useState("");
+  const [youtubeSermons, setYoutubeSermons] = useState<SermonItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const seriesList = useMemo(() => {
-    return Array.from(new Set(placeholderSermons.map((s) => s.series)));
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      try {
+        const videos = await fetchYouTubeVideos(CHANNEL_ID, 12);
+        if (!cancelled && videos.length > 0) {
+          setYoutubeSermons(videos.map(youtubeToSermon));
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    load();
+    return () => { cancelled = true; };
   }, []);
 
+  const sermons: SermonItem[] = youtubeSermons.length > 0 ? youtubeSermons : placeholderSermons;
+
+  const seriesList = useMemo(() => {
+    return Array.from(new Set(sermons.map((s) => s.series).filter(Boolean) as string[]));
+  }, [sermons]);
+
   const filteredSermons = useMemo(() => {
-    return placeholderSermons.filter((sermon) => {
+    return sermons.filter((sermon) => {
       const matchSearch = sermon.title.toLowerCase().includes(searchQuery.toLowerCase());
       const matchSeries = !selectedSeries || sermon.series === selectedSeries;
       return matchSearch && matchSeries;
     });
-  }, [searchQuery, selectedSeries]);
+  }, [sermons, searchQuery, selectedSeries]);
 
   return (
     <>
@@ -57,7 +102,13 @@ export default function SermonsPage() {
             seriesList={seriesList}
           />
 
-          {filteredSermons.length > 0 ? (
+          {loading && youtubeSermons.length === 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="aspect-[4/5] animate-pulse rounded-3xl bg-[var(--gray-100)]" />
+              ))}
+            </div>
+          ) : filteredSermons.length > 0 ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredSermons.map((sermon, index) => (
                 <SermonCard key={sermon.slug} {...sermon} index={index} />

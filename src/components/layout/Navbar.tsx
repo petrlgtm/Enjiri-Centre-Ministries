@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import logoImg from "@/../public/images/logo.jpeg";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -89,7 +90,7 @@ export default function Navbar() {
             <Link href="/" className="group relative flex items-center gap-3">
               <div className="logo-glow relative h-11 w-11 overflow-hidden rounded-xl shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
                 <Image
-                  src="/images/logo.jpeg"
+                  src={logoImg}
                   alt="Enjiri Center Ministries International"
                   fill
                   className="object-cover"

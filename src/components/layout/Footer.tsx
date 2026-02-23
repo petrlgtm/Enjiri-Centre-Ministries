@@ -7,6 +7,7 @@ import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
+import logoImg from "@/../public/images/logo.jpeg";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -71,7 +72,7 @@ export default function Footer() {
               <Link href="/" className="group inline-flex items-center gap-3">
                 <div className="relative h-12 w-12 overflow-hidden rounded-xl shadow-[0_2px_12px_rgba(201,168,76,0.3)] transition-transform duration-500 group-hover:scale-105">
                   <Image
-                    src="/images/logo.jpeg"
+                    src={logoImg}
                     alt="Enjiri Center Ministries International"
                     fill
                     className="object-cover"
