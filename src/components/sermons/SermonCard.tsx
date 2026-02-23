@@ -86,7 +86,7 @@ export default function SermonCard({
 
         {/* Content */}
         <div className="p-6">
-          <h3 className="text-[1.05rem] font-bold text-white transition-colors duration-300 group-hover:text-gold">
+          <h3 className="text-[1.05rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
             {title}
           </h3>
           <div className="mt-2.5 flex items-center gap-2 text-sm text-[var(--gray-500)]">

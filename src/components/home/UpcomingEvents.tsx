@@ -89,7 +89,7 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
       >
         {String(value).padStart(2, "0")}
       </motion.span>
-      <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
+      <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-foreground/60">
         {label}
       </span>
     </div>
@@ -102,7 +102,7 @@ export default function UpcomingEvents() {
   return (
     <section className="section-glow relative py-32">
       <div className="absolute inset-0 bg-navy" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(185,28,28,0.15),transparent_55%),radial-gradient(ellipse_at_30%_80%,rgba(201,168,76,0.13),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_30%_80%,rgba(201,168,76,0.05),transparent_50%)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
 
       <div className="pointer-events-none absolute -left-40 bottom-20 h-[350px] w-[350px] rounded-full opacity-[0.03]"><div className="morph-blob h-full w-full bg-gradient-to-tr from-gold to-transparent" /></div>
@@ -139,7 +139,7 @@ export default function UpcomingEvents() {
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-white shadow-lg`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>
@@ -157,7 +157,7 @@ export default function UpcomingEvents() {
                   <span className="mb-3 inline-block w-fit rounded-full bg-[var(--red-muted)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-red-light border border-red/15">
                     Featured Event
                   </span>
-                  <h3 className="text-2xl font-bold text-white transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+                  <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
                     {event.title}
                   </h3>
                   <div className="mt-5 space-y-3">
@@ -204,14 +204,14 @@ export default function UpcomingEvents() {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-white shadow-lg`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${event.accent} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-[1.1rem] font-bold text-white transition-colors duration-300 group-hover:text-gold">{event.title}</h3>
+                  <h3 className="text-[1.1rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">{event.title}</h3>
                   <div className="mt-3 space-y-2">
                     {[{ icon: HiClock, text: event.time }, { icon: HiLocationMarker, text: event.location }].map((item) => (
                       <div key={item.text} className="flex items-center gap-2.5 text-sm text-[var(--gray-500)]">

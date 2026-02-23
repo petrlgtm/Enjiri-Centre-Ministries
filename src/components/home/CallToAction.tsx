@@ -24,7 +24,7 @@ function FloatingParticle({ delay, left, size = 1.5 }: { delay: number; left: st
         ease: "easeOut",
       }}
       className="absolute bottom-0 rounded-full"
-      style={{ left, width: size * 2, height: size * 2, background: delay % 2 < 1 ? 'rgba(201,168,76,0.5)' : 'rgba(185,28,28,0.5)' }}
+      style={{ left, width: size * 2, height: size * 2, background: delay % 2 < 1 ? 'rgba(201,168,76,0.5)' : 'rgba(196,125,42,0.5)' }}
     />
   );
 }
@@ -109,7 +109,7 @@ export default function CallToAction() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-white sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
+            className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-foreground sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
           >
             Partner With Us in{" "}
             <span className="text-gradient-gold-animated">God&apos;s Work</span>
@@ -137,7 +137,7 @@ export default function CallToAction() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mx-auto mt-8 max-w-xl text-lg leading-[1.8] text-white/75"
+            className="mx-auto mt-8 max-w-xl text-lg leading-[1.8] text-foreground/75"
           >
             Your generous giving supports our outreach programs, community
             services, and the spreading of the gospel to the nations. Every

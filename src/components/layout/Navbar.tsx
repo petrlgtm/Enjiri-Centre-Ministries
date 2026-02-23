@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/charity", label: "Charity" },
   { href: "/sermons", label: "Sermons" },
   { href: "/contact", label: "Contact" },
 ];
@@ -22,7 +23,7 @@ const navLinks = [
 const socialLinks = [
   { icon: FaFacebookF, href: "https://facebook.com", label: "Facebook" },
   { icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
-  { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: FaInstagram, href: "https://instagram.com/ev_k_peter", label: "Instagram" },
   { icon: FaTiktok, href: "https://tiktok.com", label: "TikTok" },
 ];
 
@@ -127,13 +128,13 @@ export default function Navbar() {
                   className="object-cover"
                   sizes="44px"
                 />
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </div>
               <div className="hidden sm:block">
                 <span
                   className={cn(
                     "block text-[15px] font-bold tracking-wide transition-colors duration-500",
-                    scrolled ? "text-white" : "text-white"
+                    scrolled ? "text-foreground" : "text-foreground"
                   )}
                 >
                   ENJIRI CENTER
@@ -164,8 +165,8 @@ export default function Navbar() {
                       isActive
                         ? "text-gold"
                         : scrolled
-                        ? "text-white/60 hover:text-white"
-                        : "text-white/60 hover:text-white"
+                        ? "text-foreground/60 hover:text-foreground"
+                        : "text-foreground/60 hover:text-foreground"
                     )}
                   >
                     {/* Hover background pill */}
@@ -210,10 +211,10 @@ export default function Navbar() {
               className={cn(
                 "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:hidden",
                 isOpen
-                  ? "bg-white/10 text-white"
+                  ? "bg-white/10 text-foreground"
                   : scrolled
-                  ? "text-white hover:bg-white/10"
-                  : "text-white hover:bg-white/10"
+                  ? "text-foreground hover:bg-white/10"
+                  : "text-foreground hover:bg-white/10"
               )}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
@@ -262,7 +263,7 @@ export default function Navbar() {
         <div className="bg-navy-light/90 backdrop-blur-sm border-b border-white/[0.06]">
           <Container>
             <div className="flex h-10 items-center justify-between">
-              <span className="text-[12px] font-medium tracking-wide text-white/50">
+              <span className="text-[12px] font-medium tracking-wide text-foreground/50">
                 Follow us
               </span>
               <div className="flex items-center gap-2">
@@ -273,7 +274,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-white/50 transition-all duration-200 hover:bg-white/[0.06] hover:text-gold"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-foreground/50 transition-all duration-200 hover:bg-white/[0.06] hover:text-gold"
                   >
                     <social.icon size={15} />
                   </a>
@@ -337,7 +338,7 @@ export default function Navbar() {
                         onClick={() => setIsOpen(false)}
                         className={cn(
                           "group relative block py-3 text-center font-[family-name:var(--font-playfair)] text-4xl font-medium transition-all duration-300",
-                          isActive ? "text-gold" : "text-white/60 hover:text-white"
+                          isActive ? "text-gold" : "text-foreground/60 hover:text-foreground"
                         )}
                       >
                         {/* Number prefix */}
@@ -378,7 +379,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
-                className="mt-12 flex items-center gap-4 text-[12px] tracking-[0.1em] text-white/40"
+                className="mt-12 flex items-center gap-4 text-[12px] tracking-[0.1em] text-foreground/40"
               >
                 <span>SUN 9AM</span>
                 <span className="h-3 w-px bg-white/10" />
@@ -404,7 +405,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.65 + i * 0.05, type: "spring", bounce: 0.5 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all duration-300 hover:border-gold/30 hover:text-gold hover:shadow-[0_0_20px_rgba(201,168,76,0.15)]"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-foreground/40 transition-all duration-300 hover:border-gold/30 hover:text-gold hover:shadow-[0_0_20px_rgba(201,168,76,0.15)]"
                   >
                     <social.icon size={14} />
                   </motion.a>

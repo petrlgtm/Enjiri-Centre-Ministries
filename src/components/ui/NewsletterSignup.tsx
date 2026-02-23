@@ -41,11 +41,11 @@ export default function NewsletterSignup() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/10">
                 <HiMail className="text-gold" size={20} />
               </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white">
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground">
                 Stay Connected
               </h3>
             </div>
-            <p className="mt-2 max-w-md text-sm text-white/60">
+            <p className="mt-2 max-w-md text-sm text-foreground/60">
               Get weekly devotionals, event updates, and sermon highlights delivered to your inbox.
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function NewsletterSignup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full rounded-full border border-white/10 bg-white/[0.04] px-5 py-3.5 text-sm text-white placeholder:text-white/25 backdrop-blur-sm transition-all duration-300 focus:border-gold/40 focus:bg-white/[0.06] focus:outline-none"
+                className="w-full rounded-full border border-white/10 bg-white/[0.04] px-5 py-3.5 text-sm text-foreground placeholder:text-foreground/25 backdrop-blur-sm transition-all duration-300 focus:border-gold/40 focus:bg-white/[0.06] focus:outline-none"
                 required
               />
             </div>

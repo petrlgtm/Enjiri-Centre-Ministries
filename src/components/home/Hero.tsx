@@ -174,12 +174,12 @@ export default function Hero() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-light opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-light" />
                 </span>
-                <span className="relative">WELCOME TO OUR CHURCH</span>
+                <span className="relative">PREACHING CHRIST IN ALL NATIONS</span>
               </span>
             </motion.div>
 
             {/* Title — 3-line cinematic reveal */}
-            <h1 className="mt-8 font-[family-name:var(--font-playfair)] text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[1.08] tracking-tight text-white">
+            <h1 className="mt-8 font-[family-name:var(--font-playfair)] text-[clamp(2.4rem,5.5vw,5rem)] font-bold leading-[1.08] tracking-tight text-foreground">
               <SplitText words={["Experience"]} delay={0.3} />
               <br />
               <SplitText
@@ -216,10 +216,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-7 max-w-xl text-[1.05rem] font-light leading-[1.85] text-white/75 lg:mx-0 lg:max-w-md"
+              className="mx-auto mt-7 max-w-xl text-[1.05rem] font-light leading-[1.85] text-foreground/75 lg:mx-0 lg:max-w-md"
             >
-              Reaching the world with the love of Christ through worship, outreach,
-              and service. Come as you are and experience God&apos;s transforming power.
+              Preaching Christ and Restoring Hope through the power of the Holy Spirit.
+              Ministering the Gospel through repentance and remission of sins to all nations.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -278,7 +278,7 @@ export default function Hero() {
                       suffix={stat.suffix}
                       className="block font-[family-name:var(--font-playfair)] text-xl font-bold text-gold sm:text-2xl"
                     />
-                    <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70">
+                    <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/70">
                       {stat.label}
                     </span>
                   </div>
@@ -335,7 +335,7 @@ export default function Hero() {
                   <div className="noise-overlay absolute inset-0 pointer-events-none" />
 
                   {/* Slide counter — glass pill */}
-                  <div className="glass absolute bottom-4 left-4 rounded-lg px-3 py-1.5 text-[11px] font-medium tracking-widest text-white/60">
+                  <div className="glass absolute bottom-4 left-4 rounded-lg px-3 py-1.5 text-[11px] font-medium tracking-widest text-foreground/60">
                     {String(currentImage + 1).padStart(2, "0")} / {String(HERO_IMAGES.length).padStart(2, "0")}
                   </div>
 
@@ -386,7 +386,7 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
           className="flex flex-col items-center gap-3"
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/40">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-foreground/40">
             Discover
           </span>
           <div className="relative h-12 w-[1.5px] overflow-hidden rounded-full bg-white/10">

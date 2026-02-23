@@ -91,7 +91,7 @@ export default function PageHeader({
             {label}
           </motion.span>
 
-          <h1 className="mt-6 font-[family-name:var(--font-playfair)] text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-[1.05]">
+          <h1 className="mt-6 font-[family-name:var(--font-playfair)] text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl leading-[1.05]">
             <SplitTitle text={title} />
           </h1>
 
@@ -115,7 +115,7 @@ export default function PageHeader({
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-6 max-w-xl text-[1.05rem] leading-[1.75] text-white/75"
+            className="mx-auto mt-6 max-w-xl text-[1.05rem] leading-[1.75] text-foreground/75"
           >
             {description}
           </motion.p>

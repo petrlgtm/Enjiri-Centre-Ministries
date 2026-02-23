@@ -59,7 +59,7 @@ export default function DonatePage() {
                 <HiHeart className="text-gold" size={28} />
               </div>
 
-              <h2 className="mt-6 font-[family-name:var(--font-playfair)] text-2xl font-bold text-white sm:text-3xl">
+              <h2 className="mt-6 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
                 Online Donations Coming Soon
               </h2>
 
@@ -70,7 +70,7 @@ export default function DonatePage() {
               </p>
 
               <div className="card-premium mt-8 max-w-md rounded-2xl border border-white/[0.06] bg-[var(--gray-50)] p-6">
-                <h3 className="font-bold text-white">How to Give</h3>
+                <h3 className="font-bold text-foreground">How to Give</h3>
                 <ul className="mt-4 space-y-3 text-sm text-[var(--gray-400)]">
                   {[
                     {
@@ -90,7 +90,7 @@ export default function DonatePage() {
                     <li key={item.label} className="flex items-start gap-3">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                       <span>
-                        <strong className="text-white">{item.label}:</strong>{" "}
+                        <strong className="text-foreground">{item.label}:</strong>{" "}
                         {item.detail}
                       </span>
                     </li>
@@ -137,7 +137,7 @@ export default function DonatePage() {
               <div className="absolute inset-0 mesh-gradient" />
               <div className="noise-subtle absolute inset-0 opacity-[0.03]" />
               <div className="relative text-center">
-                <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-white/80 sm:text-2xl">
+                <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
                   &ldquo;Each of you should give what you have decided in your
                   heart to give, not reluctantly or under compulsion, for God
                   loves a cheerful giver.&rdquo;
@@ -179,7 +179,7 @@ export default function DonatePage() {
                     <div className="text-center">
                       <CountUp
                         end={4}
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-white"
+                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Programs
@@ -189,7 +189,7 @@ export default function DonatePage() {
                       <CountUp
                         end={100}
                         suffix="+"
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-white"
+                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Families
@@ -198,7 +198,7 @@ export default function DonatePage() {
                     <div className="text-center">
                       <CountUp
                         end={3}
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-white"
+                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Nations
@@ -227,7 +227,7 @@ export default function DonatePage() {
                     <div className="icon-breathe flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--gold-muted)] text-gold transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-black">
                       <area.icon size={22} />
                     </div>
-                    <h3 className="mt-4 text-sm font-bold text-white">
+                    <h3 className="mt-4 text-sm font-bold text-foreground">
                       {area.title}
                     </h3>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--gray-400)]">

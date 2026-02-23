@@ -11,8 +11,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
 const contactInfo = [
-  { icon: HiLocationMarker, title: "Visit Us", lines: ["123 Church Street", "City, Country"] },
-  { icon: HiPhone, title: "Call Us", lines: ["+254 700 000 000"] },
+  { icon: HiLocationMarker, title: "Visit Us", lines: ["Kampala, Uganda"] },
+  { icon: HiPhone, title: "Call Us", lines: ["+256 779 226290"] },
   { icon: HiMail, title: "Email Us", lines: ["info@enjiriministries.org"] },
   { icon: HiClock, title: "Service Times", lines: ["Sunday: 9:00 AM - 12:00 PM", "Wednesday: 6:00 PM"] },
 ];
@@ -20,7 +20,7 @@ const contactInfo = [
 const socialLinks = [
   { href: "#", icon: FaFacebookF, label: "Facebook" },
   { href: "#", icon: FaYoutube, label: "YouTube" },
-  { href: "#", icon: FaInstagram, label: "Instagram" },
+  { href: "https://instagram.com/ev_k_peter", icon: FaInstagram, label: "Instagram" },
 ];
 
 export default function ContactPage() {
@@ -39,7 +39,7 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/30 focus:border-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]";
+    "w-full rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] px-4 py-3.5 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/30 focus:border-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]";
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--gold-muted)] text-gold transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gold/20">
                       <info.icon size={18} />
                     </div>
-                    <h3 className="mt-3 text-sm font-bold text-white">{info.title}</h3>
+                    <h3 className="mt-3 text-sm font-bold text-foreground">{info.title}</h3>
                     {info.lines.map((line) => (
                       <p key={line} className="mt-0.5 text-xs leading-relaxed text-[var(--gray-400)]">
                         {line}
@@ -108,9 +108,9 @@ export default function ContactPage() {
                     <div className="flex items-start gap-3">
                       <HiLocationMarker className="mt-0.5 shrink-0 text-gold" size={20} />
                       <div>
-                        <p className="font-medium text-white">Our Location</p>
-                        <p className="mt-1 text-sm text-white/70">
-                          123 Church Street, City, Country
+                        <p className="font-medium text-foreground">Our Location</p>
+                        <p className="mt-1 text-sm text-foreground/70">
+                          Kampala, Uganda
                         </p>
                       </div>
                     </div>
@@ -156,10 +156,10 @@ export default function ContactPage() {
                     <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/10">
                       <HiMail className="text-gold" size={24} />
                     </div>
-                    <h3 className="mt-4 text-xl font-bold text-white">
+                    <h3 className="mt-4 text-xl font-bold text-foreground">
                       Message Sent!
                     </h3>
-                    <p className="mt-2 text-white/70">
+                    <p className="mt-2 text-foreground/70">
                       Thank you for reaching out. We&apos;ll respond as soon as possible.
                     </p>
                     <button
@@ -173,7 +173,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
-                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-white">
+                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
                           Full Name
                         </label>
                         <input
@@ -187,7 +187,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-white">
+                        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
                           Email Address
                         </label>
                         <input
@@ -202,7 +202,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-white">
+                      <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-foreground">
                         Subject
                       </label>
                       <input
@@ -216,7 +216,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-white">
+                      <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
                         Message
                       </label>
                       <textarea
@@ -247,7 +247,7 @@ export default function ContactPage() {
             >
               {/* Follow Us card */}
               <div className="rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-6">
-                <h3 className="font-bold text-white">Follow Us</h3>
+                <h3 className="font-bold text-foreground">Follow Us</h3>
                 <p className="mt-1 text-sm text-[var(--gray-500)]">
                   Stay connected on social media
                 </p>
@@ -256,7 +256,7 @@ export default function ContactPage() {
                     <a
                       key={social.label}
                       href={social.href}
-                      className="icon-breathe flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-black"
+                      className="icon-breathe flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-foreground transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-black"
                       aria-label={social.label}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -278,8 +278,8 @@ export default function ContactPage() {
                   &ldquo;Cast all your anxiety on him because he cares for
                   you.&rdquo;
                 </p>
-                <p className="mt-3 text-sm text-white/50">1 Peter 5:7</p>
-                <p className="mt-6 text-sm leading-relaxed text-white/70">
+                <p className="mt-3 text-sm text-foreground/50">1 Peter 5:7</p>
+                <p className="mt-6 text-sm leading-relaxed text-foreground/70">
                   We are here for you. Do not hesitate to reach out with any
                   prayer requests, questions, or simply to connect with our
                   community.

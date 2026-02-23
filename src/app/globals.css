@@ -2,38 +2,42 @@
 
 :root {
   --background: #0a0a0a;
-  --foreground: #f5f5f5;
+  --foreground: #f0ece4;
 
-  /* Black Palette (Brand Primary) */
-  --navy: #0a0a0a;
-  --navy-light: #111111;
-  --navy-mid: #1a1a1a;
-  --navy-surface: #222222;
+  /* Dark Palette (Brand Primary — elegant dark surfaces) */
+  --navy: #0f0f0f;
+  --navy-light: #161412;
+  --navy-mid: #1c1916;
+  --navy-surface: #242019;
 
-  /* Gold Palette (Brand Accent) */
+  /* Gold Palette (Brand Accent — brighter for dark bg contrast) */
   --gold: #c9a84c;
   --gold-light: #e2cc7e;
-  --gold-dark: #a68a2e;
+  --gold-dark: #8a6d1b;
   --gold-muted: rgba(201, 168, 76, 0.12);
   --gold-glow: rgba(201, 168, 76, 0.25);
 
-  /* Red Palette (Brand Accent) */
-  --red: #b91c1c;
-  --red-light: #dc2626;
-  --red-dark: #991b1b;
-  --red-muted: rgba(185, 28, 28, 0.12);
+  /* Amber Palette (replaces Red — warm bronze accent) */
+  --red: #c47d2a;
+  --red-light: #d4943e;
+  --red-dark: #9a5f1a;
+  --red-muted: rgba(196, 125, 42, 0.10);
 
-  /* Neutral Palette (dark-oriented) */
-  --gray-50: #141414;
-  --gray-100: #1c1c1c;
-  --gray-200: #2a2a2a;
-  --gray-300: #3a3a3a;
-  --gray-400: #a3a3a3;
-  --gray-500: #b8b8b8;
-  --gray-600: #d0d0d0;
-  --gray-700: #d0d0d0;
-  --gray-800: #e0e0e0;
-  --gray-900: #f0f0f0;
+  /* Neutral Palette (dark-oriented — inverted: 50=darkest, 900=lightest) */
+  --gray-50: #121010;
+  --gray-100: #181614;
+  --gray-200: #2a2622;
+  --gray-300: #3d3830;
+  --gray-400: #7a7168;
+  --gray-500: #918880;
+  --gray-600: #a9a39c;
+  --gray-700: #c4bfb8;
+  --gray-800: #dbd6cf;
+  --gray-900: #f0ece4;
+
+  /* Warm tones */
+  --cream: #f0ece4;
+  --warm-white: #faf7f2;
 
   /* Premium Easing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,12 +72,12 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse at 15% 0%, rgba(185,28,28,0.18) 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 10%, rgba(201,168,76,0.14) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 35%, rgba(185,28,28,0.10) 0%, transparent 40%),
-    radial-gradient(ellipse at 75% 55%, rgba(201,168,76,0.10) 0%, transparent 40%),
-    radial-gradient(ellipse at 25% 70%, rgba(185,28,28,0.12) 0%, transparent 45%),
-    radial-gradient(ellipse at 60% 90%, rgba(201,168,76,0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 15% 0%, rgba(196,125,42,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 10%, rgba(201,168,76,0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 35%, rgba(196,125,42,0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 75% 55%, rgba(201,168,76,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 25% 70%, rgba(196,125,42,0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 90%, rgba(201,168,76,0.06) 0%, transparent 45%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -85,14 +89,14 @@ body {
    ═══════════════════════════════════════════════════ */
 ::selection {
   background: var(--gold);
-  color: var(--navy);
+  color: #ffffff;
 }
 
 /* ═══════════════════════════════════════════════════
    PREMIUM SCROLLBAR
    ═══════════════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-track { background: #0f0f0f; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--gold-dark), var(--gold));
   border-radius: 99px;
@@ -103,24 +107,25 @@ body {
    GLASS MORPHISM
    ═══════════════════════════════════════════════════ */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(24px) saturate(1.8);
   -webkit-backdrop-filter: blur(24px) saturate(1.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(22, 20, 18, 0.7);
   backdrop-filter: blur(24px) saturate(1.5);
   -webkit-backdrop-filter: blur(24px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-gold {
-  background: rgba(201, 168, 76, 0.06);
+  background: rgba(201, 168, 76, 0.08);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.15);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -128,14 +133,14 @@ body {
    ═══════════════════════════════════════════════════ */
 .gradient-navy {
   background:
-    radial-gradient(ellipse at 10% 40%, rgba(185,28,28,0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 60%, rgba(201,168,76,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 20%, rgba(185,28,28,0.06) 0%, transparent 40%),
-    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    radial-gradient(ellipse at 10% 40%, rgba(196,125,42,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 60%, rgba(201,168,76,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 20%, rgba(196,125,42,0.03) 0%, transparent 40%),
+    linear-gradient(135deg, #0f0f0f 0%, #161412 50%, #0a0a0a 100%);
 }
 
 .gradient-gold-subtle {
-  background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, rgba(201,168,76,0.02) 100%);
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 100%);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -143,22 +148,22 @@ body {
    ═══════════════════════════════════════════════════ */
 .mesh-gradient {
   background:
-    radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 30%, rgba(185,28,28,0.16) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.10) 0%, transparent 40%),
-    radial-gradient(ellipse at 70% 70%, rgba(185,28,28,0.10) 0%, transparent 45%),
-    radial-gradient(ellipse at 30% 20%, rgba(185,28,28,0.08) 0%, transparent 40%),
-    linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+    radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 30%, rgba(196,125,42,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 70%, rgba(196,125,42,0.04) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 20%, rgba(196,125,42,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0f0f0f 0%, #161412 100%);
 }
 
 .mesh-gradient-animated {
   background:
-    radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 30%, rgba(185,28,28,0.16) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.10) 0%, transparent 40%),
-    radial-gradient(ellipse at 70% 70%, rgba(185,28,28,0.10) 0%, transparent 45%),
-    radial-gradient(ellipse at 30% 20%, rgba(185,28,28,0.08) 0%, transparent 40%),
-    linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+    radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 30%, rgba(196,125,42,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 70%, rgba(196,125,42,0.04) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 20%, rgba(196,125,42,0.04) 0%, transparent 40%),
+    linear-gradient(180deg, #0f0f0f 0%, #161412 100%);
   animation: mesh-shift 15s ease-in-out infinite;
 }
 
@@ -503,7 +508,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
@@ -552,9 +557,9 @@ body {
   inset: 0;
   background: linear-gradient(
     -45deg,
-    rgba(201,168,76,0.15),
-    rgba(42,42,42,0.4),
     rgba(201,168,76,0.08),
+    rgba(15,15,15,0.5),
+    rgba(196,125,42,0.04),
     rgba(10,10,10,0.6)
   );
   background-size: 400% 400%;
@@ -791,29 +796,32 @@ body {
    ═══════════════════════════════════════════════════ */
 .shadow-premium-sm {
   box-shadow:
-    0 1px 2px rgba(10, 10, 10, 0.04),
-    0 4px 8px rgba(10, 10, 10, 0.04);
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .shadow-premium {
   box-shadow:
-    0 2px 4px rgba(10, 10, 10, 0.04),
-    0 8px 16px rgba(10, 10, 10, 0.06),
-    0 24px 48px rgba(10, 10, 10, 0.04);
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .shadow-premium-lg {
   box-shadow:
-    0 4px 8px rgba(10, 10, 10, 0.04),
-    0 16px 32px rgba(10, 10, 10, 0.08),
-    0 48px 96px rgba(10, 10, 10, 0.06);
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.25),
+    0 48px 96px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .shadow-gold-glow {
   box-shadow:
-    0 0 20px rgba(201, 168, 76, 0.15),
-    0 0 60px rgba(201, 168, 76, 0.08),
-    0 8px 32px rgba(10, 10, 10, 0.1);
+    0 0 20px rgba(201, 168, 76, 0.2),
+    0 0 60px rgba(201, 168, 76, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -917,8 +925,8 @@ body {
   height: 70%;
   transform: translate(-50%, -50%);
   background:
-    radial-gradient(ellipse at 30% 35%, rgba(185,28,28,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 65%, rgba(201,168,76,0.10) 0%, transparent 55%);
+    radial-gradient(ellipse at 30% 35%, rgba(196,125,42,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 65%, rgba(201,168,76,0.04) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -1010,15 +1018,15 @@ body {
   background-clip: text;
 }
 
-/* Frosted glass panel (dark theme version) */
+/* Frosted glass panel (dark theme) */
 .frosted-panel {
-  background: rgba(28, 28, 28, 0.85);
+  background: rgba(15, 15, 15, 0.85);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.1);
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 /* Animated dot grid background */

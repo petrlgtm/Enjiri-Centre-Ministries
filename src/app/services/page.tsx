@@ -72,7 +72,7 @@ export default function ServicesPage() {
 
       <section className="section-glow relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[var(--gray-50)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_25%_25%,rgba(185,28,28,0.12),transparent_50%),radial-gradient(ellipse_at_75%_75%,rgba(201,168,76,0.10),transparent_50%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_25%_25%,rgba(196,125,42,0.04),transparent_50%),radial-gradient(ellipse_at_75%_75%,rgba(201,168,76,0.04),transparent_50%)]" />
         <div className="dot-grid-animated absolute inset-0" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
         <Container className="relative">

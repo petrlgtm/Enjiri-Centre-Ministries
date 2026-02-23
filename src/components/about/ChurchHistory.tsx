@@ -22,7 +22,7 @@ const timeline = [
 export default function ChurchHistory() {
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_25%,rgba(185,28,28,0.13),transparent_55%),radial-gradient(ellipse_at_25%_75%,rgba(201,168,76,0.11),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_25%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_25%_75%,rgba(201,168,76,0.04),transparent_50%)]" />
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
           {/* Left: Image + Stats */}
@@ -67,7 +67,7 @@ export default function ChurchHistory() {
                           suffix={stat.suffix}
                           className="block font-[family-name:var(--font-playfair)] text-xl font-bold text-gold sm:text-2xl"
                         />
-                        <span className="text-[10px] uppercase tracking-[0.15em] text-white/60">
+                        <span className="text-[10px] uppercase tracking-[0.15em] text-foreground/60">
                           {stat.label}
                         </span>
                       </div>
@@ -118,7 +118,7 @@ export default function ChurchHistory() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="mt-8 border-l-2 border-gold/30 pl-6"
             >
-              <p className="font-[family-name:var(--font-playfair)] text-lg italic text-white/80">
+              <p className="font-[family-name:var(--font-playfair)] text-lg italic text-foreground/80">
                 &ldquo;For I know the plans I have for you, declares the Lord...&rdquo;
               </p>
               <p className="mt-2 text-sm font-semibold text-gold-dark">
@@ -154,7 +154,7 @@ export default function ChurchHistory() {
                         <span className="text-xs font-bold uppercase tracking-wider text-gold">
                           {item.year}
                         </span>
-                        <span className="font-semibold text-white text-sm">
+                        <span className="font-semibold text-foreground text-sm">
                           {item.title}
                         </span>
                       </div>

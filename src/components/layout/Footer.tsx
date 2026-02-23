@@ -12,6 +12,7 @@ const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
+  { href: "/charity", label: "Charity" },
   { href: "/sermons", label: "Sermons" },
   { href: "/donate", label: "Give" },
   { href: "/contact", label: "Contact" },
@@ -31,7 +32,7 @@ const socialLinks = [
     hoverColor: "hover:bg-[#FF0000]/15 hover:text-[#FF0000] hover:border-[#FF0000]/30",
   },
   {
-    href: "#",
+    href: "https://instagram.com/ev_k_peter",
     icon: FaInstagram,
     label: "Instagram",
     hoverColor: "hover:bg-[#E4405F]/15 hover:text-[#E4405F] hover:border-[#E4405F]/30",
@@ -47,7 +48,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(185,28,28,0.12),transparent_50%),radial-gradient(ellipse_at_80%_80%,rgba(201,168,76,0.10),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(196,125,42,0.12),transparent_50%),radial-gradient(ellipse_at_80%_80%,rgba(201,168,76,0.10),transparent_50%)]" />
       {/* Newsletter Signup */}
       <NewsletterSignup />
 
@@ -76,10 +77,10 @@ export default function Footer() {
                     className="object-cover"
                     sizes="48px"
                   />
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 </div>
                 <div>
-                  <span className="block text-[15px] font-bold tracking-wide text-white">
+                  <span className="block text-[15px] font-bold tracking-wide text-foreground">
                     ENJIRI CENTER
                   </span>
                   <span className="block text-[10px] font-medium tracking-[0.25em] text-gold/60">
@@ -87,7 +88,7 @@ export default function Footer() {
                   </span>
                 </div>
               </Link>
-              <p className="mt-5 max-w-xs text-[0.9rem] leading-[1.75] text-white/70">
+              <p className="mt-5 max-w-xs text-[0.9rem] leading-[1.75] text-foreground/70">
                 Reaching the world with the love of Christ through worship,
                 outreach, and service to our communities.
               </p>
@@ -98,7 +99,7 @@ export default function Footer() {
                   <a
                     key={social.label}
                     href={social.href}
-                    className={`flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-white/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-foreground/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
                     aria-label={social.label}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -119,7 +120,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="underline-draw inline-block text-[0.9rem] text-white/70 transition-colors duration-300 hover:text-gold"
+                      className="underline-draw inline-block text-[0.9rem] text-foreground/70 transition-colors duration-300 hover:text-gold"
                     >
                       {link.label}
                     </Link>
@@ -139,19 +140,19 @@ export default function Footer() {
                     className="mt-0.5 shrink-0 text-gold/40 transition-colors duration-300 group-hover:text-gold/70"
                     size={16}
                   />
-                  <span className="text-[0.9rem] leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-white/70">
-                    123 Church Street, City, Country
+                  <span className="text-[0.9rem] leading-relaxed text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
+                    Kampala, Uganda
                   </span>
                 </li>
                 <li className="group flex items-center gap-3">
                   <HiPhone className="shrink-0 text-gold/40 transition-colors duration-300 group-hover:text-gold/70" size={16} />
-                  <span className="text-[0.9rem] text-white/60 transition-colors duration-300 group-hover:text-white/70">
-                    +254 700 000 000
+                  <span className="text-[0.9rem] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
+                    +256 779 226290
                   </span>
                 </li>
                 <li className="group flex items-center gap-3">
                   <HiMail className="shrink-0 text-gold/40 transition-colors duration-300 group-hover:text-gold/70" size={16} />
-                  <span className="text-[0.9rem] text-white/60 transition-colors duration-300 group-hover:text-white/70">
+                  <span className="text-[0.9rem] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
                     info@enjiriministries.org
                   </span>
                 </li>
@@ -184,10 +185,10 @@ export default function Footer() {
                     key={service.day}
                     className="group border-l-2 border-gold/20 pl-4 transition-all duration-300 hover:border-gold/50"
                   >
-                    <span className="block text-[0.85rem] font-medium text-white/70 transition-colors duration-300 group-hover:text-white/70">
+                    <span className="block text-[0.85rem] font-medium text-foreground/70 transition-colors duration-300 group-hover:text-foreground/70">
                       {service.day}
                     </span>
-                    <span className="mt-0.5 block text-[0.8rem] text-white/70 transition-colors duration-300 group-hover:text-gold/50">
+                    <span className="mt-0.5 block text-[0.8rem] text-foreground/70 transition-colors duration-300 group-hover:text-gold/50">
                       {service.time}
                     </span>
                   </li>
@@ -207,21 +208,21 @@ export default function Footer() {
               className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row"
             >
               <div className="flex flex-col items-center gap-2 sm:items-start">
-                <p className="text-[0.8rem] text-white/60">
+                <p className="text-[0.8rem] text-foreground/60">
                   &copy; {new Date().getFullYear()} Enjiri Center Ministries
                   International. All rights reserved.
                 </p>
                 <div className="flex items-center gap-2">
                   <Link
                     href="/privacy"
-                    className="underline-draw inline-block text-[0.75rem] text-white/60 transition-colors hover:text-gold"
+                    className="underline-draw inline-block text-[0.75rem] text-foreground/60 transition-colors hover:text-gold"
                   >
                     Privacy Policy
                   </Link>
-                  <span className="text-[0.75rem] text-white/10">&middot;</span>
+                  <span className="text-[0.75rem] text-foreground/10">&middot;</span>
                   <Link
                     href="/terms"
-                    className="underline-draw inline-block text-[0.75rem] text-white/60 transition-colors hover:text-gold"
+                    className="underline-draw inline-block text-[0.75rem] text-foreground/60 transition-colors hover:text-gold"
                   >
                     Terms of Service
                   </Link>
@@ -229,7 +230,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-px w-6 bg-gold/20" />
-                <p className="text-[0.75rem] text-white/30">
+                <p className="text-[0.75rem] text-foreground/30">
                   Built with faith and excellence
                 </p>
                 <span className="h-px w-6 bg-gold/20" />

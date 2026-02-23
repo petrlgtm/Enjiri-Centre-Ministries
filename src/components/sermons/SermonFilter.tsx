@@ -38,7 +38,7 @@ export default function SermonFilter({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Search sermons"
-            className="w-full rounded-2xl border border-white/[0.08] bg-[var(--gray-50)] py-3.5 pl-11 pr-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/30 focus:border-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]"
+            className="w-full rounded-2xl border border-white/[0.08] bg-[var(--gray-50)] py-3.5 pl-11 pr-4 text-sm text-foreground outline-none transition-all duration-300 placeholder:text-foreground/30 focus:border-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)]"
           />
         </div>
 
@@ -47,7 +47,7 @@ export default function SermonFilter({
           value={selectedSeries}
           onChange={(e) => onSeriesChange(e.target.value)}
           aria-label="Filter by series"
-          className="rounded-2xl border border-white/[0.08] bg-[var(--gray-50)] px-4 py-3.5 text-sm text-white/70 outline-none transition-all duration-300 focus:border-gold focus:border-l-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)] focus:ring-inset focus:ring-l-2 focus:ring-gold/40"
+          className="rounded-2xl border border-white/[0.08] bg-[var(--gray-50)] px-4 py-3.5 text-sm text-foreground/70 outline-none transition-all duration-300 focus:border-gold focus:border-l-gold focus:bg-navy-light focus:shadow-[0_0_0_3px_rgba(201,168,76,0.1)] focus:ring-inset focus:ring-l-2 focus:ring-gold/40"
         >
           <option value="">All Series</option>
           {seriesList.map((series) => (

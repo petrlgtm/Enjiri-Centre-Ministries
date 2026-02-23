@@ -61,7 +61,7 @@ export default function MissionSection() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-28 lg:py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(185,28,28,0.14),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.12),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(196,125,42,0.05),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.04),transparent_50%)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
 
       {/* Floating decorative blobs — gold + red */}
@@ -79,7 +79,7 @@ export default function MissionSection() {
         <SectionHeading
           label="What We Stand For"
           title="Rooted in Faith, Growing in Purpose"
-          subtitle="We exist to glorify God by making disciples of all nations, teaching them to observe all that Christ has commanded."
+          subtitle="Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations. — Luke 24:47"
         />
 
         {/* 2x2 grid — each card has image header + content */}
@@ -109,13 +109,13 @@ export default function MissionSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--gray-100)] via-navy/40 to-transparent" />
 
                 {/* Number overlay — large, positioned bottom-right of image */}
-                <span className="absolute bottom-3 right-5 font-[family-name:var(--font-playfair)] text-[4.5rem] font-bold leading-none text-white/[0.08] transition-all duration-700 group-hover:text-gold/[0.12]">
+                <span className="absolute bottom-3 right-5 font-[family-name:var(--font-playfair)] text-[4.5rem] font-bold leading-none text-foreground/[0.08] transition-all duration-700 group-hover:text-gold/[0.12]">
                   {value.number}
                 </span>
 
                 {/* Icon badge — floats at bottom-left, overlapping into content */}
                 <div className="absolute -bottom-5 left-6 z-10">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${value.iconBg} text-gold ring-4 ring-[var(--gray-100)] transition-all duration-500 group-hover:text-white group-hover:shadow-lg group-hover:ring-[var(--gray-100)]`}>
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${value.iconBg} text-gold ring-4 ring-[var(--gray-100)] transition-all duration-500 group-hover:text-foreground group-hover:shadow-lg group-hover:ring-[var(--gray-100)]`}>
                     <value.icon size={22} />
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default function MissionSection() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="mt-2 font-[family-name:var(--font-playfair)] text-xl font-bold text-white transition-colors duration-300 group-hover:text-gold">
+                  <h3 className="mt-2 font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                     {value.title}
                   </h3>
 

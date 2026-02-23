@@ -53,7 +53,7 @@ export default function EventCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-[1.1rem] font-bold text-white transition-colors duration-300 group-hover:text-gold">
+        <h3 className="text-[1.1rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
           {title}
         </h3>
 

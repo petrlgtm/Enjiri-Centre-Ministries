@@ -50,7 +50,7 @@ export default function LatestSermons() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(201,168,76,0.14),transparent_50%),radial-gradient(ellipse_at_85%_70%,rgba(185,28,28,0.12),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(201,168,76,0.05),transparent_50%),radial-gradient(ellipse_at_85%_70%,rgba(196,125,42,0.04),transparent_50%)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gray-200)] to-transparent" />
       <div className="dot-grid-animated absolute inset-0" />
 
@@ -126,7 +126,7 @@ export default function LatestSermons() {
 
                   {/* Duration badge */}
                   <div className="absolute bottom-3 right-3">
-                    <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-medium tracking-wide text-white/70 backdrop-blur-md border border-white/5">
+                    <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-medium tracking-wide text-foreground/70 backdrop-blur-md border border-white/5">
                       {sermon.duration}
                     </span>
                   </div>
@@ -157,10 +157,10 @@ export default function LatestSermons() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-[1.05rem] font-bold text-white transition-colors duration-300 group-hover:text-gold">
+                  <h3 className="text-[1.05rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                     {sermon.title}
                   </h3>
-                  <div className="mt-3 flex items-center gap-2 text-sm text-white/70">
+                  <div className="mt-3 flex items-center gap-2 text-sm text-foreground/70">
                     <span className="font-medium">{sermon.speaker}</span>
                     <span className="h-1 w-1 rounded-full bg-white/40" />
                     <span>{sermon.date}</span>
