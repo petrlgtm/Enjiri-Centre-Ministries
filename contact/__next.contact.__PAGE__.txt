@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[21250,["/Enjiri-Centre-Ministries/_next/static/chunks/e5ebcb019269227a.js","/Enjiri-Centre-Ministries/_next/static/chunks/19ebe2594b86fae3.js"],"ClientPageRoot"]
+3:I[78299,["/Enjiri-Centre-Ministries/_next/static/chunks/f3200d93947bd48d.js","/Enjiri-Centre-Ministries/_next/static/chunks/c1e72b4ea9894860.js","/Enjiri-Centre-Ministries/_next/static/chunks/ac5025d4541db365.js","/Enjiri-Centre-Ministries/_next/static/chunks/24b48d1fbcb0fee2.js","/Enjiri-Centre-Ministries/_next/static/chunks/4c4e95fa49218a12.js","/Enjiri-Centre-Ministries/_next/static/chunks/9c3ab0f4a4c79939.js"],"default"]
+6:I[39243,["/Enjiri-Centre-Ministries/_next/static/chunks/e5ebcb019269227a.js","/Enjiri-Centre-Ministries/_next/static/chunks/19ebe2594b86fae3.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"buildId":"bj3ekjyZw1qztB9OkCioK","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Enjiri-Centre-Ministries/_next/static/chunks/9c3ab0f4a4c79939.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+4:{}
+5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null
