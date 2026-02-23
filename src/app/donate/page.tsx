@@ -26,27 +26,27 @@ export default function DonatePage() {
         description="Your generosity fuels our mission to reach more people with the love of Christ and serve our communities."
       />
 
-      <section className="relative overflow-hidden py-20 sm:py-28">
+      <section className="relative overflow-hidden py-14 sm:py-20 md:py-28">
         <div className="dot-grid-animated absolute inset-0" />
         <Container>
           <div className="mx-auto max-w-2xl">
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
+            <h2 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground min-[375px]:text-2xl sm:text-3xl">
               What would you like to give towards?
             </h2>
 
-            <div className="mt-10 divide-y divide-white/[0.08]">
+            <div className="mt-8 divide-y divide-white/[0.08] sm:mt-10">
               {givingCategories.map((category) => (
                 <a
                   key={category.label}
                   href={category.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between py-6 transition-colors duration-300 hover:text-gold"
+                  className="group flex items-center justify-between gap-4 py-5 transition-colors duration-300 hover:text-gold sm:py-6"
                 >
-                  <span className="text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-gold sm:text-xl">
+                  <span className="text-base font-medium text-foreground transition-colors duration-300 group-hover:text-gold min-[375px]:text-lg sm:text-xl">
                     {category.label}
                   </span>
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-navy group-hover:border-gold group-hover:shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-navy group-hover:border-gold group-hover:shadow-[0_0_20px_rgba(201,168,76,0.3)] sm:h-11 sm:w-11">
                     <HiArrowUpRight size={18} />
                   </span>
                 </a>
@@ -54,8 +54,8 @@ export default function DonatePage() {
             </div>
 
             {/* Scripture quote */}
-            <div className="mt-16 rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] p-8 text-center sm:p-10">
-              <p className="font-[family-name:var(--font-playfair)] text-lg italic leading-relaxed text-foreground/70 sm:text-xl">
+            <div className="mt-10 rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] px-5 py-7 text-center sm:mt-16 sm:p-10">
+              <p className="font-[family-name:var(--font-playfair)] text-base italic leading-relaxed text-foreground/70 min-[375px]:text-lg sm:text-xl">
                 &ldquo;Each of you should give what you have decided in your
                 heart to give, not reluctantly or under compulsion, for God
                 loves a cheerful giver.&rdquo;
