@@ -8,7 +8,7 @@ import SermonFilter from "@/components/sermons/SermonFilter";
 import { fetchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
 import { formatDate } from "@/lib/utils";
 
-const CHANNEL_ID = "UCYourChannelId"; // Replace with actual channel ID
+const CHANNEL_ID = "UCFStM9EkCFD3h8b4xtlHIOQ";
 
 const placeholderSermons = [
   { title: "Walking in God's Purpose", speaker: "Pastor John", date: "February 16, 2026", series: "Living by Faith", slug: "walking-in-gods-purpose" },
