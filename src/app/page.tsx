@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import Hero from "@/components/home/Hero";
 import SnapshotBand from "@/components/home/SnapshotBand";
 import MissionSection from "@/components/home/MissionSection";
@@ -16,8 +18,9 @@ import {
   allLeadersQuery,
   allTestimoniesQuery,
   allMinistriesQuery,
+  siteSettingsQuery,
 } from "@/sanity/queries";
-import { cardImage, portraitImage } from "@/sanity/image";
+import { cardImage, portraitImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 
 interface SanityImage {
@@ -61,13 +64,20 @@ interface SanityMinistry {
   ctaUrl?: string;
 }
 
+interface SanitySettings {
+  heroImage?: SanityImage;
+}
+
 export default async function HomePage() {
-  const [events, leaders, testimonies, ministries] = await Promise.all([
+  const [events, leaders, testimonies, ministries, settings] = await Promise.all([
     fetchSanity<SanityEvent[]>(homepageEventsQuery),
     fetchSanity<SanityLeader[]>(allLeadersQuery),
     fetchSanity<SanityTestimony[]>(allTestimoniesQuery),
     fetchSanity<SanityMinistry[]>(allMinistriesQuery),
+    fetchSanity<SanitySettings>(siteSettingsQuery),
   ]);
+
+  const heroImageUrl = settings?.heroImage ? heroImage(settings.heroImage) : "";
 
   const eventsData = events?.map((e) => ({
     title: e.title,
@@ -105,26 +115,26 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero />
+      <Hero heroImage={heroImageUrl} />
       <SectionDivider />
+      <LeadershipHighlight leader={leaderData} />
+      <SectionDivider accent />
       <SnapshotBand />
-      <SectionDivider accent />
-      <MissionSection />
       <SectionDivider />
-      <PlanYourVisit />
+      <MissionSection />
       <SectionDivider accent />
+      <PlanYourVisit image={heroImageUrl} />
+      <SectionDivider />
       <LatestSermons />
       <SectionDivider accent />
       <UpcomingEvents events={eventsData} />
       <SectionDivider accent />
       <MinistriesGrid ministries={ministriesData} />
       <SectionDivider />
-      <LeadershipHighlight leader={leaderData} />
-      <SectionDivider accent />
       <TestimonialsCarousel testimonies={testimoniesData} />
-      <SectionDivider />
-      <DonateBand />
       <SectionDivider accent />
+      <DonateBand />
+      <SectionDivider />
       <ContactInfoCard />
     </>
   );

@@ -179,6 +179,37 @@ export const allMinistriesQuery = groq`
   }
 `;
 
+// Charity / Outreach Programs
+export const allCharityProgramsQuery = groq`
+  *[_type == "charityProgram"] | order(order asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    icon,
+    gridSpan,
+    image { ${imageFields} }
+  }
+`;
+
+export const charityProgramBySlugQuery = groq`
+  *[_type == "charityProgram" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    icon,
+    heroImage { ${imageFields} },
+    aboutImage { ${imageFields} },
+    longDescription,
+    gallery[] { ${imageFields} },
+    highlights[] { title, description },
+    scripture { text, reference },
+    ctaTitle,
+    ctaDescription
+  }
+`;
+
 // Events with category (for filtering)
 export const upcomingEventsWithCategoryQuery = groq`
   *[_type == "event" && date >= now()] | order(date asc) {

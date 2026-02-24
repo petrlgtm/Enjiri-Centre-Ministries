@@ -203,27 +203,10 @@ export default function Footer() {
               viewport={{ once: true }}
               className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row"
             >
-              <div className="flex flex-col items-center gap-2 sm:items-start">
-                <p className="text-[0.8rem] text-foreground/60">
-                  &copy; {new Date().getFullYear()} Enjiri Center Ministries
-                  International. All rights reserved.
-                </p>
-                <div className="flex items-center gap-2">
-                  <Link
-                    href="/privacy"
-                    className="underline-draw inline-block text-[0.75rem] text-foreground/60 transition-colors hover:text-gold"
-                  >
-                    Privacy Policy
-                  </Link>
-                  <span className="text-[0.75rem] text-foreground/10">&middot;</span>
-                  <Link
-                    href="/terms"
-                    className="underline-draw inline-block text-[0.75rem] text-foreground/60 transition-colors hover:text-gold"
-                  >
-                    Terms of Service
-                  </Link>
-                </div>
-              </div>
+              <p className="text-[0.8rem] text-foreground/60">
+                &copy; {new Date().getFullYear()} Enjiri Center Ministries
+                International. All rights reserved.
+              </p>
               <div className="flex items-center gap-2">
                 <span className="h-px w-6 bg-gold/20" />
                 <p className="text-[0.75rem] text-foreground/30">

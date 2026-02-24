@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import type { Metadata } from "next";
 import ChurchHistory from "@/components/about/ChurchHistory";
 import VisionMission from "@/components/about/VisionMission";
@@ -5,8 +7,8 @@ import LeadershipTeam from "@/components/about/LeadershipTeam";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { fetchSanity } from "@/lib/sanity-helpers";
-import { allLeadersQuery } from "@/sanity/queries";
-import { portraitImage } from "@/sanity/image";
+import { allLeadersQuery, siteSettingsQuery } from "@/sanity/queries";
+import { portraitImage, heroImage as heroImageUrl } from "@/sanity/image";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -22,8 +24,17 @@ interface SanityLeader {
   image?: { asset: { _ref: string } };
 }
 
+interface SanitySettings {
+  heroImage?: { asset: { _ref: string } };
+}
+
 export default async function AboutPage() {
-  const leaders = await fetchSanity<SanityLeader[]>(allLeadersQuery);
+  const [leaders, settings] = await Promise.all([
+    fetchSanity<SanityLeader[]>(allLeadersQuery),
+    fetchSanity<SanitySettings>(siteSettingsQuery),
+  ]);
+
+  const storyImage = settings?.heroImage ? heroImageUrl(settings.heroImage) : "";
 
   const leadersData = leaders?.map((l) => ({
     name: l.name,
@@ -39,7 +50,7 @@ export default async function AboutPage() {
         title="About Our Church"
         description="A community of believers united in faith, love, and the mission to reach the world with the gospel of Christ."
       />
-      <ChurchHistory />
+      <ChurchHistory image={storyImage} />
       <SectionDivider accent />
       <VisionMission />
       <SectionDivider accent />

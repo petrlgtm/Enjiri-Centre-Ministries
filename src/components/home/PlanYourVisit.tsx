@@ -25,7 +25,11 @@ const details = [
   },
 ];
 
-export default function PlanYourVisit() {
+interface PlanYourVisitProps {
+  image?: string;
+}
+
+export default function PlanYourVisit({ image }: PlanYourVisitProps) {
   return (
     <section className="relative overflow-hidden py-28">
       <div className="absolute inset-0 bg-cream" />
@@ -41,8 +45,8 @@ export default function PlanYourVisit() {
           >
             <div className="relative h-64 overflow-hidden rounded-3xl shadow-lg lg:h-[420px]">
               <Image
-                src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop"
-                alt="Church interior with warm lighting"
+                src={image || "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop"}
+                alt="Enjiri Center Ministries — Plan Your Visit"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

@@ -1,14 +1,28 @@
+export const revalidate = 60;
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { HiHeart, HiArrowRight } from "react-icons/hi";
+import {
+  HiHeart,
+  HiArrowRight,
+  HiGlobe,
+  HiSparkles,
+  HiUserGroup,
+  HiAcademicCap,
+  HiStar,
+} from "react-icons/hi";
+import type { IconType } from "react-icons";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import CountUp from "@/components/ui/CountUp";
 import Button from "@/components/ui/Button";
-import { charityPrograms } from "@/data/charityPrograms";
+import { fetchSanity } from "@/lib/sanity-helpers";
+import { allCharityProgramsQuery, siteSettingsQuery } from "@/sanity/queries";
+import { cardImage, heroImage as heroImageBuilder } from "@/sanity/image";
+import { charityPrograms as staticPrograms } from "@/data/charityPrograms";
 
 export const metadata: Metadata = {
   title: "Charity",
@@ -16,7 +30,88 @@ export const metadata: Metadata = {
     "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
 };
 
-export default function CharityPage() {
+interface SanityImage {
+  asset: { _ref: string };
+}
+
+interface SanityCharityProgram {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  icon?: string;
+  gridSpan?: string;
+  image?: SanityImage;
+}
+
+interface SanitySettings {
+  heroImage?: SanityImage;
+}
+
+const iconMap: Record<string, IconType> = {
+  globe: HiGlobe,
+  sparkles: HiSparkles,
+  heart: HiHeart,
+  userGroup: HiUserGroup,
+  academicCap: HiAcademicCap,
+  star: HiStar,
+};
+
+function getIcon(name?: string): IconType {
+  return (name && iconMap[name]) || HiStar;
+}
+
+export default async function CharityPage() {
+  const [programs, settings] = await Promise.all([
+    fetchSanity<SanityCharityProgram[]>(allCharityProgramsQuery),
+    fetchSanity<SanitySettings>(siteSettingsQuery),
+  ]);
+
+  const missionImage = settings?.heroImage
+    ? heroImageBuilder(settings.heroImage)
+    : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
+
+  // Merge Sanity data with static fallback images
+  const programsData = (programs && programs.length > 0 ? programs : []).map(
+    (p) => {
+      const staticMatch = staticPrograms.find((sp) => sp.slug === p.slug);
+      return {
+        title: p.title,
+        slug: p.slug,
+        description: p.description,
+        icon: p.icon,
+        gridSpan: p.gridSpan || staticMatch?.span || "",
+        image: p.image
+          ? cardImage(p.image)
+          : staticMatch?.image || "",
+      };
+    }
+  );
+
+  // Use static data if Sanity returned nothing
+  const gridPrograms =
+    programsData.length > 0
+      ? programsData
+      : staticPrograms.map((sp) => ({
+          title: sp.title,
+          slug: sp.slug,
+          description: sp.description,
+          icon:
+            sp.icon === HiGlobe
+              ? "globe"
+              : sp.icon === HiSparkles
+                ? "sparkles"
+                : sp.icon === HiHeart
+                  ? "heart"
+                  : sp.icon === HiUserGroup
+                    ? "userGroup"
+                    : sp.icon === HiAcademicCap
+                      ? "academicCap"
+                      : "star",
+          gridSpan: sp.span,
+          image: sp.image,
+        }));
+
   return (
     <>
       {/* SECTION 1 — Hero */}
@@ -69,7 +164,7 @@ export default function CharityPage() {
             <div className="lg:w-1/2">
               <div className="relative h-56 overflow-hidden rounded-3xl transition-transform duration-700 hover:scale-[1.02] lg:h-[400px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop"
+                  src={missionImage}
                   alt="Community outreach and charity programs in East Africa"
                   fill
                   className="object-cover"
@@ -102,46 +197,49 @@ export default function CharityPage() {
           />
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:auto-rows-[220px]">
-            {charityPrograms.map((program) => (
-              <Link
-                key={program.title}
-                href={`/charity/${program.slug}`}
-                className={`group relative overflow-hidden rounded-2xl ${program.span}`}
-              >
-                {/* Background image */}
-                <Image
-                  src={program.image}
-                  alt={program.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-all duration-700 group-hover:scale-110"
-                />
-                {/* Dark overlay */}
-                <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
+            {gridPrograms.map((program) => {
+              const Icon = getIcon(program.icon);
+              return (
+                <Link
+                  key={program.slug}
+                  href={`/charity/${program.slug}`}
+                  className={`group relative overflow-hidden rounded-2xl ${program.gridSpan}`}
+                >
+                  {/* Background image */}
+                  <Image
+                    src={program.image}
+                    alt={program.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-110"
+                  />
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
 
-                {/* Content */}
-                <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-                    <program.icon size={18} />
+                  {/* Content */}
+                  <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                      <Icon size={18} />
+                    </div>
+                    <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+                      {program.title}
+                    </h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
+                      {program.description}
+                    </p>
+                    {/* Learn More indicator */}
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold opacity-0 transition-all duration-500 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
+                      Learn More <HiArrowRight size={12} />
+                    </span>
                   </div>
-                  <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
-                    {program.title}
-                  </h3>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
-                    {program.description}
-                  </p>
-                  {/* Learn More indicator */}
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold opacity-0 transition-all duration-500 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
-                    Learn More <HiArrowRight size={12} />
-                  </span>
-                </div>
 
-                {/* Bottom gold line on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5">
-                  <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
-                </div>
-              </Link>
-            ))}
+                  {/* Bottom gold line on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5">
+                    <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -156,7 +254,7 @@ export default function CharityPage() {
             <div className="lg:w-1/2">
               <div className="relative h-56 overflow-hidden rounded-3xl lg:h-[450px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80&fm=webp&fit=crop"
+                  src={missionImage}
                   alt="Soul Winner Campaign — community outreach"
                   fill
                   className="object-cover"
@@ -368,7 +466,7 @@ export default function CharityPage() {
       <section className="relative overflow-hidden py-28">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80&fm=webp&fit=crop"
+            src={missionImage}
             alt="Community gathering and worship"
             fill
             sizes="100vw"

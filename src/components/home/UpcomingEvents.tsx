@@ -82,10 +82,13 @@ function calcCountdown() {
 }
 
 function useCountdown() {
-  const [timeLeft, setTimeLeft] = useState(() => calcCountdown());
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
   useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(calcCountdown()), 1000);
+    const tick = () => setTimeLeft(calcCountdown());
+    const interval = setInterval(tick, 1000);
+    // Use queueMicrotask so the first tick isn't a synchronous setState in the effect body
+    queueMicrotask(tick);
     return () => clearInterval(interval);
   }, []);
 

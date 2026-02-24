@@ -7,7 +7,7 @@ import { HiArrowRight, HiPlay } from "react-icons/hi";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 
-const HERO_IMAGES = [
+const FALLBACK_IMAGES = [
   {
     src: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1400&q=80&fm=webp&fit=crop",
     alt: "Worship service with raised hands",
@@ -28,13 +28,20 @@ const HERO_IMAGES = [
 
 const INTERVAL_MS = 7000;
 
-export default function Hero() {
+interface HeroProps {
+  heroImage?: string;
+}
+
+export default function Hero({ heroImage }: HeroProps) {
+  const heroImages = heroImage
+    ? [{ src: heroImage, alt: "Enjiri Center Ministries" }, ...FALLBACK_IMAGES.slice(1)]
+    : FALLBACK_IMAGES;
   const [currentImage, setCurrentImage] = useState(0);
   const [direction, setDirection] = useState(1);
   const nextImage = useCallback(() => {
     setDirection(1);
-    setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
-  }, []);
+    setCurrentImage((prev) => (prev + 1) % heroImages.length);
+  }, [heroImages.length]);
 
   useEffect(() => {
     const timer = setInterval(nextImage, INTERVAL_MS);
@@ -75,8 +82,8 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <Image
-            src={HERO_IMAGES[currentImage].src}
-            alt={HERO_IMAGES[currentImage].alt}
+            src={heroImages[currentImage].src}
+            alt={heroImages[currentImage].alt}
             fill
             sizes="100vw"
             priority={currentImage === 0}

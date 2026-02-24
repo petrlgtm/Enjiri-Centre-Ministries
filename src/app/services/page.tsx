@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import type { Metadata } from "next";
 import ServiceSchedule from "@/components/services/ServiceSchedule";
 import Container from "@/components/ui/Container";

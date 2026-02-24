@@ -19,7 +19,11 @@ const timeline = [
   { year: "2023", title: "International Expansion", description: "Spreading the gospel across nations and borders." },
 ];
 
-export default function ChurchHistory() {
+interface ChurchHistoryProps {
+  image?: string;
+}
+
+export default function ChurchHistory({ image }: ChurchHistoryProps) {
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
       <Container>
@@ -34,8 +38,8 @@ export default function ChurchHistory() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
               <Image
-                src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"
-                alt="Church worship service"
+                src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
+                alt="Enjiri Center Ministries — Our Story"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
