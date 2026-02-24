@@ -40,14 +40,14 @@ export default function ProgramGallery({
               className="mb-4 overflow-hidden rounded-2xl"
             >
               <div
-                className={`relative ${i % 3 === 0 ? "h-64 sm:h-80" : "h-48 sm:h-60"}`}
+                className={`relative ${i % 3 === 0 ? "aspect-[4/3] sm:aspect-auto sm:h-80" : "aspect-[4/3] sm:aspect-auto sm:h-60"}`}
               >
                 <Image
                   src={src}
                   alt={`${title} gallery image ${i + 1}`}
                   fill
                   sizes="(max-width: 640px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 hover:scale-110"
+                  className="object-contain sm:object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
             </motion.div>

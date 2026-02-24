@@ -64,7 +64,7 @@ export default function MinistriesGrid({ ministries }: MinistriesGridProps) {
   const useFallback = !ministries || ministries.length === 0;
 
   return (
-    <section className="relative overflow-hidden py-28">
+    <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
       <div className="absolute inset-0 bg-cream" />
 
       <Container className="relative">
@@ -75,7 +75,7 @@ export default function MinistriesGrid({ ministries }: MinistriesGridProps) {
           onCream
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {useFallback
             ? fallbackMinistries.map((ministry, index) => (
                 <MinistryCard
@@ -130,7 +130,7 @@ function MinistryCard({
         delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group rounded-2xl border border-black/[0.06] bg-white p-7 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-xl hover:shadow-gold-dark/5"
+      className="group rounded-2xl border border-black/[0.06] bg-white p-5 sm:p-7 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-xl hover:shadow-gold-dark/5"
     >
       <div className="icon-breathe flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:bg-gold group-hover:text-navy group-hover:scale-110">
         <IconComponent size={26} />

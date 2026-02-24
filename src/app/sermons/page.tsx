@@ -205,13 +205,13 @@ function SermonsContent() {
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Thumbnail */}
-                  <div className="relative aspect-[16/9] w-full md:w-1/2 overflow-hidden rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
+                  <div className="relative aspect-[16/9] w-full md:w-1/2 overflow-hidden rounded-t-2xl sm:rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
                     <Image
                       src={featuredSermon.thumbnail || featuredFallbackImage}
                       alt={featuredSermon.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-90"
+                      className="object-contain sm:object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-90"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent md:bg-gradient-to-r md:from-transparent md:via-navy/5 md:to-navy/40" />

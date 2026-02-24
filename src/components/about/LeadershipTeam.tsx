@@ -60,12 +60,12 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
             className="group cursor-pointer overflow-hidden rounded-2xl bg-navy shadow-lg"
           >
             <div className="flex flex-col sm:flex-row">
-              <div className="relative h-72 sm:h-auto sm:w-[45%] overflow-hidden">
+              <div className="relative aspect-[4/3] sm:aspect-auto sm:h-auto sm:w-[45%] overflow-hidden">
                 <Image
                   src={displayLeaders[0].image}
                   alt={displayLeaders[0].name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                  className="object-contain sm:object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   sizes="(max-width: 640px) 100vw, 45vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-navy/70 via-navy/30 to-transparent" />
@@ -108,12 +108,12 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
                   }}
                   className="group cursor-pointer overflow-hidden rounded-2xl bg-navy shadow-lg"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative aspect-[4/3] sm:aspect-auto sm:h-64 overflow-hidden">
                     <Image
                       src={leader.image}
                       alt={leader.name}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                      className="object-contain sm:object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent" />

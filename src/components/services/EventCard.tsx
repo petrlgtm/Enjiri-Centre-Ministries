@@ -55,7 +55,7 @@ export default function EventCard({
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-[900ms] group-hover:scale-110"
+            className="object-contain sm:object-cover transition-transform duration-[900ms] group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/60" />
         </>

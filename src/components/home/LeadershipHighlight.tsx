@@ -40,19 +40,19 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
         >
           <div className="flex flex-col lg:flex-row">
             {/* Image */}
-            <div className="relative h-64 lg:h-auto lg:w-5/12">
+            <div className="relative aspect-[4/3] sm:aspect-auto sm:h-72 lg:h-auto lg:w-5/12">
               <Image
                 src={displayLeader.image}
                 alt={displayLeader.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
+                className="object-contain sm:object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--gray-100)]/30 lg:bg-gradient-to-r lg:from-transparent lg:to-[var(--gray-100)]" />
             </div>
 
             {/* Content */}
-            <div className="relative p-8 lg:w-7/12 lg:p-12">
+            <div className="relative p-5 sm:p-8 lg:w-7/12 lg:p-12">
               <span className="inline-block rounded-full bg-[var(--gold-muted)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-dark border border-gold/10">
                 Meet Our Pastor
               </span>

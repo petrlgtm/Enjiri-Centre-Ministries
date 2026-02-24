@@ -60,10 +60,10 @@ export default function Footer() {
         {/* Subtle noise */}
         <div className="noise-overlay absolute inset-0" />
 
-        <Container className="relative py-20">
-          <div className="grid gap-12 lg:grid-cols-12">
+        <Container className="relative py-12 sm:py-16 lg:py-20">
+          <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Brand Column */}
-            <div className="lg:col-span-4">
+            <div className="col-span-2 lg:col-span-4">
               <Link href="/" className="group inline-flex items-center gap-3">
                 <div className="relative h-12 w-12 overflow-hidden rounded-xl shadow-[0_2px_12px_rgba(201,168,76,0.3)] transition-transform duration-500 group-hover:scale-105">
                   <Image
@@ -107,7 +107,7 @@ export default function Footer() {
             </div>
 
             {/* Quick Links */}
-            <div className="lg:col-span-2">
+            <div className="col-span-1 lg:col-span-2">
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/70">
                 Navigate
               </h3>
@@ -126,7 +126,7 @@ export default function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div className="lg:col-span-3">
+            <div className="col-span-1 lg:col-span-3">
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/70">
                 Contact
               </h3>
@@ -167,7 +167,7 @@ export default function Footer() {
             </div>
 
             {/* Service Times */}
-            <div className="lg:col-span-3">
+            <div className="col-span-2 lg:col-span-3">
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/70">
                 Service Times
               </h3>

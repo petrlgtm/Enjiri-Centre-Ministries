@@ -124,9 +124,9 @@ export default async function CharityPage() {
       <SectionDivider accent />
 
       {/* SECTION 2 — Mission (Split Layout) */}
-      <section className="relative overflow-hidden py-28">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <Container>
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+          <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Text Content */}
             <div className="lg:w-1/2">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--gold-muted)] ring-1 ring-gold/20">
@@ -162,12 +162,12 @@ export default async function CharityPage() {
 
             {/* RIGHT — Image Panel */}
             <div className="lg:w-1/2">
-              <div className="relative h-56 overflow-hidden rounded-3xl transition-transform duration-700 hover:scale-[1.02] lg:h-[400px]">
+              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-56 overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02] lg:h-[400px]">
                 <Image
                   src={missionImage}
                   alt="Community outreach and charity programs in East Africa"
                   fill
-                  className="object-cover"
+                  className="object-contain sm:object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/30 to-transparent" />
@@ -185,7 +185,7 @@ export default async function CharityPage() {
       <SectionDivider accent />
 
       {/* SECTION 3 — Programs Visual Grid */}
-      <section className="relative overflow-hidden py-28 lg:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32">
         <div className="absolute inset-0 bg-cream" />
 
         <Container className="relative">
@@ -196,12 +196,12 @@ export default async function CharityPage() {
             onCream
           />
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:auto-rows-[220px]">
-            {gridPrograms.map((program) => {
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-3 sm:auto-rows-[200px] md:auto-rows-[220px]">
+            {gridPrograms.map((program, index) => {
               const Icon = getIcon(program.icon);
               return (
                 <Link
-                  key={program.slug}
+                  key={`${program.slug}-${index}`}
                   href={`/charity/${program.slug}`}
                   className={`group relative overflow-hidden rounded-2xl ${program.gridSpan}`}
                 >
@@ -211,7 +211,7 @@ export default async function CharityPage() {
                     alt={program.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-110"
+                    className="object-contain sm:object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   {/* Dark overlay */}
                   <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
@@ -247,17 +247,17 @@ export default async function CharityPage() {
       <SectionDivider accent />
 
       {/* SECTION 4 — #IAMASOULWINNER Campaign Spotlight */}
-      <section className="relative overflow-hidden py-28">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <Container>
-          <div className="flex flex-col-reverse gap-12 lg:flex-row lg:items-center lg:gap-16">
+          <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
             <div className="lg:w-1/2">
-              <div className="relative h-56 overflow-hidden rounded-3xl lg:h-[450px]">
+              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-56 overflow-hidden rounded-2xl sm:rounded-3xl lg:h-[450px]">
                 <Image
                   src={missionImage}
                   alt="Soul Winner Campaign — community outreach"
                   fill
-                  className="object-cover"
+                  className="object-contain sm:object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-navy/60" />
@@ -374,7 +374,7 @@ export default async function CharityPage() {
       <section className="relative overflow-hidden py-20">
         <Container>
           <div className="relative overflow-hidden rounded-3xl">
-            <div className="relative p-10 sm:p-14">
+            <div className="relative p-6 sm:p-10 md:p-14">
               <div className="absolute inset-0 bg-navy" />
               <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
@@ -387,7 +387,7 @@ export default async function CharityPage() {
                   light
                 />
 
-                <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+                <div className="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-4">
                   {[
                     { end: 15, suffix: "+", label: "Communities Reached" },
                     { end: 5000, suffix: "+", label: "Meals Served" },
@@ -398,7 +398,7 @@ export default async function CharityPage() {
                       <CountUp
                         end={stat.end}
                         suffix={stat.suffix}
-                        className="block font-[family-name:var(--font-playfair)] text-4xl font-bold text-foreground sm:text-5xl"
+                        className="block font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl"
                       />
                       <span className="mt-2 block text-xs font-medium tracking-wider text-gold/80">
                         {stat.label}
@@ -463,7 +463,7 @@ export default async function CharityPage() {
       </section>
 
       {/* SECTION 7 — Get Involved CTA */}
-      <section className="relative overflow-hidden py-28">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0">
           <Image
             src={missionImage}

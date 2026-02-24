@@ -31,10 +31,10 @@ interface PlanYourVisitProps {
 
 export default function PlanYourVisit({ image }: PlanYourVisitProps) {
   return (
-    <section className="relative overflow-hidden py-28">
+    <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
       <div className="absolute inset-0 bg-cream" />
       <Container className="relative">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+        <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
           {/* Left — Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -43,13 +43,13 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative h-64 overflow-hidden rounded-3xl shadow-lg lg:h-[420px]">
+            <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 md:h-80 overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg lg:h-[420px]">
               <Image
                 src={image || "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Plan Your Visit"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain sm:object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
             </div>

@@ -97,16 +97,16 @@ function useCountdown() {
 
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex-1 rounded-xl bg-navy/70 px-2 py-2.5 text-center backdrop-blur-md border border-white/5">
+    <div className="flex-1 rounded-xl bg-navy/70 px-1.5 py-2 sm:px-2 sm:py-2.5 text-center backdrop-blur-md border border-white/5">
       <motion.span
         key={value}
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="block font-[family-name:var(--font-playfair)] text-xl font-bold text-gold"
+        className="block font-[family-name:var(--font-playfair)] text-base sm:text-lg md:text-xl font-bold text-gold"
       >
         {String(value).padStart(2, "0")}
       </motion.span>
-      <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-foreground/60">
+      <span className="block text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-foreground/60">
         {label}
       </span>
     </div>
@@ -118,7 +118,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
   const displayEvents = events && events.length > 0 ? events : placeholderEvents;
 
   return (
-    <section className="relative py-32">
+    <section className="relative py-16 sm:py-24 lg:py-32">
       <div className="absolute inset-0 bg-navy" />
 
 
@@ -142,13 +142,13 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
               className="card-hover card-premium group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
             >
               <div className="flex flex-col md:flex-row">
-                <div className="relative h-64 md:h-auto md:w-[55%] overflow-hidden">
+                <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 md:h-auto md:w-[55%] overflow-hidden">
                   <Image
                     src={event.image}
                     alt={event.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 55vw"
-                    className="object-cover transition-all duration-[900ms] group-hover:scale-110"
+                    className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -167,7 +167,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col justify-center p-8 md:w-[45%] md:p-10">
+                <div className="flex flex-col justify-center p-5 sm:p-8 md:w-[45%] md:p-10">
                   <span className="mb-3 inline-block w-fit rounded-full bg-[var(--red-muted)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-red-light border border-red/15">
                     Featured Event
                   </span>
@@ -197,7 +197,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
           ))}
 
           {/* Non-featured — 2 column grid with background images */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {displayEvents.filter(e => !e.featured).map((event, index) => (
               <motion.div
                 key={event.title}
@@ -205,7 +205,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="card-hover group relative h-72 overflow-hidden rounded-3xl border border-white/[0.06] sm:h-80"
+                className="card-hover group relative h-56 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.06] sm:h-72 lg:h-80"
               >
                 {/* Full background image */}
                 <Image
@@ -213,7 +213,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                   alt={event.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-all duration-[900ms] group-hover:scale-110"
+                  className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-110"
                 />
                 {/* Dark overlay for readability */}
                 <div className="absolute inset-0 bg-navy/65 transition-colors duration-500 group-hover:bg-navy/55" />

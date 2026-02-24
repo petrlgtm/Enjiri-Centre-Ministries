@@ -36,12 +36,12 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
                 src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Our Story"
                 fill
-                className="object-cover"
+                className="object-contain sm:object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />

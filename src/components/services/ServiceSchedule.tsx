@@ -59,13 +59,13 @@ export default function ServiceSchedule() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative h-64 overflow-hidden rounded-3xl"
+              className="group relative aspect-[16/10] sm:aspect-auto sm:h-64 overflow-hidden rounded-2xl sm:rounded-3xl"
             >
               <Image
                 src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"
                 alt="Congregation gathered in worship"
                 fill
-                className="object-cover transition-all duration-[900ms] group-hover:scale-[1.08]"
+                className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-[1.08]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />

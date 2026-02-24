@@ -76,7 +76,7 @@ export default function LatestSermons() {
                     alt={sermon.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-all duration-[900ms] group-hover:scale-[1.12] group-hover:brightness-90"
+                    className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-[1.12] group-hover:brightness-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent" />
 

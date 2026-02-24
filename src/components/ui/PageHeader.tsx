@@ -48,7 +48,7 @@ export default function PageHeader({
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-28">
+    <section ref={sectionRef} className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
       {/* Background */}
       <div className="absolute inset-0 bg-navy" />
 
@@ -73,12 +73,12 @@ export default function PageHeader({
             initial={{ opacity: 0, y: 15, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block rounded-full border border-gold/25 bg-gold/[0.1] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold backdrop-blur-sm"
+            className="inline-block rounded-full border border-gold/25 bg-gold/[0.1] px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-gold backdrop-blur-sm"
           >
             {label}
           </motion.span>
 
-          <h1 className="mt-6 font-[family-name:var(--font-playfair)] text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl leading-[1.05]">
+          <h1 className="mt-5 sm:mt-6 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.05]">
             <SplitTitle text={title} />
           </h1>
 
@@ -102,7 +102,7 @@ export default function PageHeader({
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-6 max-w-xl text-[1.05rem] leading-[1.75] text-foreground/75"
+            className="mx-auto mt-5 sm:mt-6 max-w-xl text-[0.95rem] sm:text-[1.05rem] leading-[1.7] sm:leading-[1.75] text-foreground/75"
           >
             {description}
           </motion.p>

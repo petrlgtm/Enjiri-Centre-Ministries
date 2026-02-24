@@ -119,7 +119,7 @@ export default async function ServicesPage() {
 
       <SectionDivider accent />
 
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-cream" />
         <Container className="relative">
           <SectionHeading

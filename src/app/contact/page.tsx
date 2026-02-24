@@ -72,12 +72,12 @@ export default function ContactPage() {
       />
 
       {/* Section 1 — Contact Info + Image (split) */}
-      <section className="relative overflow-hidden py-28">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <Container>
-          <div className="flex flex-col-reverse gap-12 lg:flex-row lg:items-start lg:gap-16">
+          <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-start lg:gap-16">
             {/* Left — contact info cards in 2x2 grid */}
             <div className="lg:w-5/12">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
@@ -113,12 +113,12 @@ export default function ContactPage() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="lg:w-7/12"
             >
-              <div className="relative h-64 overflow-hidden rounded-3xl lg:h-[500px]">
+              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 overflow-hidden rounded-2xl sm:rounded-3xl lg:h-[500px]">
                 <Image
                   src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=80&fm=webp&fit=crop"
                   alt="Church location scenery"
                   fill
-                  className="object-cover"
+                  className="object-contain sm:object-cover"
                   sizes="(max-width: 1024px) 100vw, 58vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
@@ -143,11 +143,11 @@ export default function ContactPage() {
       </section>
 
       {/* Section 2 — Form + Social (split, reversed) */}
-      <section className="relative overflow-hidden py-28">
+      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0 bg-cream" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+          <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-start lg:gap-16">
             {/* Left — form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -165,7 +165,7 @@ export default function ContactPage() {
               />
 
               {/* Form container with gold corner accent */}
-              <div className="relative rounded-3xl border border-black/[0.06] bg-white p-8 card-premium">
+              <div className="relative rounded-2xl sm:rounded-3xl border border-black/[0.06] bg-white p-5 sm:p-8 card-premium">
                 {/* Decorative gold corner accent — top-left */}
                 <div className="absolute top-0 left-0 h-16 w-16 overflow-hidden rounded-tl-3xl">
                   <div className="absolute -top-px -left-px h-[3px] w-10 rounded-full bg-gradient-to-r from-gold-dark to-transparent" />

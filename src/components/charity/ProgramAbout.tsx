@@ -57,12 +57,12 @@ export default function ProgramAbout({
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative h-64 overflow-hidden rounded-3xl lg:h-[420px]">
+            <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 overflow-hidden rounded-2xl sm:rounded-3xl lg:h-[420px]">
               <Image
                 src={aboutImage}
                 alt={title}
                 fill
-                className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                className="object-contain sm:object-cover transition-transform duration-700 hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />

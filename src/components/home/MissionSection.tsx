@@ -56,7 +56,7 @@ const values = [
 
 export default function MissionSection() {
   return (
-    <section className="relative overflow-hidden py-28 lg:py-32">
+    <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
 
       <Container className="relative">
@@ -84,14 +84,14 @@ export default function MissionSection() {
                 href={value.href}
                 className="card-premium group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] transition-all duration-500 hover:border-gold/15 hover:shadow-xl hover:shadow-gold/5"
               >
-                {/* Image section — alternating heights */}
-                <div className={`relative overflow-hidden ${index % 2 === 0 ? "h-64" : "h-52"}`}>
+                {/* Image section — aspect-ratio on mobile, fixed heights on desktop */}
+                <div className={`relative overflow-hidden ${index % 2 === 0 ? "aspect-[16/10] sm:aspect-auto sm:h-56 md:h-64" : "aspect-[16/10] sm:aspect-auto sm:h-48 md:h-52"}`}>
                   <Image
                     src={value.image}
                     alt={value.title}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-[1.08]"
+                    className="object-contain sm:object-cover transition-all duration-700 group-hover:scale-[1.08]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--gray-100)] via-navy/40 to-transparent" />
 
@@ -109,7 +109,7 @@ export default function MissionSection() {
                 </div>
 
                 {/* Content section */}
-                <div className="relative px-6 pb-7 pt-8">
+                <div className="relative px-5 pb-6 pt-7 sm:px-6 sm:pb-7 sm:pt-8">
                   {/* Subtle gradient accent */}
                   <div className={`pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-bl ${value.accent} opacity-0 transition-opacity duration-700 group-hover:opacity-100`} />
 

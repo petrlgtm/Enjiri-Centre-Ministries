@@ -28,7 +28,7 @@ export default function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={cn("mb-16", centered && "text-center", className)}
+      className={cn("mb-10 sm:mb-14 lg:mb-16", centered && "text-center", className)}
     >
       {label && (
         <motion.span
@@ -37,7 +37,7 @@ export default function SectionHeading({
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={cn(
-            "mb-5 inline-block rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em]",
+            "mb-4 sm:mb-5 inline-block rounded-full px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em]",
             onCream
               ? "bg-gold-dark/10 text-gold-dark border border-gold-dark/15"
               : light
@@ -50,7 +50,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          "font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] leading-[1.12]",
+          "font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15] sm:leading-[1.12]",
           onCream ? "text-cream-heading" : "text-foreground"
         )}
       >
@@ -80,7 +80,7 @@ export default function SectionHeading({
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className={cn(
-            "mt-5 max-w-2xl text-[1.05rem] leading-[1.75]",
+            "mt-4 sm:mt-5 max-w-2xl text-[0.9rem] sm:text-[1.05rem] leading-[1.7] sm:leading-[1.75]",
             centered && "mx-auto",
             onCream ? "text-cream-body" : light ? "text-gray-300" : "text-[var(--gray-400)]"
           )}

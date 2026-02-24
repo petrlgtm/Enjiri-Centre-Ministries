@@ -65,7 +65,7 @@ export default function TestimonialsCarousel({ testimonies }: TestimonialsCarous
   }, [isPaused, next]);
 
   return (
-    <section className="relative overflow-hidden py-28">
+    <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
       <div className="absolute inset-0 bg-cream" />
 
       <Container className="relative">
@@ -94,7 +94,7 @@ export default function TestimonialsCarousel({ testimonies }: TestimonialsCarous
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="text-center"
               >
-                <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-[1.8] text-cream-heading/80 sm:text-2xl">
+                <p className="font-[family-name:var(--font-playfair)] text-lg italic leading-[1.7] text-cream-heading/80 sm:text-xl md:text-2xl sm:leading-[1.8]">
                   &ldquo;{displayTestimonials[current].quote}&rdquo;
                 </p>
                 <div className="mx-auto mt-6 flex items-center justify-center gap-3">

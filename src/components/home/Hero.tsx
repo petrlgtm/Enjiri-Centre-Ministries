@@ -67,7 +67,7 @@ export default function Hero({ heroImage }: HeroProps) {
   };
 
   return (
-    <section className="relative h-dvh min-h-[700px] overflow-hidden" role="region" aria-roledescription="carousel" aria-label="Hero image carousel">
+    <section className="relative h-dvh min-h-[560px] sm:min-h-[700px] overflow-hidden" role="region" aria-roledescription="carousel" aria-label="Hero image carousel">
 
       {/* ── Full-screen Image Carousel ── */}
       <AnimatePresence mode="sync" custom={direction}>
@@ -98,7 +98,7 @@ export default function Hero({ heroImage }: HeroProps) {
       <div className="noise-overlay absolute inset-0 pointer-events-none" />
 
       {/* ── Content ── */}
-      <Container className="relative z-10 flex h-full flex-col justify-center pt-[130px] pb-20 sm:pt-[140px] sm:pb-24 lg:pt-[156px] lg:pb-28">
+      <Container className="relative z-10 flex h-full flex-col justify-center pt-[110px] pb-16 sm:pt-[140px] sm:pb-24 lg:pt-[156px] lg:pb-28">
         <div className="max-w-2xl">
 
           {/* Badge */}
@@ -123,7 +123,7 @@ export default function Hero({ heroImage }: HeroProps) {
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 max-w-lg text-[1.05rem] font-light leading-[1.85] text-white/75 drop-shadow-sm"
+            className="mt-5 sm:mt-7 max-w-lg text-[0.95rem] sm:text-[1.05rem] font-light leading-[1.7] sm:leading-[1.85] text-white/75 drop-shadow-sm"
           >
             Preaching Christ and Restoring Hope through the power of the Holy Spirit.
             Ministering the Gospel through repentance and remission of sins to all nations.
@@ -134,7 +134,7 @@ export default function Hero({ heroImage }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
+            className="mt-8 sm:mt-10 flex flex-col items-start gap-3 sm:gap-4 sm:flex-row"
           >
             <div className="btn-magnetic">
               <Button
