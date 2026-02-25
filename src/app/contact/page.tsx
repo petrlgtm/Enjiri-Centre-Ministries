@@ -69,6 +69,7 @@ export default function ContactPage() {
         label="Reach Out"
         title="Contact Us"
         description="We'd love to hear from you. Whether you have a question, prayer request, or just want to say hello — reach out!"
+        backgroundImage="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80&fm=webp&fit=crop"
       />
 
       {/* Section 1 — Contact Info + Image (split) */}
@@ -113,12 +114,12 @@ export default function ContactPage() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="lg:w-7/12"
             >
-              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 overflow-hidden rounded-2xl sm:rounded-3xl lg:h-[500px]">
+              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl lg:aspect-[3/4]">
                 <Image
                   src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=800&q=80&fm=webp&fit=crop"
                   alt="Church location scenery"
                   fill
-                  className="object-contain sm:object-cover"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 58vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />

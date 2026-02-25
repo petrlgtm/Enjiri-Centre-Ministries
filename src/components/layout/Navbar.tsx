@@ -18,6 +18,8 @@ const navLinks = [
   { href: "/services", label: "Events" },
   { href: "/charity", label: "Outreach" },
   { href: "/sermons", label: "Sermons" },
+  { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -19,7 +19,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import CountUp from "@/components/ui/CountUp";
 import Button from "@/components/ui/Button";
-import { fetchSanity } from "@/lib/sanity-helpers";
+import { fetchSanity } from "@/sanity/lib/helpers";
 import { allCharityProgramsQuery, siteSettingsQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageBuilder } from "@/sanity/image";
 import { charityPrograms as staticPrograms } from "@/data/charityPrograms";
@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   title: "Charity",
   description:
     "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
+  openGraph: {
+    title: "Outreach & Charity — Enjiri Center Ministries International",
+    description:
+      "Community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
+  },
 };
 
 interface SanityImage {
@@ -119,6 +124,7 @@ export default async function CharityPage() {
         label="How We Give Back"
         title="Our Outreach Mission"
         description="Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."
+        backgroundImage={missionImage || undefined}
       />
 
       <SectionDivider accent />
@@ -162,12 +168,12 @@ export default async function CharityPage() {
 
             {/* RIGHT — Image Panel */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-56 overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02] lg:h-[400px]">
+              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02]">
                 <Image
                   src={missionImage}
                   alt="Community outreach and charity programs in East Africa"
                   fill
-                  className="object-contain sm:object-cover"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/30 to-transparent" />
@@ -211,7 +217,7 @@ export default async function CharityPage() {
                     alt={program.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-contain sm:object-cover transition-all duration-700 group-hover:scale-110"
+                    className="object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   {/* Dark overlay */}
                   <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
@@ -252,12 +258,12 @@ export default async function CharityPage() {
           <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-[16/10] sm:aspect-auto sm:h-56 overflow-hidden rounded-2xl sm:rounded-3xl lg:h-[450px]">
+              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl">
                 <Image
                   src={missionImage}
                   alt="Soul Winner Campaign — community outreach"
                   fill
-                  className="object-contain sm:object-cover"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-navy/60" />

@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "Give",
   description:
     "Support the work of Enjiri Center Ministries International through your generous giving.",
+  openGraph: {
+    title: "Give — Enjiri Center Ministries International",
+    description:
+      "Support the work of Enjiri Center Ministries International through your generous giving.",
+  },
 };
 
 const givingCategories = [
@@ -24,6 +29,7 @@ export default function DonatePage() {
         label="Support Our Mission"
         title="Give Generously"
         description="Your generosity fuels our mission to reach more people with the love of Christ and serve our communities."
+        backgroundImage="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop"
       />
 
       <section className="relative overflow-hidden py-14 sm:py-20 md:py-28">

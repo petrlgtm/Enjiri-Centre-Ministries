@@ -1,60 +1,55 @@
 import { defineField, defineType } from "sanity";
-import { UsersIcon } from "@sanity/icons";
+import { CommentIcon } from "@sanity/icons";
 
 export default defineType({
-  name: "leader",
-  title: "Leader",
+  name: "testimony",
+  title: "Testimony",
   type: "document",
-  icon: UsersIcon,
+  icon: CommentIcon,
   fields: [
+    defineField({
+      name: "quote",
+      title: "Quote",
+      type: "text",
+      rows: 4,
+      description:
+        "The testimony in their own words — keep it heartfelt and authentic (2-4 sentences)",
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "name",
       title: "Name",
       type: "string",
-      description:
-        'Full name with title (e.g. "Evangelist Peter Kalagi", "Pastor Mary")',
+      description: 'Full name of the person giving the testimony (e.g. "Grace M.")',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "role",
-      title: "Role / Title",
+      title: "Role",
       type: "string",
       description:
-        'Their position in the ministry (e.g. "President & Founder", "Youth Pastor")',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "bio",
-      title: "Bio",
-      type: "text",
-      rows: 4,
-      description:
-        "A brief biography — background, ministry journey, and current role. Shown on About page.",
+        'Their role or connection to the ministry (e.g. "Church Member", "Youth Leader", "Volunteer")',
     }),
     defineField({
       name: "image",
       title: "Photo",
       type: "image",
       options: { hotspot: true },
-      description:
-        "Professional headshot or ministry photo — recommended minimum 400x400px",
+      description: "Optional headshot photo — helps make the testimony more personal",
       fields: [
         defineField({
           name: "alt",
           title: "Alternative Text",
           type: "string",
-          description: "Describe the photo for screen readers and SEO",
-          validation: (rule) =>
-            rule.warning("Alt text improves accessibility and SEO"),
+          description: "Describe the photo for screen readers",
         }),
       ],
     }),
     defineField({
       name: "featured",
-      title: "Featured on Homepage",
+      title: "Featured",
       type: "boolean",
-      description:
-        "Turn on to show this leader in the leadership highlight section on the homepage",
+      description: "Show this testimony prominently on the homepage",
       initialValue: false,
     }),
     defineField({

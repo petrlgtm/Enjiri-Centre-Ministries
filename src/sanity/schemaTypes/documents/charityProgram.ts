@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 import { EarthGlobeIcon } from "@sanity/icons";
 
 export default defineType({
@@ -34,10 +34,19 @@ export default defineType({
     }),
     defineField({
       name: "icon",
-      title: "Icon Name",
+      title: "Icon",
       type: "string",
-      description:
-        'Choose one: "globe", "sparkles", "heart", "userGroup", "academicCap", "star"',
+      description: "Choose an icon for the program card",
+      options: {
+        list: [
+          { title: "Globe", value: "globe" },
+          { title: "Sparkles", value: "sparkles" },
+          { title: "Heart", value: "heart" },
+          { title: "User Group", value: "userGroup" },
+          { title: "Academic Cap", value: "academicCap" },
+          { title: "Star", value: "star" },
+        ],
+      },
     }),
     defineField({
       name: "gridSpan",
@@ -89,19 +98,27 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "body",
+      title: "Full Description",
+      type: "portableText",
+      description:
+        "Rich text body for the detail page — replaces the old plain text long description.",
+    }),
+    defineField({
       name: "longDescription",
-      title: "Long Description",
+      title: "Long Description (Legacy)",
       type: "text",
       rows: 12,
       description:
-        "Full description for the detail page. Separate paragraphs with a blank line.",
+        "Plain text fallback — use the Body field above for rich text instead.",
+      hidden: true,
     }),
     defineField({
       name: "gallery",
       title: "Gallery Images",
       type: "array",
       of: [
-        {
+        defineArrayMember({
           type: "image",
           options: { hotspot: true },
           fields: [
@@ -111,54 +128,19 @@ export default defineType({
               type: "string",
             }),
           ],
-        },
+        }),
       ],
     }),
     defineField({
       name: "highlights",
       title: "Program Highlights",
       type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            defineField({
-              name: "title",
-              title: "Title",
-              type: "string",
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: "description",
-              title: "Description",
-              type: "text",
-              rows: 3,
-            }),
-          ],
-          preview: {
-            select: { title: "title", subtitle: "description" },
-          },
-        },
-      ],
+      of: [defineArrayMember({ type: "highlight" })],
     }),
     defineField({
       name: "scripture",
       title: "Scripture Quote",
-      type: "object",
-      fields: [
-        defineField({
-          name: "text",
-          title: "Verse Text",
-          type: "text",
-          rows: 3,
-        }),
-        defineField({
-          name: "reference",
-          title: "Reference",
-          type: "string",
-          description: 'e.g. "Mark 16:15"',
-        }),
-      ],
+      type: "scripture",
     }),
     defineField({
       name: "ctaTitle",
@@ -178,6 +160,11 @@ export default defineType({
       title: "Display Order",
       type: "number",
       description: "Lower numbers appear first.",
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
   ],
   orderings: [

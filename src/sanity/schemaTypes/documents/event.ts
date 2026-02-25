@@ -67,8 +67,7 @@ export default defineType({
     defineField({
       name: "body",
       title: "Full Details",
-      type: "array",
-      of: [defineArrayMember({ type: "block" })],
+      type: "portableText",
       description:
         "Rich text for full event details — schedule, what to bring, etc.",
     }),
@@ -85,8 +84,6 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Describe the image for screen readers and SEO",
-          validation: (rule) =>
-            rule.warning("Alt text improves accessibility and SEO"),
         }),
       ],
     }),
@@ -127,6 +124,19 @@ export default defineType({
       type: "url",
       description:
         "External link for event registration (e.g. Google Form or Eventbrite URL)",
+    }),
+    defineField({
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+      options: { layout: "tags" },
+      description: "Add tags to help categorize this event",
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
   ],
   orderings: [

@@ -41,7 +41,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                 src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Our Story"
                 fill
-                className="object-contain sm:object-cover"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />

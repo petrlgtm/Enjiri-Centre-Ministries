@@ -7,8 +7,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import PageHeader from "@/components/ui/PageHeader";
 import SectionDivider from "@/components/ui/SectionDivider";
 import EventsGrid from "@/components/services/EventsGrid";
-import { fetchSanity } from "@/lib/sanity-helpers";
-import { upcomingEventsQuery } from "@/sanity/queries";
+import { fetchSanity } from "@/sanity/lib/helpers";
+import { upcomingEventsQuery, siteSettingsQuery } from "@/sanity/queries";
 import { cardImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "Services & Events",
   description:
     "View our weekly service schedule and upcoming events at Enjiri Center Ministries International.",
+  openGraph: {
+    title: "Services & Events — Enjiri Center Ministries International",
+    description:
+      "View our weekly service schedule and upcoming events.",
+  },
 };
 
 interface SanityEvent {
@@ -90,7 +95,12 @@ const fallbackEvents = [
 ];
 
 export default async function ServicesPage() {
-  const sanityEvents = await fetchSanity<SanityEvent[]>(upcomingEventsQuery);
+  const [sanityEvents, settings] = await Promise.all([
+    fetchSanity<SanityEvent[]>(upcomingEventsQuery),
+    fetchSanity<{ heroImage?: { asset: { _ref: string } } }>(siteSettingsQuery),
+  ]);
+
+  const heroImg = settings?.heroImage ? cardImage(settings.heroImage, 1200) : undefined;
 
   const eventsData = sanityEvents && sanityEvents.length > 0
     ? sanityEvents.map((e) => ({
@@ -113,6 +123,7 @@ export default async function ServicesPage() {
         label="Join Us"
         title="Services & Events"
         description="Come worship with us and be part of the exciting events happening at Enjiri Center Ministries."
+        backgroundImage={heroImg}
       />
 
       <ServiceSchedule />

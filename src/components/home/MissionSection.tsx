@@ -85,13 +85,13 @@ export default function MissionSection() {
                 className="card-premium group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] transition-all duration-500 hover:border-gold/15 hover:shadow-xl hover:shadow-gold/5"
               >
                 {/* Image section — aspect-ratio on mobile, fixed heights on desktop */}
-                <div className={`relative overflow-hidden ${index % 2 === 0 ? "aspect-[16/10] sm:aspect-auto sm:h-56 md:h-64" : "aspect-[16/10] sm:aspect-auto sm:h-48 md:h-52"}`}>
+                <div className={`relative overflow-hidden ${index % 2 === 0 ? "aspect-[16/10] sm:aspect-[16/9]" : "aspect-[16/10] sm:aspect-[3/2]"}`}>
                   <Image
                     src={value.image}
                     alt={value.title}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-contain sm:object-cover transition-all duration-700 group-hover:scale-[1.08]"
+                    className="object-cover transition-all duration-700 group-hover:scale-[1.08]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--gray-100)] via-navy/40 to-transparent" />
 

@@ -33,9 +33,9 @@ export default defineType({
     defineField({
       name: "speaker",
       title: "Speaker",
-      type: "string",
-      description:
-        'Full name and title of the speaker (e.g. "Pastor Peter Kalagi")',
+      type: "reference",
+      to: [{ type: "leader" }],
+      description: "Select the speaker from your leaders list",
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -79,8 +79,6 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Describe the image for screen readers and SEO",
-          validation: (rule) =>
-            rule.warning("Alt text improves accessibility and SEO"),
         }),
       ],
     }),
@@ -96,10 +94,14 @@ export default defineType({
     defineField({
       name: "body",
       title: "Sermon Notes",
-      type: "array",
-      of: [defineArrayMember({ type: "block" })],
+      type: "portableText",
       description:
         "Full sermon notes or transcript in rich text — shown on the sermon detail page",
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
   ],
   orderings: [
@@ -112,17 +114,17 @@ export default defineType({
   preview: {
     select: {
       title: "title",
-      subtitle: "speaker",
+      speakerName: "speaker.name",
       date: "date",
       media: "thumbnail",
     },
-    prepare({ title, subtitle, date, media }) {
+    prepare({ title, speakerName, date, media }) {
       const formattedDate = date
         ? new Date(date).toLocaleDateString()
         : "No date";
       return {
         title,
-        subtitle: `${subtitle} — ${formattedDate}`,
+        subtitle: `${speakerName || "No speaker"} — ${formattedDate}`,
         media,
       };
     },

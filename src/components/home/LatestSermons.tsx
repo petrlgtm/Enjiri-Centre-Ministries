@@ -76,7 +76,7 @@ export default function LatestSermons() {
                     alt={sermon.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-[1.12] group-hover:brightness-90"
+                    className="object-cover transition-all duration-[900ms] group-hover:scale-[1.12] group-hover:brightness-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent" />
 
@@ -109,28 +109,6 @@ export default function LatestSermons() {
                     </span>
                   </div>
 
-                  {/* Audio waveform — animated on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center gap-[2px] px-3 pb-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
-                    {Array.from({ length: 32 }).map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="w-[2.5px] rounded-t-full bg-gold/50"
-                        animate={{
-                          height: [
-                            `${4 + Math.sin(i * 0.7) * 6}px`,
-                            `${4 + Math.cos(i * 0.5 + 1) * 10}px`,
-                            `${4 + Math.sin(i * 0.7) * 6}px`,
-                          ],
-                        }}
-                        transition={{
-                          duration: 1 + Math.random() * 0.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: i * 0.03,
-                        }}
-                      />
-                    ))}
-                  </div>
                 </div>
 
                 {/* Content */}

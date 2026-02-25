@@ -2,9 +2,9 @@ export const revalidate = 60;
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fetchSanity } from "@/lib/sanity-helpers";
+import { fetchSanity } from "@/sanity/lib/helpers";
 import { charityProgramBySlugQuery } from "@/sanity/queries";
-import { heroImage as heroImageBuilder, cardImage } from "@/sanity/image";
+import { heroImage as heroImageBuilder, cardImage, heroImage } from "@/sanity/image";
 import { getProgramBySlug, getAllSlugs } from "@/data/charityPrograms";
 import SectionDivider from "@/components/ui/SectionDivider";
 import ProgramHero from "@/components/charity/ProgramHero";
@@ -26,11 +26,18 @@ interface SanityCharityProgram {
   heroImage?: SanityImage;
   aboutImage?: SanityImage;
   longDescription?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body?: any[];
   gallery?: SanityImage[];
   highlights?: { title: string; description: string }[];
   scripture?: { text: string; reference: string };
   ctaTitle?: string;
   ctaDescription?: string;
+  seo?: {
+    seoTitle?: string;
+    seoDescription?: string;
+    seoImage?: SanityImage;
+  };
 }
 
 export function generateStaticParams() {
@@ -48,11 +55,37 @@ export async function generateMetadata({
     { slug }
   );
   const staticProgram = getProgramBySlug(slug);
-  const title = sanityProgram?.title || staticProgram?.title || "Program Not Found";
+  const title =
+    sanityProgram?.seo?.seoTitle ||
+    sanityProgram?.title ||
+    staticProgram?.title ||
+    "Program Not Found";
   const description =
-    sanityProgram?.description || staticProgram?.description || "";
+    sanityProgram?.seo?.seoDescription ||
+    sanityProgram?.description ||
+    staticProgram?.description ||
+    "";
+  const ogImage = sanityProgram?.seo?.seoImage
+    ? heroImage(sanityProgram.seo.seoImage)
+    : sanityProgram?.heroImage
+      ? heroImageBuilder(sanityProgram.heroImage)
+      : undefined;
 
-  return { title, description };
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      ...(ogImage && { images: [{ url: ogImage, width: 1920, height: 1080 }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(ogImage && { images: [ogImage] }),
+    },
+  };
 }
 
 export default async function CharityProgramPage({
@@ -77,6 +110,7 @@ export default async function CharityProgramPage({
   const aboutImg = sanityProgram?.aboutImage
     ? cardImage(sanityProgram.aboutImage)
     : staticProgram?.aboutImage || "";
+  const body = sanityProgram?.body;
   const paragraphs = sanityProgram?.longDescription
     ? sanityProgram.longDescription.split("\n\n").filter(Boolean)
     : staticProgram?.longDescription || [];
@@ -107,6 +141,7 @@ export default async function CharityProgramPage({
         title={title}
         paragraphs={paragraphs}
         aboutImage={aboutImg}
+        body={body}
       />
 
       <SectionDivider accent />

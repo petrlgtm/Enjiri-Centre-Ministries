@@ -142,13 +142,13 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
               className="card-hover card-premium group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
             >
               <div className="flex flex-col md:flex-row">
-                <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 md:h-auto md:w-[55%] overflow-hidden">
+                <div className="relative aspect-[16/10] md:aspect-auto md:w-[55%] overflow-hidden">
                   <Image
                     src={event.image}
                     alt={event.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 55vw"
-                    className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-110"
+                    className="object-cover transition-all duration-[900ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -213,7 +213,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                   alt={event.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain sm:object-cover transition-all duration-[900ms] group-hover:scale-110"
+                  className="object-cover transition-all duration-[900ms] group-hover:scale-110"
                 />
                 {/* Dark overlay for readability */}
                 <div className="absolute inset-0 bg-navy/65 transition-colors duration-500 group-hover:bg-navy/55" />

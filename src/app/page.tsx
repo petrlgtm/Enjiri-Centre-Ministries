@@ -12,7 +12,7 @@ import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import DonateBand from "@/components/home/DonateBand";
 import ContactInfoCard from "@/components/home/ContactInfoCard";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { fetchSanity } from "@/lib/sanity-helpers";
+import { fetchSanity } from "@/sanity/lib/helpers";
 import {
   homepageEventsQuery,
   allLeadersQuery,

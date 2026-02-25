@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
@@ -8,6 +9,7 @@ interface PageHeaderProps {
   label: string;
   title: string;
   description: string;
+  backgroundImage?: string;
 }
 
 function SplitTitle({ text }: { text: string }) {
@@ -39,6 +41,7 @@ export default function PageHeader({
   label,
   title,
   description,
+  backgroundImage,
 }: PageHeaderProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -50,7 +53,23 @@ export default function PageHeader({
   return (
     <section ref={sectionRef} className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
       {/* Background */}
-      <div className="absolute inset-0 bg-navy" />
+      {backgroundImage ? (
+        <>
+          <div className="absolute inset-0">
+            <Image
+              src={backgroundImage}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 bg-navy/75" />
+        </>
+      ) : (
+        <div className="absolute inset-0 bg-navy" />
+      )}
 
       {/* Noise texture */}
       <div className="noise-overlay absolute inset-0" />

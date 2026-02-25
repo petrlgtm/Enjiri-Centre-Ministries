@@ -105,13 +105,13 @@ export default function ContactInfoCard() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative aspect-[16/10] sm:aspect-auto sm:h-64 overflow-hidden rounded-2xl sm:rounded-3xl border border-black/[0.06] shadow-lg lg:h-[380px]">
+            <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl border border-black/[0.06] shadow-lg">
               <Image
                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80&fm=webp&fit=crop"
                 alt="Map location of Enjiri Center"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain sm:object-cover"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">

@@ -155,6 +155,7 @@ function SermonsContent() {
         label="The Word of God"
         title="Sermons & Teachings"
         description="Watch or listen to our sermons and be encouraged by the teaching of God's Word."
+        backgroundImage="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80&fm=webp&fit=crop"
       />
 
       <section className="relative overflow-hidden py-28">
@@ -211,7 +212,7 @@ function SermonsContent() {
                       alt={featuredSermon.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain sm:object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-90"
+                      className="object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-90"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent md:bg-gradient-to-r md:from-transparent md:via-navy/5 md:to-navy/40" />

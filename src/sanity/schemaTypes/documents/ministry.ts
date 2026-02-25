@@ -33,10 +33,19 @@ export default defineType({
     }),
     defineField({
       name: "icon",
-      title: "Icon Name",
+      title: "Icon",
       type: "string",
-      description:
-        'Choose one of these exact icon names: "userGroup", "heart", "music", "book", "globe", "star"',
+      description: "Choose an icon for the ministry card",
+      options: {
+        list: [
+          { title: "User Group", value: "userGroup" },
+          { title: "Heart", value: "heart" },
+          { title: "Music", value: "music" },
+          { title: "Book", value: "book" },
+          { title: "Globe", value: "globe" },
+          { title: "Star", value: "star" },
+        ],
+      },
     }),
     defineField({
       name: "image",
@@ -51,8 +60,6 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Describe the image for screen readers and SEO",
-          validation: (rule) =>
-            rule.warning("Alt text improves accessibility and SEO"),
         }),
       ],
     }),
@@ -78,6 +85,11 @@ export default defineType({
       type: "number",
       description:
         "Controls the display order — lower numbers appear first (e.g. 1 = first, 2 = second)",
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
     }),
   ],
   orderings: [
