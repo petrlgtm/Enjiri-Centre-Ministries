@@ -40,3 +40,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# sanity
+.sanity/
+schema.json
+
+# claude
+.claude/settings.local.json
+
+# misc artifacts
+/image.png
