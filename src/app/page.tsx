@@ -169,8 +169,6 @@ export default async function HomePage() {
     <>
       <Hero heroImage={heroImageUrl} {...heroData} />
       <SectionDivider />
-      <LeadershipHighlight leader={leaderData} />
-      <SectionDivider accent />
       <SnapshotBand items={snapshotData} />
       <SectionDivider />
       <MissionSection missionText={missionData.missionText} visionText={missionData.visionText} />
@@ -188,6 +186,8 @@ export default async function HomePage() {
       <DonateBand heading={donateBandData?.heading} text={donateBandData?.text} />
       <SectionDivider />
       <ContactInfoCard settings={settings} />
+      <SectionDivider accent />
+      <LeadershipHighlight leader={leaderData} />
     </>
   );
 }
