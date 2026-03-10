@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { HiClock, HiCalendar, HiUserGroup, HiLocationMarker } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 
-const snapshots = [
+const defaultSnapshots = [
   {
     icon: HiClock,
     label: "Sunday Service",
@@ -27,7 +27,25 @@ const snapshots = [
   },
 ];
 
-export default function SnapshotBand() {
+const iconMap: Record<string, typeof HiClock> = {
+  "Sunday Service": HiClock,
+  "Midweek Service": HiCalendar,
+  "Community": HiUserGroup,
+  "Location": HiLocationMarker,
+};
+
+interface SnapshotBandProps {
+  items?: Array<{ label: string; value: string }>;
+}
+
+export default function SnapshotBand({ items }: SnapshotBandProps) {
+  const snapshots = items?.length
+    ? items.map((item, i) => ({
+        icon: iconMap[item.label] || [HiClock, HiCalendar, HiUserGroup, HiLocationMarker][i % 4],
+        label: item.label,
+        value: item.value,
+      }))
+    : defaultSnapshots;
   return (
     <section className="relative py-8 overflow-hidden">
       <div className="absolute inset-0 bg-cream" />

@@ -22,6 +22,7 @@ export default defineType({
       options: { source: "title", maxLength: 96 },
       description:
         "URL-friendly identifier for event detail pages — click Generate to auto-create",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "date",

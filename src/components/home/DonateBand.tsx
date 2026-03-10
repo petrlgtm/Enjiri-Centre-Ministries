@@ -9,7 +9,12 @@ import Button from "@/components/ui/Button";
 
 const amounts = [25, 50, 100, 250];
 
-export default function DonateBand() {
+interface DonateBandProps {
+  heading?: string;
+  text?: string;
+}
+
+export default function DonateBand({ heading, text }: DonateBandProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -57,8 +62,7 @@ export default function DonateBand() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl leading-[1.1]"
           >
-            Partner With Us in{" "}
-            <span className="text-gradient-gold-animated">God&apos;s Work</span>
+            {heading || <>Partner With Us in{" "}<span className="text-gradient-gold-animated">God&apos;s Work</span></>}
           </motion.h2>
 
           <motion.p
@@ -68,7 +72,7 @@ export default function DonateBand() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mx-auto mt-6 max-w-xl text-lg leading-[1.8] text-foreground/75"
           >
-            Your generous giving supports our outreach, community services, and the spreading of the gospel to the nations.
+            {text || "Your generous giving supports our outreach, community services, and the spreading of the gospel to the nations."}
           </motion.p>
 
           {/* Amount pills */}

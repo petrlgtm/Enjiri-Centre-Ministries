@@ -14,10 +14,15 @@ export default defineType({
         { title: "Heading 4", value: "h4" },
         { title: "Quote", value: "blockquote" },
       ],
+      lists: [
+        { title: "Bullet", value: "bullet" },
+        { title: "Numbered", value: "number" },
+      ],
       marks: {
         decorators: [
           { title: "Bold", value: "strong" },
           { title: "Italic", value: "em" },
+          { title: "Underline", value: "underline" },
         ],
         annotations: [
           {

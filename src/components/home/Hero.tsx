@@ -30,9 +30,14 @@ const INTERVAL_MS = 7000;
 
 interface HeroProps {
   heroImage?: string;
+  heading?: string;
+  subheading?: string;
+  cta?: { label: string; url: string; style?: string };
+  secondaryText?: string;
+  secondaryUrl?: string;
 }
 
-export default function Hero({ heroImage }: HeroProps) {
+export default function Hero({ heroImage, heading, subheading, cta, secondaryText, secondaryUrl }: HeroProps) {
   const heroImages = heroImage
     ? [{ src: heroImage, alt: "Enjiri Center Ministries" }, ...FALLBACK_IMAGES.slice(1)]
     : FALLBACK_IMAGES;
@@ -125,8 +130,7 @@ export default function Hero({ heroImage }: HeroProps) {
             transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mt-5 sm:mt-7 max-w-lg text-[0.95rem] sm:text-[1.05rem] font-light leading-[1.7] sm:leading-[1.85] text-white/75 drop-shadow-sm"
           >
-            Preaching Christ and Restoring Hope through the power of the Holy Spirit.
-            Ministering the Gospel through repentance and remission of sins to all nations.
+            {subheading || "Preaching Christ and Restoring Hope through the power of the Holy Spirit. Ministering the Gospel through repentance and remission of sins to all nations."}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -138,22 +142,22 @@ export default function Hero({ heroImage }: HeroProps) {
           >
             <div className="btn-magnetic">
               <Button
-                href="/services"
+                href={cta?.url || "/services"}
                 variant="primary"
                 size="lg"
                 icon={<HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />}
               >
-                Join Us Sunday
+                {cta?.label || "Join Us Sunday"}
               </Button>
             </div>
             <div className="btn-magnetic">
               <Button
-                href="/sermons"
+                href={secondaryUrl || "/sermons"}
                 variant="outline"
                 size="lg"
                 icon={<HiPlay size={16} />}
               >
-                Watch Sermons
+                {secondaryText || "Watch Sermons"}
               </Button>
             </div>
           </motion.div>

@@ -7,16 +7,16 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
-const contactDetails = [
+const defaultContactDetails = [
   {
     icon: HiLocationMarker,
     label: "Address",
-    value: "Enjiri Center, Main Campus",
+    value: "Kampala, Uganda",
   },
   {
     icon: HiPhone,
     label: "Phone",
-    value: "+250 000 000 000",
+    value: "+256 779 226290",
   },
   {
     icon: HiMail,
@@ -30,7 +30,42 @@ const contactDetails = [
   },
 ];
 
-export default function ContactInfoCard() {
+interface ContactInfoCardProps {
+  settings?: {
+    address?: string;
+    phone?: string;
+    email?: string;
+    serviceSchedule?: Array<{ day: string; time: string; serviceName: string }>;
+  } | null;
+}
+
+export default function ContactInfoCard({ settings }: ContactInfoCardProps) {
+  const serviceTimeSummary = settings?.serviceSchedule?.length
+    ? settings.serviceSchedule.map((s) => `${s.day.slice(0, 3)} ${s.time.split(" - ")[0]}`).join(" | ")
+    : undefined;
+
+  const contactDetails = [
+    {
+      icon: HiLocationMarker,
+      label: "Address",
+      value: settings?.address || defaultContactDetails[0].value,
+    },
+    {
+      icon: HiPhone,
+      label: "Phone",
+      value: settings?.phone || defaultContactDetails[1].value,
+    },
+    {
+      icon: HiMail,
+      label: "Email",
+      value: settings?.email || defaultContactDetails[2].value,
+    },
+    {
+      icon: HiClock,
+      label: "Service Times",
+      value: serviceTimeSummary || defaultContactDetails[3].value,
+    },
+  ];
   return (
     <section className="relative overflow-hidden py-28">
       <div className="absolute inset-0 bg-cream" />

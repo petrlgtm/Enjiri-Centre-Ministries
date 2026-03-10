@@ -19,6 +19,7 @@ import {
   allTestimoniesQuery,
   allMinistriesQuery,
   siteSettingsQuery,
+  homePageQuery,
 } from "@/sanity/queries";
 import { cardImage, portraitImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
@@ -66,15 +67,46 @@ interface SanityMinistry {
 
 interface SanitySettings {
   heroImage?: SanityImage;
+  churchName?: string;
+  tagline?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  socialLinks?: {
+    facebook?: string;
+    youtube?: string;
+    instagram?: string;
+    twitter?: string;
+    tiktok?: string;
+  };
+  serviceSchedule?: Array<{
+    day: string;
+    time: string;
+    serviceName: string;
+  }>;
+}
+
+interface SanityHomePage {
+  heroHeading?: string;
+  heroSubheading?: string;
+  heroCta?: { label: string; url: string; style?: string };
+  heroSecondaryText?: string;
+  heroSecondaryUrl?: string;
+  snapshotItems?: Array<{ label: string; value: string }>;
+  missionText?: string;
+  visionText?: string;
+  donateBandHeading?: string;
+  donateBandText?: string;
 }
 
 export default async function HomePage() {
-  const [events, leaders, testimonies, ministries, settings] = await Promise.all([
+  const [events, leaders, testimonies, ministries, settings, homePage] = await Promise.all([
     fetchSanity<SanityEvent[]>(homepageEventsQuery),
     fetchSanity<SanityLeader[]>(allLeadersQuery),
     fetchSanity<SanityTestimony[]>(allTestimoniesQuery),
     fetchSanity<SanityMinistry[]>(allMinistriesQuery),
     fetchSanity<SanitySettings>(siteSettingsQuery),
+    fetchSanity<SanityHomePage>(homePageQuery),
   ]);
 
   const heroImageUrl = settings?.heroImage ? heroImage(settings.heroImage) : "";
@@ -113,15 +145,35 @@ export default async function HomePage() {
     ctaUrl: m.ctaUrl || "/contact",
   }));
 
+  const snapshotData = homePage?.snapshotItems;
+
+  const donateBandData = homePage ? {
+    heading: homePage.donateBandHeading,
+    text: homePage.donateBandText,
+  } : undefined;
+
+  const heroData = {
+    heading: homePage?.heroHeading,
+    subheading: homePage?.heroSubheading,
+    cta: homePage?.heroCta,
+    secondaryText: homePage?.heroSecondaryText,
+    secondaryUrl: homePage?.heroSecondaryUrl,
+  };
+
+  const missionData = {
+    missionText: homePage?.missionText,
+    visionText: homePage?.visionText,
+  };
+
   return (
     <>
-      <Hero heroImage={heroImageUrl} />
+      <Hero heroImage={heroImageUrl} {...heroData} />
       <SectionDivider />
       <LeadershipHighlight leader={leaderData} />
       <SectionDivider accent />
-      <SnapshotBand />
+      <SnapshotBand items={snapshotData} />
       <SectionDivider />
-      <MissionSection />
+      <MissionSection missionText={missionData.missionText} visionText={missionData.visionText} />
       <SectionDivider accent />
       <PlanYourVisit image={heroImageUrl} />
       <SectionDivider />
@@ -133,9 +185,9 @@ export default async function HomePage() {
       <SectionDivider />
       <TestimonialsCarousel testimonies={testimoniesData} />
       <SectionDivider accent />
-      <DonateBand />
+      <DonateBand heading={donateBandData?.heading} text={donateBandData?.text} />
       <SectionDivider />
-      <ContactInfoCard />
+      <ContactInfoCard settings={settings} />
     </>
   );
 }

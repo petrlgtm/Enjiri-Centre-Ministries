@@ -21,7 +21,27 @@ const quickLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const socialLinks = [
+interface FooterProps {
+  siteSettings?: {
+    address?: string;
+    phone?: string;
+    email?: string;
+    socialLinks?: {
+      facebook?: string;
+      youtube?: string;
+      instagram?: string;
+      twitter?: string;
+      tiktok?: string;
+    };
+    serviceSchedule?: Array<{
+      day: string;
+      time: string;
+      serviceName: string;
+    }>;
+  } | null;
+}
+
+const defaultSocialLinks = [
   {
     href: "#",
     icon: FaFacebookF,
@@ -48,7 +68,32 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+const socialIconMap: Record<string, { icon: typeof FaFacebookF; hoverColor: string }> = {
+  facebook: { icon: FaFacebookF, hoverColor: "hover:bg-[#1877F2]/15 hover:text-[#1877F2] hover:border-[#1877F2]/30" },
+  youtube: { icon: FaYoutube, hoverColor: "hover:bg-[#FF0000]/15 hover:text-[#FF0000] hover:border-[#FF0000]/30" },
+  instagram: { icon: FaInstagram, hoverColor: "hover:bg-[#E4405F]/15 hover:text-[#E4405F] hover:border-[#E4405F]/30" },
+  tiktok: { icon: FaTiktok, hoverColor: "hover:bg-[#00f2ea]/15 hover:text-[#00f2ea] hover:border-[#00f2ea]/30" },
+};
+
+export default function Footer({ siteSettings }: FooterProps) {
+  const socialLinks = siteSettings?.socialLinks
+    ? Object.entries(siteSettings.socialLinks)
+        .filter(([, url]) => url)
+        .map(([key, url]) => ({
+          href: url!,
+          icon: socialIconMap[key]?.icon || FaFacebookF,
+          label: key.charAt(0).toUpperCase() + key.slice(1),
+          hoverColor: socialIconMap[key]?.hoverColor || "",
+        }))
+    : defaultSocialLinks;
+
+  const serviceSchedule = siteSettings?.serviceSchedule?.length
+    ? siteSettings.serviceSchedule
+    : [
+        { day: "Sunday", time: "9:00 AM - 12:00 PM", serviceName: "Sunday Worship" },
+        { day: "Wednesday", time: "6:00 PM - 8:00 PM", serviceName: "Wednesday Bible Study" },
+        { day: "Friday", time: "6:00 PM - 8:00 PM", serviceName: "Friday Prayer" },
+      ];
   return (
     <footer className="relative overflow-hidden">
       {/* Newsletter Signup */}
@@ -139,19 +184,19 @@ export default function Footer() {
                     size={16}
                   />
                   <span className="text-[0.9rem] leading-relaxed text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
-                    Kampala, Uganda
+                    {siteSettings?.address || "Kampala, Uganda"}
                   </span>
                 </li>
                 <li className="group flex items-center gap-3">
                   <HiPhone className="shrink-0 text-gold/40 transition-colors duration-300 group-hover:text-gold/70" size={16} />
                   <span className="text-[0.9rem] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
-                    +256 779 226290
+                    {siteSettings?.phone || "+256 779 226290"}
                   </span>
                 </li>
                 <li className="group flex items-center gap-3">
                   <HiMail className="shrink-0 text-gold/40 transition-colors duration-300 group-hover:text-gold/70" size={16} />
                   <span className="text-[0.9rem] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/70">
-                    info@enjiriministries.org
+                    {siteSettings?.email || "info@enjiriministries.org"}
                   </span>
                 </li>
               </ul>
@@ -174,20 +219,16 @@ export default function Footer() {
                 Service Times
               </h3>
               <ul className="mt-5 space-y-4">
-                {[
-                  { day: "Sunday Worship", time: "9:00 AM - 12:00 PM" },
-                  { day: "Wednesday Bible Study", time: "6:00 PM - 8:00 PM" },
-                  { day: "Friday Prayer", time: "6:00 PM - 8:00 PM" },
-                ].map((service) => (
+                {serviceSchedule.map((service) => (
                   <li
-                    key={service.day}
+                    key={service.serviceName}
                     className="group border-l-2 border-gold/20 pl-4 transition-all duration-300 hover:border-gold/50"
                   >
                     <span className="block text-[0.85rem] font-medium text-foreground/70 transition-colors duration-300 group-hover:text-foreground/70">
-                      {service.day}
+                      {service.serviceName}
                     </span>
                     <span className="mt-0.5 block text-[0.8rem] text-foreground/70 transition-colors duration-300 group-hover:text-gold/50">
-                      {service.time}
+                      {service.day} {service.time}
                     </span>
                   </li>
                 ))}

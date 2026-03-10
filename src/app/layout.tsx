@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import AnnouncementBanner from "@/components/layout/AnnouncementBanner";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { announcementBannerQuery } from "@/sanity/queries";
+import { announcementBannerQuery, siteSettingsQuery } from "@/sanity/queries";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,6 +18,12 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0c0f1a",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +48,14 @@ export const metadata: Metadata = {
     title: "Enjiri Center Ministries International",
     description:
       "Reaching the world with the love of Christ through worship, outreach, teachings, and service.",
+    images: [
+      {
+        url: "/images/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Enjiri Center Ministries International",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -57,12 +71,34 @@ interface AnnouncementBannerData {
   expiresAt?: string;
 }
 
+interface SiteSettingsData {
+  churchName?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  socialLinks?: {
+    facebook?: string;
+    youtube?: string;
+    instagram?: string;
+    twitter?: string;
+    tiktok?: string;
+  };
+  serviceSchedule?: Array<{
+    day: string;
+    time: string;
+    serviceName: string;
+  }>;
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const banner = await fetchSanity<AnnouncementBannerData>(announcementBannerQuery);
+  const [banner, siteSettings] = await Promise.all([
+    fetchSanity<AnnouncementBannerData>(announcementBannerQuery),
+    fetchSanity<SiteSettingsData>(siteSettingsQuery),
+  ]);
 
   const showBanner =
     banner?.enabled &&
@@ -90,7 +126,7 @@ export default async function RootLayout({
         )}
         <Navbar />
         <main id="main-content" className="min-h-screen">{children}</main>
-        <Footer />
+        <Footer siteSettings={siteSettings} />
         <BackToTop />
       </body>
     </html>

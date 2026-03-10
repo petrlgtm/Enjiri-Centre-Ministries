@@ -9,7 +9,18 @@ export default defineType({
       name: "day",
       title: "Day",
       type: "string",
-      description: 'Day of the week (e.g. "Sunday", "Wednesday")',
+      description: "Select the day of the week",
+      options: {
+        list: [
+          { title: "Sunday", value: "Sunday" },
+          { title: "Monday", value: "Monday" },
+          { title: "Tuesday", value: "Tuesday" },
+          { title: "Wednesday", value: "Wednesday" },
+          { title: "Thursday", value: "Thursday" },
+          { title: "Friday", value: "Friday" },
+          { title: "Saturday", value: "Saturday" },
+        ],
+      },
       validation: (rule) => rule.required(),
     }),
     defineField({

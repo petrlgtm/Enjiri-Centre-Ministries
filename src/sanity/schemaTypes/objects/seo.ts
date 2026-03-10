@@ -28,8 +28,17 @@ export default defineType({
       name: "seoImage",
       title: "SEO Image",
       type: "image",
+      options: { hotspot: true },
       description:
         "Image shown when shared on social media — recommended 1200x630px",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          description: "Describe the image for accessibility",
+        }),
+      ],
     }),
   ],
 });

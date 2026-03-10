@@ -54,7 +54,12 @@ const values = [
   },
 ];
 
-export default function MissionSection() {
+interface MissionSectionProps {
+  missionText?: string;
+  visionText?: string;
+}
+
+export default function MissionSection({ missionText, visionText }: MissionSectionProps) {
   return (
     <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
       <div className="absolute inset-0 bg-[var(--gray-50)]" />
@@ -63,7 +68,7 @@ export default function MissionSection() {
         <SectionHeading
           label="What We Stand For"
           title="Rooted in Faith, Growing in Purpose"
-          subtitle="Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations. — Luke 24:47"
+          subtitle={missionText || "Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations. — Luke 24:47"}
         />
 
         {/* 2x2 grid — alternating image heights for visual rhythm */}

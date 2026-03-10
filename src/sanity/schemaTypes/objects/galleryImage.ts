@@ -18,7 +18,9 @@ export default defineType({
       type: "string",
       description: "Describe the image for screen readers and SEO",
       validation: (rule) =>
-        rule.warning("Alt text improves accessibility and SEO"),
+        rule.custom((value) =>
+          value ? true : { message: "Alt text improves accessibility and SEO", level: "warning" },
+        ),
     }),
     defineField({
       name: "caption",

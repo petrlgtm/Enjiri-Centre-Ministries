@@ -11,12 +11,14 @@ export default defineType({
       type: "text",
       rows: 3,
       description: "The scripture passage text",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "reference",
       title: "Reference",
       type: "string",
       description: 'Book, chapter, and verse (e.g. "Mark 16:15")',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

@@ -104,6 +104,7 @@ export const latestEventsQuery = groq`
   *[_type == "event"] | order(date desc) [0...3] {
     _id,
     title,
+    "slug": slug.current,
     date,
     location,
     description,
@@ -123,14 +124,16 @@ export const eventBySlugQuery = groq`
     body,
     image { ${imageFields} },
     isRecurring,
+    featured,
     category,
     rsvpUrl,
+    tags,
     ${seoFields}
   }
 `;
 
 export const upcomingEventsWithCategoryQuery = groq`
-  *[_type == "event" && date >= now()] | order(date asc) {
+  *[_type == "event" && date >= now() && ($category == "all" || category == $category)] | order(date asc) {
     _id,
     title,
     "slug": slug.current,
@@ -140,6 +143,7 @@ export const upcomingEventsWithCategoryQuery = groq`
     description,
     image { ${imageFields} },
     isRecurring,
+    featured,
     category,
     rsvpUrl
   }

@@ -19,8 +19,14 @@ export default defineType({
       title: "Message",
       type: "string",
       description: "The announcement text — keep it short and clear",
-      validation: (rule) =>
+      validation: (rule) => [
+        rule.custom((value, context) => {
+          const enabled = context.document?.enabled;
+          if (enabled && !value) return "Message is required when the banner is enabled";
+          return true;
+        }),
         rule.max(120).warning("Keep under 120 characters for mobile readability"),
+      ],
     }),
     defineField({
       name: "linkText",
