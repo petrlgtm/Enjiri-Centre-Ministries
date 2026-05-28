@@ -23,18 +23,6 @@ export default defineType({
         'A short motto or mission phrase shown in the hero (e.g. "Preaching Christ in All Nations")',
     }),
     defineField({
-      name: "description",
-      title: "Site Description",
-      type: "text",
-      rows: 3,
-      description:
-        "SEO meta description — appears in Google search results. Keep under 200 characters.",
-      validation: (rule) =>
-        rule
-          .max(200)
-          .warning("Keep under 200 characters for best SEO results"),
-    }),
-    defineField({
       name: "logo",
       title: "Logo",
       type: "image",
@@ -46,22 +34,6 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Describe the logo for screen readers",
-        }),
-      ],
-    }),
-    defineField({
-      name: "heroImage",
-      title: "Hero Background Image",
-      type: "image",
-      options: { hotspot: true },
-      description:
-        "Large background image for the homepage hero section — recommended 1920x1080px minimum",
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alternative Text",
-          type: "string",
-          description: "Describe the image for screen readers",
         }),
       ],
     }),
@@ -99,6 +71,28 @@ export default defineType({
       description:
         "Add each weekly service — shown on the homepage and services page",
       of: [defineArrayMember({ type: "serviceScheduleItem" })],
+    }),
+    defineField({
+      name: "defaultHeaderImage",
+      title: "Default Page Header Image",
+      type: "image",
+      options: { hotspot: true },
+      description:
+        "Fallback background image for page headers (e.g. About, Contact, Charity) — recommended 1920x600px",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          description: "Describe the image for screen readers",
+        }),
+      ],
+    }),
+    defineField({
+      name: "globalSeo",
+      title: "Global SEO Defaults",
+      type: "seo",
+      description: "Default SEO settings for pages that don't have their own",
     }),
   ],
   preview: {

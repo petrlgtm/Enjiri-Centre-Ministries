@@ -23,6 +23,7 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { allCharityProgramsQuery, siteSettingsQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageBuilder } from "@/sanity/image";
 import { charityPrograms as staticPrograms } from "@/data/charityPrograms";
+import { CharityProgram, SiteSettings } from "@/types/sanity";
 
 export const metadata: Metadata = {
   title: "Charity",
@@ -34,24 +35,6 @@ export const metadata: Metadata = {
       "Community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
   },
 };
-
-interface SanityImage {
-  asset: { _ref: string };
-}
-
-interface SanityCharityProgram {
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  icon?: string;
-  gridSpan?: string;
-  image?: SanityImage;
-}
-
-interface SanitySettings {
-  heroImage?: SanityImage;
-}
 
 const iconMap: Record<string, IconType> = {
   globe: HiGlobe,
@@ -68,12 +51,12 @@ function getIcon(name?: string): IconType {
 
 export default async function CharityPage() {
   const [programs, settings] = await Promise.all([
-    fetchSanity<SanityCharityProgram[]>(allCharityProgramsQuery),
-    fetchSanity<SanitySettings>(siteSettingsQuery),
+    fetchSanity<CharityProgram[]>(allCharityProgramsQuery),
+    fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const missionImage = settings?.heroImage
-    ? heroImageBuilder(settings.heroImage)
+  const missionImage = settings?.defaultHeaderImage
+    ? heroImageBuilder(settings.defaultHeaderImage)
     : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
 
   // Merge Sanity data with static fallback images
@@ -83,7 +66,7 @@ export default async function CharityPage() {
       return {
         title: p.title,
         slug: p.slug,
-        description: p.description,
+        description: p.description || "",
         icon: p.icon,
         gridSpan: p.gridSpan || staticMatch?.span || "",
         image: p.image

@@ -62,13 +62,13 @@ export default function SnapshotBand({ items }: SnapshotBandProps) {
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group flex items-center gap-2.5 min-[375px]:gap-3 sm:gap-4 rounded-2xl bg-white/80 backdrop-blur-md border border-black/[0.06] px-3 py-3 min-[375px]:px-4 sm:px-5 sm:py-4 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-md"
+              className="group flex items-center gap-2.5 min-[375px]:gap-3 sm:gap-4 rounded-2xl bg-white/80 backdrop-blur-md border border-black/6 px-3 py-3 min-[375px]:px-4 sm:px-5 sm:py-4 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-md"
             >
               <div className="flex h-9 w-9 min-[375px]:h-10 min-[375px]:w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:bg-gold group-hover:text-navy">
-                <item.icon className="h-4 w-4 min-[375px]:h-[18px] min-[375px]:w-[18px] sm:h-5 sm:w-5" />
+                <item.icon className="h-4 w-4 min-[375px]:h-4.5 min-[375px]:w-4.5 sm:h-5 sm:w-5" />
               </div>
               <div className="min-w-0">
-                <p className="text-[10px] min-[375px]:text-[11px] font-semibold uppercase tracking-[0.1em] min-[375px]:tracking-[0.15em] text-cream-muted truncate">
+                <p className="text-[10px] min-[375px]:text-[11px] font-semibold uppercase tracking-widest min-[375px]:tracking-[0.15em] text-cream-muted truncate">
                   {item.label}
                 </p>
                 <p className="mt-0.5 text-xs min-[375px]:text-sm font-bold text-cream-heading truncate">

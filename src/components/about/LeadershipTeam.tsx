@@ -60,7 +60,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
             className="group cursor-pointer overflow-hidden rounded-2xl bg-navy shadow-lg"
           >
             <div className="flex flex-col sm:flex-row">
-              <div className="relative aspect-[4/3] sm:aspect-auto sm:w-[45%] overflow-hidden">
+              <div className="relative aspect-4/3 sm:aspect-auto sm:w-[45%] overflow-hidden">
                 <Image
                   src={displayLeaders[0].image}
                   alt={displayLeaders[0].name}
@@ -68,14 +68,14 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   sizes="(max-width: 640px) 100vw, 45vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-navy/70 via-navy/30 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-linear-to-t sm:bg-linear-to-r from-navy/70 via-navy/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
               <div className="flex flex-col justify-center p-8 sm:w-[55%] sm:p-10">
                 <span className="mb-2 inline-block w-fit rounded-full bg-gold/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold border border-gold/10">
                   President &amp; Founder
                 </span>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
+                <h3 className="font-(family-name:--font-playfair) text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
                   {displayLeaders[0].name}
                 </h3>
                 <p className="mt-1 text-sm font-semibold text-gold">
@@ -108,7 +108,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
                   }}
                   className="group cursor-pointer overflow-hidden rounded-2xl bg-navy shadow-lg"
                 >
-                  <div className="relative aspect-[4/3] sm:aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-4/3 sm:aspect-4/3 overflow-hidden">
                     <Image
                       src={leader.image}
                       alt={leader.name}
@@ -116,11 +116,11 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-linear-to-t from-navy via-navy/30 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </div>
                   <div className="p-5">
-                    <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
+                    <h3 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
                       {leader.name}
                     </h3>
                     <p className="mt-1 text-sm font-semibold text-gold">

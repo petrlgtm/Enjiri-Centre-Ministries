@@ -11,30 +11,7 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { blogPostBySlugQuery } from "@/sanity/queries";
 import { heroImage, cardImage } from "@/sanity/image";
 import { formatDate } from "@/lib/utils";
-
-interface BlogPostData {
-  _id: string;
-  title: string;
-  slug: string;
-  publishedAt: string;
-  excerpt?: string;
-  author?: {
-    _id: string;
-    name: string;
-    role?: string;
-    image?: { asset: { _id: string; url: string } };
-  };
-  coverImage?: { asset: { _id: string; url: string } };
-  categories?: string[];
-  tags?: string[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body?: any[];
-  seo?: {
-    seoTitle?: string;
-    seoDescription?: string;
-    seoImage?: { asset: { _id: string; url: string } };
-  };
-}
+import { BlogPost } from "@/types/sanity";
 
 export async function generateMetadata({
   params,
@@ -42,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await fetchSanity<BlogPostData>(blogPostBySlugQuery, { slug });
+  const post = await fetchSanity<BlogPost>(blogPostBySlugQuery, { slug });
 
   if (!post) return { title: "Post Not Found" };
 
@@ -82,7 +59,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await fetchSanity<BlogPostData>(blogPostBySlugQuery, { slug });
+  const post = await fetchSanity<BlogPost>(blogPostBySlugQuery, { slug });
 
   if (!post) notFound();
 

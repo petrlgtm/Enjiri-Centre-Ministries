@@ -23,93 +23,26 @@ import {
 } from "@/sanity/queries";
 import { cardImage, portraitImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
-
-interface SanityImage {
-  asset: { _ref: string };
-}
-
-interface SanityEvent {
-  _id: string;
-  title: string;
-  date: string;
-  endDate?: string;
-  location: string;
-  description: string;
-  image?: SanityImage;
-  isRecurring?: boolean;
-  featured?: boolean;
-  category?: string;
-}
-
-interface SanityLeader {
-  _id: string;
-  name: string;
-  role: string;
-  bio: string;
-  image?: SanityImage;
-}
-
-interface SanityTestimony {
-  _id: string;
-  quote: string;
-  name: string;
-  role: string;
-}
-
-interface SanityMinistry {
-  _id: string;
-  title: string;
-  description: string;
-  icon?: string;
-  ctaText?: string;
-  ctaUrl?: string;
-}
-
-interface SanitySettings {
-  heroImage?: SanityImage;
-  churchName?: string;
-  tagline?: string;
-  address?: string;
-  phone?: string;
-  email?: string;
-  socialLinks?: {
-    facebook?: string;
-    youtube?: string;
-    instagram?: string;
-    twitter?: string;
-    tiktok?: string;
-  };
-  serviceSchedule?: Array<{
-    day: string;
-    time: string;
-    serviceName: string;
-  }>;
-}
-
-interface SanityHomePage {
-  heroHeading?: string;
-  heroSubheading?: string;
-  heroCta?: { label: string; url: string; style?: string };
-  heroSecondaryText?: string;
-  heroSecondaryUrl?: string;
-  snapshotItems?: Array<{ label: string; value: string }>;
-  missionText?: string;
-  visionText?: string;
-  donateBandHeading?: string;
-  donateBandText?: string;
-}
+import {
+  Event,
+  Leader,
+  Testimony,
+  Ministry,
+  SiteSettings,
+  HomePageData,
+} from "@/types/sanity";
 
 export default async function HomePage() {
   const [events, leaders, testimonies, ministries, settings, homePage] = await Promise.all([
-    fetchSanity<SanityEvent[]>(homepageEventsQuery),
-    fetchSanity<SanityLeader[]>(allLeadersQuery),
-    fetchSanity<SanityTestimony[]>(allTestimoniesQuery),
-    fetchSanity<SanityMinistry[]>(allMinistriesQuery),
-    fetchSanity<SanitySettings>(siteSettingsQuery),
-    fetchSanity<SanityHomePage>(homePageQuery),
+    fetchSanity<Event[]>(homepageEventsQuery),
+    fetchSanity<Leader[]>(allLeadersQuery),
+    fetchSanity<Testimony[]>(allTestimoniesQuery),
+    fetchSanity<Ministry[]>(allMinistriesQuery),
+    fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<HomePageData>(homePageQuery),
   ]);
 
-  const heroImageUrl = settings?.heroImage ? heroImage(settings.heroImage) : "";
+  const heroImageUrl = homePage?.heroImage ? heroImage(homePage.heroImage) : "";
 
   const eventsData = events?.map((e) => ({
     title: e.title,
@@ -134,12 +67,12 @@ export default async function HomePage() {
   const testimoniesData = testimonies?.map((t) => ({
     quote: t.quote,
     name: t.name,
-    role: t.role,
+    role: t.role || "",
   }));
 
   const ministriesData = ministries?.map((m) => ({
     title: m.title,
-    description: m.description,
+    description: m.description || "",
     icon: m.icon,
     ctaText: m.ctaText || "Learn More",
     ctaUrl: m.ctaUrl || "/contact",

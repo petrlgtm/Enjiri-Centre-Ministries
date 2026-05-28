@@ -7,8 +7,9 @@ import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allBlogPostsQuery, siteSettingsQuery } from "@/sanity/queries";
-import { cardImage } from "@/sanity/image";
+import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate } from "@/lib/utils";
+import { BlogPost, SiteSettings } from "@/types/sanity";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -21,25 +22,13 @@ export const metadata: Metadata = {
   },
 };
 
-interface BlogPost {
-  _id: string;
-  title: string;
-  slug: string;
-  publishedAt: string;
-  excerpt?: string;
-  author?: { _id: string; name: string };
-  coverImage?: { asset: { _id: string; url: string } };
-  categories?: string[];
-  featured?: boolean;
-}
-
 export default async function BlogPage() {
   const [posts, settings] = await Promise.all([
     fetchSanity<BlogPost[]>(allBlogPostsQuery),
-    fetchSanity<{ heroImage?: { asset: { _ref: string } } }>(siteSettingsQuery),
+    fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const heroImg = settings?.heroImage ? cardImage(settings.heroImage, 1200) : undefined;
+  const headerImg = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : undefined;
 
   return (
     <>
@@ -47,7 +36,7 @@ export default async function BlogPage() {
         label="Our Blog"
         title="News & Stories"
         description="Stay updated with the latest news, devotionals, testimonies, and announcements from our ministry."
-        backgroundImage={heroImg}
+        backgroundImage={headerImg}
       />
 
       <section className="py-16 sm:py-20 md:py-28">

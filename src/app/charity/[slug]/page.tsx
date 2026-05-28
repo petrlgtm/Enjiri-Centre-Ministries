@@ -13,32 +13,7 @@ import ProgramHighlights from "@/components/charity/ProgramHighlights";
 import ProgramGallery from "@/components/charity/ProgramGallery";
 import ProgramScripture from "@/components/charity/ProgramScripture";
 import ProgramCTA from "@/components/charity/ProgramCTA";
-
-interface SanityImage {
-  asset: { _ref: string };
-}
-
-interface SanityCharityProgram {
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  heroImage?: SanityImage;
-  aboutImage?: SanityImage;
-  longDescription?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body?: any[];
-  gallery?: SanityImage[];
-  highlights?: { title: string; description: string }[];
-  scripture?: { text: string; reference: string };
-  ctaTitle?: string;
-  ctaDescription?: string;
-  seo?: {
-    seoTitle?: string;
-    seoDescription?: string;
-    seoImage?: SanityImage;
-  };
-}
+import { CharityProgram } from "@/types/sanity";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -50,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const sanityProgram = await fetchSanity<SanityCharityProgram>(
+  const sanityProgram = await fetchSanity<CharityProgram>(
     charityProgramBySlugQuery,
     { slug }
   );
@@ -94,7 +69,7 @@ export default async function CharityProgramPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const sanityProgram = await fetchSanity<SanityCharityProgram>(
+  const sanityProgram = await fetchSanity<CharityProgram>(
     charityProgramBySlugQuery,
     { slug }
   );
@@ -111,9 +86,7 @@ export default async function CharityProgramPage({
     ? cardImage(sanityProgram.aboutImage)
     : staticProgram?.aboutImage || "";
   const body = sanityProgram?.body;
-  const paragraphs = sanityProgram?.longDescription
-    ? sanityProgram.longDescription.split("\n\n").filter(Boolean)
-    : staticProgram?.longDescription || [];
+  const paragraphs = staticProgram?.longDescription || [];
   const gallery = sanityProgram?.gallery?.length
     ? sanityProgram.gallery.map((img) => cardImage(img, 600))
     : staticProgram?.gallery || [];

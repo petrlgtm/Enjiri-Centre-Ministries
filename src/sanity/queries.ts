@@ -180,9 +180,7 @@ export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0] {
     churchName,
     tagline,
-    description,
     logo { ${imageFields} },
-    heroImage { ${imageFields} },
     address,
     phone,
     email,
@@ -197,6 +195,12 @@ export const siteSettingsQuery = groq`
       day,
       time,
       serviceName
+    },
+    defaultHeaderImage { ${imageFields} },
+    "globalSeo": globalSeo {
+      seoTitle,
+      seoDescription,
+      seoImage { ${imageFields} }
     }
   }
 `;
@@ -360,6 +364,7 @@ export const homePageQuery = groq`
   *[_type == "homePage"][0] {
     heroHeading,
     heroSubheading,
+    heroImage { ${imageFields} },
     heroCta { label, url, style },
     heroSecondaryText,
     heroSecondaryUrl,

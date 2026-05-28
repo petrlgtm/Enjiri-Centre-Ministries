@@ -20,6 +20,22 @@ export default defineType({
       description: "Subheading text below the main heading",
     }),
     defineField({
+      name: "heroImage",
+      title: "Hero Background Image",
+      type: "image",
+      options: { hotspot: true },
+      description:
+        "Large background image for the homepage hero section — recommended 1920x1080px minimum",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+          description: "Describe the image for screen readers",
+        }),
+      ],
+    }),
+    defineField({
       name: "heroCta",
       title: "Hero CTA",
       type: "cta",

@@ -62,7 +62,7 @@ interface MissionSectionProps {
 export default function MissionSection({ missionText, visionText }: MissionSectionProps) {
   return (
     <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
-      <div className="absolute inset-0 bg-[var(--gray-50)]" />
+      <div className="absolute inset-0 bg-(--gray-50)" />
 
       <Container className="relative">
         <SectionHeading
@@ -88,10 +88,10 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
             >
               <Link
                 href={value.href}
-                className="card-premium group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-[var(--gray-100)] transition-all duration-500 hover:border-gold/15 hover:shadow-xl hover:shadow-gold/5"
+                className="card-premium group relative block overflow-hidden rounded-2xl border border-white/6 bg-(--gray-100) transition-all duration-500 hover:border-gold/15 hover:shadow-xl hover:shadow-gold/5"
               >
                 {/* Image section — aspect-ratio on mobile, fixed heights on desktop */}
-                <div className={`relative overflow-hidden ${index % 2 === 0 ? "aspect-[16/10] sm:aspect-[16/9]" : "aspect-[16/10] sm:aspect-[3/2]"}`}>
+                <div className={`relative overflow-hidden ${index % 2 === 0 ? "aspect-16/10 sm:aspect-video" : "aspect-16/10 sm:aspect-3/2"}`}>
                   <Image
                     src={value.image}
                     alt={value.title}
@@ -99,16 +99,16 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
                     sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-cover transition-all duration-700 group-hover:scale-[1.08]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--gray-100)] via-navy/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-(--gray-100) via-navy/40 to-transparent" />
 
                   {/* Number overlay */}
-                  <span className="absolute bottom-3 right-5 font-[family-name:var(--font-playfair)] text-[4.5rem] font-bold leading-none text-foreground/[0.08] transition-all duration-700 group-hover:text-gold/[0.12]">
+                  <span className="absolute bottom-3 right-5 font-(family-name:--font-playfair) text-[4.5rem] font-bold leading-none text-foreground/8 transition-all duration-700 group-hover:text-gold/12">
                     {value.number}
                   </span>
 
                   {/* Icon badge */}
                   <div className="absolute -bottom-5 left-6 z-10">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${value.iconBg} text-gold ring-4 ring-[var(--gray-100)] transition-all duration-500 group-hover:text-foreground group-hover:shadow-lg group-hover:ring-[var(--gray-100)]`}>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${value.iconBg} text-gold ring-4 ring-(--gray-100) transition-all duration-500 group-hover:text-foreground group-hover:shadow-lg group-hover:ring-(--gray-100)`}>
                       <value.icon size={22} />
                     </div>
                   </div>
@@ -117,7 +117,7 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
                 {/* Content section */}
                 <div className="relative px-5 pb-6 pt-7 sm:px-6 sm:pb-7 sm:pt-8">
                   {/* Subtle gradient accent */}
-                  <div className={`pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-bl ${value.accent} opacity-0 transition-opacity duration-700 group-hover:opacity-100`} />
+                  <div className={`pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-linear-to-bl ${value.accent} opacity-0 transition-opacity duration-700 group-hover:opacity-100`} />
 
                   <div className="relative">
                     {/* Number label */}
@@ -126,18 +126,18 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
                     </span>
 
                     {/* Title */}
-                    <h3 className="mt-2 font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h3 className="mt-2 font-(family-name:--font-playfair) text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {value.title}
                     </h3>
 
                     {/* Decorative line */}
                     <div className="mt-3 flex items-center gap-2">
-                      <span className="h-px w-10 bg-gradient-to-r from-gold/40 to-transparent transition-all duration-500 group-hover:w-16" />
+                      <span className="h-px w-10 bg-linear-to-r from-gold/40 to-transparent transition-all duration-500 group-hover:w-16" />
                       <span className="h-1 w-1 rounded-full bg-gold/30 transition-colors duration-500 group-hover:bg-gold/60" />
                     </div>
 
                     {/* Description */}
-                    <p className="mt-3 text-[0.9rem] leading-[1.8] text-[var(--gray-400)]">
+                    <p className="mt-3 text-[0.9rem] leading-[1.8] text-(--gray-400)">
                       {value.description}
                     </p>
 

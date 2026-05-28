@@ -105,15 +105,6 @@ export default defineType({
         "Rich text body for the detail page — replaces the old plain text long description.",
     }),
     defineField({
-      name: "longDescription",
-      title: "Long Description (Legacy)",
-      type: "text",
-      rows: 12,
-      description:
-        "Plain text fallback — use the Body field above for rich text instead.",
-      hidden: true,
-    }),
-    defineField({
       name: "gallery",
       title: "Gallery Images",
       type: "array",

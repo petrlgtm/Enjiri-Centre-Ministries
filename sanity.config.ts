@@ -2,6 +2,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/sanity/schemaTypes";
+import { projectId, dataset } from "./src/sanity/env";
 import {
   structure,
   singletonActions,
@@ -11,8 +12,8 @@ import {
 export default defineConfig({
   name: "enjiri-center-ministries",
   title: "Enjiri Center Ministries International",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "shcw5txc",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  projectId,
+  dataset,
   basePath: "/studio",
   plugins: [structureTool({ structure }), visionTool()],
   schema: {

@@ -9,6 +9,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allLeadersQuery, siteSettingsQuery } from "@/sanity/queries";
 import { portraitImage, heroImage as heroImageUrl } from "@/sanity/image";
+import { Leader, SiteSettings } from "@/types/sanity";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -21,25 +22,13 @@ export const metadata: Metadata = {
   },
 };
 
-interface SanityLeader {
-  _id: string;
-  name: string;
-  role: string;
-  bio: string;
-  image?: { asset: { _ref: string } };
-}
-
-interface SanitySettings {
-  heroImage?: { asset: { _ref: string } };
-}
-
 export default async function AboutPage() {
   const [leaders, settings] = await Promise.all([
-    fetchSanity<SanityLeader[]>(allLeadersQuery),
-    fetchSanity<SanitySettings>(siteSettingsQuery),
+    fetchSanity<Leader[]>(allLeadersQuery),
+    fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const storyImage = settings?.heroImage ? heroImageUrl(settings.heroImage) : "";
+  const storyImage = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : "";
 
   const leadersData = leaders?.map((l) => ({
     name: l.name,

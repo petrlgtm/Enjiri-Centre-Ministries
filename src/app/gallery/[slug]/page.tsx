@@ -7,28 +7,7 @@ import Container from "@/components/ui/Container";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { galleryBySlugQuery } from "@/sanity/queries";
 import { cardImage, heroImage } from "@/sanity/image";
-
-interface GalleryImage {
-  image?: { asset: { _id: string; url: string } };
-  alt?: string;
-  caption?: string;
-}
-
-interface GalleryData {
-  _id: string;
-  title: string;
-  slug: string;
-  description?: string;
-  coverImage?: { asset: { _id: string; url: string } };
-  images?: GalleryImage[];
-  category?: string;
-  date?: string;
-  seo?: {
-    seoTitle?: string;
-    seoDescription?: string;
-    seoImage?: { asset: { _id: string; url: string } };
-  };
-}
+import { Gallery } from "@/types/sanity";
 
 export async function generateMetadata({
   params,
@@ -36,7 +15,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const gallery = await fetchSanity<GalleryData>(galleryBySlugQuery, { slug });
+  const gallery = await fetchSanity<Gallery>(galleryBySlugQuery, { slug });
 
   if (!gallery) return { title: "Gallery Not Found" };
 
@@ -74,7 +53,7 @@ export default async function GalleryDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const gallery = await fetchSanity<GalleryData>(galleryBySlugQuery, { slug });
+  const gallery = await fetchSanity<Gallery>(galleryBySlugQuery, { slug });
 
   if (!gallery) notFound();
 

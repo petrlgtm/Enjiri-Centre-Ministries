@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { HiArrowUpRight } from "react-icons/hi2";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
+import { fetchSanity } from "@/sanity/lib/helpers";
+import { siteSettingsQuery } from "@/sanity/queries";
+import { heroImage as heroImageUrl } from "@/sanity/image";
+import { SiteSettings } from "@/types/sanity";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Give",
@@ -22,14 +28,20 @@ const givingCategories = [
   { label: "Offering", href: "#" },
 ];
 
-export default function DonatePage() {
+export default async function DonatePage() {
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const headerImage = settings?.defaultHeaderImage 
+    ? heroImageUrl(settings.defaultHeaderImage) 
+    : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
+
   return (
     <>
       <PageHeader
         label="Support Our Mission"
         title="Give Generously"
         description="Your generosity fuels our mission to reach more people with the love of Christ and serve our communities."
-        backgroundImage="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop"
+        backgroundImage={headerImage}
       />
 
       <section className="relative overflow-hidden py-14 sm:py-20 md:py-28">

@@ -7,7 +7,8 @@ import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allGalleriesQuery, siteSettingsQuery } from "@/sanity/queries";
-import { cardImage } from "@/sanity/image";
+import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
+import { Gallery, SiteSettings } from "@/types/sanity";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -20,24 +21,13 @@ export const metadata: Metadata = {
   },
 };
 
-interface GalleryData {
-  _id: string;
-  title: string;
-  slug: string;
-  description?: string;
-  coverImage?: { asset: { _id: string; url: string } };
-  imageCount: number;
-  category?: string;
-  date?: string;
-}
-
 export default async function GalleryPage() {
   const [galleries, settings] = await Promise.all([
-    fetchSanity<GalleryData[]>(allGalleriesQuery),
-    fetchSanity<{ heroImage?: { asset: { _ref: string } } }>(siteSettingsQuery),
+    fetchSanity<Gallery[]>(allGalleriesQuery),
+    fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const heroImg = settings?.heroImage ? cardImage(settings.heroImage, 1200) : undefined;
+  const headerImg = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : undefined;
 
   return (
     <>
@@ -45,7 +35,7 @@ export default async function GalleryPage() {
         label="Our Gallery"
         title="Photos & Memories"
         description="Browse photos from our worship services, events, outreach programs, and community gatherings."
-        backgroundImage={heroImg}
+        backgroundImage={headerImg}
       />
 
       <section className="py-16 sm:py-20 md:py-28">
