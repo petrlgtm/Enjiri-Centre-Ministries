@@ -48,111 +48,111 @@ export default function EventCard({
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="card-3d group relative overflow-hidden rounded-3xl border border-white/6 shadow-sm transition-all duration-500 hover:shadow-xl"
+      className="card-3d group relative aspect-[4/5] sm:aspect-auto sm:h-[480px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl transition-all duration-500"
     >
-      <Link href={`/services/${slug}`} className="block">
-        {/* Background image */}
-        {image && (
-          <div className="relative aspect-16/10 overflow-hidden">
+      <Link href={`/services/${slug}`} className="absolute inset-0 z-0">
+        {/* Full Card Background Image */}
+        {image ? (
+          <>
             <Image
               src={image}
               alt={title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-900 group-hover:scale-110"
+              className="object-cover transition-transform duration-1000 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/60" />
-            
-            {/* Category Badge overlay on image */}
-            <div className="absolute top-4 left-4 z-10">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-navy/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-white/5">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-gold/30 animate-ping" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-                </span>
-                {category || "Event"}
-              </span>
-            </div>
-          </div>
+            {/* Dynamic Gradients for Readability */}
+            <div className="absolute inset-0 bg-linear-to-t from-navy via-navy/40 to-navy/20 transition-opacity duration-500 group-hover:opacity-90" />
+            <div className="absolute inset-0 bg-linear-to-b from-navy/40 via-transparent to-transparent opacity-60" />
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-navy" />
         )}
+      </Link>
 
-        <div className="relative p-6 sm:p-7">
-          {/* Top row */}
-          <div className="mb-4 flex items-center justify-between">
-            <span className="rounded-full bg-gold/15 px-3.5 py-1.5 text-xs font-semibold text-gold border border-gold/20 backdrop-blur-sm">
+      {/* Content Overlay */}
+      <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 z-10 pointer-events-none">
+        {/* Top: Category & Date */}
+        <div className="flex items-start justify-between">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-gold/30 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+            </span>
+            {category || "Event"}
+          </span>
+          
+          <div className="flex flex-col items-end gap-2">
+            <span className="rounded-xl bg-white/10 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md border border-white/10">
               {date}
             </span>
           </div>
+        </div>
 
-          {/* Title */}
-          <h3 className="text-[1.2rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair) line-clamp-1">
+        {/* Bottom: Info & Actions */}
+        <div className="space-y-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white font-(family-name:--font-playfair) leading-tight drop-shadow-md">
             {title}
           </h3>
 
-          {/* Info rows */}
-          <div className="mt-5 space-y-3">
-            {[
-              { icon: HiClock, text: time },
-              { icon: HiLocationMarker, text: location },
-            ].map((item) => (
-              <div
-                key={item.text}
-                className="flex items-center gap-3 text-sm text-foreground/70"
-              >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-gold/20">
-                  <item.icon className="text-gold/80" size={14} />
-                </div>
-                <span className="truncate">{item.text}</span>
-              </div>
-            ))}
+          {/* Icon details */}
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <div className="flex items-center gap-2 text-sm text-white/80 font-medium">
+              <HiClock className="text-gold" size={16} />
+              <span>{time}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-white/80 font-medium">
+              <HiLocationMarker className="text-gold" size={16} />
+              <span className="truncate max-w-[150px]">{location}</span>
+            </div>
           </div>
 
-          {/* Description */}
-          <p className="mt-5 text-[0.85rem] leading-[1.7] text-foreground/60 line-clamp-2">
+          <p className="text-sm leading-relaxed text-white/70 line-clamp-2 sm:line-clamp-3">
             {description}
           </p>
-          
-          {/* View Details Link */}
-          <div className="mt-6 flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-gold opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-            <span>View Event Details</span>
-            <HiArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+
+          {/* Action Buttons — need pointer-events-auto to be clickable */}
+          <div className="pt-2 flex flex-wrap items-center gap-3 pointer-events-auto">
+            {rsvpUrl ? (
+              <a
+                href={rsvpUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
+              >
+                <HiExternalLink size={14} />
+                RSVP NOW
+              </a>
+            ) : (
+              <Link
+                href={`/services/${slug}`}
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
+              >
+                VIEW DETAILS
+                <HiArrowRight size={14} />
+              </Link>
+            )}
+            
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const link = document.createElement('a');
+                link.href = icsUrl;
+                link.download = `${title.replace(/\s+/g, "-").toLowerCase()}.ics`;
+                link.click();
+              }}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white/40"
+              aria-label="Add to Calendar"
+            >
+              <HiCalendar size={18} />
+            </button>
           </div>
         </div>
-      </Link>
-
-      {/* Buttons (Separated from the main Link to prevent nested anchor errors) */}
-      <div className="relative z-10 flex flex-wrap items-center gap-2 px-6 pb-6 sm:px-7 sm:pb-7">
-        {rsvpUrl && (
-          <a
-            href={rsvpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-4 py-2 text-xs font-semibold text-gold transition-all duration-300 hover:bg-gold/25 border border-gold/20 backdrop-blur-sm"
-          >
-            <HiExternalLink size={12} />
-            RSVP
-          </a>
-        )}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const link = document.createElement('a');
-            link.href = icsUrl;
-            link.download = `${title.replace(/\s+/g, "-").toLowerCase()}.ics`;
-            link.click();
-          }}
-          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-foreground/70 backdrop-blur-sm transition-all duration-300 hover:border-gold/25 hover:text-gold"
-        >
-          <HiCalendar size={12} />
-          Add to Calendar
-        </button>
       </div>
 
-      {/* Bottom gold line — center-out expand on hover */}
-      <div className="relative h-[2px] w-full bg-white/[0.04]">
-        <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-linear-to-r from-gold-light via-gold to-gold-light transition-all duration-700 group-hover:w-full" />
-      </div>
+      {/* Hover visual effect */}
+      <div className="absolute inset-0 border-2 border-gold/0 transition-all duration-500 group-hover:border-gold/30 pointer-events-none rounded-3xl" />
     </motion.div>
   );
 }
