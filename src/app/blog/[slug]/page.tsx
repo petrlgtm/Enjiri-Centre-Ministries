@@ -96,7 +96,7 @@ export default async function BlogPostPage({
                 ))}
               </div>
             )}
-            <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
               {post.title}
             </h1>
             <div className="mt-4 flex items-center justify-center gap-3 text-sm text-foreground/60">
@@ -136,23 +136,23 @@ export default async function BlogPostPage({
             {post.body && post.body.length > 0 ? (
               <PortableTextRenderer value={post.body} />
             ) : post.excerpt ? (
-              <p className="text-lg leading-relaxed text-[var(--gray-400)]">
+              <p className="text-lg leading-relaxed text-(--gray-400)">
                 {post.excerpt}
               </p>
             ) : (
-              <p className="text-[var(--gray-400)]">
+              <p className="text-(--gray-400)">
                 This article has no content yet.
               </p>
             )}
 
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
-              <div className="mt-12 border-t border-white/[0.06] pt-6">
+              <div className="mt-12 border-t border-white/6 pt-6">
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/[0.06] bg-[var(--gray-50)] px-3 py-1 text-xs text-[var(--gray-400)]"
+                      className="rounded-full border border-white/6 bg-(--gray-50) px-3 py-1 text-xs text-(--gray-400)"
                     >
                       {tag}
                     </span>

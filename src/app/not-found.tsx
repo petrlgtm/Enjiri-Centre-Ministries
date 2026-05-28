@@ -21,7 +21,7 @@ export default function NotFound() {
           className="mx-auto max-w-lg"
         >
           {/* Large 404 display */}
-          <span className="block font-[family-name:var(--font-playfair)] text-[8rem] font-bold leading-none text-gold/20 md:text-[10rem]">
+          <span className="block font-(family-name:--font-playfair) text-[8rem] font-bold leading-none text-gold/20 md:text-[10rem]">
             404
           </span>
 
@@ -45,7 +45,7 @@ export default function NotFound() {
             <span className="h-px w-12 bg-gold/30" />
           </div>
 
-          <h1 className="mt-6 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground md:text-4xl">
+          <h1 className="mt-6 font-(family-name:--font-playfair) text-3xl font-bold text-foreground md:text-4xl">
             Page Not Found
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-foreground/60">

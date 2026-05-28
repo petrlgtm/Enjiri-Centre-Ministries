@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-gold-dark/20 bg-gold-dark/[0.06] p-10 text-center">
+      <div className="rounded-2xl border border-gold-dark/20 bg-gold-dark/6 p-10 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-dark/10">
           <HiMail className="text-gold-dark" size={24} />
         </div>

@@ -15,7 +15,7 @@ interface AnnouncementBannerProps {
 const styleClasses: Record<string, string> = {
   info: "bg-blue-900/90 text-blue-50 border-blue-700/30",
   warning: "bg-amber-900/90 text-amber-50 border-amber-700/30",
-  celebration: "bg-gradient-to-r from-gold-dark/90 to-gold/90 text-navy border-gold/30",
+  celebration: "bg-linear-to-r from-gold-dark/90 to-gold/90 text-navy border-gold/30",
 };
 
 export default function AnnouncementBanner({

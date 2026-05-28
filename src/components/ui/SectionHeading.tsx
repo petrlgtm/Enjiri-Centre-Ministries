@@ -42,7 +42,7 @@ export default function SectionHeading({
               ? "bg-gold-dark/10 text-gold-dark border border-gold-dark/15"
               : light
                 ? "bg-gold/15 text-gold-light border border-gold/10"
-                : "bg-[var(--gold-muted)] text-gold-dark border border-gold/10"
+                : "bg-(--gold-muted) text-gold-dark border border-gold/10"
           )}
         >
           {label}
@@ -50,7 +50,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          "font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15] sm:leading-[1.12]",
+          "font-(family-name:--font-playfair) text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.15] sm:leading-[1.12]",
           onCream ? "text-cream-heading" : "text-foreground"
         )}
       >
@@ -70,7 +70,7 @@ export default function SectionHeading({
       >
         <span className={cn("h-px w-10", onCream ? "bg-gold-dark/40" : "bg-gold/50")} />
         <span className="h-1.5 w-1.5 rounded-full bg-red" />
-        <span className={cn("h-px w-20 bg-gradient-to-r", onCream ? "from-gold-dark/40 to-transparent" : "from-gold to-transparent")} />
+        <span className={cn("h-px w-20 bg-linear-to-r", onCream ? "from-gold-dark/40 to-transparent" : "from-gold to-transparent")} />
       </motion.div>
 
       {subtitle && (
@@ -82,7 +82,7 @@ export default function SectionHeading({
           className={cn(
             "mt-4 sm:mt-5 max-w-2xl text-[0.9rem] sm:text-[1.05rem] leading-[1.7] sm:leading-[1.75]",
             centered && "mx-auto",
-            onCream ? "text-cream-body" : light ? "text-gray-300" : "text-[var(--gray-400)]"
+            onCream ? "text-cream-body" : light ? "text-gray-300" : "text-(--gray-400)"
           )}
         >
           {subtitle}

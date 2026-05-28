@@ -33,13 +33,13 @@ export default function ProgramAbout({
             <span className="inline-block rounded-full border border-gold/25 bg-gold/[0.1] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
               About This Program
             </span>
-            <h2 className="mt-6 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
+            <h2 className="mt-6 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
               {title}
             </h2>
             <div className="mt-4 flex items-center gap-2">
               <span className="h-px w-8 bg-gold/40" />
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+              <span className="h-px w-16 bg-linear-to-r from-gold to-transparent" />
             </div>
             <div className="mt-6">
               {body && body.length > 0 ? (
@@ -49,7 +49,7 @@ export default function ProgramAbout({
                   {paragraphs.map((text, i) => (
                     <p
                       key={i}
-                      className="text-[0.95rem] leading-relaxed text-[var(--gray-400)]"
+                      className="text-[0.95rem] leading-relaxed text-(--gray-400)"
                     >
                       {text}
                     </p>
@@ -67,7 +67,7 @@ export default function ProgramAbout({
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
                 src={aboutImage}
                 alt={title}
@@ -75,7 +75,7 @@ export default function ProgramAbout({
                 className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/40 to-transparent" />
             </div>
           </motion.div>
         </div>

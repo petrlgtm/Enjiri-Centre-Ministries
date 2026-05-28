@@ -19,12 +19,12 @@ interface LinkMark {
 const components: PortableTextComponents = {
   block: {
     h2: ({ children }) => (
-      <h2 className="mt-10 mb-4 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
+      <h2 className="mt-10 mb-4 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-8 mb-3 font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground sm:text-2xl">
+      <h3 className="mt-8 mb-3 font-(family-name:--font-playfair) text-xl font-bold text-foreground sm:text-2xl">
         {children}
       </h3>
     ),
@@ -34,12 +34,12 @@ const components: PortableTextComponents = {
       </h4>
     ),
     normal: ({ children }) => (
-      <p className="mb-5 text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
+      <p className="mb-5 text-[0.95rem] leading-[1.85] text-(--gray-400)">
         {children}
       </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l-2 border-gold/40 pl-5 italic text-[var(--gray-500)]">
+      <blockquote className="my-6 border-l-2 border-gold/40 pl-5 italic text-(--gray-500)">
         {children}
       </blockquote>
     ),
@@ -71,7 +71,7 @@ const components: PortableTextComponents = {
       const imgUrl = urlFor(value).width(1200).quality(80).auto("format").url();
       return (
         <figure className="my-8">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+          <div className="relative aspect-video overflow-hidden rounded-2xl">
             <Image
               src={imgUrl}
               alt={value.alt || ""}
@@ -81,7 +81,7 @@ const components: PortableTextComponents = {
             />
           </div>
           {value.caption && (
-            <figcaption className="mt-2 text-center text-sm text-[var(--gray-400)]">
+            <figcaption className="mt-2 text-center text-sm text-(--gray-400)">
               {value.caption}
             </figcaption>
           )}

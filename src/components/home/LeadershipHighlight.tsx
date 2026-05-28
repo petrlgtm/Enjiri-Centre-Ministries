@@ -36,11 +36,11 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="card-premium overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
+          className="card-premium overflow-hidden rounded-3xl border border-white/6 bg-(--gray-100)"
         >
           <div className="flex flex-col lg:flex-row">
             {/* Image */}
-            <div className="relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:w-5/12">
+            <div className="relative aspect-[3/4] sm:aspect-4/3 lg:aspect-auto lg:w-5/12">
               <Image
                 src={displayLeader.image}
                 alt={displayLeader.name}
@@ -48,16 +48,16 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--gray-100)]/30 lg:bg-gradient-to-r lg:from-transparent lg:to-[var(--gray-100)]" />
+              <div className="absolute inset-0 bg-linear-to-r from-transparent to-[var(--gray-100)]/30 lg:bg-linear-to-r lg:from-transparent lg:to-[var(--gray-100)]" />
             </div>
 
             {/* Content */}
             <div className="relative p-5 sm:p-8 lg:w-7/12 lg:p-12">
-              <span className="inline-block rounded-full bg-[var(--gold-muted)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-dark border border-gold/10">
+              <span className="inline-block rounded-full bg-(--gold-muted) px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-dark border border-gold/10">
                 Meet Our Pastor
               </span>
 
-              <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
+              <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
                 {displayLeader.name}
               </h3>
 
@@ -68,10 +68,10 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
               <div className="mt-4 flex items-center gap-2">
                 <span className="h-px w-10 bg-gold/50" />
                 <span className="h-1.5 w-1.5 rounded-full bg-red" />
-                <span className="h-px w-20 bg-gradient-to-r from-gold to-transparent" />
+                <span className="h-px w-20 bg-linear-to-r from-gold to-transparent" />
               </div>
 
-              <p className="mt-5 max-w-lg text-[0.95rem] leading-[1.85] text-[var(--gray-400)]">
+              <p className="mt-5 max-w-lg text-[0.95rem] leading-[1.85] text-(--gray-400)">
                 {displayLeader.bio}
               </p>
 

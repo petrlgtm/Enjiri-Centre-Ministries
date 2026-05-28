@@ -61,10 +61,10 @@ export default function CallToAction() {
       <div className="aurora-bg" style={{ opacity: 0.5 }} />
 
       {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
 
       {/* Bottom accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/20 to-transparent" />
 
       {/* Pattern */}
       <div className="pattern-cross absolute inset-0 opacity-30" />
@@ -109,7 +109,7 @@ export default function CallToAction() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-foreground sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
+            className="font-(family-name:--font-playfair) text-4xl font-bold text-foreground sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
           >
             Partner With Us in{" "}
             <span className="text-gradient-gold-animated">God&apos;s Work</span>
@@ -123,13 +123,13 @@ export default function CallToAction() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mx-auto mt-8 flex origin-center items-center justify-center gap-3"
           >
-            <span className="h-px w-16 bg-gradient-to-r from-transparent to-gold/30" />
+            <span className="h-px w-16 bg-linear-to-r from-transparent to-gold/30" />
             <motion.span
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="h-2 w-2 rotate-45 border border-gold/30"
             />
-            <span className="h-px w-16 bg-gradient-to-l from-transparent to-gold/30" />
+            <span className="h-px w-16 bg-linear-to-l from-transparent to-gold/30" />
           </motion.div>
 
           <motion.p

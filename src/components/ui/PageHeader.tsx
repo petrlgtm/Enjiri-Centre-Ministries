@@ -83,7 +83,7 @@ export default function PageHeader({
       />
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-navy to-transparent" />
 
       {/* Content */}
       <Container className="relative z-10">
@@ -97,7 +97,7 @@ export default function PageHeader({
             {label}
           </motion.span>
 
-          <h1 className="mt-5 sm:mt-6 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.05]">
+          <h1 className="mt-5 sm:mt-6 font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.05]">
             <SplitTitle text={title} />
           </h1>
 
@@ -108,13 +108,13 @@ export default function PageHeader({
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto mt-7 flex origin-center items-center justify-center gap-3"
           >
-            <span className="h-px w-16 bg-gradient-to-r from-transparent to-gold/50" />
+            <span className="h-px w-16 bg-linear-to-r from-transparent to-gold/50" />
             <motion.span
               animate={{ rotate: [0, 180, 360] }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="h-2 w-2 rotate-45 bg-red/80"
             />
-            <span className="h-px w-16 bg-gradient-to-l from-transparent to-gold/50" />
+            <span className="h-px w-16 bg-linear-to-l from-transparent to-gold/50" />
           </motion.div>
 
           <motion.p

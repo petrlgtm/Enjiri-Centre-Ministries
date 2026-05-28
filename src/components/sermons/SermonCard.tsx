@@ -54,25 +54,25 @@ export default function SermonCard({
         onClick={onClick}
         data-slug={slug}
         className={cn(
-          "card-3d card-premium group block w-full overflow-hidden rounded-3xl border bg-[var(--gray-100)] text-left shadow-sm ring-1 transition-all duration-500 hover:shadow-xl hover:shadow-black/20",
+          "card-3d card-premium group block w-full overflow-hidden rounded-3xl border bg-(--gray-100) text-left shadow-sm ring-1 transition-all duration-500 hover:shadow-xl hover:shadow-black/20",
           isActive
             ? "border-gold/40 ring-gold/30 shadow-gold-glow"
-            : "border-white/[0.06] ring-transparent hover:ring-2 hover:ring-gold/30"
+            : "border-white/6 ring-transparent hover:ring-2 hover:ring-gold/30"
         )}
       >
         {/* Thumbnail */}
-        <div className="relative aspect-[16/9] overflow-hidden">
+        <div className="relative aspect-video overflow-hidden">
           <Image
             src={imageUrl}
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.12] group-hover:brightness-90"
+            className="object-cover transition-all duration-900 ease-out group-hover:scale-[1.12] group-hover:brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/10 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-navy/50 via-navy/10 to-transparent" />
 
           {/* Hover overlay glow */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-linear-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
           {/* Play button with pulse */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -89,7 +89,7 @@ export default function SermonCard({
           </div>
 
           {/* Overlay title on thumbnail */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 pt-10 bg-gradient-to-t from-navy/80 to-transparent pointer-events-none">
+          <div className="absolute bottom-0 left-0 right-0 p-4 pt-10 bg-linear-to-t from-navy/80 to-transparent pointer-events-none">
             <h4 className="text-sm font-bold text-white/90 line-clamp-2 drop-shadow-sm">{title}</h4>
           </div>
 
@@ -118,7 +118,7 @@ export default function SermonCard({
           <h3 className="text-[1.05rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold line-clamp-2">
             {title}
           </h3>
-          <div className="mt-2.5 flex items-center gap-2 text-sm text-[var(--gray-500)]">
+          <div className="mt-2.5 flex items-center gap-2 text-sm text-(--gray-500)">
             <span className="font-medium">{speaker}</span>
             <span className="h-1 w-1 rounded-full bg-[var(--gray-300)]" />
             <span>{date}</span>

@@ -47,10 +47,10 @@ export default async function BlogPage() {
                 <Link
                   key={post._id}
                   href={`/blog/${post.slug}`}
-                  className="group overflow-hidden rounded-2xl border border-white/[0.06] bg-[var(--gray-50)] transition-all duration-500 hover:border-gold/20"
+                  className="group overflow-hidden rounded-2xl border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
                 >
                   {post.coverImage && (
-                    <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={cardImage(post.coverImage)}
                         alt={post.title}
@@ -73,15 +73,15 @@ export default async function BlogPage() {
                         ))}
                       </div>
                     )}
-                    <h2 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h2 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {post.title}
                     </h2>
                     {post.excerpt && (
-                      <p className="mt-2 text-sm leading-relaxed text-[var(--gray-400)] line-clamp-2">
+                      <p className="mt-2 text-sm leading-relaxed text-(--gray-400) line-clamp-2">
                         {post.excerpt}
                       </p>
                     )}
-                    <div className="mt-3 flex items-center gap-2 text-xs text-[var(--gray-400)]">
+                    <div className="mt-3 flex items-center gap-2 text-xs text-(--gray-400)">
                       {post.author && <span>{post.author.name}</span>}
                       {post.author && post.publishedAt && (
                         <span className="h-1 w-1 rounded-full bg-gold/30" />
@@ -96,7 +96,7 @@ export default async function BlogPage() {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-lg text-[var(--gray-400)]">
+              <p className="text-lg text-(--gray-400)">
                 No blog posts yet. Check back soon!
               </p>
             </div>

@@ -45,7 +45,7 @@ export default function EventCard({
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="card-3d group relative overflow-hidden rounded-3xl border border-white/[0.06] shadow-sm transition-all duration-500 hover:shadow-xl"
+      className="card-3d group relative overflow-hidden rounded-3xl border border-white/6 shadow-sm transition-all duration-500 hover:shadow-xl"
     >
       {/* Background image */}
       {image && (
@@ -55,7 +55,7 @@ export default function EventCard({
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-[900ms] group-hover:scale-110"
+            className="object-cover transition-transform duration-900 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/60" />
         </>
@@ -79,7 +79,7 @@ export default function EventCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-[1.1rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+        <h3 className="text-[1.1rem] font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
           {title}
         </h3>
 
@@ -132,7 +132,7 @@ export default function EventCard({
 
       {/* Bottom gold line — center-out expand on hover */}
       <div className="relative h-[2px] w-full bg-white/[0.04]">
-        <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gradient-to-r from-gold-light via-gold to-gold-light transition-all duration-700 group-hover:w-full" />
+        <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-linear-to-r from-gold-light via-gold to-gold-light transition-all duration-700 group-hover:w-full" />
       </div>
     </motion.div>
   );

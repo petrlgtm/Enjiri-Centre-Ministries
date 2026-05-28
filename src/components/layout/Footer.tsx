@@ -100,7 +100,7 @@ export default function Footer({ siteSettings }: FooterProps) {
       <NewsletterSignup />
 
       {/* Top accent line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
 
       {/* Main footer */}
       <div className="relative bg-navy">
@@ -120,7 +120,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                     className="object-cover"
                     sizes="48px"
                   />
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 </div>
                 <div>
                   <span className="block text-[15px] font-bold tracking-wide text-foreground">
@@ -142,7 +142,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                   <a
                     key={social.label}
                     href={social.href}
-                    className={`flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-foreground/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl border border-white/6 bg-white/[0.03] text-foreground/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
                     aria-label={social.label}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -202,7 +202,7 @@ export default function Footer({ siteSettings }: FooterProps) {
               </ul>
 
               {/* Static Map Image */}
-              <div className="mt-5 overflow-hidden rounded-xl border border-white/[0.06] transition-all duration-500 hover:border-gold/10">
+              <div className="mt-5 overflow-hidden rounded-xl border border-white/6 transition-all duration-500 hover:border-gold/10">
                 <Image
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=75&fm=webp&fit=crop"
                   alt="Location"

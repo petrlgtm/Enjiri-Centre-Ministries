@@ -34,7 +34,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-gold via-gold-light to-gold text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] hover:shadow-[0_8px_35px_rgba(201,168,76,0.5)] hover:scale-[1.03] active:scale-[0.97]",
+      "bg-linear-to-r from-gold via-gold-light to-gold text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] hover:shadow-[0_8px_35px_rgba(201,168,76,0.5)] hover:scale-[1.03] active:scale-[0.97]",
     secondary:
       "bg-navy-mid text-foreground shadow-[0_4px_20px_rgba(10,10,10,0.3)] hover:shadow-[0_8px_30px_rgba(10,10,10,0.5)] hover:bg-navy-surface hover:scale-[1.03] active:scale-[0.97]",
     outline:
@@ -60,12 +60,12 @@ export default function Button({
       {/* Multi-layer shine overlay on hover */}
       {variant === "primary" && (
         <>
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-black/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-100 ease-out" />
+          <span className="absolute inset-0 bg-linear-to-r from-transparent via-black/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+          <span className="absolute inset-0 bg-linear-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-100 ease-out" />
         </>
       )}
       {variant === "outline" && (
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+        <span className="absolute inset-0 bg-linear-to-r from-transparent via-gold/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
       )}
       <span className="relative flex items-center gap-2.5">
         {icon && (

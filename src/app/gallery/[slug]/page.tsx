@@ -68,11 +68,11 @@ export default async function GalleryDetailPage({
                 {gallery.category}
               </span>
             )}
-            <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl">
+            <h1 className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl">
               {gallery.title}
             </h1>
             {gallery.description && (
-              <p className="mt-4 text-[var(--gray-400)]">
+              <p className="mt-4 text-(--gray-400)">
                 {gallery.description}
               </p>
             )}
@@ -101,7 +101,7 @@ export default async function GalleryDetailPage({
                     />
                   )}
                   {img.caption && (
-                    <p className="mt-2 text-sm text-[var(--gray-400)]">
+                    <p className="mt-2 text-sm text-(--gray-400)">
                       {img.caption}
                     </p>
                   )}
@@ -110,7 +110,7 @@ export default async function GalleryDetailPage({
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-[var(--gray-400)]">No images in this gallery yet.</p>
+              <p className="text-(--gray-400)">No images in this gallery yet.</p>
             </div>
           )}
         </Container>

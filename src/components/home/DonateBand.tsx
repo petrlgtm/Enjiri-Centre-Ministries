@@ -60,7 +60,7 @@ export default function DonateBand({ heading, text }: DonateBandProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl leading-[1.1]"
+            className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl leading-[1.1]"
           >
             {heading || <>Partner With Us in{" "}<span className="text-gradient-gold-animated">God&apos;s Work</span></>}
           </motion.h2>
@@ -86,7 +86,7 @@ export default function DonateBand({ heading, text }: DonateBandProps) {
             {amounts.map((amount) => (
               <span
                 key={amount}
-                className="rounded-full border border-gold/30 bg-gold/[0.08] px-5 py-2.5 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/20 hover:border-gold/50 cursor-pointer"
+                className="rounded-full border border-gold/30 bg-gold/8 px-5 py-2.5 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/20 hover:border-gold/50 cursor-pointer"
               >
                 ${amount}
               </span>

@@ -82,7 +82,7 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
           scrolled
-            ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/[0.06]"
+            ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/6"
             : "bg-transparent border-b border-transparent"
         )}
       >
@@ -98,7 +98,7 @@ export default function Navbar() {
                   className="object-cover"
                   sizes="44px"
                 />
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </div>
               <div className="hidden sm:block">
                 <span className="block text-[15px] font-bold tracking-wide text-foreground transition-colors duration-500">
@@ -121,7 +121,7 @@ export default function Navbar() {
                     onMouseEnter={() => setHoveredLink(link.href)}
                     onMouseLeave={() => setHoveredLink(null)}
                     className={cn(
-                      "relative px-4 py-2 text-[13px] font-medium uppercase tracking-[0.1em] transition-all duration-300",
+                      "relative px-4 py-2 text-[13px] font-medium uppercase tracking-widest transition-all duration-300",
                       isActive
                         ? "text-gold"
                         : "text-foreground/60 hover:text-foreground"
@@ -139,7 +139,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-gradient-to-r from-gold to-gold-light"
+                        className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-linear-to-r from-gold to-gold-light"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                       />
                     )}
@@ -205,7 +205,7 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-[80px] lg:top-[96px] left-0 right-0 z-[49] transition-all duration-700"
       >
-        <div className="bg-cream border-b border-black/[0.06]">
+        <div className="bg-cream border-b border-black/6">
           <Container>
             <div className="flex h-10 items-center justify-between">
               <span className="hidden min-[360px]:inline text-[12px] font-medium tracking-wide text-cream-muted">
@@ -265,7 +265,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "group relative block py-2.5 text-center font-[family-name:var(--font-playfair)] text-2xl font-medium transition-all duration-300",
+                          "group relative block py-2.5 text-center font-(family-name:--font-playfair) text-2xl font-medium transition-all duration-300",
                           isActive ? "text-gold" : "text-foreground/60 hover:text-foreground"
                         )}
                       >
@@ -308,7 +308,7 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
-                className="mt-12 flex items-center gap-4 text-[12px] tracking-[0.1em] text-foreground/40"
+                className="mt-12 flex items-center gap-4 text-[12px] tracking-widest text-foreground/40"
               >
                 <span>SUN 9AM</span>
                 <span className="h-3 w-px bg-white/10" />

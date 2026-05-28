@@ -41,7 +41,7 @@ export default function NewsletterSignup() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/10">
                 <HiMail className="text-gold" size={20} />
               </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-foreground">
+              <h3 className="font-(family-name:--font-playfair) text-xl font-bold text-foreground">
                 Stay Connected
               </h3>
             </div>
@@ -64,7 +64,7 @@ export default function NewsletterSignup() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="shrink-0 rounded-full bg-gradient-to-r from-gold to-gold-dark px-7 py-3.5 text-sm font-medium text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,168,76,0.5)] cursor-pointer"
+              className="shrink-0 rounded-full bg-linear-to-r from-gold to-gold-dark px-7 py-3.5 text-sm font-medium text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,168,76,0.5)] cursor-pointer"
             >
               {submitted ? (
                 <span className="flex items-center gap-2">

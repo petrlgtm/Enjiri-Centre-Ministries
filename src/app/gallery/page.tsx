@@ -46,10 +46,10 @@ export default async function GalleryPage() {
                 <Link
                   key={gallery._id}
                   href={`/gallery/${gallery.slug}`}
-                  className="group overflow-hidden rounded-2xl border border-white/[0.06] bg-[var(--gray-50)] transition-all duration-500 hover:border-gold/20"
+                  className="group overflow-hidden rounded-2xl border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
                 >
                   {gallery.coverImage && (
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-4/3 overflow-hidden">
                       <Image
                         src={cardImage(gallery.coverImage)}
                         alt={gallery.title}
@@ -57,7 +57,7 @@ export default async function GalleryPage() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="absolute inset-0 bg-linear-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                       <div className="absolute bottom-3 right-3 rounded-full bg-navy/70 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
                         {gallery.imageCount} photos
                       </div>
@@ -69,11 +69,11 @@ export default async function GalleryPage() {
                         {gallery.category}
                       </span>
                     )}
-                    <h2 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h2 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {gallery.title}
                     </h2>
                     {gallery.description && (
-                      <p className="mt-2 text-sm leading-relaxed text-[var(--gray-400)] line-clamp-2">
+                      <p className="mt-2 text-sm leading-relaxed text-(--gray-400) line-clamp-2">
                         {gallery.description}
                       </p>
                     )}
@@ -83,7 +83,7 @@ export default async function GalleryPage() {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-lg text-[var(--gray-400)]">
+              <p className="text-lg text-(--gray-400)">
                 No galleries yet. Check back soon!
               </p>
             </div>

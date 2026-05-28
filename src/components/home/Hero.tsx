@@ -127,7 +127,7 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-playfair)]"
+            className="mt-6 text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl font-(family-name:--font-playfair)"
           >
             {heading || "ENJIRI CENTER MINISTRIES"}
           </motion.h1>
@@ -154,7 +154,7 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
                 href={cta?.url || "/contact"}
                 variant="primary"
                 size="lg"
-                className="min-w-[180px]"
+                className="min-w-45"
                 icon={<HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />}
               >
                 {cta?.label || "Plan Your Visit"}
@@ -165,7 +165,7 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
                 href={secondaryUrl || "/sermons"}
                 variant="outline"
                 size="lg"
-                className="min-w-[180px] bg-white/5 backdrop-blur-sm border-white/20 hover:bg-white/10"
+                className="min-w-45 bg-white/5 backdrop-blur-sm border-white/20 hover:bg-white/10"
                 icon={<HiPlay size={16} />}
               >
                 {secondaryText || "Watch Sermons"}

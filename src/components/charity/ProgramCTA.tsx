@@ -32,7 +32,7 @@ export default function ProgramCTA({
       <div className="absolute inset-0 bg-navy/85" />
       <div className="absolute inset-0 bg-navy" />
       <div className="noise-overlay absolute inset-0" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
 
       <Container className="relative z-10">
         <motion.div

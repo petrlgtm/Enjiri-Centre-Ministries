@@ -49,7 +49,7 @@ export default function ServiceSchedule() {
               centered={false}
             />
 
-            <p className="mb-8 max-w-md text-[1.05rem] leading-[1.75] text-[var(--gray-400)]">
+            <p className="mb-8 max-w-md text-[1.05rem] leading-[1.75] text-(--gray-400)">
               Join us throughout the week for worship, prayer, and fellowship.
               Every gathering is an opportunity to grow in faith and community.
             </p>
@@ -59,22 +59,22 @@ export default function ServiceSchedule() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl"
+              className="group relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl"
             >
               <Image
                 src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"
                 alt="Congregation gathered in worship"
                 fill
-                className="object-cover transition-all duration-[900ms] group-hover:scale-[1.08]"
+                className="object-cover transition-all duration-900 group-hover:scale-[1.08]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-navy/30 to-transparent" />
               <div className="noise-overlay absolute inset-0" />
 
               {/* Scripture overlay with glass effect */}
               <div className="absolute inset-x-4 bottom-4">
                 <div className="glass rounded-2xl p-5">
-                  <p className="font-[family-name:var(--font-playfair)] text-sm leading-relaxed text-foreground/90 italic">
+                  <p className="font-(family-name:--font-playfair) text-sm leading-relaxed text-foreground/90 italic">
                     &ldquo;For where two or three gather in my name, there am I
                     with them.&rdquo;
                   </p>
@@ -97,14 +97,14 @@ export default function ServiceSchedule() {
                   delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="card-3d card-premium group overflow-hidden rounded-2xl border border-white/[0.06] border-l-2 border-l-gold bg-[var(--gray-100)]"
+                className="card-3d card-premium group overflow-hidden rounded-2xl border border-white/6 border-l-2 border-l-gold bg-(--gray-100)"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h3 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {item.day}
                     </h3>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--gray-400)]">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-(--gray-400)">
                       {item.services.length} {item.services.length === 1 ? "service" : "services"}
                     </span>
                   </div>
@@ -112,12 +112,12 @@ export default function ServiceSchedule() {
                     {item.services.map((service) => (
                       <div
                         key={service.name}
-                        className="flex items-center justify-between gap-4 rounded-xl bg-[var(--gray-50)] px-4 py-3 transition-all duration-300 group-hover:bg-gold/[0.04]"
+                        className="flex items-center justify-between gap-4 rounded-xl bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/[0.04]"
                       >
                         <span className="text-[0.9rem] font-medium text-[var(--gray-600)]">
                           {service.name}
                         </span>
-                        <span className="flex shrink-0 items-center gap-2 text-sm text-[var(--gray-500)]">
+                        <span className="flex shrink-0 items-center gap-2 text-sm text-(--gray-500)">
                           <HiClock size={14} className="text-gold/60" />
                           {service.time}
                         </span>

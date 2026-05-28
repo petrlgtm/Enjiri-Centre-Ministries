@@ -118,15 +118,15 @@ export default async function CharityPage() {
           <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Text Content */}
             <div className="lg:w-1/2">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--gold-muted)] ring-1 ring-gold/20">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-(--gold-muted) ring-1 ring-gold/20">
                 <HiHeart className="text-gold" size={28} />
               </div>
 
-              <h2 className="mt-6 font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl">
+              <h2 className="mt-6 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
                 Preaching Christ, Restoring Hope
               </h2>
 
-              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-[var(--gray-400)]">
+              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-(--gray-400)">
                 Under the leadership of Evangelist Peter Kalagi, Enjiri Center
                 Ministries International is committed to giving back to society.
                 From feeding the hungry to planting churches in unreached areas,
@@ -134,7 +134,7 @@ export default async function CharityPage() {
                 East Africa.
               </p>
 
-              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-[var(--gray-400)]">
+              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-(--gray-400)">
                 We believe that the gospel is not only preached with words but
                 demonstrated through acts of love, compassion, and service to
                 those in need. Reaching out to communities through meeting some
@@ -145,13 +145,13 @@ export default async function CharityPage() {
               <div className="mt-8 flex items-center gap-2">
                 <span className="h-px w-8 bg-gold/40" />
                 <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                <span className="h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+                <span className="h-px w-16 bg-linear-to-r from-gold to-transparent" />
               </div>
             </div>
 
             {/* RIGHT — Image Panel */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02]">
+              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02]">
                 <Image
                   src={missionImage}
                   alt="Community outreach and charity programs in East Africa"
@@ -159,7 +159,7 @@ export default async function CharityPage() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/30 to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <span className="rounded-full bg-gold/90 px-4 py-1.5 text-xs font-semibold text-navy">
                     Giving Back to Society
@@ -210,7 +210,7 @@ export default async function CharityPage() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
                       <Icon size={18} />
                     </div>
-                    <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-[family-name:var(--font-playfair)]">
+                    <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
                       {program.title}
                     </h3>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
@@ -241,7 +241,7 @@ export default async function CharityPage() {
           <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl">
+              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl">
                 <Image
                   src={missionImage}
                   alt="Soul Winner Campaign — community outreach"
@@ -258,7 +258,7 @@ export default async function CharityPage() {
                       <CountUp
                         end={1000}
                         suffix="+"
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
+                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Lives Touched
@@ -268,7 +268,7 @@ export default async function CharityPage() {
                       <CountUp
                         end={50}
                         suffix="+"
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
+                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Outreach Events
@@ -277,7 +277,7 @@ export default async function CharityPage() {
                     <div className="text-center">
                       <CountUp
                         end={3}
-                        className="block font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground"
+                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
                       />
                       <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
                         Nations
@@ -297,11 +297,11 @@ export default async function CharityPage() {
                 centered={false}
               />
 
-              <div className="card-premium rounded-2xl border border-white/[0.06] bg-[var(--gray-50)] p-6">
+              <div className="card-premium rounded-2xl border border-white/6 bg-(--gray-50) p-6">
                 <h3 className="font-bold text-foreground">
                   What This Campaign Does
                 </h3>
-                <ul className="mt-4 space-y-3 text-sm text-[var(--gray-400)]">
+                <ul className="mt-4 space-y-3 text-sm text-(--gray-400)">
                   {[
                     {
                       label: "Gospel Crusades",
@@ -387,7 +387,7 @@ export default async function CharityPage() {
                       <CountUp
                         end={stat.end}
                         suffix={stat.suffix}
-                        className="block font-[family-name:var(--font-playfair)] text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl"
+                        className="block font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl"
                       />
                       <span className="mt-2 block text-xs font-medium tracking-wider text-gold/80">
                         {stat.label}
@@ -410,7 +410,7 @@ export default async function CharityPage() {
               <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
               <div className="relative text-center">
-                <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
+                <p className="font-(family-name:--font-playfair) text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
                   &ldquo;Now that you have purified yourselves by obeying the
                   truth so that you have sincere love for each other, love one
                   another deeply, from the heart.&rdquo;
@@ -433,7 +433,7 @@ export default async function CharityPage() {
               <div className="absolute inset-0 bg-navy" />
               <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
               <div className="relative text-center">
-                <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
+                <p className="font-(family-name:--font-playfair) text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
                   &ldquo;And He said unto them, go ye into all the world and
                   preach the gospel to every creature.&rdquo;
                 </p>
@@ -465,7 +465,7 @@ export default async function CharityPage() {
         <div className="absolute inset-0 bg-navy/85" />
         <div className="absolute inset-0 bg-navy" />
         <div className="noise-overlay absolute inset-0" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
 
         <Container className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">

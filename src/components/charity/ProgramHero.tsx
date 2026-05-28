@@ -19,7 +19,7 @@ export default function ProgramHero({ title, heroImage }: ProgramHeroProps) {
         className="object-cover"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-navy/30" />
+      <div className="absolute inset-0 bg-linear-to-t from-navy via-navy/60 to-navy/30" />
 
       <div className="absolute inset-0 flex items-end">
         <div className="w-full px-5 pb-10 sm:px-8 lg:px-12">
@@ -28,7 +28,7 @@ export default function ProgramHero({ title, heroImage }: ProgramHeroProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl"
+              className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl"
             >
               {title}
             </motion.h1>
@@ -40,7 +40,7 @@ export default function ProgramHero({ title, heroImage }: ProgramHeroProps) {
             >
               <span className="h-px w-10 bg-gold/50" />
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="h-px w-20 bg-gradient-to-r from-gold to-transparent" />
+              <span className="h-px w-20 bg-linear-to-r from-gold to-transparent" />
             </motion.div>
           </div>
         </div>

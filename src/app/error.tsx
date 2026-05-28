@@ -63,7 +63,7 @@ export default function Error({ error, reset }: ErrorProps) {
             <span className="h-px w-12 bg-gold/30" />
           </div>
 
-          <h1 className="mt-6 font-[family-name:var(--font-playfair)] text-3xl font-bold text-foreground md:text-4xl">
+          <h1 className="mt-6 font-(family-name:--font-playfair) text-3xl font-bold text-foreground md:text-4xl">
             Something Went Wrong
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-foreground/60">

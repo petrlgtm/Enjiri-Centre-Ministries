@@ -26,7 +26,7 @@ export default function ProgramScripture({
             <div className="absolute inset-0 bg-navy" />
             <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
             <div className="relative text-center">
-              <p className="font-[family-name:var(--font-playfair)] text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
+              <p className="font-(family-name:--font-playfair) text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
                 &ldquo;{text}&rdquo;
               </p>
               <div className="mx-auto mt-5 flex items-center justify-center gap-3">

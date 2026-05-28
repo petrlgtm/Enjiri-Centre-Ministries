@@ -45,7 +45,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
               <div className="noise-overlay absolute inset-0" />
 
               {/* Decorative gold frame */}
@@ -68,14 +68,14 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                         <CountUp
                           end={stat.value}
                           suffix={stat.suffix}
-                          className="block font-[family-name:var(--font-playfair)] text-xl font-bold text-gold sm:text-2xl"
+                          className="block font-(family-name:--font-playfair) text-xl font-bold text-gold sm:text-2xl"
                         />
                         <span className="text-[10px] uppercase tracking-[0.15em] text-foreground/60">
                           {stat.label}
                         </span>
                       </div>
                       {i < stats.length - 1 && (
-                        <div className="mx-3 h-8 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent sm:mx-5" />
+                        <div className="mx-3 h-8 w-px bg-linear-to-b from-transparent via-white/15 to-transparent sm:mx-5" />
                       )}
                     </div>
                   ))}
@@ -98,7 +98,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="space-y-4 text-[0.95rem] leading-[1.85] text-[var(--gray-400)]"
+              className="space-y-4 text-[0.95rem] leading-[1.85] text-(--gray-400)"
             >
               <p>
                 Enjiri Center Ministries International was founded on a deep
@@ -121,7 +121,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="mt-8 border-l-2 border-gold/30 pl-6"
             >
-              <p className="font-[family-name:var(--font-playfair)] text-lg italic text-foreground/80">
+              <p className="font-(family-name:--font-playfair) text-lg italic text-foreground/80">
                 &ldquo;For I know the plans I have for you, declares the Lord...&rdquo;
               </p>
               <p className="mt-2 text-sm font-semibold text-gold-dark">
@@ -136,7 +136,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute left-[7px] top-1 bottom-1 w-px origin-top bg-gradient-to-b from-gold via-gold/40 to-transparent"
+                className="absolute left-[7px] top-1 bottom-1 w-px origin-top bg-linear-to-b from-gold via-gold/40 to-transparent"
               />
 
               <div className="space-y-5">
@@ -152,7 +152,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                     <div className="absolute -left-8 top-2.5 flex items-center justify-center">
                       <span className="h-3 w-3 rounded-full border-2 border-gold bg-navy shadow-[0_0_6px_rgba(201,168,76,0.3)]" />
                     </div>
-                    <div className="rounded-xl border border-white/[0.06] bg-[var(--gray-100)] p-4 transition-all duration-300 hover:border-gold/20 hover:shadow-sm">
+                    <div className="rounded-xl border border-white/6 bg-(--gray-100) p-4 transition-all duration-300 hover:border-gold/20 hover:shadow-sm">
                       <div className="flex items-baseline gap-3">
                         <span className="text-xs font-bold uppercase tracking-wider text-gold">
                           {item.year}
@@ -161,7 +161,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                           {item.title}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm text-[var(--gray-400)]">
+                      <p className="mt-1 text-sm text-(--gray-400)">
                         {item.description}
                       </p>
                     </div>

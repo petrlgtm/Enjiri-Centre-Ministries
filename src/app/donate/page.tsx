@@ -48,11 +48,11 @@ export default async function DonatePage() {
         <div className="absolute inset-0 bg-cream" />
         <Container className="relative">
           <div className="mx-auto max-w-2xl">
-            <h2 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-cream-heading min-[375px]:text-2xl sm:text-3xl">
+            <h2 className="font-(family-name:--font-playfair) text-xl font-bold text-cream-heading min-[375px]:text-2xl sm:text-3xl">
               What would you like to give towards?
             </h2>
 
-            <div className="mt-8 divide-y divide-black/[0.08] sm:mt-10">
+            <div className="mt-8 divide-y divide-black/8 sm:mt-10">
               {givingCategories.map((category) => (
                 <a
                   key={category.label}
@@ -72,8 +72,8 @@ export default async function DonatePage() {
             </div>
 
             {/* Scripture quote */}
-            <div className="mt-10 rounded-2xl border border-black/[0.06] bg-white px-5 py-7 text-center sm:mt-16 sm:p-10">
-              <p className="font-[family-name:var(--font-playfair)] text-base italic leading-relaxed text-cream-body min-[375px]:text-lg sm:text-xl">
+            <div className="mt-10 rounded-2xl border border-black/6 bg-white px-5 py-7 text-center sm:mt-16 sm:p-10">
+              <p className="font-(family-name:--font-playfair) text-base italic leading-relaxed text-cream-body min-[375px]:text-lg sm:text-xl">
                 &ldquo;Each of you should give what you have decided in your
                 heart to give, not reluctantly or under compulsion, for God
                 loves a cheerful giver.&rdquo;

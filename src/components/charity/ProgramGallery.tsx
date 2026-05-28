@@ -40,7 +40,7 @@ export default function ProgramGallery({
               className="mb-4 overflow-hidden rounded-2xl"
             >
               <div
-                className={`relative ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-[4/3]"}`}
+                className={`relative ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-4/3"}`}
               >
                 <Image
                   src={src}

@@ -41,7 +41,7 @@ const placeholderSermons = [
 export default function LatestSermons() {
   return (
     <section className="relative overflow-hidden py-32">
-      <div className="absolute inset-0 bg-[var(--gray-50)]" />
+      <div className="absolute inset-0 bg-(--gray-50)" />
 
       <Container className="relative">
         <SectionHeading
@@ -67,18 +67,18 @@ export default function LatestSermons() {
             >
               <Link
                 href={`/sermons?play=${sermon.slug}`}
-                className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/[0.06] bg-[var(--gray-100)]"
+                className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/6 bg-(--gray-100)"
               >
                 {/* Thumbnail */}
-                <div className="relative aspect-[16/9] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={sermon.image}
                     alt={sermon.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-all duration-[900ms] group-hover:scale-[1.12] group-hover:brightness-90"
+                    className="object-cover transition-all duration-900 group-hover:scale-[1.12] group-hover:brightness-90"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-navy/10 to-transparent" />
 
                   {/* Play button with ring pulse */}
                   <div className="absolute inset-0 flex items-center justify-center">

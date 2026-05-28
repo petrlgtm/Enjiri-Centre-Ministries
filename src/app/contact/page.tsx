@@ -67,14 +67,14 @@ export default async function ContactPage() {
                 {contactInfo.map((info) => (
                   <div
                     key={info.title}
-                    className="group rounded-2xl card-premium border border-white/[0.06] bg-[var(--gray-100)] p-5 transition-all duration-500 hover:ring-1 hover:ring-gold/20"
+                    className="group rounded-2xl card-premium border border-white/6 bg-(--gray-100) p-5 transition-all duration-500 hover:ring-1 hover:ring-gold/20"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--gold-muted)] text-gold transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gold/20">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-(--gold-muted) text-gold transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gold/20">
                       <info.icon size={18} />
                     </div>
                     <h3 className="mt-3 text-sm font-bold text-foreground">{info.title}</h3>
                     {info.lines.map((line) => (
-                      <p key={line} className="mt-0.5 text-xs leading-relaxed text-[var(--gray-400)]">
+                      <p key={line} className="mt-0.5 text-xs leading-relaxed text-(--gray-400)">
                         {line}
                       </p>
                     ))}
@@ -84,7 +84,7 @@ export default async function ContactPage() {
             </div>
 
             <div className="lg:w-7/12">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl lg:aspect-[3/4]">
+              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl lg:aspect-3-4">
                 <Image
                   src={headerImage}
                   alt="Church location scenery"
@@ -92,7 +92,7 @@ export default async function ContactPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 58vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-navy/30 to-transparent" />
                 <div className="absolute inset-x-5 bottom-5 lg:inset-x-6 lg:bottom-6">
                   <div className="glass rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl">
                     <div className="flex items-start gap-3">
@@ -114,7 +114,7 @@ export default async function ContactPage() {
 
       <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0 bg-cream" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-dark/15 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold-dark/15 to-transparent" />
         <Container className="relative">
           <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-start lg:gap-16">
             <div className="lg:w-7/12">
@@ -126,10 +126,10 @@ export default async function ContactPage() {
                 onCream
               />
 
-              <div className="relative rounded-2xl sm:rounded-3xl border border-black/[0.06] bg-white p-5 sm:p-8 card-premium">
+              <div className="relative rounded-2xl sm:rounded-3xl border border-black/6 bg-white p-5 sm:p-8 card-premium">
                 <div className="absolute top-0 left-0 h-16 w-16 overflow-hidden rounded-tl-3xl">
-                  <div className="absolute -top-px -left-px h-[3px] w-10 rounded-full bg-gradient-to-r from-gold-dark to-transparent" />
-                  <div className="absolute -top-px -left-px h-10 w-[3px] rounded-full bg-gradient-to-b from-gold-dark to-transparent" />
+                  <div className="absolute -top-px -left-px h-0.75 w-10 rounded-full bg-linear-to-r from-gold-dark to-transparent" />
+                  <div className="absolute -top-px -left-px h-10 w-0.75 rounded-full bg-linear-to-b from-gold-dark to-transparent" />
                 </div>
 
                 <ContactForm />
@@ -137,7 +137,7 @@ export default async function ContactPage() {
             </div>
 
             <div className="space-y-6 lg:w-5/12">
-              <div className="rounded-2xl border border-black/[0.06] bg-white p-6">
+              <div className="rounded-2xl border border-black/6 bg-white p-6">
                 <h3 className="font-bold text-cream-heading">Follow Us</h3>
                 <p className="mt-1 text-sm text-cream-muted">
                   Stay connected on social media
@@ -164,7 +164,7 @@ export default async function ContactPage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                   <span className="h-px w-8 bg-gold/40" />
                 </div>
-                <p className="font-[family-name:var(--font-playfair)] text-lg leading-relaxed text-gold italic">
+                <p className="font-(family-name:--font-playfair) text-lg leading-relaxed text-gold italic">
                   &ldquo;Cast all your anxiety on him because he cares for
                   you.&rdquo;
                 </p>

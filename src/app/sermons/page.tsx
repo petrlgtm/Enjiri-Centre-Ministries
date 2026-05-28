@@ -176,14 +176,14 @@ function SermonsContent() {
 
           {/* Featured latest sermon */}
           {loading && !featuredSermon ? (
-            <div className="mb-10 animate-pulse rounded-3xl bg-[var(--gray-100)] border border-white/[0.06]">
+            <div className="mb-10 animate-pulse rounded-3xl bg-(--gray-100) border border-white/6">
               <div className="flex flex-col md:flex-row">
-                <div className="aspect-[16/9] w-full md:w-1/2 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none bg-[var(--gray-200)]" />
+                <div className="aspect-video w-full md:w-1/2 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none bg-(--gray-200)" />
                 <div className="flex-1 p-8 space-y-4">
-                  <div className="h-5 w-28 rounded-full bg-[var(--gray-200)]" />
-                  <div className="h-8 w-3/4 rounded bg-[var(--gray-200)]" />
-                  <div className="h-4 w-1/2 rounded bg-[var(--gray-200)]" />
-                  <div className="h-12 w-40 rounded-full bg-[var(--gray-200)]" />
+                  <div className="h-5 w-28 rounded-full bg-(--gray-200)" />
+                  <div className="h-8 w-3/4 rounded bg-(--gray-200)" />
+                  <div className="h-4 w-1/2 rounded bg-(--gray-200)" />
+                  <div className="h-12 w-40 rounded-full bg-(--gray-200)" />
                 </div>
               </div>
             </div>
@@ -198,24 +198,24 @@ function SermonsContent() {
                 type="button"
                 onClick={() => setSelectedSlug(featuredSermon.slug)}
                 className={cn(
-                  "card-premium group block w-full overflow-hidden rounded-3xl border bg-[var(--gray-100)] text-left shadow-lg ring-1 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30",
+                  "card-premium group block w-full overflow-hidden rounded-3xl border bg-(--gray-100) text-left shadow-lg ring-1 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30",
                   selectedSlug === featuredSermon.slug
                     ? "border-gold/40 ring-gold/30 shadow-gold-glow"
-                    : "border-white/[0.06] ring-transparent hover:ring-2 hover:ring-gold/30"
+                    : "border-white/6 ring-transparent hover:ring-2 hover:ring-gold/30"
                 )}
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Thumbnail */}
-                  <div className="relative aspect-[16/9] w-full md:w-1/2 overflow-hidden rounded-t-2xl sm:rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
+                  <div className="relative aspect-video w-full md:w-1/2 overflow-hidden rounded-t-2xl sm:rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
                     <Image
                       src={featuredSermon.thumbnail || featuredFallbackImage}
                       alt={featuredSermon.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-90"
+                      className="object-cover transition-all duration-900 ease-out group-hover:scale-[1.06] group-hover:brightness-90"
                       priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent md:bg-gradient-to-r md:from-transparent md:via-navy/5 md:to-navy/40" />
+                    <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-navy/10 to-transparent md:bg-linear-to-r md:from-transparent md:via-navy/5 md:to-navy/40" />
 
                     {/* Large play overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -250,7 +250,7 @@ function SermonsContent() {
                     <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold md:text-3xl line-clamp-2">
                       {featuredSermon.title}
                     </h3>
-                    <div className="mt-3 flex items-center gap-2 text-sm text-[var(--gray-500)]">
+                    <div className="mt-3 flex items-center gap-2 text-sm text-(--gray-500)">
                       <span className="font-medium">{featuredSermon.speaker}</span>
                       <span className="h-1 w-1 rounded-full bg-[var(--gray-300)]" />
                       <span>{featuredSermon.date}</span>
@@ -275,7 +275,7 @@ function SermonsContent() {
           {(loading && youtubeSermons.length === 0) || searching ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="aspect-[4/5] animate-pulse rounded-3xl bg-[var(--gray-100)]" />
+                <div key={i} className="aspect-[4/5] animate-pulse rounded-3xl bg-(--gray-100)" />
               ))}
             </div>
           ) : filteredSermons.length > 0 ? (
@@ -292,7 +292,7 @@ function SermonsContent() {
             </div>
           ) : (
             <div className="py-20 text-center">
-              <p className="text-lg text-[var(--gray-500)]">
+              <p className="text-lg text-(--gray-500)">
                 No sermons found matching your search.
               </p>
             </div>

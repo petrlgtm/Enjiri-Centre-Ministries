@@ -49,12 +49,12 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
+            className="rounded-2xl border border-black/6 bg-white p-8 lg:p-10"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
               <HiEye className="text-gold-dark" size={24} />
             </div>
-            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
+            <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
               Our Vision
             </h3>
             <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
@@ -71,12 +71,12 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
+            className="rounded-2xl border border-black/6 bg-white p-8 lg:p-10"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
               <HiLightBulb className="text-gold-dark" size={24} />
             </div>
-            <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
+            <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
               Our Mission
             </h3>
             <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
@@ -95,12 +95,12 @@ export default function VisionMission() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
+          className="mt-10 rounded-2xl border border-black/6 bg-white p-8 lg:p-10"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
             <HiGlobe className="text-gold-dark" size={24} />
           </div>
-          <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
+          <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
             Our Commission
           </h3>
           <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
@@ -120,12 +120,12 @@ export default function VisionMission() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 lg:p-10"
+          className="mt-10 rounded-2xl border border-black/6 bg-white p-8 lg:p-10"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 border border-gold-dark/15">
             <HiBookOpen className="text-gold-dark" size={24} />
           </div>
-          <h3 className="mt-5 font-[family-name:var(--font-playfair)] text-2xl font-bold text-cream-heading">
+          <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
             Statement of Faith
           </h3>
           <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
@@ -167,7 +167,7 @@ export default function VisionMission() {
                   delay: index * 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group rounded-2xl border border-black/[0.06] bg-white p-6 text-center transition-all duration-300 hover:border-gold-dark/20 hover:shadow-md"
+                className="group rounded-2xl border border-black/6 bg-white p-6 text-center transition-all duration-300 hover:border-gold-dark/20 hover:shadow-md"
               >
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dark/10 text-gold-dark transition-all duration-400 group-hover:bg-gold group-hover:text-black group-hover:shadow-[0_0_16px_rgba(201,168,76,0.2)]">
                   <value.icon size={22} />
