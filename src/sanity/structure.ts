@@ -11,9 +11,15 @@ import {
   CogIcon,
   BellIcon,
   HomeIcon,
+  InfoOutlineIcon,
 } from "@sanity/icons";
 
-const singletonTypes = new Set(["siteSettings", "announcementBanner", "homePage"]);
+const singletonTypes = new Set([
+  "siteSettings",
+  "announcementBanner",
+  "homePage",
+  "aboutPage",
+]);
 
 function singletonListItem(
   S: Parameters<StructureResolver>[0],
@@ -70,7 +76,10 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.list()
             .title("Pages")
-            .items([singletonListItem(S, "homePage", "Home Page", HomeIcon)]),
+            .items([
+              singletonListItem(S, "homePage", "Home Page", HomeIcon),
+              singletonListItem(S, "aboutPage", "About Page", InfoOutlineIcon),
+            ]),
         ),
 
       // ── Settings ──────────────────────────

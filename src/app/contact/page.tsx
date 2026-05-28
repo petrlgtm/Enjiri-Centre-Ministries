@@ -15,9 +15,11 @@ export const revalidate = 60;
 export default async function ContactPage() {
   const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
 
-  const headerImage = settings?.defaultHeaderImage 
-    ? heroImageUrl(settings.defaultHeaderImage) 
-    : "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80&fm=webp&fit=crop";
+  const headerImage = settings?.contactHeaderImage 
+    ? heroImageUrl(settings.contactHeaderImage) 
+    : settings?.defaultHeaderImage
+      ? heroImageUrl(settings.defaultHeaderImage)
+      : "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80&fm=webp&fit=crop";
 
   const contactInfo = [
     { 

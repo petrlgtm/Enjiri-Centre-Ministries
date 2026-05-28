@@ -8,7 +8,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
-const placeholderSermons = [
+const defaultSermons = [
   {
     title: "Walking in God's Purpose",
     speaker: "Pastor John",
@@ -38,7 +38,20 @@ const placeholderSermons = [
   },
 ];
 
-export default function LatestSermons() {
+interface LatestSermonsProps {
+  sermons?: Array<{
+    title: string;
+    speaker: string;
+    date: string;
+    series?: string;
+    slug: string;
+    image: string;
+  }>;
+}
+
+export default function LatestSermons({ sermons }: LatestSermonsProps) {
+  const displaySermons = sermons && sermons.length > 0 ? sermons : defaultSermons;
+
   return (
     <section className="relative overflow-hidden py-32">
       <div className="absolute inset-0 bg-(--gray-50)" />
@@ -52,7 +65,7 @@ export default function LatestSermons() {
 
         {/* Staggered grid: middle card pushed down for visual rhythm */}
         <div className="perspective-container grid gap-7 md:grid-cols-3 md:items-start">
-          {placeholderSermons.map((sermon, index) => (
+          {displaySermons.map((sermon, index) => (
             <motion.div
               key={sermon.slug}
               initial={{ opacity: 0, y: 50, rotateX: 5 }}
@@ -96,18 +109,13 @@ export default function LatestSermons() {
                   </div>
 
                   {/* Series badge */}
-                  <div className="absolute bottom-3 left-3">
-                    <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
-                      {sermon.series}
-                    </span>
-                  </div>
-
-                  {/* Duration badge */}
-                  <div className="absolute bottom-3 right-3">
-                    <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-medium tracking-wide text-foreground/70 backdrop-blur-md border border-white/5">
-                      {sermon.duration}
-                    </span>
-                  </div>
+                  {sermon.series && (
+                    <div className="absolute bottom-3 left-3">
+                      <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
+                        {sermon.series}
+                      </span>
+                    </div>
+                  )}
 
                 </div>
 

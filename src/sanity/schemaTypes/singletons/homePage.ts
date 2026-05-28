@@ -20,20 +20,23 @@ export default defineType({
       description: "Subheading text below the main heading",
     }),
     defineField({
-      name: "heroImage",
-      title: "Hero Background Image",
-      type: "image",
-      options: { hotspot: true },
-      description:
-        "Large background image for the homepage hero section — recommended 1920x1080px minimum",
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alternative Text",
-          type: "string",
-          description: "Describe the image for screen readers",
+      name: "heroImages",
+      title: "Hero Background Images",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alternative Text",
+              type: "string",
+            }),
+          ],
         }),
       ],
+      description: "Multiple background images for the homepage hero carousel",
     }),
     defineField({
       name: "heroCta",
@@ -107,6 +110,48 @@ export default defineType({
       type: "text",
       rows: 3,
       description: "Description text in the donate section",
+    }),
+    defineField({
+      name: "missionValues",
+      title: "Mission Values",
+      type: "array",
+      description: "The four key values shown in the mission section",
+      of: [
+        defineArrayMember({
+          type: "object",
+          fields: [
+            defineField({ name: "title", type: "string" }),
+            defineField({ name: "description", type: "text", rows: 3 }),
+            defineField({
+              name: "image",
+              type: "image",
+              options: { hotspot: true },
+              fields: [defineField({ name: "alt", type: "string" })],
+            }),
+            defineField({
+              name: "link",
+              title: "Link URL",
+              type: "string",
+              description: "Where this card leads to (e.g. /services, /sermons)",
+            }),
+          ],
+        }),
+      ],
+      validation: (rule) => rule.max(4),
+    }),
+    defineField({
+      name: "visitImage",
+      title: "Plan Your Visit Image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", type: "string" })],
+    }),
+    defineField({
+      name: "ctaImage",
+      title: "Call to Action Background Image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", type: "string" })],
     }),
     defineField({
       name: "seo",

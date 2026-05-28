@@ -13,6 +13,10 @@ import SermonPlayerPanel from "@/components/sermons/SermonPlayerPanel";
 import { fetchYouTubeVideos, searchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
 import { formatDate, getYouTubeVideoId } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { fetchSanity } from "@/sanity/lib/helpers";
+import { siteSettingsQuery } from "@/sanity/queries";
+import { heroImage as heroImageUrl } from "@/sanity/image";
+import { SiteSettings } from "@/types/sanity";
 
 const featuredFallbackImage =
   "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80&fm=webp&fit=crop";
@@ -61,7 +65,11 @@ function filterByDateRange(sermons: SermonItem[], range: DateRange): SermonItem[
   return sermons.filter((s) => new Date(s.rawDate) >= cutoff);
 }
 
-function SermonsContent() {
+interface SermonsContentProps {
+  headerImage: string;
+}
+
+function SermonsContent({ headerImage }: SermonsContentProps) {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [dateRange, setDateRange] = useState<DateRange>("all");
@@ -155,7 +163,7 @@ function SermonsContent() {
         label="The Word of God"
         title="Sermons & Teachings"
         description="Watch or listen to our sermons and be encouraged by the teaching of God's Word."
-        backgroundImage="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80&fm=webp&fit=crop"
+        backgroundImage={headerImage}
       />
 
       <section className="relative overflow-hidden py-28">
@@ -303,7 +311,15 @@ function SermonsContent() {
   );
 }
 
-export default function SermonsPage() {
+export default async function SermonsPage() {
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const headerImage = settings?.sermonsHeaderImage 
+    ? heroImageUrl(settings.sermonsHeaderImage) 
+    : settings?.defaultHeaderImage
+      ? heroImageUrl(settings.defaultHeaderImage)
+      : "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80&fm=webp&fit=crop";
+
   return (
     <Suspense
       fallback={
@@ -312,7 +328,7 @@ export default function SermonsPage() {
         </div>
       }
     >
-      <SermonsContent />
+      <SermonsContent headerImage={headerImage} />
     </Suspense>
   );
 }

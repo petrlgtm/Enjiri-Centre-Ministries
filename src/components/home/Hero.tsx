@@ -29,7 +29,7 @@ const FALLBACK_IMAGES = [
 const INTERVAL_MS = 7000;
 
 interface HeroProps {
-  heroImage?: string;
+  heroImages?: Array<{ src: string; alt?: string }>;
   heading?: string;
   subheading?: string;
   cta?: { label: string; url: string; style?: string };
@@ -37,12 +37,14 @@ interface HeroProps {
   secondaryUrl?: string;
 }
 
-export default function Hero({ heroImage, heading, subheading, cta, secondaryText, secondaryUrl }: HeroProps) {
-  const heroImages = heroImage
-    ? [{ src: heroImage, alt: "Enjiri Center Ministries" }, ...FALLBACK_IMAGES.slice(1)]
+export default function Hero({ heroImages: customImages, heading, subheading, cta, secondaryText, secondaryUrl }: HeroProps) {
+  const heroImages = customImages && customImages.length > 0
+    ? customImages.map(img => ({ src: img.src, alt: img.alt || "Enjiri Center Ministries" }))
     : FALLBACK_IMAGES;
+
   const [currentImage, setCurrentImage] = useState(0);
   const [direction, setDirection] = useState(1);
+  
   const nextImage = useCallback(() => {
     setDirection(1);
     setCurrentImage((prev) => (prev + 1) % heroImages.length);
@@ -88,7 +90,7 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
         >
           <Image
             src={heroImages[currentImage].src}
-            alt={heroImages[currentImage].alt}
+            alt={heroImages[currentImage].alt || "Church background"}
             fill
             sizes="100vw"
             priority={currentImage === 0}

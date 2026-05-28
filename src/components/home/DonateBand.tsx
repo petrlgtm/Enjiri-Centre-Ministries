@@ -12,9 +12,10 @@ const amounts = [25, 50, 100, 250];
 interface DonateBandProps {
   heading?: string;
   text?: string;
+  image?: string;
 }
 
-export default function DonateBand({ heading, text }: DonateBandProps) {
+export default function DonateBand({ heading, text, image }: DonateBandProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -28,7 +29,7 @@ export default function DonateBand({ heading, text }: DonateBandProps) {
       {/* Parallax background */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-[-20%]">
         <Image
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"
+          src={image || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"}
           alt="Community gathered together"
           fill
           sizes="100vw"

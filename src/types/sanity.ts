@@ -48,13 +48,21 @@ export interface SiteSettings {
     serviceName: string;
   }>;
   defaultHeaderImage?: SanityImage;
+  sermonsHeaderImage?: SanityImage;
+  eventsHeaderImage?: SanityImage;
+  charityHeaderImage?: SanityImage;
+  blogHeaderImage?: SanityImage;
+  donateHeaderImage?: SanityImage;
+  contactHeaderImage?: SanityImage;
+  venueImage?: SanityImage;
+  footerMapImage?: SanityImage;
   globalSeo?: SEO;
 }
 
 export interface HomePageData {
   heroHeading?: string;
   heroSubheading?: string;
-  heroImage?: SanityImage;
+  heroImages?: SanityImage[];
   heroCta?: CTA;
   heroSecondaryText?: string;
   heroSecondaryUrl?: string;
@@ -63,6 +71,31 @@ export interface HomePageData {
   visionText?: string;
   donateBandHeading?: string;
   donateBandText?: string;
+  missionValues?: Array<{
+    title: string;
+    description: string;
+    image: SanityImage;
+    link?: string;
+  }>;
+  visitImage?: SanityImage;
+  ctaImage?: SanityImage;
+  seo?: SEO;
+}
+
+export interface AboutPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  historyTitle?: string;
+  historyText?: any;
+  historyImage?: SanityImage;
+  historyStats?: Array<{ label: string; value: number; suffix?: string }>;
+  timeline?: Array<{ year: string; title: string; description: string }>;
+  vision?: { text: string; scripture?: string };
+  mission?: { text: string; scripture?: string };
+  commission?: { text: string; scripture?: string };
+  statementOfFaith?: { text: string; beliefs: string[] };
+  coreValues?: Array<{ title: string; description: string }>;
   seo?: SEO;
 }
 

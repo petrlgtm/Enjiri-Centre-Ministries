@@ -13,7 +13,7 @@ import {
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const coreValues = [
+const defaultCoreValues = [
   {
     icon: HiStar,
     title: "Faith",
@@ -36,7 +36,24 @@ const coreValues = [
   },
 ];
 
-export default function VisionMission() {
+const icons = [HiStar, HiHeart, HiShieldCheck, HiLightBulb, HiGlobe, HiBookOpen];
+
+interface VisionMissionProps {
+  vision?: { text: string; scripture?: string };
+  mission?: { text: string; scripture?: string };
+  commission?: { text: string; scripture?: string };
+  statementOfFaith?: { text: string; beliefs: string[] };
+  coreValues?: Array<{ title: string; description: string }>;
+}
+
+export default function VisionMission({ vision, mission, commission, statementOfFaith, coreValues }: VisionMissionProps) {
+  const displayCoreValues = coreValues && coreValues.length > 0
+    ? coreValues.map((v, i) => ({
+        ...v,
+        icon: icons[i % icons.length],
+      }))
+    : defaultCoreValues;
+
   return (
     <section className="relative overflow-hidden bg-cream py-24 lg:py-32">
 
@@ -58,11 +75,18 @@ export default function VisionMission() {
               Our Vision
             </h3>
             <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-              Preaching Christ and Restoring Hope through the power of the Holy Spirit.
+              {vision?.text || "Preaching Christ and Restoring Hope through the power of the Holy Spirit."}
             </p>
-            <p className="mt-3 text-sm italic text-gold-dark/70">
-              Colossians 1:27, 1 Corinthians 2:4
-            </p>
+            {vision?.scripture && (
+              <p className="mt-3 text-sm italic text-gold-dark/70">
+                {vision.scripture}
+              </p>
+            )}
+            {!vision && (
+              <p className="mt-3 text-sm italic text-gold-dark/70">
+                Colossians 1:27, 1 Corinthians 2:4
+              </p>
+            )}
           </motion.div>
 
           {/* Mission */}
@@ -80,12 +104,18 @@ export default function VisionMission() {
               Our Mission
             </h3>
             <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-              Ministering the Gospel of our Lord Jesus Christ through repentance
-              and remission of sins to all nations.
+              {mission?.text || "Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations."}
             </p>
-            <p className="mt-3 text-sm italic text-gold-dark/70">
-              Luke 24:47
-            </p>
+            {mission?.scripture && (
+              <p className="mt-3 text-sm italic text-gold-dark/70">
+                {mission.scripture}
+              </p>
+            )}
+            {!mission && (
+              <p className="mt-3 text-sm italic text-gold-dark/70">
+                Luke 24:47
+              </p>
+            )}
           </motion.div>
         </div>
 
@@ -104,14 +134,18 @@ export default function VisionMission() {
             Our Commission
           </h3>
           <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-            Proclaiming to all the Nations that God made Jesus both Lord and Christ,
-            who is the only way, the truth and the Life. Who never came to condemn
-            the world but to save and give Eternal Life through His death, burial
-            and triumphant resurrection. He paid the ultimate sacrifice for all mankind.
+            {commission?.text || "Proclaiming to all the Nations that God made Jesus both Lord and Christ, who is the only way, the truth and the Life. Who never came to condemn the world but to save and give Eternal Life through His death, burial and triumphant resurrection. He paid the ultimate sacrifice for all mankind."}
           </p>
-          <p className="mt-3 text-sm italic text-gold-dark/70">
-            Acts 2:36, John 14:6
-          </p>
+          {commission?.scripture && (
+            <p className="mt-3 text-sm italic text-gold-dark/70">
+              {commission.scripture}
+            </p>
+          )}
+          {!commission && (
+            <p className="mt-3 text-sm italic text-gold-dark/70">
+              Acts 2:36, John 14:6
+            </p>
+          )}
         </motion.div>
 
         {/* Statement of Faith */}
@@ -129,15 +163,14 @@ export default function VisionMission() {
             Statement of Faith
           </h3>
           <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-            We are a ministry called to evangelize, equip and disciple people locally
-            and internationally with the approach of God&apos;s Word through love.
+            {statementOfFaith?.text || "We are a ministry called to evangelize, equip and disciple people locally and internationally with the approach of God's Word through love."}
           </p>
           <ul className="mt-4 space-y-3">
-            {[
+            {(statementOfFaith?.beliefs || [
               "We believe in the Triune God. God the Father, God the Son and God the Holy Spirit.",
               "We believe in the death, burial and resurrection of the Lord Jesus Christ.",
               "We believe in the baptism of water and the baptism of the Holy Spirit.",
-            ].map((belief) => (
+            ]).map((belief) => (
               <li key={belief} className="flex items-start gap-3 text-[0.95rem] leading-[1.85] text-cream-body">
                 <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-dark" />
                 <span>{belief}</span>
@@ -156,7 +189,7 @@ export default function VisionMission() {
           />
 
           <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-            {coreValues.map((value, index) => (
+            {displayCoreValues.map((value, index) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 20 }}

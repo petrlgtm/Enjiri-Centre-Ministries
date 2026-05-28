@@ -7,7 +7,7 @@ import { HiHeart, HiBookOpen, HiGlobe, HiUserGroup, HiArrowRight } from "react-i
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-const values = [
+const defaultValues = [
   {
     icon: HiHeart,
     title: "Worship",
@@ -54,12 +54,33 @@ const values = [
   },
 ];
 
+const icons = [HiHeart, HiBookOpen, HiGlobe, HiUserGroup];
+const accents = ["from-gold/20 to-gold/5", "from-red/15 to-red/5", "from-gold/15 to-gold/5", "from-red/20 to-red/5"];
+const iconBgs = ["bg-gold/10 group-hover:bg-gold", "bg-red/10 group-hover:bg-red", "bg-gold/10 group-hover:bg-gold", "bg-red/10 group-hover:bg-red"];
+
 interface MissionSectionProps {
   missionText?: string;
   visionText?: string;
+  values?: Array<{
+    title: string;
+    description: string;
+    image: string;
+    link?: string;
+  }>;
 }
 
-export default function MissionSection({ missionText, visionText }: MissionSectionProps) {
+export default function MissionSection({ missionText, visionText, values }: MissionSectionProps) {
+  const displayValues = values && values.length > 0 
+    ? values.map((v, i) => ({
+        ...v,
+        number: `0${i + 1}`,
+        icon: icons[i % icons.length],
+        accent: accents[i % accents.length],
+        iconBg: iconBgs[i % iconBgs.length],
+        href: v.link || "/contact",
+      }))
+    : defaultValues;
+
   return (
     <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
       <div className="absolute inset-0 bg-(--gray-50)" />
@@ -74,7 +95,7 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
 
         {/* 2x2 grid — alternating image heights for visual rhythm */}
         <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
-          {values.map((value, index) => (
+          {displayValues.map((value, index) => (
             <motion.div
               key={value.title}
               initial={{ opacity: 0, y: 40 }}

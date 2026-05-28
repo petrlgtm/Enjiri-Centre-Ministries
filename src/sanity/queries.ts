@@ -197,6 +197,14 @@ export const siteSettingsQuery = groq`
       serviceName
     },
     defaultHeaderImage { ${imageFields} },
+    sermonsHeaderImage { ${imageFields} },
+    eventsHeaderImage { ${imageFields} },
+    charityHeaderImage { ${imageFields} },
+    blogHeaderImage { ${imageFields} },
+    donateHeaderImage { ${imageFields} },
+    contactHeaderImage { ${imageFields} },
+    venueImage { ${imageFields} },
+    footerMapImage { ${imageFields} },
     "globalSeo": globalSeo {
       seoTitle,
       seoDescription,
@@ -364,7 +372,7 @@ export const homePageQuery = groq`
   *[_type == "homePage"][0] {
     heroHeading,
     heroSubheading,
-    heroImage { ${imageFields} },
+    heroImages[] { ${imageFields} },
     heroCta { label, url, style },
     heroSecondaryText,
     heroSecondaryUrl,
@@ -373,6 +381,35 @@ export const homePageQuery = groq`
     visionText,
     donateBandHeading,
     donateBandText,
+    missionValues[] {
+      title,
+      description,
+      image { ${imageFields} },
+      link
+    },
+    visitImage { ${imageFields} },
+    ctaImage { ${imageFields} },
+    ${seoFields}
+  }
+`;
+
+// ── About Page ──────────────────────────────────────────────────
+
+export const aboutPageQuery = groq`
+  *[_type == "aboutPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    historyTitle,
+    historyText,
+    historyImage { ${imageFields} },
+    historyStats[] { label, value, suffix },
+    timeline[] { year, title, description },
+    vision { text, scripture },
+    mission { text, scripture },
+    commission { text, scripture },
+    statementOfFaith { text, beliefs },
+    coreValues[] { title, description },
     ${seoFields}
   }
 `;

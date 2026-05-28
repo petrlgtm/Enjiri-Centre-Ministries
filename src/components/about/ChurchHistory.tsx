@@ -5,14 +5,15 @@ import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CountUp from "@/components/ui/CountUp";
+import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 
-const stats = [
+const defaultStats = [
   { value: 10, suffix: "+", label: "Years of Ministry" },
   { value: 1000, suffix: "+", label: "Lives Touched" },
   { value: 50, suffix: "+", label: "Outreach Programs" },
 ];
 
-const timeline = [
+const defaultTimeline = [
   { year: "2015", title: "Founded", description: "A small group of believers gathered in faith to spread the gospel." },
   { year: "2018", title: "First Outreach", description: "Expanded impact to surrounding communities through service." },
   { year: "2020", title: "Digital Ministry", description: "Reaching the world through online platforms during a global shift." },
@@ -21,9 +22,16 @@ const timeline = [
 
 interface ChurchHistoryProps {
   image?: string;
+  title?: string;
+  text?: any;
+  stats?: Array<{ label: string; value: number; suffix?: string }>;
+  timeline?: Array<{ year: string; title: string; description: string }>;
 }
 
-export default function ChurchHistory({ image }: ChurchHistoryProps) {
+export default function ChurchHistory({ image, title, text, stats, timeline }: ChurchHistoryProps) {
+  const displayStats = stats && stats.length > 0 ? stats : defaultStats;
+  const displayTimeline = timeline && timeline.length > 0 ? timeline : defaultTimeline;
+
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
       <Container>
@@ -62,7 +70,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
             >
               <div className="glass rounded-2xl p-5 sm:p-6">
                 <div className="flex items-center justify-between">
-                  {stats.map((stat, i) => (
+                  {displayStats.map((stat, i) => (
                     <div key={stat.label} className="flex items-center">
                       <div className="text-center">
                         <CountUp
@@ -74,7 +82,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
                           {stat.label}
                         </span>
                       </div>
-                      {i < stats.length - 1 && (
+                      {i < displayStats.length - 1 && (
                         <div className="mx-3 h-8 w-px bg-linear-to-b from-transparent via-white/15 to-transparent sm:mx-5" />
                       )}
                     </div>
@@ -88,7 +96,7 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
           <div>
             <SectionHeading
               label="Our Story"
-              title="A Legacy of Faith & Service"
+              title={title || "A Legacy of Faith & Service"}
               centered={false}
               className="mb-8"
             />
@@ -100,17 +108,23 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="space-y-4 text-[0.95rem] leading-[1.85] text-(--gray-400)"
             >
-              <p>
-                Enjiri Center Ministries International was founded on a deep
-                conviction to spread the gospel of Jesus Christ and serve
-                communities with the love of God. From humble beginnings, the
-                ministry has grown into a vibrant community of believers.
-              </p>
-              <p>
-                Through the years, God has been faithful in expanding our reach,
-                touching lives across cities and nations. Our doors are open to
-                everyone — regardless of background or walk of life.
-              </p>
+              {text ? (
+                <PortableTextRenderer value={text} />
+              ) : (
+                <>
+                  <p>
+                    Enjiri Center Ministries International was founded on a deep
+                    conviction to spread the gospel of Jesus Christ and serve
+                    communities with the love of God. From humble beginnings, the
+                    ministry has grown into a vibrant community of believers.
+                  </p>
+                  <p>
+                    Through the years, God has been faithful in expanding our reach,
+                    touching lives across cities and nations. Our doors are open to
+                    everyone — regardless of background or walk of life.
+                  </p>
+                </>
+              )}
             </motion.div>
 
             {/* Scripture quote */}
@@ -140,9 +154,9 @@ export default function ChurchHistory({ image }: ChurchHistoryProps) {
               />
 
               <div className="space-y-5">
-                {timeline.map((item, index) => (
+                {displayTimeline.map((item, index) => (
                   <motion.div
-                    key={item.year}
+                    key={`${item.year}-${item.title}`}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

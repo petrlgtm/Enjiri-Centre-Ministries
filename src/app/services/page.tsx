@@ -30,7 +30,13 @@ export default async function ServicesPage() {
     fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const headerImg = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : undefined;
+  const headerImg = settings?.eventsHeaderImage 
+    ? heroImageUrl(settings.eventsHeaderImage) 
+    : settings?.defaultHeaderImage
+      ? heroImageUrl(settings.defaultHeaderImage)
+      : undefined;
+      
+  const venueImg = settings?.venueImage ? heroImageUrl(settings.venueImage) : undefined;
 
   const eventsData = sanityEvents && sanityEvents.length > 0
     ? sanityEvents.map((e) => ({
@@ -56,7 +62,7 @@ export default async function ServicesPage() {
         backgroundImage={headerImg}
       />
 
-      <ServiceSchedule />
+      <ServiceSchedule image={venueImg} />
 
       <SectionDivider accent />
 

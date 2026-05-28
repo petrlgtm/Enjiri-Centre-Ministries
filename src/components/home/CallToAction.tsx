@@ -29,7 +29,13 @@ function FloatingParticle({ delay, left, size = 1.5 }: { delay: number; left: st
   );
 }
 
-export default function CallToAction() {
+interface CallToActionProps {
+  heading?: string;
+  text?: string;
+  image?: string;
+}
+
+export default function CallToAction({ heading, text, image }: CallToActionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -44,7 +50,7 @@ export default function CallToAction() {
       {/* Background image with parallax + scale */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-[-20%]">
         <Image
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"
+          src={image || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"}
           alt="Community"
           fill
           sizes="100vw"
@@ -111,8 +117,7 @@ export default function CallToAction() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="font-(family-name:--font-playfair) text-4xl font-bold text-foreground sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
           >
-            Partner With Us in{" "}
-            <span className="text-gradient-gold-animated">God&apos;s Work</span>
+            {heading || <>Partner With Us in <span className="text-gradient-gold-animated">God&apos;s Work</span></>}
           </motion.h2>
 
           {/* Decorative divider */}
@@ -139,9 +144,7 @@ export default function CallToAction() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mx-auto mt-8 max-w-xl text-lg leading-[1.8] text-foreground/75"
           >
-            Your generous giving supports our outreach programs, community
-            services, and the spreading of the gospel to the nations. Every
-            contribution makes an eternal difference.
+            {text || "Your generous giving supports our outreach programs, community services, and the spreading of the gospel to the nations. Every contribution makes an eternal difference."}
           </motion.p>
 
           <motion.div

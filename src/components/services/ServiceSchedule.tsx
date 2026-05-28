@@ -36,7 +36,11 @@ const schedule = [
   },
 ];
 
-export default function ServiceSchedule() {
+interface ServiceScheduleProps {
+  image?: string;
+}
+
+export default function ServiceSchedule({ image }: ServiceScheduleProps) {
   return (
     <section className="relative overflow-hidden py-32">
       <Container>
@@ -62,7 +66,7 @@ export default function ServiceSchedule() {
               className="group relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"
+                src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
                 alt="Congregation gathered in worship"
                 fill
                 className="object-cover transition-all duration-900 group-hover:scale-[1.08]"

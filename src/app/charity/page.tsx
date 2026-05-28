@@ -55,9 +55,11 @@ export default async function CharityPage() {
     fetchSanity<SiteSettings>(siteSettingsQuery),
   ]);
 
-  const missionImage = settings?.defaultHeaderImage
-    ? heroImageBuilder(settings.defaultHeaderImage)
-    : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
+  const missionImage = settings?.charityHeaderImage 
+    ? heroImageBuilder(settings.charityHeaderImage) 
+    : settings?.defaultHeaderImage
+      ? heroImageBuilder(settings.defaultHeaderImage)
+      : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
 
   // Merge Sanity data with static fallback images
   const programsData = (programs && programs.length > 0 ? programs : []).map(

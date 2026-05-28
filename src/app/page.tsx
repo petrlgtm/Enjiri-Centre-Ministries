@@ -20,6 +20,7 @@ import {
   allMinistriesQuery,
   siteSettingsQuery,
   homePageQuery,
+  latestSermonsQuery,
 } from "@/sanity/queries";
 import { cardImage, portraitImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
@@ -30,19 +31,27 @@ import {
   Ministry,
   SiteSettings,
   HomePageData,
+  Sermon,
 } from "@/types/sanity";
 
 export default async function HomePage() {
-  const [events, leaders, testimonies, ministries, settings, homePage] = await Promise.all([
+  const [events, leaders, testimonies, ministries, settings, homePage, sermons] = await Promise.all([
     fetchSanity<Event[]>(homepageEventsQuery),
     fetchSanity<Leader[]>(allLeadersQuery),
     fetchSanity<Testimony[]>(allTestimoniesQuery),
     fetchSanity<Ministry[]>(allMinistriesQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<HomePageData>(homePageQuery),
+    fetchSanity<Sermon[]>(latestSermonsQuery),
   ]);
 
-  const heroImageUrl = homePage?.heroImage ? heroImage(homePage.heroImage) : "";
+  const heroImagesData = homePage?.heroImages?.map(img => ({
+    src: heroImage(img),
+    alt: img.alt
+  })) || [];
+  
+  const visitImageUrl = homePage?.visitImage ? heroImage(homePage.visitImage) : "";
+  const ctaImageUrl = homePage?.ctaImage ? heroImage(homePage.ctaImage) : "";
 
   const eventsData = events?.map((e) => ({
     title: e.title,
@@ -54,6 +63,15 @@ export default async function HomePage() {
     accent: e.featured ? "from-gold to-gold-dark" : "from-gold-dark to-gold",
     featured: e.featured || false,
   })).filter((e) => e.image);
+
+  const sermonsData = sermons?.map((s) => ({
+    title: s.title,
+    speaker: s.speaker?.name || "Pastor",
+    date: formatDate(s.date),
+    series: s.series,
+    slug: s.slug,
+    image: s.thumbnail ? cardImage(s.thumbnail) : "",
+  })).filter((s) => s.image);
 
   const leaderData = leaders?.[0]
     ? {
@@ -83,6 +101,7 @@ export default async function HomePage() {
   const donateBandData = homePage ? {
     heading: homePage.donateBandHeading,
     text: homePage.donateBandText,
+    image: ctaImageUrl,
   } : undefined;
 
   const heroData = {
@@ -93,22 +112,28 @@ export default async function HomePage() {
     secondaryUrl: homePage?.heroSecondaryUrl,
   };
 
-  const missionData = {
-    missionText: homePage?.missionText,
-    visionText: homePage?.visionText,
-  };
+  const missionValuesData = homePage?.missionValues?.map((v) => ({
+    title: v.title,
+    description: v.description,
+    image: v.image ? cardImage(v.image) : "",
+    link: v.link,
+  }));
 
   return (
     <>
-      <Hero heroImage={heroImageUrl} {...heroData} />
+      <Hero heroImages={heroImagesData} {...heroData} />
       <SectionDivider />
       <SnapshotBand items={snapshotData} />
       <SectionDivider />
-      <MissionSection missionText={missionData.missionText} visionText={missionData.visionText} />
+      <MissionSection
+        missionText={homePage?.missionText}
+        visionText={homePage?.visionText}
+        values={missionValuesData}
+      />
       <SectionDivider accent />
-      <PlanYourVisit image={heroImageUrl} />
+      <PlanYourVisit image={visitImageUrl} />
       <SectionDivider />
-      <LatestSermons />
+      <LatestSermons sermons={sermonsData} />
       <SectionDivider accent />
       <UpcomingEvents events={eventsData} />
       <SectionDivider accent />
@@ -116,7 +141,11 @@ export default async function HomePage() {
       <SectionDivider />
       <TestimonialsCarousel testimonies={testimoniesData} />
       <SectionDivider accent />
-      <DonateBand heading={donateBandData?.heading} text={donateBandData?.text} />
+      <DonateBand
+        heading={donateBandData?.heading}
+        text={donateBandData?.text}
+        image={donateBandData?.image}
+      />
       <SectionDivider />
       <ContactInfoCard settings={settings} />
       <SectionDivider accent />

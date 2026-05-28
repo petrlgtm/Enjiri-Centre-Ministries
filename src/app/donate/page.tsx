@@ -31,9 +31,11 @@ const givingCategories = [
 export default async function DonatePage() {
   const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
 
-  const headerImage = settings?.defaultHeaderImage 
-    ? heroImageUrl(settings.defaultHeaderImage) 
-    : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
+  const headerImage = settings?.donateHeaderImage 
+    ? heroImageUrl(settings.donateHeaderImage) 
+    : settings?.defaultHeaderImage
+      ? heroImageUrl(settings.defaultHeaderImage)
+      : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
 
   return (
     <>

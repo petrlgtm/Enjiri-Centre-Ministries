@@ -7,6 +7,7 @@ import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
+import { urlFor } from "@/sanity/image";
 import logoImg from "@/../public/images/logo.jpeg";
 
 const quickLinks = [
@@ -23,6 +24,8 @@ const quickLinks = [
 
 interface FooterProps {
   siteSettings?: {
+    logo?: any;
+    footerMapImage?: any;
     address?: string;
     phone?: string;
     email?: string;
@@ -94,6 +97,12 @@ export default function Footer({ siteSettings }: FooterProps) {
         { day: "Wednesday", time: "6:00 PM - 8:00 PM", serviceName: "Wednesday Bible Study" },
         { day: "Friday", time: "6:00 PM - 8:00 PM", serviceName: "Friday Prayer" },
       ];
+
+  const footerLogo = siteSettings?.logo ? urlFor(siteSettings.logo).width(100).url() : logoImg;
+  const mapImageUrl = siteSettings?.footerMapImage 
+    ? urlFor(siteSettings.footerMapImage).width(600).height(300).url() 
+    : "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=75&fm=webp&fit=crop";
+
   return (
     <footer className="relative overflow-hidden">
       {/* Newsletter Signup */}
@@ -114,7 +123,7 @@ export default function Footer({ siteSettings }: FooterProps) {
               <Link href="/" className="group inline-flex items-center gap-3">
                 <div className="relative h-12 w-12 overflow-hidden rounded-xl shadow-[0_2px_12px_rgba(201,168,76,0.3)] transition-transform duration-500 group-hover:scale-105">
                   <Image
-                    src={logoImg}
+                    src={footerLogo}
                     alt="Enjiri Center Ministries International"
                     fill
                     className="object-cover"
@@ -203,13 +212,14 @@ export default function Footer({ siteSettings }: FooterProps) {
 
               {/* Static Map Image */}
               <div className="mt-5 overflow-hidden rounded-xl border border-white/6 transition-all duration-500 hover:border-gold/10">
-                <Image
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=75&fm=webp&fit=crop"
-                  alt="Location"
-                  width={300}
-                  height={150}
-                  className="w-full object-cover opacity-30 transition-all duration-500 hover:opacity-50 hover:scale-105"
-                />
+                <div className="relative aspect-video w-full">
+                  <Image
+                    src={mapImageUrl}
+                    alt="Location"
+                    fill
+                    className="object-cover opacity-30 transition-all duration-500 hover:opacity-50 hover:scale-105"
+                  />
+                </div>
               </div>
             </div>
 

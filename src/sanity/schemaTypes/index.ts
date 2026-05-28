@@ -22,6 +22,7 @@ import gallery from "./documents/gallery";
 import siteSettings from "./singletons/siteSettings";
 import announcementBanner from "./singletons/announcementBanner";
 import homePage from "./singletons/homePage";
+import aboutPage from "./singletons/aboutPage";
 
 export const schemaTypes = [
   // Objects (must be registered before types that reference them)
@@ -48,4 +49,5 @@ export const schemaTypes = [
   siteSettings,
   announcementBanner,
   homePage,
+  aboutPage,
 ];
