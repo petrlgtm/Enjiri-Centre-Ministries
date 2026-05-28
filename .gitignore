@@ -50,3 +50,4 @@ schema.json
 
 # misc artifacts
 /image.png
+.env*.local

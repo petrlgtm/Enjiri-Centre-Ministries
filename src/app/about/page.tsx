@@ -49,7 +49,7 @@ export default async function AboutPage() {
   return (
     <>
       <PageHeader
-        label={aboutData?.description ? "Get to Know Us" : undefined}
+        label={aboutData?.title ? "Get to Know Us" : "About Us"}
         title={aboutData?.title || "About Our Church"}
         description={aboutData?.description || "A community of believers united in faith, love, and the mission to reach the world with the gospel of Christ."}
         backgroundImage={headerImage || undefined}
