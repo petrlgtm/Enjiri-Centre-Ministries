@@ -15,6 +15,7 @@ interface ButtonProps {
   icon?: React.ReactNode;
   disabled?: boolean;
   ariaLabel?: string;
+  fullWidth?: boolean;
 }
 
 export default function Button({
@@ -28,6 +29,7 @@ export default function Button({
   icon,
   disabled = false,
   ariaLabel,
+  fullWidth = false,
 }: ButtonProps) {
   const baseStyles =
     "group relative inline-flex items-center justify-center font-medium tracking-wide rounded-full transition-all duration-500 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
@@ -53,7 +55,14 @@ export default function Button({
     ? "opacity-50 pointer-events-none cursor-not-allowed"
     : "";
 
-  const classes = cn(baseStyles, variants[variant], sizes[size], disabledStyles, className);
+  const classes = cn(
+    baseStyles, 
+    variants[variant], 
+    sizes[size], 
+    fullWidth ? "w-full flex" : "",
+    disabledStyles, 
+    className
+  );
 
   const inner = (
     <>
@@ -80,7 +89,10 @@ export default function Button({
 
   if (href && !disabled) {
     return (
-      <motion.div whileTap={{ scale: 0.96 }}>
+      <motion.div 
+        whileTap={{ scale: 0.96 }}
+        className={fullWidth ? "w-full" : undefined}
+      >
         <Link href={href} className={classes} aria-label={ariaLabel}>
           {inner}
         </Link>

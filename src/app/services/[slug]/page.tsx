@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { 
   HiCalendar, 
   HiClock, 
@@ -20,7 +19,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { eventBySlugQuery, siteSettingsQuery } from "@/sanity/queries";
-import { heroImage, cardImage } from "@/sanity/image";
+import { heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 import { Event, SiteSettings } from "@/types/sanity";
 
@@ -58,7 +57,6 @@ export default async function EventDetailPage({ params }: EventPageProps) {
     notFound();
   }
 
-  const startDate = new Date(event.date);
   const formattedDate = event.isRecurring ? "Every Sunday" : formatDate(event.date);
   const formattedTime = formatTime(event.date) + (event.endDate ? ` - ${formatTime(event.endDate)}` : "");
   
@@ -192,11 +190,14 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                       </Button>
                     )}
                     
-                    <Button variant="outline" fullWidth size="lg" asChild>
-                       <a href={`mailto:?subject=Join me at ${event.title}&body=I thought you might be interested in this event: ${event.title} at Enjiri Center. Details here: ${typeof window !== 'undefined' ? window.location.href : ''}`}>
-                        Share Event
-                        <HiShare className="ml-2" />
-                      </a>
+                    <Button 
+                      variant="outline" 
+                      fullWidth 
+                      size="lg"
+                      href={`mailto:?subject=Join me at ${event.title}&body=I thought you might be interested in this event: ${event.title} at Enjiri Center.`}
+                    >
+                      Share Event
+                      <HiShare className="ml-2" />
                     </Button>
                   </div>
                 </div>

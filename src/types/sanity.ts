@@ -180,6 +180,7 @@ export interface Event {
   endDate?: string;
   location?: string;
   description?: string;
+  body?: PortableTextContent;
   image?: SanityImage;
   isRecurring?: boolean;
   featured?: boolean;
