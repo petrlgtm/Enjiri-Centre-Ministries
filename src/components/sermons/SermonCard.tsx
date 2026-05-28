@@ -120,7 +120,7 @@ export default function SermonCard({
           </h3>
           <div className="mt-2.5 flex items-center gap-2 text-sm text-(--gray-500)">
             <span className="font-medium">{speaker}</span>
-            <span className="h-1 w-1 rounded-full bg-[var(--gray-300)]" />
+            <span className="h-1 w-1 rounded-full bg-(--gray-300)" />
             <span>{date}</span>
           </div>
 

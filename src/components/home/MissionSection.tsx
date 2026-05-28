@@ -60,7 +60,6 @@ const iconBgs = ["bg-gold/10 group-hover:bg-gold", "bg-red/10 group-hover:bg-red
 
 interface MissionSectionProps {
   missionText?: string;
-  visionText?: string;
   values?: Array<{
     title: string;
     description: string;
@@ -69,7 +68,7 @@ interface MissionSectionProps {
   }>;
 }
 
-export default function MissionSection({ missionText, visionText, values }: MissionSectionProps) {
+export default function MissionSection({ missionText, values }: MissionSectionProps) {
   const displayValues = values && values.length > 0 
     ? values.map((v, i) => ({
         ...v,

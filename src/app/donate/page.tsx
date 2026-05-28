@@ -2,23 +2,32 @@ import type { Metadata } from "next";
 import { HiArrowUpRight } from "react-icons/hi2";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
+import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { siteSettingsQuery } from "@/sanity/queries";
+import { siteSettingsQuery, donatePageQuery } from "@/sanity/queries";
 import { heroImage as heroImageUrl } from "@/sanity/image";
-import { SiteSettings } from "@/types/sanity";
+import { SiteSettings, DonatePageData } from "@/types/sanity";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Give",
-  description:
-    "Support the work of Enjiri Center Ministries International through your generous giving.",
-  openGraph: {
-    title: "Give — Enjiri Center Ministries International",
-    description:
-      "Support the work of Enjiri Center Ministries International through your generous giving.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<DonatePageData>(donatePageQuery);
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Give";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "Support the work of Enjiri Center Ministries International through your generous giving.";
+  const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
 
 const givingCategories = [
   { label: "Tithe", href: "#" },
@@ -29,20 +38,25 @@ const givingCategories = [
 ];
 
 export default async function DonatePage() {
-  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+  const [settings, pageData] = await Promise.all([
+    fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<DonatePageData>(donatePageQuery),
+  ]);
 
-  const headerImage = settings?.donateHeaderImage 
-    ? heroImageUrl(settings.donateHeaderImage) 
-    : settings?.defaultHeaderImage
-      ? heroImageUrl(settings.defaultHeaderImage)
-      : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
+  const headerImage = pageData?.headerImage
+    ? heroImageUrl(pageData.headerImage)
+    : settings?.donateHeaderImage 
+      ? heroImageUrl(settings.donateHeaderImage) 
+      : settings?.defaultHeaderImage
+        ? heroImageUrl(settings.defaultHeaderImage)
+        : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
 
   return (
     <>
       <PageHeader
         label="Support Our Mission"
-        title="Give Generously"
-        description="Your generosity fuels our mission to reach more people with the love of Christ and serve our communities."
+        title={pageData?.title || "Give Generously"}
+        description={pageData?.description || "Your generosity fuels our mission to reach more people with the love of Christ and serve our communities."}
         backgroundImage={headerImage}
       />
 
@@ -50,8 +64,14 @@ export default async function DonatePage() {
         <div className="absolute inset-0 bg-cream" />
         <Container className="relative">
           <div className="mx-auto max-w-2xl">
+            {pageData?.content && (
+              <div className="mb-10 text-cream-body">
+                <PortableTextRenderer value={pageData.content} />
+              </div>
+            )}
+
             <h2 className="font-(family-name:--font-playfair) text-xl font-bold text-cream-heading min-[375px]:text-2xl sm:text-3xl">
-              What would you like to give towards?
+              {pageData?.waysToGiveHeading || "What would you like to give towards?"}
             </h2>
 
             <div className="mt-8 divide-y divide-black/8 sm:mt-10">

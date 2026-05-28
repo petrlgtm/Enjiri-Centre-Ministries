@@ -23,6 +23,13 @@ import siteSettings from "./singletons/siteSettings";
 import announcementBanner from "./singletons/announcementBanner";
 import homePage from "./singletons/homePage";
 import aboutPage from "./singletons/aboutPage";
+import servicesPage from "./singletons/servicesPage";
+import sermonsPage from "./singletons/sermonsPage";
+import contactPage from "./singletons/contactPage";
+import donatePage from "./singletons/donatePage";
+import galleryPage from "./singletons/galleryPage";
+import blogPage from "./singletons/blogPage";
+import charityPage from "./singletons/charityPage";
 
 export const schemaTypes = [
   // Objects (must be registered before types that reference them)
@@ -50,4 +57,11 @@ export const schemaTypes = [
   announcementBanner,
   homePage,
   aboutPage,
+  servicesPage,
+  sermonsPage,
+  contactPage,
+  donatePage,
+  galleryPage,
+  blogPage,
+  charityPage,
 ];

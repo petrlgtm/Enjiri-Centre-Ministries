@@ -1,3 +1,17 @@
+export interface SanityHotspot {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
+
+export interface SanityCrop {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
 export interface SanityImage {
   asset: {
     _id: string;
@@ -12,8 +26,8 @@ export interface SanityImage {
     };
   };
   alt?: string;
-  hotspot?: any;
-  crop?: any;
+  hotspot?: SanityHotspot;
+  crop?: SanityCrop;
 }
 
 export interface SEO {
@@ -82,12 +96,14 @@ export interface HomePageData {
   seo?: SEO;
 }
 
+export type PortableTextContent = unknown[];
+
 export interface AboutPageData {
   title?: string;
   description?: string;
   headerImage?: SanityImage;
   historyTitle?: string;
-  historyText?: any;
+  historyText?: PortableTextContent;
   historyImage?: SanityImage;
   historyStats?: Array<{ label: string; value: number; suffix?: string }>;
   timeline?: Array<{ year: string; title: string; description: string }>;
@@ -96,6 +112,63 @@ export interface AboutPageData {
   commission?: { text: string; scripture?: string };
   statementOfFaith?: { text: string; beliefs: string[] };
   coreValues?: Array<{ title: string; description: string }>;
+  seo?: SEO;
+}
+
+export interface ServicesPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  scheduleHeading?: string;
+  eventsHeading?: string;
+  seo?: SEO;
+}
+
+export interface SermonsPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  featuredLabel?: string;
+  seo?: SEO;
+}
+
+export interface ContactPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  formHeading?: string;
+  infoHeading?: string;
+  mapUrl?: string;
+  seo?: SEO;
+}
+
+export interface DonatePageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  content?: PortableTextContent;
+  waysToGiveHeading?: string;
+  seo?: SEO;
+}
+
+export interface GalleryPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  seo?: SEO;
+}
+
+export interface BlogPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
+  seo?: SEO;
+}
+
+export interface CharityPageData {
+  title?: string;
+  description?: string;
+  headerImage?: SanityImage;
   seo?: SEO;
 }
 
@@ -128,7 +201,7 @@ export interface Sermon {
   audioUrl?: string;
   thumbnail?: SanityImage;
   tags?: string[];
-  body?: any;
+  body?: PortableTextContent;
   seo?: SEO;
 }
 
@@ -173,7 +246,7 @@ export interface BlogPost {
   publishedAt: string;
   excerpt?: string;
   coverImage?: SanityImage;
-  body?: any;
+  body?: PortableTextContent;
   categories?: string[];
   tags?: string[];
   featured?: boolean;
@@ -207,7 +280,7 @@ export interface CharityProgram {
   image?: SanityImage;
   heroImage?: SanityImage;
   aboutImage?: SanityImage;
-  body?: any;
+  body?: PortableTextContent;
   gallery?: SanityImage[];
   highlights?: Array<{ title: string; description: string }>;
   scripture?: { text: string; reference: string };

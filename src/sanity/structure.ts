@@ -12,6 +12,12 @@ import {
   BellIcon,
   HomeIcon,
   InfoOutlineIcon,
+  TagIcon,
+  PlayIcon,
+  EnvelopeIcon,
+  ImagesIcon,
+  DocumentsIcon,
+  EarthAmericasIcon,
 } from "@sanity/icons";
 
 const singletonTypes = new Set([
@@ -19,6 +25,13 @@ const singletonTypes = new Set([
   "announcementBanner",
   "homePage",
   "aboutPage",
+  "servicesPage",
+  "sermonsPage",
+  "contactPage",
+  "donatePage",
+  "galleryPage",
+  "blogPage",
+  "charityPage",
 ]);
 
 function singletonListItem(
@@ -79,6 +92,13 @@ export const structure: StructureResolver = (S) =>
             .items([
               singletonListItem(S, "homePage", "Home Page", HomeIcon),
               singletonListItem(S, "aboutPage", "About Page", InfoOutlineIcon),
+              singletonListItem(S, "servicesPage", "Services Page", TagIcon),
+              singletonListItem(S, "sermonsPage", "Sermons Page", PlayIcon),
+              singletonListItem(S, "contactPage", "Contact Page", EnvelopeIcon),
+              singletonListItem(S, "donatePage", "Donate Page", HeartIcon),
+              singletonListItem(S, "galleryPage", "Gallery Page", ImagesIcon),
+              singletonListItem(S, "blogPage", "Blog Page", DocumentsIcon),
+              singletonListItem(S, "charityPage", "Charity Page", EarthAmericasIcon),
             ]),
         ),
 

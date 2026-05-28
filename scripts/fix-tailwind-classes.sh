@@ -62,7 +62,7 @@ find "$PROJECT" -type f -name "*.tsx" | while read -r file; do
     -e 's/tracking-widest/tracking-widest/g;' \
     -e 's/duration-900/duration-900/g;' \
     "$file"
-  
+
   # Second pass for the more complex ones using literal replacement via sed
   sed -i "s/font-\[family-name:var(--font-playfair)\]/font-(family-name:--font-playfair)/g" "$file"
   sed -i "s/text-\[var(--gray-400)\]/text-(--gray-400)/g" "$file"

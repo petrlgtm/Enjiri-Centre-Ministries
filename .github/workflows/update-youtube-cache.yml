@@ -1,9 +1,8 @@
 name: Update YouTube Cache
-
 on:
   schedule:
-    - cron: '0 4 * * *' # Run at 4:00 AM UTC daily
-  workflow_dispatch: # Allow manual trigger
+    - cron: "0 4 * * *"
+  workflow_dispatch: {}
 
 jobs:
   update-cache:

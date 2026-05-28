@@ -40,7 +40,7 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
         >
           <div className="flex flex-col lg:flex-row">
             {/* Image */}
-            <div className="relative aspect-[3/4] sm:aspect-4/3 lg:aspect-auto lg:w-5/12">
+            <div className="relative aspect-3/4 sm:aspect-4/3 lg:aspect-auto lg:w-5/12">
               <Image
                 src={displayLeader.image}
                 alt={displayLeader.name}
@@ -48,7 +48,7 @@ export default function LeadershipHighlight({ leader }: LeadershipHighlightProps
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-transparent to-[var(--gray-100)]/30 lg:bg-linear-to-r lg:from-transparent lg:to-[var(--gray-100)]" />
+              <div className="absolute inset-0 bg-linear-to-r from-transparent to-(--gray-100)/30 lg:bg-linear-to-r lg:from-transparent lg:to-(--gray-100)" />
             </div>
 
             {/* Content */}

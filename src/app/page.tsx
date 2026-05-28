@@ -127,7 +127,6 @@ export default async function HomePage() {
       <SectionDivider />
       <MissionSection
         missionText={homePage?.missionText}
-        visionText={homePage?.visionText}
         values={missionValuesData}
       />
       <SectionDivider accent />

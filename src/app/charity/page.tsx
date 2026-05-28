@@ -20,21 +20,29 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import CountUp from "@/components/ui/CountUp";
 import Button from "@/components/ui/Button";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { allCharityProgramsQuery, siteSettingsQuery } from "@/sanity/queries";
+import { allCharityProgramsQuery, siteSettingsQuery, charityPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageBuilder } from "@/sanity/image";
 import { charityPrograms as staticPrograms } from "@/data/charityPrograms";
-import { CharityProgram, SiteSettings } from "@/types/sanity";
+import { CharityProgram, SiteSettings, CharityPageData } from "@/types/sanity";
 
-export const metadata: Metadata = {
-  title: "Charity",
-  description:
-    "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
-  openGraph: {
-    title: "Outreach & Charity — Enjiri Center Ministries International",
-    description:
-      "Community outreach, feeding programs, and the #IAMASOULWINNER campaign.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<CharityPageData>(charityPageQuery);
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Charity";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.";
+  const image = pageData?.seo?.seoImage ? heroImageBuilder(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
 
 const iconMap: Record<string, IconType> = {
   globe: HiGlobe,
@@ -50,16 +58,19 @@ function getIcon(name?: string): IconType {
 }
 
 export default async function CharityPage() {
-  const [programs, settings] = await Promise.all([
+  const [programs, settings, pageData] = await Promise.all([
     fetchSanity<CharityProgram[]>(allCharityProgramsQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<CharityPageData>(charityPageQuery),
   ]);
 
-  const missionImage = settings?.charityHeaderImage 
-    ? heroImageBuilder(settings.charityHeaderImage) 
-    : settings?.defaultHeaderImage
-      ? heroImageBuilder(settings.defaultHeaderImage)
-      : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
+  const missionImage = pageData?.headerImage
+    ? heroImageBuilder(pageData.headerImage)
+    : settings?.charityHeaderImage 
+      ? heroImageBuilder(settings.charityHeaderImage) 
+      : settings?.defaultHeaderImage
+        ? heroImageBuilder(settings.defaultHeaderImage)
+        : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
 
   // Merge Sanity data with static fallback images
   const programsData = (programs && programs.length > 0 ? programs : []).map(
@@ -107,8 +118,8 @@ export default async function CharityPage() {
       {/* SECTION 1 — Hero */}
       <PageHeader
         label="How We Give Back"
-        title="Our Outreach Mission"
-        description="Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."
+        title={pageData?.title || "Our Outreach Mission"}
+        description={pageData?.description || "Through the love of Christ, Enjiri Center Ministries International serves communities across East Africa with outreach, feeding programs, and the hope of the gospel."}
         backgroundImage={missionImage || undefined}
       />
 

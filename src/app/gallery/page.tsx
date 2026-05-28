@@ -6,35 +6,48 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { allGalleriesQuery, siteSettingsQuery } from "@/sanity/queries";
+import { allGalleriesQuery, siteSettingsQuery, galleryPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
-import { Gallery, SiteSettings } from "@/types/sanity";
+import { Gallery, SiteSettings, GalleryPageData } from "@/types/sanity";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description:
-    "Photos and memories from Enjiri Center Ministries International worship services, events, and outreach.",
-  openGraph: {
-    title: "Gallery — Enjiri Center Ministries International",
-    description:
-      "Photos and memories from our worship services, events, and outreach.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<GalleryPageData>(galleryPageQuery);
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Gallery";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "Photos and memories from Enjiri Center Ministries International worship services, events, and outreach.";
+  const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
 
 export default async function GalleryPage() {
-  const [galleries, settings] = await Promise.all([
+  const [galleries, settings, pageData] = await Promise.all([
     fetchSanity<Gallery[]>(allGalleriesQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<GalleryPageData>(galleryPageQuery),
   ]);
 
-  const headerImg = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : undefined;
+  const headerImg = pageData?.headerImage
+    ? heroImageUrl(pageData.headerImage)
+    : settings?.defaultHeaderImage 
+      ? heroImageUrl(settings.defaultHeaderImage) 
+      : undefined;
 
   return (
     <>
       <PageHeader
         label="Our Gallery"
-        title="Photos & Memories"
-        description="Browse photos from our worship services, events, outreach programs, and community gatherings."
+        title={pageData?.title || "Photos & Memories"}
+        description={pageData?.description || "Browse photos from our worship services, events, outreach programs, and community gatherings."}
         backgroundImage={headerImg}
       />
 

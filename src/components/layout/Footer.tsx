@@ -9,6 +9,7 @@ import Container from "@/components/ui/Container";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
 import { urlFor } from "@/sanity/image";
 import logoImg from "@/../public/images/logo.jpeg";
+import { SanityImage } from "@/types/sanity";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -24,8 +25,8 @@ const quickLinks = [
 
 interface FooterProps {
   siteSettings?: {
-    logo?: any;
-    footerMapImage?: any;
+    logo?: SanityImage;
+    footerMapImage?: SanityImage;
     address?: string;
     phone?: string;
     email?: string;

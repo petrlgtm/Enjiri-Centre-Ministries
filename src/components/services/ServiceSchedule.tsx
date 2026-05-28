@@ -38,9 +38,10 @@ const schedule = [
 
 interface ServiceScheduleProps {
   image?: string;
+  heading?: string;
 }
 
-export default function ServiceSchedule({ image }: ServiceScheduleProps) {
+export default function ServiceSchedule({ image, heading }: ServiceScheduleProps) {
   return (
     <section className="relative overflow-hidden py-32">
       <Container>
@@ -49,7 +50,7 @@ export default function ServiceSchedule({ image }: ServiceScheduleProps) {
           <div className="lg:w-1/2">
             <SectionHeading
               label="Join Us"
-              title="Weekly Services"
+              title={heading || "Weekly Services"}
               centered={false}
             />
 
@@ -116,9 +117,9 @@ export default function ServiceSchedule({ image }: ServiceScheduleProps) {
                     {item.services.map((service) => (
                       <div
                         key={service.name}
-                        className="flex items-center justify-between gap-4 rounded-xl bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/[0.04]"
+                        className="flex items-center justify-between gap-4 rounded-xl bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/4"
                       >
-                        <span className="text-[0.9rem] font-medium text-[var(--gray-600)]">
+                        <span className="text-[0.9rem] font-medium text-(--gray-600)">
                           {service.name}
                         </span>
                         <span className="flex shrink-0 items-center gap-2 text-sm text-(--gray-500)">

@@ -413,3 +413,88 @@ export const aboutPageQuery = groq`
     ${seoFields}
   }
 `;
+
+// ── Services Page ──────────────────────────────────────────────
+
+export const servicesPageQuery = groq`
+  *[_type == "servicesPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    scheduleHeading,
+    eventsHeading,
+    ${seoFields}
+  }
+`;
+
+// ── Sermons Page ───────────────────────────────────────────────
+
+export const sermonsPageQuery = groq`
+  *[_type == "sermonsPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    featuredLabel,
+    ${seoFields}
+  }
+`;
+
+// ── Contact Page ───────────────────────────────────────────────
+
+export const contactPageQuery = groq`
+  *[_type == "contactPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    formHeading,
+    infoHeading,
+    mapUrl,
+    ${seoFields}
+  }
+`;
+
+// ── Donate Page ────────────────────────────────────────────────
+
+export const donatePageQuery = groq`
+  *[_type == "donatePage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    content,
+    waysToGiveHeading,
+    ${seoFields}
+  }
+`;
+
+// ── Gallery Page ───────────────────────────────────────────────
+
+export const galleryPageQuery = groq`
+  *[_type == "galleryPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    ${seoFields}
+  }
+`;
+
+// ── Blog Page ──────────────────────────────────────────────────
+
+export const blogPageQuery = groq`
+  *[_type == "blogPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    ${seoFields}
+  }
+`;
+
+// ── Charity Page ───────────────────────────────────────────────
+
+export const charityPageQuery = groq`
+  *[_type == "charityPage"][0] {
+    title,
+    description,
+    headerImage { ${imageFields} },
+    ${seoFields}
+  }
+`;

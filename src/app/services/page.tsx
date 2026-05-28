@@ -8,33 +8,44 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionDivider from "@/components/ui/SectionDivider";
 import EventsGrid from "@/components/services/EventsGrid";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { upcomingEventsQuery, siteSettingsQuery } from "@/sanity/queries";
+import { upcomingEventsQuery, siteSettingsQuery, servicesPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
-import { Event, SiteSettings } from "@/types/sanity";
+import { Event, SiteSettings, ServicesPageData } from "@/types/sanity";
 
-export const metadata: Metadata = {
-  title: "Services & Events",
-  description:
-    "View our weekly service schedule and upcoming events at Enjiri Center Ministries International.",
-  openGraph: {
-    title: "Services & Events — Enjiri Center Ministries International",
-    description:
-      "View our weekly service schedule and upcoming events.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<ServicesPageData>(servicesPageQuery);
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Services & Events";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "View our weekly service schedule and upcoming events at Enjiri Center Ministries International.";
+  const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
 
 export default async function ServicesPage() {
-  const [sanityEvents, settings] = await Promise.all([
+  const [sanityEvents, settings, pageData] = await Promise.all([
     fetchSanity<Event[]>(upcomingEventsQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<ServicesPageData>(servicesPageQuery),
   ]);
 
-  const headerImg = settings?.eventsHeaderImage 
-    ? heroImageUrl(settings.eventsHeaderImage) 
-    : settings?.defaultHeaderImage
-      ? heroImageUrl(settings.defaultHeaderImage)
-      : undefined;
+  const headerImg = pageData?.headerImage
+    ? heroImageUrl(pageData.headerImage)
+    : settings?.eventsHeaderImage 
+      ? heroImageUrl(settings.eventsHeaderImage) 
+      : settings?.defaultHeaderImage
+        ? heroImageUrl(settings.defaultHeaderImage)
+        : undefined;
       
   const venueImg = settings?.venueImage ? heroImageUrl(settings.venueImage) : undefined;
 
@@ -57,12 +68,15 @@ export default async function ServicesPage() {
     <>
       <PageHeader
         label="Join Us"
-        title="Services & Events"
-        description="Come worship with us and be part of the exciting events happening at Enjiri Center Ministries."
+        title={pageData?.title || "Services & Events"}
+        description={pageData?.description || "Come worship with us and be part of the exciting events happening at Enjiri Center Ministries."}
         backgroundImage={headerImg}
       />
 
-      <ServiceSchedule image={venueImg} />
+      <ServiceSchedule 
+        heading={pageData?.scheduleHeading} 
+        image={venueImg} 
+      />
 
       <SectionDivider accent />
 
@@ -71,7 +85,7 @@ export default async function ServicesPage() {
         <Container className="relative">
           <SectionHeading
             label="Mark Your Calendar"
-            title="Upcoming Events"
+            title={pageData?.eventsHeading || "Upcoming Events"}
             subtitle="Join us for these upcoming gatherings and be part of what God is doing."
             onCream
           />

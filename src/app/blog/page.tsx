@@ -6,36 +6,49 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { allBlogPostsQuery, siteSettingsQuery } from "@/sanity/queries";
+import { allBlogPostsQuery, siteSettingsQuery, blogPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate } from "@/lib/utils";
-import { BlogPost, SiteSettings } from "@/types/sanity";
+import { BlogPost, SiteSettings, BlogPageData } from "@/types/sanity";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "News, devotionals, and stories from Enjiri Center Ministries International.",
-  openGraph: {
-    title: "Blog — Enjiri Center Ministries International",
-    description:
-      "News, devotionals, and stories from our ministry.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<BlogPageData>(blogPageQuery);
+  const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
+
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Blog";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "News, devotionals, and stories from Enjiri Center Ministries International.";
+  const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
 
 export default async function BlogPage() {
-  const [posts, settings] = await Promise.all([
+  const [posts, settings, pageData] = await Promise.all([
     fetchSanity<BlogPost[]>(allBlogPostsQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<BlogPageData>(blogPageQuery),
   ]);
 
-  const headerImg = settings?.defaultHeaderImage ? heroImageUrl(settings.defaultHeaderImage) : undefined;
+  const headerImg = pageData?.headerImage
+    ? heroImageUrl(pageData.headerImage)
+    : settings?.defaultHeaderImage 
+      ? heroImageUrl(settings.defaultHeaderImage) 
+      : undefined;
 
   return (
     <>
       <PageHeader
         label="Our Blog"
-        title="News & Stories"
-        description="Stay updated with the latest news, devotionals, testimonies, and announcements from our ministry."
+        title={pageData?.title || "News & Stories"}
+        description={pageData?.description || "Stay updated with the latest news, devotionals, testimonies, and announcements from our ministry."}
         backgroundImage={headerImg}
       />
 

@@ -62,9 +62,17 @@ function filterByDateRange(sermons: SermonItem[], range: DateRange): SermonItem[
 
 interface SermonsContentProps {
   headerImage: string;
+  title?: string;
+  description?: string;
+  featuredLabel?: string;
 }
 
-export default function SermonsContent({ headerImage }: SermonsContentProps) {
+export default function SermonsContent({ 
+  headerImage, 
+  title = "Sermons & Teachings",
+  description = "Watch or listen to our sermons and be encouraged by the teaching of God's Word.",
+  featuredLabel = "Latest Sermon"
+}: SermonsContentProps) {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [dateRange, setDateRange] = useState<DateRange>("all");
@@ -101,8 +109,7 @@ export default function SermonsContent({ headerImage }: SermonsContentProps) {
     }
   }, [searchParams]);
 
-  // Scroll to player when selected — delay to let the panel animate open,
-  // and offset for the fixed navbar height
+  // Scroll to player when selected
   useEffect(() => {
     if (selectedSlug && playerRef.current) {
       const timer = setTimeout(() => {
@@ -156,8 +163,8 @@ export default function SermonsContent({ headerImage }: SermonsContentProps) {
     <>
       <PageHeader
         label="The Word of God"
-        title="Sermons & Teachings"
-        description="Watch or listen to our sermons and be encouraged by the teaching of God's Word."
+        title={title}
+        description={description}
         backgroundImage={headerImage}
       />
 
@@ -248,14 +255,14 @@ export default function SermonsContent({ headerImage }: SermonsContentProps) {
                   {/* Content */}
                   <div className="flex flex-1 flex-col justify-center p-7 md:p-10">
                     <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
-                      Latest Sermon
+                      {featuredLabel}
                     </span>
                     <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold md:text-3xl line-clamp-2">
                       {featuredSermon.title}
                     </h3>
                     <div className="mt-3 flex items-center gap-2 text-sm text-(--gray-500)">
                       <span className="font-medium">{featuredSermon.speaker}</span>
-                      <span className="h-1 w-1 rounded-full bg-[var(--gray-300)]" />
+                      <span className="h-1 w-1 rounded-full bg-(--gray-300)" />
                       <span>{featuredSermon.date}</span>
                     </div>
                     <div className="mt-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold opacity-70 transition-opacity duration-500 group-hover:opacity-100">
@@ -278,7 +285,7 @@ export default function SermonsContent({ headerImage }: SermonsContentProps) {
           {(loading && youtubeSermons.length === 0) || searching ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="aspect-[4/5] animate-pulse rounded-3xl bg-(--gray-100)" />
+                <div key={i} className="aspect-4/5 animate-pulse rounded-3xl bg-(--gray-100)" />
               ))}
             </div>
           ) : filteredSermons.length > 0 ? (

@@ -186,8 +186,7 @@ export default function SermonPlayerPanel({
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onClose(); }}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-[var(--gray-300)] transition-colors active:bg-red-500/30 active:text-red-400 hover:bg-red-500/20 hover:text-red-400"
-              aria-label="Close player"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/8 text-(--gray-300) transition-colors active:bg-red-500/30 active:text-red-400 hover:bg-red-500/20 hover:text-red-400"              aria-label="Close player"
             >
               <HiX size={22} />
             </button>

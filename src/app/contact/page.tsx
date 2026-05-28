@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { HiMail, HiPhone, HiLocationMarker, HiClock } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
@@ -6,20 +7,44 @@ import PageHeader from "@/components/ui/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/contact/ContactForm";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { siteSettingsQuery } from "@/sanity/queries";
+import { siteSettingsQuery, contactPageQuery } from "@/sanity/queries";
 import { heroImage as heroImageUrl } from "@/sanity/image";
-import { SiteSettings } from "@/types/sanity";
+import { SiteSettings, ContactPageData } from "@/types/sanity";
 
 export const revalidate = 60;
 
-export default async function ContactPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await fetchSanity<ContactPageData>(contactPageQuery);
   const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
 
-  const headerImage = settings?.contactHeaderImage 
-    ? heroImageUrl(settings.contactHeaderImage) 
-    : settings?.defaultHeaderImage
-      ? heroImageUrl(settings.defaultHeaderImage)
-      : "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80&fm=webp&fit=crop";
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Contact Us";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "Have questions or want to learn more? We'd love to hear from you.";
+  const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — ${settings?.churchName || "Enjiri Center"}`,
+      description,
+      images: image ? [{ url: image }] : [],
+    },
+  };
+}
+
+export default async function ContactPage() {
+  const [settings, pageData] = await Promise.all([
+    fetchSanity<SiteSettings>(siteSettingsQuery),
+    fetchSanity<ContactPageData>(contactPageQuery),
+  ]);
+
+  const headerImage = pageData?.headerImage
+    ? heroImageUrl(pageData.headerImage)
+    : settings?.contactHeaderImage 
+      ? heroImageUrl(settings.contactHeaderImage) 
+      : settings?.defaultHeaderImage
+        ? heroImageUrl(settings.defaultHeaderImage)
+        : "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&q=80&fm=webp&fit=crop";
 
   const contactInfo = [
     { 
@@ -56,8 +81,8 @@ export default async function ContactPage() {
     <>
       <PageHeader
         label="Reach Out"
-        title="Contact Us"
-        description="We'd love to hear from you. Whether you have a question, prayer request, or just want to say hello — reach out!"
+        title={pageData?.title || "Contact Us"}
+        description={pageData?.description || "We'd love to hear from you. Whether you have a question, prayer request, or just want to say hello — reach out!"}
         backgroundImage={headerImage}
       />
 
@@ -114,6 +139,21 @@ export default async function ContactPage() {
         </Container>
       </section>
 
+      {pageData?.mapUrl && (
+        <section className="h-[400px] w-full">
+          <iframe 
+            src={pageData.mapUrl}
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen={false} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Church Location Map"
+          />
+        </section>
+      )}
+
       <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0 bg-cream" />
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold-dark/15 to-transparent" />
@@ -122,7 +162,7 @@ export default async function ContactPage() {
             <div className="lg:w-7/12">
               <SectionHeading
                 label="Get in Touch"
-                title="Send Us a Message"
+                title={pageData?.formHeading || "Send Us a Message"}
                 subtitle="Fill out the form and we'll get back to you as soon as possible."
                 centered={false}
                 onCream
@@ -140,7 +180,7 @@ export default async function ContactPage() {
 
             <div className="space-y-6 lg:w-5/12">
               <div className="rounded-2xl border border-black/6 bg-white p-6">
-                <h3 className="font-bold text-cream-heading">Follow Us</h3>
+                <h3 className="font-bold text-cream-heading">{pageData?.infoHeading || "Follow Us"}</h3>
                 <p className="mt-1 text-sm text-cream-muted">
                   Stay connected on social media
                 </p>

@@ -7,6 +7,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import CountUp from "@/components/ui/CountUp";
 import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 
+import { PortableTextContent } from "@/types/sanity";
+
 const defaultStats = [
   { value: 10, suffix: "+", label: "Years of Ministry" },
   { value: 1000, suffix: "+", label: "Lives Touched" },
@@ -23,7 +25,7 @@ const defaultTimeline = [
 interface ChurchHistoryProps {
   image?: string;
   title?: string;
-  text?: any;
+  text?: PortableTextContent;
   stats?: Array<{ label: string; value: number; suffix?: string }>;
   timeline?: Array<{ year: string; title: string; description: string }>;
 }
@@ -44,7 +46,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div className="relative aspect-4/5 overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
                 src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Our Story"
@@ -150,7 +152,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute left-[7px] top-1 bottom-1 w-px origin-top bg-linear-to-b from-gold via-gold/40 to-transparent"
+                className="absolute left-1.75 top-1 bottom-1 w-px origin-top bg-linear-to-b from-gold via-gold/40 to-transparent"
               />
 
               <div className="space-y-5">
