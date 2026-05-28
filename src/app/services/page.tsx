@@ -52,6 +52,7 @@ export default async function ServicesPage() {
   const eventsData = sanityEvents && sanityEvents.length > 0
     ? sanityEvents.map((e) => ({
         title: e.title,
+        slug: e.slug,
         date: e.isRecurring ? "Recurring" : formatDate(e.date),
         time: formatTime(e.date) + (e.endDate ? ` - ${formatTime(e.endDate)}` : ""),
         location: e.location || "TBD",

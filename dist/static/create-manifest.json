@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "createdAt": "2026-05-28T13:58:17.965Z",
+  "createdAt": "2026-05-28T19:31:32.213Z",
   "workspaces": [
     {
       "name": "enjiri-center-ministries",
@@ -13,7 +13,7 @@
         "enabled": false,
         "__internal": {}
       },
-      "schema": "4ddbd43e.create-schema.json",
+      "schema": "63ab557e.create-schema.json",
       "tools": "ba47da56.create-tools.json"
     }
   ],

@@ -6,6 +6,7 @@ import EventCard from "@/components/services/EventCard";
 
 interface EventItem {
   title: string;
+  slug: string;
   date: string;
   time: string;
   location: string;

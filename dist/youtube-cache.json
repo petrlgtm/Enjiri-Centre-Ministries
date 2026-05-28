@@ -1,0 +1,23 @@
+{
+  "lastUpdated": "2026-05-28T00:00:00.000Z",
+  "videos": [
+    {
+      "id": "dQw4w9WgXcQ",
+      "title": "Walking in God's Purpose",
+      "description": "A powerful sermon about finding your path in life through faith.",
+      "thumbnail": "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80&fm=webp&fit=crop",
+      "publishedAt": "2026-02-16T10:00:00Z",
+      "channelTitle": "Enjiri Center",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "id": "jP1Xy3oZ_vE",
+      "title": "The Power of Prayer",
+      "description": "Understanding how prayer can transform your life and community.",
+      "thumbnail": "https://images.unsplash.com/photo-1445043432340-062e7077621c?w=800&q=80&fm=webp&fit=crop",
+      "publishedAt": "2026-02-09T10:00:00Z",
+      "channelTitle": "Enjiri Center",
+      "videoUrl": "https://www.youtube.com/watch?v=jP1Xy3oZ_vE"
+    }
+  ]
+}
