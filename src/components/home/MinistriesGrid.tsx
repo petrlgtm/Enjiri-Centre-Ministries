@@ -79,7 +79,7 @@ export default function MinistriesGrid({ ministries }: MinistriesGridProps) {
           {useFallback
             ? fallbackMinistries.map((ministry, index) => (
                 <MinistryCard
-                  key={ministry.title}
+                  key={`${ministry.title}-${index}`}
                   title={ministry.title}
                   description={ministry.description}
                   IconComponent={ministry.iconComponent}
@@ -90,9 +90,9 @@ export default function MinistriesGrid({ ministries }: MinistriesGridProps) {
               ))
             : ministries.map((ministry, index) => (
                 <MinistryCard
-                  key={ministry.title}
-                  title={ministry.title}
-                  description={ministry.description}
+                  key={`${ministry.title || "ministry"}-${index}`}
+                  title={ministry.title || "Ministry"}
+                  description={ministry.description || ""}
                   IconComponent={getIcon(ministry.icon)}
                   ctaText={ministry.ctaText || "Learn More"}
                   ctaUrl={ministry.ctaUrl || "/contact"}

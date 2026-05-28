@@ -103,8 +103,8 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
       <div className="noise-overlay absolute inset-0 pointer-events-none" />
 
       {/* ── Content ── */}
-      <Container className="relative z-10 flex h-full flex-col justify-center pt-[110px] pb-16 sm:pt-[140px] sm:pb-24 lg:pt-[156px] lg:pb-28">
-        <div className="max-w-2xl">
+      <Container className="relative z-10 flex h-full flex-col items-center justify-center pt-[110px] pb-16 sm:pt-[140px] sm:pb-24 lg:pt-[156px] lg:pb-28">
+        <div className="max-w-3xl text-center flex flex-col items-center">
 
           {/* Badge */}
           <motion.div
@@ -118,17 +118,26 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-light opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-red-light" />
               </span>
-              <span className="relative">PREACHING CHRIST IN ALL NATIONS</span>
+              <span className="relative uppercase">PREACHING CHRIST IN ALL NATIONS</span>
             </span>
           </motion.div>
 
+          {/* Title/Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-playfair)]"
+          >
+            {heading || "ENJIRI CENTER MINISTRIES"}
+          </motion.h1>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 sm:mt-7 max-w-lg text-[0.95rem] sm:text-[1.05rem] font-light leading-[1.7] sm:leading-[1.85] text-white/75 drop-shadow-sm"
+            className="mt-5 sm:mt-7 max-w-2xl text-[0.95rem] sm:text-[1.1rem] font-light leading-[1.7] sm:leading-[1.85] text-white/80 drop-shadow-sm"
           >
             {subheading || "Preaching Christ and Restoring Hope through the power of the Holy Spirit. Ministering the Gospel through repentance and remission of sins to all nations."}
           </motion.p>
@@ -138,16 +147,17 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-8 sm:mt-10 flex flex-col items-start gap-3 sm:gap-4 sm:flex-row"
+            className="mt-8 sm:mt-10 flex flex-col items-center gap-4 sm:flex-row justify-center"
           >
             <div className="btn-magnetic">
               <Button
-                href={cta?.url || "/services"}
+                href={cta?.url || "/contact"}
                 variant="primary"
                 size="lg"
+                className="min-w-[180px]"
                 icon={<HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />}
               >
-                {cta?.label || "Join Us Sunday"}
+                {cta?.label || "Plan Your Visit"}
               </Button>
             </div>
             <div className="btn-magnetic">
@@ -155,6 +165,7 @@ export default function Hero({ heroImage, heading, subheading, cta, secondaryTex
                 href={secondaryUrl || "/sermons"}
                 variant="outline"
                 size="lg"
+                className="min-w-[180px] bg-white/5 backdrop-blur-sm border-white/20 hover:bg-white/10"
                 icon={<HiPlay size={16} />}
               >
                 {secondaryText || "Watch Sermons"}

@@ -41,9 +41,9 @@ interface SnapshotBandProps {
 export default function SnapshotBand({ items }: SnapshotBandProps) {
   const snapshots = items?.length
     ? items.map((item, i) => ({
-        icon: iconMap[item.label] || [HiClock, HiCalendar, HiUserGroup, HiLocationMarker][i % 4],
-        label: item.label,
-        value: item.value,
+        icon: iconMap[item.label || ""] || [HiClock, HiCalendar, HiUserGroup, HiLocationMarker][i % 4],
+        label: item.label || "Info",
+        value: item.value || "TBD",
       }))
     : defaultSnapshots;
   return (
@@ -53,7 +53,7 @@ export default function SnapshotBand({ items }: SnapshotBandProps) {
         <div className="grid grid-cols-2 gap-2.5 min-[375px]:gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
           {snapshots.map((item, index) => (
             <motion.div
-              key={item.label}
+              key={`${item.label}-${index}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

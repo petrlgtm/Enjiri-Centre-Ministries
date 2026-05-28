@@ -61,7 +61,7 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:w-1/2"
+            className="lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <SectionHeading
               label="First Time?"
@@ -71,7 +71,7 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
               onCream
             />
 
-            <div className="space-y-4">
+            <div className="space-y-4 w-full flex flex-col items-center lg:items-start">
               {details.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -79,7 +79,7 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 text-left"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold-dark/10 text-gold-dark">
                     <item.icon size={18} />

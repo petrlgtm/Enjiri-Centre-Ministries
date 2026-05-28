@@ -69,6 +69,7 @@ export default function MissionSection({ missionText, visionText }: MissionSecti
           label="What We Stand For"
           title="Rooted in Faith, Growing in Purpose"
           subtitle={missionText || "Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations. — Luke 24:47"}
+          centered
         />
 
         {/* 2x2 grid — alternating image heights for visual rhythm */}

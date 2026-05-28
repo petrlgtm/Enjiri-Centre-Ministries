@@ -132,9 +132,9 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
         {/* Featured event: wide horizontal card. Others: side by side below */}
         <div className="space-y-6">
           {/* Featured — horizontal layout */}
-          {displayEvents.filter(e => e.featured).map((event) => (
+          {displayEvents.filter(e => e.featured).map((event, index) => (
             <motion.div
-              key={event.title}
+              key={`${event.title}-${index}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -178,8 +178,8 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                     {[
                       { icon: HiClock, text: event.time },
                       { icon: HiLocationMarker, text: event.location },
-                    ].map((item) => (
-                      <div key={item.text} className="flex items-center gap-2.5 text-sm text-[var(--gray-500)]">
+                    ].map((item, i) => (
+                      <div key={`${item.text}-${i}`} className="flex items-center gap-2.5 text-sm text-[var(--gray-500)]">
                         <item.icon className="shrink-0 text-gold/70" size={15} />
                         <span>{item.text}</span>
                       </div>
@@ -200,7 +200,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {displayEvents.filter(e => !e.featured).map((event, index) => (
               <motion.div
-                key={event.title}
+                key={`${event.title}-${index}`}
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -234,8 +234,8 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                       {event.title}
                     </h3>
                     <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
-                      {[{ icon: HiClock, text: event.time }, { icon: HiLocationMarker, text: event.location }].map((item) => (
-                        <div key={item.text} className="flex items-center gap-2 text-sm text-foreground/70">
+                      {[{ icon: HiClock, text: event.time }, { icon: HiLocationMarker, text: event.location }].map((item, i) => (
+                        <div key={`${item.text}-${i}`} className="flex items-center gap-2 text-sm text-foreground/70">
                           <item.icon className="shrink-0 text-gold" size={14} />
                           <span>{item.text}</span>
                         </div>
