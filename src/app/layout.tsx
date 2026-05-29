@@ -60,6 +60,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  icons: {
+    icon: [
+      {
+        url: "/logo.jpg?v=1",
+        href: "/logo.jpg?v=1",
+      }
+    ],
+    apple: [
+      {
+        url: "/logo.jpg?v=1",
+        href: "/logo.jpg?v=1",
+      }
+    ],
+  },
 };
 
 interface AnnouncementBannerData {

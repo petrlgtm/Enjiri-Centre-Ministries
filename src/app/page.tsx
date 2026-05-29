@@ -1,5 +1,7 @@
 export const revalidate = 60;
 
+import fs from "fs";
+import path from "path";
 import Hero from "@/components/home/Hero";
 import SnapshotBand from "@/components/home/SnapshotBand";
 import MissionSection from "@/components/home/MissionSection";
@@ -20,7 +22,6 @@ import {
   allMinistriesQuery,
   siteSettingsQuery,
   homePageQuery,
-  latestSermonsQuery,
 } from "@/sanity/queries";
 import { cardImage, portraitImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
@@ -31,19 +32,39 @@ import {
   Ministry,
   SiteSettings,
   HomePageData,
-  Sermon,
 } from "@/types/sanity";
+import { type YouTubeVideo } from "@/lib/youtube";
 
 export default async function HomePage() {
-  const [events, leaders, testimonies, ministries, settings, homePage, sermons] = await Promise.all([
+  const [events, leaders, testimonies, ministries, settings, homePage] = await Promise.all([
     fetchSanity<Event[]>(homepageEventsQuery),
     fetchSanity<Leader[]>(allLeadersQuery),
     fetchSanity<Testimony[]>(allTestimoniesQuery),
     fetchSanity<Ministry[]>(allMinistriesQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<HomePageData>(homePageQuery),
-    fetchSanity<Sermon[]>(latestSermonsQuery),
   ]);
+
+  // Fetch sermons from YouTube cache
+  let sermonsData: any[] = [];
+  try {
+    const filePath = path.join(process.cwd(), "public", "youtube-cache.json");
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const cache = JSON.parse(fileContent);
+      const videos: YouTubeVideo[] = cache.collections?.sermons || cache.videos || [];
+      
+      sermonsData = videos.slice(0, 3).map((v) => ({
+        title: v.title,
+        speaker: v.channelTitle,
+        date: formatDate(v.publishedAt),
+        slug: v.id,
+        image: v.thumbnail,
+      }));
+    }
+  } catch (error) {
+    console.error("Error loading YouTube cache for home page:", error);
+  }
 
   const heroImagesData = homePage?.heroImages?.map(img => ({
     src: heroImage(img),
@@ -63,15 +84,6 @@ export default async function HomePage() {
     accent: e.featured ? "from-gold to-gold-dark" : "from-gold-dark to-gold",
     featured: e.featured || false,
   })).filter((e) => e.image);
-
-  const sermonsData = sermons?.map((s) => ({
-    title: s.title,
-    speaker: s.speaker?.name || "Pastor",
-    date: formatDate(s.date),
-    series: s.series,
-    slug: s.slug,
-    image: s.thumbnail ? cardImage(s.thumbnail) : "",
-  })).filter((s) => s.image);
 
   const leaderData = leaders?.[0]
     ? {
