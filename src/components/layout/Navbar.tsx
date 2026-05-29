@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn, formatEventAnnouncement } from "@/lib/utils";
+import { cn, formatEventAnnouncement, getNextServiceOccurrence } from "@/lib/utils";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import AnnouncementBanner, { BannerSlide } from "./AnnouncementBanner";
@@ -42,9 +42,14 @@ interface NavbarProps {
     expiresAt?: string;
   } | null;
   events?: Event[] | null;
+  serviceSchedule?: Array<{
+    day: string;
+    time: string;
+    serviceName: string;
+  }> | null;
 }
 
-export default function Navbar({ banner, events }: NavbarProps) {
+export default function Navbar({ banner, events, serviceSchedule }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -54,9 +59,9 @@ export default function Navbar({ banner, events }: NavbarProps) {
   const lastScrollY = useRef(0);
 
   const slides = useMemo(() => {
-    const s: BannerSlide[] = [];
+    const s: (BannerSlide & { sortDate: Date })[] = [];
     
-    // Add manual banner if active
+    // 1. Add manual banner if active (highest priority, fixed date)
     if (banner?.enabled && banner.message) {
       const isExpired = banner.expiresAt && new Date(banner.expiresAt) < new Date();
       if (!isExpired) {
@@ -65,27 +70,50 @@ export default function Navbar({ banner, events }: NavbarProps) {
           message: banner.message,
           linkText: banner.linkText,
           linkUrl: banner.linkUrl || "#",
-          style: banner.style || "info"
+          style: banner.style || "info",
+          sortDate: new Date(0) // Show first
         });
       }
     }
 
-    // Add up to 3 upcoming events "wisely"
+    // 2. Add upcoming events
     if (events && events.length > 0) {
-      events.slice(0, 3).forEach((event) => {
+      events.forEach((event) => {
         const timeInfo = formatEventAnnouncement(event.date);
         s.push({
           id: event._id,
-          message: `Join us for ${event.title} — ${timeInfo}`,
+          message: `Special Event: ${event.title} — ${timeInfo}`,
           linkText: "View Event",
           linkUrl: `/services/${event.slug}`,
-          style: event.featured ? "celebration" : "info"
+          style: event.featured ? "celebration" : "info",
+          sortDate: new Date(event.date)
         });
       });
     }
 
-    return s;
-  }, [banner, events]);
+    // 3. Add regular services
+    if (serviceSchedule && serviceSchedule.length > 0) {
+      serviceSchedule.forEach((service, idx) => {
+        const nextOccurrence = getNextServiceOccurrence(service.day, service.time);
+        const timeInfo = formatEventAnnouncement(nextOccurrence.toISOString());
+        
+        s.push({
+          id: `service-${idx}`,
+          message: `Weekly Service: ${service.serviceName} — ${timeInfo}`,
+          linkText: "Service Details",
+          linkUrl: `/services`,
+          style: "info",
+          sortDate: nextOccurrence
+        });
+      });
+    }
+
+    // Sort all by date and take the top 5
+    return s
+      .sort((a, b) => a.sortDate.getTime() - b.sortDate.getTime())
+      .slice(0, 5)
+      .map(({ sortDate, ...slide }) => slide);
+  }, [banner, events, serviceSchedule]);
 
   const showBanner = slides.length > 0 && bannerVisible;
 

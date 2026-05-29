@@ -112,7 +112,11 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
-        <Navbar banner={banner} events={upcomingEvents} />
+        <Navbar 
+          banner={banner} 
+          events={upcomingEvents} 
+          serviceSchedule={siteSettings?.serviceSchedule} 
+        />
         <main id="main-content" className="min-h-screen">{children}</main>
         <Footer siteSettings={siteSettings} />
         <BackToTop />

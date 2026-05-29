@@ -51,6 +51,35 @@ export function formatEventAnnouncement(dateString: string): string {
   });
 }
 
+export function getNextServiceOccurrence(dayName: string, timeStr: string): Date {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const targetDay = days.indexOf(dayName);
+  if (targetDay === -1) return new Date();
+
+  const now = new Date();
+  const result = new Date(now);
+  
+  // Parse time (expecting "9:00 AM" or "18:00")
+  const [time, modifier] = timeStr.split(" ");
+  let [hours, minutes] = time.split(":").map(Number);
+  
+  if (modifier === "PM" && hours < 12) hours += 12;
+  if (modifier === "AM" && hours === 12) hours = 0;
+  
+  result.setHours(hours, minutes || 0, 0, 0);
+
+  const currentDay = now.getDay();
+  let daysUntil = (targetDay - currentDay + 7) % 7;
+  
+  // If it's today but the time has passed, move to next week
+  if (daysUntil === 0 && result < now) {
+    daysUntil = 7;
+  }
+  
+  result.setDate(now.getDate() + daysUntil);
+  return result;
+}
+
 export function getYouTubeEmbedUrl(url: string): string | null {
   const match = url.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
