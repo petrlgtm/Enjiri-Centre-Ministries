@@ -18,17 +18,31 @@ const COLLECTIONS = [
 
 const CACHE_FILE = path.join(__dirname, '../public/youtube-cache.json');
 
+// Load existing cache
+let existingCache = { collections: {}, videos: [] };
+if (fs.existsSync(CACHE_FILE)) {
+  try {
+    existingCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  } catch (e) {
+    console.error('Error reading existing cache, starting fresh');
+  }
+}
+
 async function fetchYouTubeVideos(config) {
   const BASE_URL = 'https://www.googleapis.com/youtube/v3';
-  let allItems = [];
+  let newItems = [];
   let nextPageToken = '';
   
-  const maxResults = config.fetchAll ? 50 : (config.maxResults || 50);
+  // Get existing IDs for this collection to know when to stop
+  const existingCollection = existingCache.collections?.[config.id] || [];
+  const existingIds = new Set(existingCollection.map(v => v.id));
+
+  console.log(`Currently have ${existingIds.size} videos in ${config.id} cache.`);
 
   do {
     const params = new URLSearchParams({
       part: 'snippet',
-      maxResults: String(maxResults),
+      maxResults: '50',
       order: 'date',
       type: 'video',
       key: API_KEY,
@@ -51,6 +65,8 @@ async function fetchYouTubeVideos(config) {
       }
 
       const data = await res.json();
+      let stopFetching = false;
+      
       const mappedItems = data.items.map((item) => ({
         id: item.id.videoId,
         title: item.snippet.title,
@@ -65,12 +81,21 @@ async function fetchYouTubeVideos(config) {
         videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
       }));
 
-      allItems = [...allItems, ...mappedItems];
-      nextPageToken = config.fetchAll ? data.nextPageToken : null;
+      for (const item of mappedItems) {
+        if (existingIds.has(item.id)) {
+          console.log(`Found video ${item.id} already in cache. Stopping.`);
+          stopFetching = true;
+          break;
+        }
+        newItems.push(item);
+      }
 
-      // Safety break to prevent infinite loops if something goes wrong
-      if (allItems.length > 1000) {
-        console.warn('Reached 1000 videos safety limit');
+      if (stopFetching) break;
+      
+      nextPageToken = config.fetchAll ? data.nextPageToken : null;
+      
+      if (newItems.length > 500) {
+        console.warn('Fetched 500 new videos, stopping for safety.');
         break;
       }
     } catch (error) {
@@ -79,7 +104,8 @@ async function fetchYouTubeVideos(config) {
     }
   } while (nextPageToken);
 
-  return allItems;
+  // Combine new items with existing ones
+  return [...newItems, ...existingCollection];
 }
 
 async function main() {
@@ -94,10 +120,10 @@ async function main() {
   };
 
   for (const collection of COLLECTIONS) {
-    console.log(`Fetching videos for collection: ${collection.id}...`);
-    const videos = await fetchYouTubeVideos(collection);
-    cacheData.collections[collection.id] = videos;
-    console.log(`Added ${videos.length} videos to ${collection.id}`);
+    console.log(`Updating collection: ${collection.id}...`);
+    const updatedVideos = await fetchYouTubeVideos(collection);
+    cacheData.collections[collection.id] = updatedVideos;
+    console.log(`Total videos in ${collection.id}: ${updatedVideos.length}`);
   }
 
   // Also keep a flat 'videos' array for backward compatibility
