@@ -1,23 +1,909 @@
 {
-  "lastUpdated": "2026-05-28T00:00:00.000Z",
+  "lastUpdated": "2026-05-29T07:18:47.711Z",
+  "collections": {
+    "sermons": [
+      {
+        "id": "qiDzORj7Jeo",
+        "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/qiDzORj7Jeo/hqdefault.jpg",
+        "publishedAt": "2026-05-17T03:30:15Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=qiDzORj7Jeo"
+      },
+      {
+        "id": "qYQNg_3RbFY",
+        "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/qYQNg_3RbFY/hqdefault.jpg",
+        "publishedAt": "2026-05-16T15:22:39Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=qYQNg_3RbFY"
+      },
+      {
+        "id": "SNbsPOkwlYs",
+        "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/SNbsPOkwlYs/hqdefault.jpg",
+        "publishedAt": "2026-05-16T12:36:43Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=SNbsPOkwlYs"
+      },
+      {
+        "id": "uWiAvUG1aWA",
+        "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/uWiAvUG1aWA/hqdefault.jpg",
+        "publishedAt": "2026-05-16T12:22:59Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=uWiAvUG1aWA"
+      },
+      {
+        "id": "UGsGXm8lGts",
+        "title": "Love Conquers | Ev Peter Kalagi | Bax Hotel Jinja",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/UGsGXm8lGts/hqdefault.jpg",
+        "publishedAt": "2026-05-14T21:13:16Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=UGsGXm8lGts"
+      },
+      {
+        "id": "EWYJzAlQf1U",
+        "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/EWYJzAlQf1U/hqdefault.jpg",
+        "publishedAt": "2026-04-18T02:54:10Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=EWYJzAlQf1U"
+      },
+      {
+        "id": "ujt9vRNCf3g",
+        "title": "JESUS VIBES CONFERENCE KENYA | EV.PETER KALAGI | UPPERROOM",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/ujt9vRNCf3g/hqdefault.jpg",
+        "publishedAt": "2026-04-17T22:38:57Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=ujt9vRNCf3g"
+      },
+      {
+        "id": "jsUDH05VbD4",
+        "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/jsUDH05VbD4/hqdefault.jpg",
+        "publishedAt": "2026-04-17T21:06:26Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=jsUDH05VbD4"
+      },
+      {
+        "id": "2jRTxm_UHsg",
+        "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/2jRTxm_UHsg/hqdefault.jpg",
+        "publishedAt": "2026-04-17T20:19:46Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=2jRTxm_UHsg"
+      },
+      {
+        "id": "lZm0nPHKNnI",
+        "title": "Carry Your Cross - Ev.Peter Kalagi",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/lZm0nPHKNnI/hqdefault.jpg",
+        "publishedAt": "2026-04-13T09:40:03Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=lZm0nPHKNnI"
+      },
+      {
+        "id": "DLnjwVZAnyc",
+        "title": "A prophecy for the Nation of Uganda, Uganda will Prevail under the blood of Jesus - Ev. Peter Kalagi",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/DLnjwVZAnyc/hqdefault.jpg",
+        "publishedAt": "2026-04-12T10:02:08Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=DLnjwVZAnyc"
+      },
+      {
+        "id": "J66xEVhQy18",
+        "title": "Prayer For IGP (Inspector General of Police) of Uganda Abasi Byakagaba - Ev. Peter Kalagi",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/J66xEVhQy18/hqdefault.jpg",
+        "publishedAt": "2026-04-12T09:54:59Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=J66xEVhQy18"
+      },
+      {
+        "id": "NUvO8gtrwaU",
+        "title": "REDEFINING DESTINIES | EV.PETER KALAGI | ENJIRI CENTER MINISTRIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/NUvO8gtrwaU/hqdefault.jpg",
+        "publishedAt": "2026-04-08T05:35:40Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=NUvO8gtrwaU"
+      },
+      {
+        "id": "Z5VuMLbKAuQ",
+        "title": "REDEFINING DESTINIES | EV.PETER KALAGI | ENJIRI CENTER MINISTRIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Z5VuMLbKAuQ/hqdefault.jpg",
+        "publishedAt": "2026-04-08T05:00:08Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Z5VuMLbKAuQ"
+      },
+      {
+        "id": "oo_0ieHHOm0",
+        "title": "EV.PETER KALAGI -  IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 |",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/oo_0ieHHOm0/hqdefault.jpg",
+        "publishedAt": "2026-04-05T12:34:19Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=oo_0ieHHOm0"
+      },
+      {
+        "id": "2YIFIVHM7qY",
+        "title": "DAY 2 | IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/2YIFIVHM7qY/hqdefault.jpg",
+        "publishedAt": "2026-04-02T19:03:09Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=2YIFIVHM7qY"
+      },
+      {
+        "id": "rXyXkZuFHWs",
+        "title": "DAY 1| P2 | IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/rXyXkZuFHWs/hqdefault.jpg",
+        "publishedAt": "2026-03-31T16:01:45Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=rXyXkZuFHWs"
+      },
+      {
+        "id": "TOibBQfr05s",
+        "title": "Pray with Ev.Peter Kalagi - Enjiri Center",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/TOibBQfr05s/hqdefault.jpg",
+        "publishedAt": "2026-03-30T10:58:06Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=TOibBQfr05s"
+      },
+      {
+        "id": "Y6O8KtClmRk",
+        "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Y6O8KtClmRk/hqdefault.jpg",
+        "publishedAt": "2026-03-29T03:58:26Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Y6O8KtClmRk"
+      },
+      {
+        "id": "FGAHI4rb37k",
+        "title": "DAY 1| IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/FGAHI4rb37k/hqdefault.jpg",
+        "publishedAt": "2026-03-29T03:20:21Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=FGAHI4rb37k"
+      },
+      {
+        "id": "-6qQDLXh02M",
+        "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/-6qQDLXh02M/hqdefault.jpg",
+        "publishedAt": "2026-03-28T22:05:56Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=-6qQDLXh02M"
+      },
+      {
+        "id": "cyLblPXABAE",
+        "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/cyLblPXABAE/hqdefault.jpg",
+        "publishedAt": "2026-03-28T21:17:49Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=cyLblPXABAE"
+      },
+      {
+        "id": "r1sObiYULoY",
+        "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/r1sObiYULoY/hqdefault.jpg",
+        "publishedAt": "2026-03-28T12:54:31Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=r1sObiYULoY"
+      },
+      {
+        "id": "DcpRt4sgPUI",
+        "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/DcpRt4sgPUI/hqdefault.jpg",
+        "publishedAt": "2026-03-28T12:33:04Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=DcpRt4sgPUI"
+      },
+      {
+        "id": "LBoKeT3MWME",
+        "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/LBoKeT3MWME/hqdefault.jpg",
+        "publishedAt": "2026-03-28T03:34:41Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=LBoKeT3MWME"
+      },
+      {
+        "id": "Mc7vIWOGteE",
+        "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Mc7vIWOGteE/hqdefault.jpg",
+        "publishedAt": "2026-03-28T00:42:41Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Mc7vIWOGteE"
+      },
+      {
+        "id": "dNvyfS-y60M",
+        "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/dNvyfS-y60M/hqdefault.jpg",
+        "publishedAt": "2026-03-28T00:02:39Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=dNvyfS-y60M"
+      },
+      {
+        "id": "3QLtAKwdY3E",
+        "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/3QLtAKwdY3E/hqdefault.jpg",
+        "publishedAt": "2026-03-27T00:26:47Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=3QLtAKwdY3E"
+      },
+      {
+        "id": "ddfA8iJ7YPY",
+        "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/ddfA8iJ7YPY/hqdefault.jpg",
+        "publishedAt": "2026-03-27T00:23:42Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=ddfA8iJ7YPY"
+      },
+      {
+        "id": "1ygLdUoevf0",
+        "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/1ygLdUoevf0/hqdefault.jpg",
+        "publishedAt": "2026-03-26T20:44:14Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=1ygLdUoevf0"
+      },
+      {
+        "id": "jc1niHXw8w4",
+        "title": "Evangelism in Uganda: Peter Kalagi  Evangelism Podcast with Evangelist Daniel King",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/jc1niHXw8w4/hqdefault.jpg",
+        "publishedAt": "2026-03-14T16:41:47Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=jc1niHXw8w4"
+      },
+      {
+        "id": "pUhnk1yvGCA",
+        "title": "SEEING - EV. PETER KALAGI",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/pUhnk1yvGCA/hqdefault.jpg",
+        "publishedAt": "2026-03-12T06:02:44Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=pUhnk1yvGCA"
+      },
+      {
+        "id": "Apo0K3rzWoU",
+        "title": "Enjiri Center Ministries - Praise &amp; Worship",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Apo0K3rzWoU/hqdefault.jpg",
+        "publishedAt": "2026-02-15T16:31:21Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Apo0K3rzWoU"
+      },
+      {
+        "id": "pqLqhTfrXxw",
+        "title": "The Power of becoming - Ev. Peter Kalagi",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/pqLqhTfrXxw/hqdefault.jpg",
+        "publishedAt": "2026-02-11T21:30:49Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=pqLqhTfrXxw"
+      },
+      {
+        "id": "pTH45EhD788",
+        "title": "REDEFINING DESTINIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/pTH45EhD788/hqdefault.jpg",
+        "publishedAt": "2026-01-07T20:23:13Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=pTH45EhD788"
+      },
+      {
+        "id": "r9uZ3untGCU",
+        "title": "REDEFINING DESTINIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/r9uZ3untGCU/hqdefault.jpg",
+        "publishedAt": "2026-01-07T19:39:31Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=r9uZ3untGCU"
+      },
+      {
+        "id": "bumau9QV7Rk",
+        "title": "REDEFINING DESTINIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/bumau9QV7Rk/hqdefault.jpg",
+        "publishedAt": "2026-01-07T17:46:05Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=bumau9QV7Rk"
+      },
+      {
+        "id": "IFmDIyckeQM",
+        "title": "JESUS VIBES | ENJIRI CENTER MINISTRIES | EV. PETER KALAJI",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/IFmDIyckeQM/hqdefault.jpg",
+        "publishedAt": "2025-12-17T20:49:03Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=IFmDIyckeQM"
+      },
+      {
+        "id": "OJxggoQGJ8I",
+        "title": "JESUS VIBES CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL AT NARAMBAI PLAYGROUND",
+        "description": "JESUS VIBES CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL AT NARAMBAI PLAYGROUND.",
+        "thumbnail": "https://i.ytimg.com/vi/OJxggoQGJ8I/hqdefault.jpg",
+        "publishedAt": "2025-12-13T15:46:31Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=OJxggoQGJ8I"
+      },
+      {
+        "id": "k81fYnMB1yk",
+        "title": "OMWOYO N&#39;OMUBIRI YESU KABIKUWE | NAKIE JULIAN | ENJIRI CENTER MINISTRIES",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/k81fYnMB1yk/hqdefault.jpg",
+        "publishedAt": "2025-11-25T11:59:15Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=k81fYnMB1yk"
+      },
+      {
+        "id": "Tf0uTg2CxdI",
+        "title": "DAY 4 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Tf0uTg2CxdI/hqdefault.jpg",
+        "publishedAt": "2025-11-25T07:47:25Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Tf0uTg2CxdI"
+      },
+      {
+        "id": "PUWDsj9Rshc",
+        "title": "EV PETER KALANGI FEEDING CHILDREN OF KIYINDI JINJA PT 2",
+        "description": "EV PETER KALANGI FEEDING CHILDREN OF KIYINDI JINJA.",
+        "thumbnail": "https://i.ytimg.com/vi/PUWDsj9Rshc/hqdefault.jpg",
+        "publishedAt": "2025-11-24T01:08:58Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=PUWDsj9Rshc"
+      },
+      {
+        "id": "4ug2WMW8y_g",
+        "title": "EV PETER KALANGI AT TRINITY CHAPEL BUTIKI  WITH  ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "EV PETER KALANGI AT TRINITY CHAPEL BUTIKI WITH ENJIRI CENTER MINISTRIES INTERNATIONAL.",
+        "thumbnail": "https://i.ytimg.com/vi/4ug2WMW8y_g/hqdefault.jpg",
+        "publishedAt": "2025-11-23T22:28:50Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=4ug2WMW8y_g"
+      },
+      {
+        "id": "Ulgpx_PI2AM",
+        "title": "The Restoration Of Jinja City - Pastor Irene Kauma @IreneTKauma",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/Ulgpx_PI2AM/hqdefault.jpg",
+        "publishedAt": "2025-11-23T13:05:18Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=Ulgpx_PI2AM"
+      },
+      {
+        "id": "qGhqibkNsSs",
+        "title": "DAY 3 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "YOU ARE MOST WELCOME TO DAY 3 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+        "thumbnail": "https://i.ytimg.com/vi/qGhqibkNsSs/hqdefault.jpg",
+        "publishedAt": "2025-11-23T05:16:43Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=qGhqibkNsSs"
+      },
+      {
+        "id": "gu0ja4_s6Js",
+        "title": "The Restoration Of Jinja City - Bishop Dr Stephan Matua (Kenya)@eagleschristianchurchinter6103",
+        "description": "Reinhard Bonnke's involvement with Jinja, Uganda, centers on a controversial crusade in 1990 that was stopped by the military, ...",
+        "thumbnail": "https://i.ytimg.com/vi/gu0ja4_s6Js/hqdefault.jpg",
+        "publishedAt": "2025-11-23T03:39:41Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=gu0ja4_s6Js"
+      },
+      {
+        "id": "_j6goMMxTag",
+        "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+        "thumbnail": "https://i.ytimg.com/vi/_j6goMMxTag/hqdefault.jpg",
+        "publishedAt": "2025-11-22T04:44:12Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=_j6goMMxTag"
+      },
+      {
+        "id": "qpL2dX4YvWw",
+        "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+        "thumbnail": "https://i.ytimg.com/vi/qpL2dX4YvWw/hqdefault.jpg",
+        "publishedAt": "2025-11-22T04:39:04Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=qpL2dX4YvWw"
+      },
+      {
+        "id": "SBQgjADaTEg",
+        "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+        "thumbnail": "https://i.ytimg.com/vi/SBQgjADaTEg/hqdefault.jpg",
+        "publishedAt": "2025-11-21T17:53:33Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=SBQgjADaTEg"
+      },
+      {
+        "id": "1_nvEMCf5eY",
+        "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+        "thumbnail": "https://i.ytimg.com/vi/1_nvEMCf5eY/hqdefault.jpg",
+        "publishedAt": "2025-11-21T16:53:55Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=1_nvEMCf5eY"
+      }
+    ]
+  },
   "videos": [
     {
-      "id": "dQw4w9WgXcQ",
-      "title": "Walking in God's Purpose",
-      "description": "A powerful sermon about finding your path in life through faith.",
-      "thumbnail": "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80&fm=webp&fit=crop",
-      "publishedAt": "2026-02-16T10:00:00Z",
-      "channelTitle": "Enjiri Center",
-      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      "id": "qiDzORj7Jeo",
+      "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/qiDzORj7Jeo/hqdefault.jpg",
+      "publishedAt": "2026-05-17T03:30:15Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=qiDzORj7Jeo"
     },
     {
-      "id": "jP1Xy3oZ_vE",
-      "title": "The Power of Prayer",
-      "description": "Understanding how prayer can transform your life and community.",
-      "thumbnail": "https://images.unsplash.com/photo-1445043432340-062e7077621c?w=800&q=80&fm=webp&fit=crop",
-      "publishedAt": "2026-02-09T10:00:00Z",
-      "channelTitle": "Enjiri Center",
-      "videoUrl": "https://www.youtube.com/watch?v=jP1Xy3oZ_vE"
+      "id": "qYQNg_3RbFY",
+      "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/qYQNg_3RbFY/hqdefault.jpg",
+      "publishedAt": "2026-05-16T15:22:39Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=qYQNg_3RbFY"
+    },
+    {
+      "id": "SNbsPOkwlYs",
+      "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/SNbsPOkwlYs/hqdefault.jpg",
+      "publishedAt": "2026-05-16T12:36:43Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=SNbsPOkwlYs"
+    },
+    {
+      "id": "uWiAvUG1aWA",
+      "title": "GHETTO CRUSADE - EV. PETER KALAGI - MPUMUDDE",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/uWiAvUG1aWA/hqdefault.jpg",
+      "publishedAt": "2026-05-16T12:22:59Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=uWiAvUG1aWA"
+    },
+    {
+      "id": "UGsGXm8lGts",
+      "title": "Love Conquers | Ev Peter Kalagi | Bax Hotel Jinja",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/UGsGXm8lGts/hqdefault.jpg",
+      "publishedAt": "2026-05-14T21:13:16Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=UGsGXm8lGts"
+    },
+    {
+      "id": "EWYJzAlQf1U",
+      "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/EWYJzAlQf1U/hqdefault.jpg",
+      "publishedAt": "2026-04-18T02:54:10Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=EWYJzAlQf1U"
+    },
+    {
+      "id": "ujt9vRNCf3g",
+      "title": "JESUS VIBES CONFERENCE KENYA | EV.PETER KALAGI | UPPERROOM",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/ujt9vRNCf3g/hqdefault.jpg",
+      "publishedAt": "2026-04-17T22:38:57Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=ujt9vRNCf3g"
+    },
+    {
+      "id": "jsUDH05VbD4",
+      "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/jsUDH05VbD4/hqdefault.jpg",
+      "publishedAt": "2026-04-17T21:06:26Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=jsUDH05VbD4"
+    },
+    {
+      "id": "2jRTxm_UHsg",
+      "title": "JESUS VIBES CONFERENCE KENYA  | EV.PETER KALAGI | UPPERROOM",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/2jRTxm_UHsg/hqdefault.jpg",
+      "publishedAt": "2026-04-17T20:19:46Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=2jRTxm_UHsg"
+    },
+    {
+      "id": "lZm0nPHKNnI",
+      "title": "Carry Your Cross - Ev.Peter Kalagi",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/lZm0nPHKNnI/hqdefault.jpg",
+      "publishedAt": "2026-04-13T09:40:03Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=lZm0nPHKNnI"
+    },
+    {
+      "id": "DLnjwVZAnyc",
+      "title": "A prophecy for the Nation of Uganda, Uganda will Prevail under the blood of Jesus - Ev. Peter Kalagi",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/DLnjwVZAnyc/hqdefault.jpg",
+      "publishedAt": "2026-04-12T10:02:08Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=DLnjwVZAnyc"
+    },
+    {
+      "id": "J66xEVhQy18",
+      "title": "Prayer For IGP (Inspector General of Police) of Uganda Abasi Byakagaba - Ev. Peter Kalagi",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/J66xEVhQy18/hqdefault.jpg",
+      "publishedAt": "2026-04-12T09:54:59Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=J66xEVhQy18"
+    },
+    {
+      "id": "NUvO8gtrwaU",
+      "title": "REDEFINING DESTINIES | EV.PETER KALAGI | ENJIRI CENTER MINISTRIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/NUvO8gtrwaU/hqdefault.jpg",
+      "publishedAt": "2026-04-08T05:35:40Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=NUvO8gtrwaU"
+    },
+    {
+      "id": "Z5VuMLbKAuQ",
+      "title": "REDEFINING DESTINIES | EV.PETER KALAGI | ENJIRI CENTER MINISTRIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Z5VuMLbKAuQ/hqdefault.jpg",
+      "publishedAt": "2026-04-08T05:00:08Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Z5VuMLbKAuQ"
+    },
+    {
+      "id": "oo_0ieHHOm0",
+      "title": "EV.PETER KALAGI -  IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 |",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/oo_0ieHHOm0/hqdefault.jpg",
+      "publishedAt": "2026-04-05T12:34:19Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=oo_0ieHHOm0"
+    },
+    {
+      "id": "2YIFIVHM7qY",
+      "title": "DAY 2 | IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/2YIFIVHM7qY/hqdefault.jpg",
+      "publishedAt": "2026-04-02T19:03:09Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=2YIFIVHM7qY"
+    },
+    {
+      "id": "rXyXkZuFHWs",
+      "title": "DAY 1| P2 | IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/rXyXkZuFHWs/hqdefault.jpg",
+      "publishedAt": "2026-03-31T16:01:45Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=rXyXkZuFHWs"
+    },
+    {
+      "id": "TOibBQfr05s",
+      "title": "Pray with Ev.Peter Kalagi - Enjiri Center",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/TOibBQfr05s/hqdefault.jpg",
+      "publishedAt": "2026-03-30T10:58:06Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=TOibBQfr05s"
+    },
+    {
+      "id": "Y6O8KtClmRk",
+      "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Y6O8KtClmRk/hqdefault.jpg",
+      "publishedAt": "2026-03-29T03:58:26Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Y6O8KtClmRk"
+    },
+    {
+      "id": "FGAHI4rb37k",
+      "title": "DAY 1| IMF GLOBAL LEADERSHIP TRAINING SUMMIT 2026 | REV. DR. PAUL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/FGAHI4rb37k/hqdefault.jpg",
+      "publishedAt": "2026-03-29T03:20:21Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=FGAHI4rb37k"
+    },
+    {
+      "id": "-6qQDLXh02M",
+      "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/-6qQDLXh02M/hqdefault.jpg",
+      "publishedAt": "2026-03-28T22:05:56Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=-6qQDLXh02M"
+    },
+    {
+      "id": "cyLblPXABAE",
+      "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/cyLblPXABAE/hqdefault.jpg",
+      "publishedAt": "2026-03-28T21:17:49Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=cyLblPXABAE"
+    },
+    {
+      "id": "r1sObiYULoY",
+      "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/r1sObiYULoY/hqdefault.jpg",
+      "publishedAt": "2026-03-28T12:54:31Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=r1sObiYULoY"
+    },
+    {
+      "id": "DcpRt4sgPUI",
+      "title": "DAY 4 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/DcpRt4sgPUI/hqdefault.jpg",
+      "publishedAt": "2026-03-28T12:33:04Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=DcpRt4sgPUI"
+    },
+    {
+      "id": "LBoKeT3MWME",
+      "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/LBoKeT3MWME/hqdefault.jpg",
+      "publishedAt": "2026-03-28T03:34:41Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=LBoKeT3MWME"
+    },
+    {
+      "id": "Mc7vIWOGteE",
+      "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Mc7vIWOGteE/hqdefault.jpg",
+      "publishedAt": "2026-03-28T00:42:41Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Mc7vIWOGteE"
+    },
+    {
+      "id": "dNvyfS-y60M",
+      "title": "DAY 3 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/dNvyfS-y60M/hqdefault.jpg",
+      "publishedAt": "2026-03-28T00:02:39Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=dNvyfS-y60M"
+    },
+    {
+      "id": "3QLtAKwdY3E",
+      "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/3QLtAKwdY3E/hqdefault.jpg",
+      "publishedAt": "2026-03-27T00:26:47Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=3QLtAKwdY3E"
+    },
+    {
+      "id": "ddfA8iJ7YPY",
+      "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/ddfA8iJ7YPY/hqdefault.jpg",
+      "publishedAt": "2026-03-27T00:23:42Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=ddfA8iJ7YPY"
+    },
+    {
+      "id": "1ygLdUoevf0",
+      "title": "DAY 2 | IMF LEADERSHIP TRAINING GLOBAL PASTORS NETWORK",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/1ygLdUoevf0/hqdefault.jpg",
+      "publishedAt": "2026-03-26T20:44:14Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=1ygLdUoevf0"
+    },
+    {
+      "id": "jc1niHXw8w4",
+      "title": "Evangelism in Uganda: Peter Kalagi  Evangelism Podcast with Evangelist Daniel King",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/jc1niHXw8w4/hqdefault.jpg",
+      "publishedAt": "2026-03-14T16:41:47Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=jc1niHXw8w4"
+    },
+    {
+      "id": "pUhnk1yvGCA",
+      "title": "SEEING - EV. PETER KALAGI",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/pUhnk1yvGCA/hqdefault.jpg",
+      "publishedAt": "2026-03-12T06:02:44Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=pUhnk1yvGCA"
+    },
+    {
+      "id": "Apo0K3rzWoU",
+      "title": "Enjiri Center Ministries - Praise &amp; Worship",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Apo0K3rzWoU/hqdefault.jpg",
+      "publishedAt": "2026-02-15T16:31:21Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Apo0K3rzWoU"
+    },
+    {
+      "id": "pqLqhTfrXxw",
+      "title": "The Power of becoming - Ev. Peter Kalagi",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/pqLqhTfrXxw/hqdefault.jpg",
+      "publishedAt": "2026-02-11T21:30:49Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=pqLqhTfrXxw"
+    },
+    {
+      "id": "pTH45EhD788",
+      "title": "REDEFINING DESTINIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/pTH45EhD788/hqdefault.jpg",
+      "publishedAt": "2026-01-07T20:23:13Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=pTH45EhD788"
+    },
+    {
+      "id": "r9uZ3untGCU",
+      "title": "REDEFINING DESTINIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/r9uZ3untGCU/hqdefault.jpg",
+      "publishedAt": "2026-01-07T19:39:31Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=r9uZ3untGCU"
+    },
+    {
+      "id": "bumau9QV7Rk",
+      "title": "REDEFINING DESTINIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/bumau9QV7Rk/hqdefault.jpg",
+      "publishedAt": "2026-01-07T17:46:05Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=bumau9QV7Rk"
+    },
+    {
+      "id": "IFmDIyckeQM",
+      "title": "JESUS VIBES | ENJIRI CENTER MINISTRIES | EV. PETER KALAJI",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/IFmDIyckeQM/hqdefault.jpg",
+      "publishedAt": "2025-12-17T20:49:03Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=IFmDIyckeQM"
+    },
+    {
+      "id": "OJxggoQGJ8I",
+      "title": "JESUS VIBES CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL AT NARAMBAI PLAYGROUND",
+      "description": "JESUS VIBES CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL AT NARAMBAI PLAYGROUND.",
+      "thumbnail": "https://i.ytimg.com/vi/OJxggoQGJ8I/hqdefault.jpg",
+      "publishedAt": "2025-12-13T15:46:31Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=OJxggoQGJ8I"
+    },
+    {
+      "id": "k81fYnMB1yk",
+      "title": "OMWOYO N&#39;OMUBIRI YESU KABIKUWE | NAKIE JULIAN | ENJIRI CENTER MINISTRIES",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/k81fYnMB1yk/hqdefault.jpg",
+      "publishedAt": "2025-11-25T11:59:15Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=k81fYnMB1yk"
+    },
+    {
+      "id": "Tf0uTg2CxdI",
+      "title": "DAY 4 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Tf0uTg2CxdI/hqdefault.jpg",
+      "publishedAt": "2025-11-25T07:47:25Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Tf0uTg2CxdI"
+    },
+    {
+      "id": "PUWDsj9Rshc",
+      "title": "EV PETER KALANGI FEEDING CHILDREN OF KIYINDI JINJA PT 2",
+      "description": "EV PETER KALANGI FEEDING CHILDREN OF KIYINDI JINJA.",
+      "thumbnail": "https://i.ytimg.com/vi/PUWDsj9Rshc/hqdefault.jpg",
+      "publishedAt": "2025-11-24T01:08:58Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=PUWDsj9Rshc"
+    },
+    {
+      "id": "4ug2WMW8y_g",
+      "title": "EV PETER KALANGI AT TRINITY CHAPEL BUTIKI  WITH  ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "EV PETER KALANGI AT TRINITY CHAPEL BUTIKI WITH ENJIRI CENTER MINISTRIES INTERNATIONAL.",
+      "thumbnail": "https://i.ytimg.com/vi/4ug2WMW8y_g/hqdefault.jpg",
+      "publishedAt": "2025-11-23T22:28:50Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=4ug2WMW8y_g"
+    },
+    {
+      "id": "Ulgpx_PI2AM",
+      "title": "The Restoration Of Jinja City - Pastor Irene Kauma @IreneTKauma",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/Ulgpx_PI2AM/hqdefault.jpg",
+      "publishedAt": "2025-11-23T13:05:18Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=Ulgpx_PI2AM"
+    },
+    {
+      "id": "qGhqibkNsSs",
+      "title": "DAY 3 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "YOU ARE MOST WELCOME TO DAY 3 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+      "thumbnail": "https://i.ytimg.com/vi/qGhqibkNsSs/hqdefault.jpg",
+      "publishedAt": "2025-11-23T05:16:43Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=qGhqibkNsSs"
+    },
+    {
+      "id": "gu0ja4_s6Js",
+      "title": "The Restoration Of Jinja City - Bishop Dr Stephan Matua (Kenya)@eagleschristianchurchinter6103",
+      "description": "Reinhard Bonnke's involvement with Jinja, Uganda, centers on a controversial crusade in 1990 that was stopped by the military, ...",
+      "thumbnail": "https://i.ytimg.com/vi/gu0ja4_s6Js/hqdefault.jpg",
+      "publishedAt": "2025-11-23T03:39:41Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=gu0ja4_s6Js"
+    },
+    {
+      "id": "_j6goMMxTag",
+      "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+      "thumbnail": "https://i.ytimg.com/vi/_j6goMMxTag/hqdefault.jpg",
+      "publishedAt": "2025-11-22T04:44:12Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=_j6goMMxTag"
+    },
+    {
+      "id": "qpL2dX4YvWw",
+      "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+      "thumbnail": "https://i.ytimg.com/vi/qpL2dX4YvWw/hqdefault.jpg",
+      "publishedAt": "2025-11-22T04:39:04Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=qpL2dX4YvWw"
+    },
+    {
+      "id": "SBQgjADaTEg",
+      "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+      "thumbnail": "https://i.ytimg.com/vi/SBQgjADaTEg/hqdefault.jpg",
+      "publishedAt": "2025-11-21T17:53:33Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=SBQgjADaTEg"
+    },
+    {
+      "id": "1_nvEMCf5eY",
+      "title": "DAY 2 OF KIYINDI JINJA CRUSADE WITH ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "YOU ARE MOST WELCOME TO DAY 2 OF KIYINDI JINJA CRUSADE. KEEP HERE WITH US AS WE BRING YOU THE LIVE ...",
+      "thumbnail": "https://i.ytimg.com/vi/1_nvEMCf5eY/hqdefault.jpg",
+      "publishedAt": "2025-11-21T16:53:55Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=1_nvEMCf5eY"
     }
   ]
 }
