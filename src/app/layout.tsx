@@ -116,15 +116,7 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
-        {showBanner && (
-          <AnnouncementBanner
-            message={banner.message}
-            linkText={banner.linkText}
-            linkUrl={banner.linkUrl}
-            style={banner.style}
-          />
-        )}
-        <Navbar />
+        <Navbar banner={banner} />
         <main id="main-content" className="min-h-screen">{children}</main>
         <Footer siteSettings={siteSettings} />
         <BackToTop />

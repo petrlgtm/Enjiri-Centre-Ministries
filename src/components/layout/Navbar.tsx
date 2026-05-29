@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import AnnouncementBanner from "./AnnouncementBanner";
 import logoImg from "@/../public/images/logo.jpeg";
 
 const navLinks = [
@@ -30,15 +31,28 @@ const socialLinks = [
   { icon: FaTiktok, href: "https://tiktok.com", label: "TikTok" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  banner?: {
+    enabled: boolean;
+    message: string;
+    linkText?: string;
+    linkUrl?: string;
+    style?: "info" | "warning" | "celebration";
+  } | null;
+}
+
+export default function Navbar({ banner }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [bannerVisible, setBannerVisible] = useState(true);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
 
-  // Close mobile nav when route changes — use microtask to satisfy react-hooks/set-state-in-effect
+  const showBanner = banner?.enabled && bannerVisible;
+
+  // Close mobile nav when route changes
   useEffect(() => {
     queueMicrotask(() => setIsOpen(false));
   }, [pathname]);
@@ -72,164 +86,176 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Main Navbar */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{
-          y: hidden && !isOpen ? -100 : 0,
-        }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
-          scrolled
-            ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/6"
-            : "bg-transparent border-b border-transparent"
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {showBanner && (
+          <AnnouncementBanner
+            message={banner.message}
+            linkText={banner.linkText}
+            linkUrl={banner.linkUrl}
+            style={banner.style}
+            onDismiss={() => setBannerVisible(false)}
+          />
         )}
-      >
-        <Container>
-          <div className="flex h-20 items-center justify-between lg:h-24">
-            {/* Logo */}
-            <Link href="/" className="group relative flex items-center gap-3">
-              <div className="logo-glow relative h-11 w-11 overflow-hidden rounded-xl shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
-                <Image
-                  src={logoImg}
-                  alt="Enjiri Center Ministries International"
-                  fill
-                  className="object-cover"
-                  sizes="44px"
-                />
-                <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="block text-[15px] font-bold tracking-wide text-foreground transition-colors duration-500">
-                  ENJIRI CENTER
-                </span>
-                <span className="block text-[10px] font-medium tracking-[0.25em] text-gold/80 transition-colors duration-500">
-                  MINISTRIES INTL
-                </span>
-              </div>
-            </Link>
+        
+        {/* Main Navbar */}
+        <motion.nav
+          initial={{ y: -100 }}
+          animate={{
+            y: hidden && !isOpen ? -100 : 0,
+          }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className={cn(
+            "relative transition-all duration-700",
+            scrolled
+              ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/6"
+              : "bg-transparent border-b border-transparent"
+          )}
+        >
+          <Container>
+            <div className="flex h-20 items-center justify-between lg:h-24">
+              {/* Logo */}
+              <Link href="/" className="group relative flex items-center gap-3">
+                <div className="logo-glow relative h-11 w-11 overflow-hidden rounded-xl shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
+                  <Image
+                    src={logoImg}
+                    alt="Enjiri Center Ministries International"
+                    fill
+                    className="object-cover"
+                    sizes="44px"
+                  />
+                  <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                </div>
+                <div className="hidden sm:block">
+                  <span className="block text-[15px] font-bold tracking-wide text-foreground transition-colors duration-500">
+                    ENJIRI CENTER
+                  </span>
+                  <span className="block text-[10px] font-medium tracking-[0.25em] text-gold/80 transition-colors duration-500">
+                    MINISTRIES INTL
+                  </span>
+                </div>
+              </Link>
 
-            {/* Desktop Nav */}
-            <div className="hidden items-center gap-0.5 lg:flex">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onMouseEnter={() => setHoveredLink(link.href)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    className={cn(
-                      "relative px-4 py-2 text-[13px] font-medium uppercase tracking-widest transition-all duration-300",
-                      isActive
-                        ? "text-gold"
-                        : "text-foreground/60 hover:text-foreground"
-                    )}
-                  >
-                    {/* Hover background pill */}
-                    {hoveredLink === link.href && !isActive && (
-                      <motion.span
-                        layoutId="nav-hover-bg"
-                        className="absolute inset-0 rounded-xl bg-white/[0.06]"
-                        transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
-                      />
-                    )}
-                    <span className="relative">{link.label}</span>
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-indicator"
-                        className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-linear-to-r from-gold to-gold-light"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                      />
-                    )}
-                  </Link>
-                );
-              })}
-              <div className="ml-5 pl-5 border-l border-white/10 transition-colors duration-500">
-                <div className="btn-magnetic">
-                  <Button href="/donate" variant="primary" size="sm">
-                    Give Online
-                  </Button>
+              {/* Desktop Nav */}
+              <div className="hidden items-center gap-0.5 lg:flex">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onMouseEnter={() => setHoveredLink(link.href)}
+                      onMouseLeave={() => setHoveredLink(null)}
+                      className={cn(
+                        "relative px-4 py-2 text-[13px] font-medium uppercase tracking-widest transition-all duration-300",
+                        isActive
+                          ? "text-gold"
+                          : "text-foreground/60 hover:text-foreground"
+                      )}
+                    >
+                      {/* Hover background pill */}
+                      {hoveredLink === link.href && !isActive && (
+                        <motion.span
+                          layoutId="nav-hover-bg"
+                          className="absolute inset-0 rounded-xl bg-white/[0.06]"
+                          transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
+                        />
+                      )}
+                      <span className="relative">{link.label}</span>
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-indicator"
+                          className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-linear-to-r from-gold to-gold-light"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                        />
+                      )}
+                    </Link>
+                  );
+                })}
+                <div className="ml-5 pl-5 border-l border-white/10 transition-colors duration-500">
+                  <div className="btn-magnetic">
+                    <Button href="/donate" variant="primary" size="sm">
+                      Give Online
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:hidden",
-                isOpen
-                  ? "bg-white/10 text-foreground"
-                  : "text-foreground hover:bg-white/10"
-              )}
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-            >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                    exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <HiX size={22} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                    exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <HiMenuAlt3 size={22} />
-                  </motion.div>
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={cn(
+                  "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:hidden",
+                  isOpen
+                    ? "bg-white/10 text-foreground"
+                    : "text-foreground hover:bg-white/10"
                 )}
-              </AnimatePresence>
-            </button>
-          </div>
-        </Container>
-      </motion.nav>
-
-      {/* Social Links Bar — only visible on homepage */}
-      {pathname === "/" && (
-      <motion.div
-        initial={{ y: -100 }}
-        animate={{
-          y: hidden || isOpen ? -100 : 0,
-        }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-[80px] lg:top-[96px] left-0 right-0 z-[49] transition-all duration-700"
-      >
-        <div className="bg-cream border-b border-black/6">
-          <Container>
-            <div className="flex h-10 items-center justify-between">
-              <span className="hidden min-[360px]:inline text-[12px] font-medium tracking-wide text-cream-muted">
-                Follow us
-              </span>
-              <div className="flex items-center gap-1 min-[360px]:gap-2">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
-                  >
-                    <social.icon size={15} />
-                  </a>
-                ))}
-              </div>
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+              >
+                <AnimatePresence mode="wait">
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                      exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <HiX size={22} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                      exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <HiMenuAlt3 size={22} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
             </div>
           </Container>
-        </div>
-      </motion.div>
-      )}
+        </motion.nav>
+
+        {/* Social Links Bar — only visible on homepage */}
+        {pathname === "/" && (
+          <motion.div
+            initial={{ y: -100 }}
+            animate={{
+              y: hidden || isOpen ? -100 : 0,
+            }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="relative transition-all duration-700"
+          >
+            <div className="bg-cream border-b border-black/6">
+              <Container>
+                <div className="flex h-10 items-center justify-between">
+                  <span className="hidden min-[360px]:inline text-[12px] font-medium tracking-wide text-cream-muted">
+                    Follow us
+                  </span>
+                  <div className="flex items-center gap-1 min-[360px]:gap-2">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
+                      >
+                        <social.icon size={15} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </Container>
+            </div>
+          </motion.div>
+        )}
+      </div>
 
       {/* Mobile Full-Screen Nav */}
       <AnimatePresence>

@@ -10,6 +10,7 @@ interface AnnouncementBannerProps {
   linkText?: string;
   linkUrl?: string;
   style?: "info" | "warning" | "celebration";
+  onDismiss?: () => void;
 }
 
 const styleClasses: Record<string, string> = {
@@ -23,8 +24,14 @@ export default function AnnouncementBanner({
   linkText,
   linkUrl,
   style = "info",
+  onDismiss,
 }: AnnouncementBannerProps) {
   const [dismissed, setDismissed] = useState(false);
+
+  const handleDismiss = () => {
+    setDismissed(true);
+    if (onDismiss) onDismiss();
+  };
 
   if (dismissed) return null;
 
@@ -46,7 +53,7 @@ export default function AnnouncementBanner({
           </Link>
         )}
         <button
-          onClick={() => setDismissed(true)}
+          onClick={handleDismiss}
           className="ml-2 rounded-full p-1 hover:bg-black/10"
           aria-label="Dismiss announcement"
         >
