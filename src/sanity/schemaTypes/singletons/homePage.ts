@@ -62,6 +62,9 @@ export default defineType({
       type: "array",
       of: [
         defineArrayMember({
+          type: "highlight",
+        }),
+        defineArrayMember({
           type: "object",
           fields: [
             defineField({
