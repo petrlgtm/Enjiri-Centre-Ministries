@@ -12,96 +12,74 @@ const COLLECTIONS = [
   {
     id: 'sermons',
     channelId: 'UCFStM9EkCFD3h8b4xtlHIOQ',
-    maxResults: 50
-  },
-  // Add more collections here as needed
-  // {
-  //   id: 'songs',
-  //   playlistId: 'PLAYLIST_ID',
-  //   maxResults: 50
-  // }
+    fetchAll: true
+  }
 ];
 
 const CACHE_FILE = path.join(__dirname, '../public/youtube-cache.json');
 
 async function fetchYouTubeVideos(config) {
   const BASE_URL = 'https://www.googleapis.com/youtube/v3';
-  const params = new URLSearchParams({
-    part: 'snippet',
-    maxResults: String(config.maxResults || 50),
-    order: 'date',
-    type: 'video',
-    key: API_KEY,
-  });
+  let allItems = [];
+  let nextPageToken = '';
+  
+  const maxResults = config.fetchAll ? 50 : (config.maxResults || 50);
 
-  if (config.channelId) {
-    params.set('channelId', config.channelId);
-  } else if (config.playlistId) {
-    // For playlists, we use a different endpoint
-    return fetchPlaylistItems(config.playlistId, config.maxResults);
-  }
+  do {
+    const params = new URLSearchParams({
+      part: 'snippet',
+      maxResults: String(maxResults),
+      order: 'date',
+      type: 'video',
+      key: API_KEY,
+    });
 
-  try {
-    const res = await fetch(`${BASE_URL}/search?${params}`);
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(`YouTube API error: ${error.error?.message || res.statusText}`);
+    if (config.channelId) {
+      params.set('channelId', config.channelId);
+    }
+    
+    if (nextPageToken) {
+      params.set('pageToken', nextPageToken);
     }
 
-    const data = await res.json();
-    return data.items.map((item) => ({
-      id: item.id.videoId,
-      title: item.snippet.title,
-      description: item.snippet.description,
-      thumbnail:
-        item.snippet.thumbnails.high?.url ??
-        item.snippet.thumbnails.medium?.url ??
-        item.snippet.thumbnails.default?.url ??
-        '',
-      publishedAt: item.snippet.publishedAt,
-      channelTitle: item.snippet.channelTitle,
-      videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-    }));
-  } catch (error) {
-    console.error(`Error fetching YouTube videos for ${config.id}:`, error);
-    return [];
-  }
-}
+    try {
+      console.log(`Fetching page... ${nextPageToken || 'first'}`);
+      const res = await fetch(`${BASE_URL}/search?${params}`);
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(`YouTube API error: ${error.error?.message || res.statusText}`);
+      }
 
-async function fetchPlaylistItems(playlistId, maxResults = 50) {
-  const BASE_URL = 'https://www.googleapis.com/youtube/v3';
-  const params = new URLSearchParams({
-    part: 'snippet',
-    playlistId: playlistId,
-    maxResults: String(maxResults),
-    key: API_KEY,
-  });
+      const data = await res.json();
+      const mappedItems = data.items.map((item) => ({
+        id: item.id.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail:
+          item.snippet.thumbnails.high?.url ??
+          item.snippet.thumbnails.medium?.url ??
+          item.snippet.thumbnails.default?.url ??
+          '',
+        publishedAt: item.snippet.publishedAt,
+        channelTitle: item.snippet.channelTitle,
+        videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+      }));
 
-  try {
-    const res = await fetch(`${BASE_URL}/playlistItems?${params}`);
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(`YouTube API error: ${error.error?.message || res.statusText}`);
+      allItems = [...allItems, ...mappedItems];
+      nextPageToken = config.fetchAll ? data.nextPageToken : null;
+
+      // Safety break to prevent infinite loops if something goes wrong
+      if (allItems.length > 1000) {
+        console.warn('Reached 1000 videos safety limit');
+        break;
+      }
+    } catch (error) {
+      console.error(`Error fetching YouTube videos for ${config.id}:`, error);
+      break;
     }
+  } while (nextPageToken);
 
-    const data = await res.json();
-    return data.items.map((item) => ({
-      id: item.snippet.resourceId.videoId,
-      title: item.snippet.title,
-      description: item.snippet.description,
-      thumbnail:
-        item.snippet.thumbnails.high?.url ??
-        item.snippet.thumbnails.medium?.url ??
-        item.snippet.thumbnails.default?.url ??
-        '',
-      publishedAt: item.snippet.publishedAt,
-      channelTitle: item.snippet.channelTitle,
-      videoUrl: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`,
-    }));
-  } catch (error) {
-    console.error(`Error fetching playlist items for ${playlistId}:`, error);
-    return [];
-  }
+  return allItems;
 }
 
 async function main() {
@@ -122,7 +100,7 @@ async function main() {
     console.log(`Added ${videos.length} videos to ${collection.id}`);
   }
 
-  // Also keep a flat 'videos' array for backward compatibility with simple implementations
+  // Also keep a flat 'videos' array for backward compatibility
   cacheData.videos = cacheData.collections['sermons'] || [];
 
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cacheData, null, 2));

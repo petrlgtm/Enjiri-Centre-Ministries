@@ -10,6 +10,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import SermonCard from "@/components/sermons/SermonCard";
 import SermonFilter, { type DateRange } from "@/components/sermons/SermonFilter";
 import SermonPlayerPanel from "@/components/sermons/SermonPlayerPanel";
+import Button from "@/components/ui/Button";
 import { fetchYouTubeVideos, searchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
 import { formatDate, getYouTubeVideoId, cn } from "@/lib/utils";
 
@@ -81,15 +82,16 @@ export default function SermonsContent({
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(30);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const playerRef = useRef<HTMLDivElement>(null);
 
-  // Load channel videos
+  // Load channel videos (up to 1000 from the cache)
   useEffect(() => {
     let cancelled = false;
     async function load() {
       try {
-        const videos = await fetchYouTubeVideos(CHANNEL_ID, 12);
+        const videos = await fetchYouTubeVideos(CHANNEL_ID, 1000);
         if (!cancelled && videos.length > 0) {
           setYoutubeSermons(videos.map(youtubeToSermon));
         }
@@ -136,7 +138,7 @@ export default function SermonsContent({
 
     setSearching(true);
     debounceRef.current = setTimeout(async () => {
-      const results = await searchYouTubeVideos(value, CHANNEL_ID);
+      const results = await searchYouTubeVideos(value, CHANNEL_ID, 100);
       setSearchResults(results.length > 0 ? results.map(youtubeToSermon) : []);
       setSearching(false);
     }, 500);
@@ -148,6 +150,9 @@ export default function SermonsContent({
   const featuredSermon = !searchResults && baseSermons.length > 0 ? baseSermons[0] : null;
   const gridSermons = featuredSermon ? baseSermons.slice(1) : baseSermons;
   const filteredSermons = useMemo(() => filterByDateRange(gridSermons, dateRange), [gridSermons, dateRange]);
+  
+  const displaySermons = useMemo(() => filteredSermons.slice(0, visibleCount), [filteredSermons, visibleCount]);
+  const hasMore = filteredSermons.length > visibleCount;
 
   const selectedSermon: SermonItem | null = selectedSlug
     ? (youtubeSermons.find((s) => s.slug === selectedSlug) ??
@@ -288,18 +293,33 @@ export default function SermonsContent({
                 <div key={i} className="aspect-4/5 animate-pulse rounded-3xl bg-(--gray-100)" />
               ))}
             </div>
-          ) : filteredSermons.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredSermons.map((sermon, index) => (
-                <SermonCard
-                  key={sermon.slug}
-                  {...sermon}
-                  index={index}
-                  isActive={selectedSlug === sermon.slug}
-                  onClick={() => setSelectedSlug(sermon.slug)}
-                />
-              ))}
-            </div>
+          ) : displaySermons.length > 0 ? (
+            <>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {displaySermons.map((sermon, index) => (
+                  <SermonCard
+                    key={sermon.slug}
+                    {...sermon}
+                    index={index}
+                    isActive={selectedSlug === sermon.slug}
+                    onClick={() => setSelectedSlug(sermon.slug)}
+                  />
+                ))}
+              </div>
+              
+              {hasMore && (
+                <div className="mt-16 flex justify-center">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    onClick={() => setVisibleCount(prev => prev + 30)}
+                    className="min-w-[200px] border-gold/30 text-gold hover:bg-gold hover:text-navy"
+                  >
+                    Load More Teachings
+                  </Button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="py-20 text-center">
               <p className="text-lg text-(--gray-500)">
