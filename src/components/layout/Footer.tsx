@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
@@ -72,10 +72,11 @@ const defaultSocialLinks = [
   },
 ];
 
-const socialIconMap: Record<string, { icon: typeof FaFacebookF; hoverColor: string }> = {
+const socialIconMap: Record<string, { icon: any; hoverColor: string }> = {
   facebook: { icon: FaFacebookF, hoverColor: "hover:bg-[#1877F2]/15 hover:text-[#1877F2] hover:border-[#1877F2]/30" },
   youtube: { icon: FaYoutube, hoverColor: "hover:bg-[#FF0000]/15 hover:text-[#FF0000] hover:border-[#FF0000]/30" },
   instagram: { icon: FaInstagram, hoverColor: "hover:bg-[#E4405F]/15 hover:text-[#E4405F] hover:border-[#E4405F]/30" },
+  twitter: { icon: FaTwitter, hoverColor: "hover:bg-[#1DA1F2]/15 hover:text-[#1DA1F2] hover:border-[#1DA1F2]/30" },
   tiktok: { icon: FaTiktok, hoverColor: "hover:bg-[#00f2ea]/15 hover:text-[#00f2ea] hover:border-[#00f2ea]/30" },
 };
 

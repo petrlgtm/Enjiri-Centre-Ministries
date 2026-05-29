@@ -129,9 +129,9 @@ export default async function RootLayout({
         <Navbar 
           banner={banner} 
           events={upcomingEvents} 
-          serviceSchedule={siteSettings?.serviceSchedule} 
-        />
-        <main id="main-content" className="min-h-screen">{children}</main>
+          serviceSchedule={siteSettings?.serviceSchedule}
+          socialLinks={siteSettings?.socialLinks}
+        />        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer siteSettings={siteSettings} />
         <BackToTop />
       </body>

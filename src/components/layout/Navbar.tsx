@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn, formatEventAnnouncement, getNextServiceOccurrence } from "@/lib/utils";
 import Container from "@/components/ui/Container";
@@ -25,13 +25,6 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const socialLinks = [
-  { icon: FaFacebookF, href: "https://facebook.com", label: "Facebook" },
-  { icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
-  { icon: FaInstagram, href: "https://instagram.com/ev_k_peter", label: "Instagram" },
-  { icon: FaTiktok, href: "https://tiktok.com", label: "TikTok" },
-];
-
 interface NavbarProps {
   banner?: {
     enabled: boolean;
@@ -47,9 +40,16 @@ interface NavbarProps {
     time: string;
     serviceName: string;
   }> | null;
+  socialLinks?: {
+    facebook?: string;
+    youtube?: string;
+    instagram?: string;
+    twitter?: string;
+    tiktok?: string;
+  } | null;
 }
 
-export default function Navbar({ banner, events, serviceSchedule }: NavbarProps) {
+export default function Navbar({ banner, events, serviceSchedule, socialLinks }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -57,6 +57,16 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
   const [bannerVisible, setBannerVisible] = useState(true);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
+
+  const resolvedSocialLinks = useMemo(() => {
+    return [
+      { icon: FaFacebookF, href: socialLinks?.facebook, label: "Facebook" },
+      { icon: FaYoutube, href: socialLinks?.youtube, label: "YouTube" },
+      { icon: FaInstagram, href: socialLinks?.instagram, label: "Instagram" },
+      { icon: FaTwitter, href: socialLinks?.twitter, label: "Twitter" },
+      { icon: FaTiktok, href: socialLinks?.tiktok, label: "TikTok" },
+    ].filter(link => link.href);
+  }, [socialLinks]);
 
   const slides = useMemo(() => {
     const s: (BannerSlide & { sortDate: Date })[] = [];
@@ -283,7 +293,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         </motion.nav>
 
         {/* Social Links Bar — only visible on homepage */}
-        {pathname === "/" && (
+        {pathname === "/" && resolvedSocialLinks.length > 0 && (
           <motion.div
             initial={{ y: -100 }}
             animate={{
@@ -299,7 +309,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                     Follow us
                   </span>
                   <div className="flex items-center gap-1 min-[360px]:gap-2">
-                    {socialLinks.map((social) => (
+                    {resolvedSocialLinks.map((social) => (
                       <a
                         key={social.label}
                         href={social.href}
