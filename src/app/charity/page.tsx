@@ -187,58 +187,90 @@ export default async function CharityPage() {
       <SectionDivider accent />
 
       {/* SECTION 3 — Programs Visual Grid */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32">
+      <section className="relative overflow-hidden py-16 sm:py-24 md:py-32 lg:py-40">
+        {/* Artistic Background Elements */}
         <div className="absolute inset-0 bg-cream" />
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gold/5 blur-3xl" />
+        <div className="absolute top-1/2 -right-24 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-navy/5 blur-3xl" />
+        <div className="dot-grid-animated absolute inset-0 opacity-40" />
 
         <Container className="relative">
-          <SectionHeading
-            label="Our Programs"
-            title="How We Serve Communities"
-            subtitle="Through faith-driven initiatives, we bring practical help and spiritual hope to those who need it most."
-            onCream
-          />
+          <div className="mb-16 md:mb-24">
+            <SectionHeading
+              label="Our Impactful Programs"
+              title="How We Serve Communities"
+              subtitle="Through faith-driven initiatives, we bring practical help and spiritual hope to those who need it most."
+              onCream
+            />
+          </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-3 sm:auto-rows-[200px] md:auto-rows-[220px]">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:auto-rows-[300px] md:auto-rows-[340px]">
             {gridPrograms.map((program, index) => {
               const Icon = getIcon(program.icon);
               return (
                 <Link
                   key={`${program.slug}-${index}`}
                   href={`/charity/${program.slug}`}
-                  className={`group relative overflow-hidden rounded-2xl ${program.gridSpan}`}
+                  className={`group relative flex overflow-hidden rounded-[2.5rem] bg-navy transition-all duration-700 hover:-translate-y-4 ${program.gridSpan}`}
                 >
-                  {/* Background image */}
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-110"
-                  />
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
+                  {/* The 'Space' Frame — Inner padding for a nested look */}
+                  <div className="absolute inset-2 overflow-hidden rounded-[2rem] border border-white/5">
+                    {/* Background image with artistic treatment */}
+                    <Image
+                      src={program.image}
+                      alt={program.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1"
+                    />
+                    
+                    {/* Artistic Light Leak Overlay */}
+                    <div className="absolute inset-0 bg-linear-to-tr from-navy via-navy/40 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70" />
+                    <div className="absolute -top-1/2 -left-1/2 h-full w-full bg-gold/10 blur-3xl transition-transform duration-1000 group-hover:translate-x-1/2 group-hover:translate-y-1/2" />
+                  </div>
 
-                  {/* Content */}
-                  <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-                      <Icon size={18} />
+                  {/* Content Overlay */}
+                  <div className="relative flex h-full w-full flex-col p-8 sm:p-10 lg:p-12">
+                    {/* Decorative Badge */}
+                    <div className="mb-auto">
+                      <div className="relative inline-flex">
+                        <div className="absolute inset-0 animate-spin-slow rounded-full bg-linear-to-r from-gold/0 via-gold/40 to-gold/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white/5 text-gold backdrop-blur-xl ring-1 ring-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-gold group-hover:text-navy">
+                          <Icon size={28} />
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
-                      {program.title}
-                    </h3>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
-                      {program.description}
-                    </p>
-                    {/* Learn More indicator */}
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold opacity-0 transition-all duration-500 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
-                      Learn More <HiArrowRight size={12} />
-                    </span>
+
+                    {/* Textual Core */}
+                    <div className="mt-8 transform-gpu transition-transform duration-500 group-hover:-translate-y-2">
+                      <div className="flex items-center gap-3">
+                        <span className="h-px w-6 bg-gold/50" />
+                        <span className="text-[10px] font-bold tracking-[0.3em] text-gold/80 uppercase">
+                          Ministry
+                        </span>
+                      </div>
+                      <h3 className="mt-3 font-(family-name:--font-playfair) text-2xl font-bold text-foreground leading-tight sm:text-3xl">
+                        {program.title}
+                      </h3>
+                      
+                      <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-foreground/60 transition-colors duration-500 group-hover:text-foreground/90">
+                        {program.description}
+                      </p>
+                    </div>
+
+                    {/* Artistic Footer */}
+                    <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6 opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                      <span className="text-xs font-semibold tracking-widest text-gold uppercase">
+                        Discover More
+                      </span>
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/20 text-gold transition-colors duration-300 hover:bg-gold hover:text-navy">
+                        <HiArrowRight size={16} />
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Bottom gold line on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5">
-                    <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
-                  </div>
+                  {/* Outer Ambient Glow */}
+                  <div className="absolute -inset-1 rounded-[2.5rem] bg-gold/20 opacity-0 blur-xl transition-opacity duration-700 group-hover:opacity-30" />
                 </Link>
               );
             })}
