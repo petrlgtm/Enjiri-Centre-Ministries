@@ -1,17 +1,18 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, formatEventAnnouncement } from "@/lib/utils";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import AnnouncementBanner from "./AnnouncementBanner";
+import AnnouncementBanner, { BannerSlide } from "./AnnouncementBanner";
 import logoImg from "@/../public/images/logo.jpeg";
+import { Event } from "@/types/sanity";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -38,10 +39,12 @@ interface NavbarProps {
     linkText?: string;
     linkUrl?: string;
     style?: "info" | "warning" | "celebration";
+    expiresAt?: string;
   } | null;
+  events?: Event[] | null;
 }
 
-export default function Navbar({ banner }: NavbarProps) {
+export default function Navbar({ banner, events }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -50,7 +53,41 @@ export default function Navbar({ banner }: NavbarProps) {
   const pathname = usePathname();
   const lastScrollY = useRef(0);
 
-  const showBanner = banner?.enabled && bannerVisible;
+  const slides = useMemo(() => {
+    const s: BannerSlide[] = [];
+    
+    // Add manual banner if active
+    if (banner?.enabled && banner.message) {
+      const isExpired = banner.expiresAt && new Date(banner.expiresAt) < new Date();
+      if (!isExpired) {
+        s.push({
+          id: "manual",
+          message: banner.message,
+          linkText: banner.linkText,
+          linkUrl: banner.linkUrl || "#",
+          style: banner.style || "info"
+        });
+      }
+    }
+
+    // Add up to 3 upcoming events "wisely"
+    if (events && events.length > 0) {
+      events.slice(0, 3).forEach((event) => {
+        const timeInfo = formatEventAnnouncement(event.date);
+        s.push({
+          id: event._id,
+          message: `Join us for ${event.title} — ${timeInfo}`,
+          linkText: "View Event",
+          linkUrl: `/services/${event.slug}`,
+          style: event.featured ? "celebration" : "info"
+        });
+      });
+    }
+
+    return s;
+  }, [banner, events]);
+
+  const showBanner = slides.length > 0 && bannerVisible;
 
   // Close mobile nav when route changes
   useEffect(() => {
@@ -89,10 +126,7 @@ export default function Navbar({ banner }: NavbarProps) {
       <div className="fixed top-0 left-0 right-0 z-50">
         {showBanner && (
           <AnnouncementBanner
-            message={banner.message}
-            linkText={banner.linkText}
-            linkUrl={banner.linkUrl}
-            style={banner.style}
+            slides={slides}
             onDismiss={() => setBannerVisible(false)}
           />
         )}

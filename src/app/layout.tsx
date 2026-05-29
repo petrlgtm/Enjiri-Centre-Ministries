@@ -4,9 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
-import AnnouncementBanner from "@/components/layout/AnnouncementBanner";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { announcementBannerQuery, siteSettingsQuery } from "@/sanity/queries";
+import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
+import { Event } from "@/types/sanity";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -95,15 +95,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [banner, siteSettings] = await Promise.all([
+  const [banner, siteSettings, upcomingEvents] = await Promise.all([
     fetchSanity<AnnouncementBannerData>(announcementBannerQuery),
     fetchSanity<SiteSettingsData>(siteSettingsQuery),
+    fetchSanity<Event[]>(upcomingEventsQuery),
   ]);
-
-  const showBanner =
-    banner?.enabled &&
-    banner?.message &&
-    (!banner.expiresAt || new Date(banner.expiresAt) > new Date());
 
   return (
     <html lang="en">
@@ -116,7 +112,7 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
-        <Navbar banner={banner} />
+        <Navbar banner={banner} events={upcomingEvents} />
         <main id="main-content" className="min-h-screen">{children}</main>
         <Footer siteSettings={siteSettings} />
         <BackToTop />
