@@ -36,12 +36,12 @@ const placeholderEvents: EventProp[] = [
     featured: true,
   },
   {
-    title: "Youth Conference 2026",
-    date: "March 15-17, 2026",
-    time: "10:00 AM",
-    location: "Church Grounds",
+    title: "Enjiri Youth Night",
+    date: "June 12, 2026",
+    time: "6:00 PM",
+    location: "Youth Center",
     description:
-      "A life-changing conference for young people. Theme: 'Rising Above'.",
+      "A night of music, word and fellowship specifically designed for the youth.",
     image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=80&fm=webp&fit=crop",
     accent: "from-gold-dark to-gold",
     featured: false,
@@ -115,7 +115,23 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 
 export default function UpcomingEvents({ events }: UpcomingEventsProps) {
   const countdown = useCountdown();
-  const displayEvents = events && events.length > 0 ? events : placeholderEvents;
+  
+  // Filter out any past events that might still be in the list
+  const now = new Date();
+  const activeEvents = events && events.length > 0 
+    ? events.filter(e => {
+        if (e.date === "Every Sunday" || e.date.includes("Month")) return true;
+        // Attempt to parse date, if it fails or is in future, keep it
+        try {
+          const eventDate = new Date(e.date);
+          return isNaN(eventDate.getTime()) || eventDate >= now;
+        } catch {
+          return true;
+        }
+      })
+    : placeholderEvents;
+
+  const displayEvents = activeEvents.length > 0 ? activeEvents : placeholderEvents;
 
   return (
     <section className="relative py-16 sm:py-24 lg:py-32">

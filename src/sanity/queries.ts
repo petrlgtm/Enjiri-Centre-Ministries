@@ -68,7 +68,7 @@ export const latestSermonsQuery = groq`
 // ── Events ──────────────────────────────────────────────────────
 
 export const upcomingEventsQuery = groq`
-  *[_type == "event" && date >= now()] | order(date asc) {
+  *[_type == "event" && (isRecurring == true || endDate >= now() || (!defined(endDate) && date >= now()))] | order(date asc) {
     _id,
     title,
     "slug": slug.current,
@@ -85,7 +85,7 @@ export const upcomingEventsQuery = groq`
 `;
 
 export const homepageEventsQuery = groq`
-  *[_type == "event" && date >= now()] | order(date asc) [0...3] {
+  *[_type == "event" && (endDate >= now() || (!defined(endDate) && date >= now()))] | order(date asc) [0...3] {
     _id,
     title,
     "slug": slug.current,
@@ -101,7 +101,7 @@ export const homepageEventsQuery = groq`
 `;
 
 export const latestEventsQuery = groq`
-  *[_type == "event"] | order(date desc) [0...3] {
+  *[_type == "event" && (endDate >= now() || (!defined(endDate) && date >= now()))] | order(date desc) [0...3] {
     _id,
     title,
     "slug": slug.current,
@@ -133,7 +133,7 @@ export const eventBySlugQuery = groq`
 `;
 
 export const upcomingEventsWithCategoryQuery = groq`
-  *[_type == "event" && date >= now() && ($category == "all" || category == $category)] | order(date asc) {
+  *[_type == "event" && (endDate >= now() || (!defined(endDate) && date >= now())) && ($category == "all" || category == $category)] | order(date asc) {
     _id,
     title,
     "slug": slug.current,
