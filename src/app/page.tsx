@@ -1,7 +1,6 @@
 export const revalidate = 60;
 
 import Hero from "@/components/home/Hero";
-import SnapshotBand from "@/components/home/SnapshotBand";
 import MissionSection from "@/components/home/MissionSection";
 import PlanYourVisit from "@/components/home/PlanYourVisit";
 import LatestSermons from "@/components/home/LatestSermons";
@@ -83,8 +82,6 @@ export default async function HomePage() {
     ctaUrl: m.ctaUrl || "/contact",
   }));
 
-  const snapshotData = homePage?.snapshotItems;
-
   const donateBandData = homePage ? {
     heading: homePage.donateBandHeading,
     text: homePage.donateBandText,
@@ -109,8 +106,6 @@ export default async function HomePage() {
   return (
     <>
       <Hero heroImages={heroImagesData} {...heroData} />
-      <SectionDivider />
-      <SnapshotBand items={snapshotData} />
       <SectionDivider />
       <MissionSection
         missionText={homePage?.missionText}
