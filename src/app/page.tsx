@@ -7,7 +7,6 @@ import PlanYourVisit from "@/components/home/PlanYourVisit";
 import LatestSermons from "@/components/home/LatestSermons";
 import UpcomingEvents from "@/components/home/UpcomingEvents";
 import MinistriesGrid from "@/components/home/MinistriesGrid";
-import LeadershipHighlight from "@/components/home/LeadershipHighlight";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import DonateBand from "@/components/home/DonateBand";
 import ContactInfoCard from "@/components/home/ContactInfoCard";
@@ -15,18 +14,16 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import {
   homepageEventsQuery,
-  allLeadersQuery,
   allTestimoniesQuery,
   allMinistriesQuery,
   siteSettingsQuery,
   homePageQuery,
   latestSermonsQuery,
 } from "@/sanity/queries";
-import { cardImage, portraitImage, heroImage } from "@/sanity/image";
+import { cardImage, heroImage } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 import {
   Event,
-  Leader,
   Testimony,
   Ministry,
   SiteSettings,
@@ -35,9 +32,8 @@ import {
 } from "@/types/sanity";
 
 export default async function HomePage() {
-  const [events, leaders, testimonies, ministries, settings, homePage, sermons] = await Promise.all([
+  const [events, testimonies, ministries, settings, homePage, sermons] = await Promise.all([
     fetchSanity<Event[]>(homepageEventsQuery),
-    fetchSanity<Leader[]>(allLeadersQuery),
     fetchSanity<Testimony[]>(allTestimoniesQuery),
     fetchSanity<Ministry[]>(allMinistriesQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
@@ -72,15 +68,6 @@ export default async function HomePage() {
     slug: s.slug,
     image: s.thumbnail ? cardImage(s.thumbnail) : "",
   })).filter((s) => s.image);
-
-  const leaderData = leaders?.[0]
-    ? {
-        name: leaders[0].name,
-        role: leaders[0].role,
-        bio: leaders[0].bio || "",
-        image: leaders[0].image ? portraitImage(leaders[0].image) : "",
-      }
-    : undefined;
 
   const testimoniesData = testimonies?.map((t) => ({
     quote: t.quote,
@@ -147,8 +134,6 @@ export default async function HomePage() {
       />
       <SectionDivider />
       <ContactInfoCard settings={settings} />
-      <SectionDivider accent />
-      <LeadershipHighlight leader={leaderData} />
     </>
   );
 }

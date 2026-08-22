@@ -32,7 +32,7 @@ export default function Button({
   fullWidth = false,
 }: ButtonProps) {
   const baseStyles =
-    "group relative inline-flex items-center justify-center font-medium tracking-wide rounded-full transition-all duration-500 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
+    "group relative inline-flex items-center justify-center font-medium tracking-wide  transition-all duration-500 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
 
   const variants = {
     primary:

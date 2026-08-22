@@ -10,7 +10,7 @@ export default function NotFound() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background">
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/[0.04] blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-gold/[0.04] blur-[120px]" />
       </div>
 
       <Container className="relative py-32 text-center">

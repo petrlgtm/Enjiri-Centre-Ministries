@@ -37,7 +37,7 @@ export default function SectionHeading({
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={cn(
-            "mb-4 sm:mb-5 inline-block rounded-full px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em]",
+            "mb-4 sm:mb-5 inline-block  px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em]",
             onCream
               ? "bg-gold-dark/10 text-gold-dark border border-gold-dark/15"
               : light
@@ -69,7 +69,7 @@ export default function SectionHeading({
         )}
       >
         <span className={cn("h-px w-10", onCream ? "bg-gold-dark/40" : "bg-gold/50")} />
-        <span className="h-1.5 w-1.5 rounded-full bg-red" />
+        <span className="h-1.5 w-1.5 bg-red" />
         <span className={cn("h-px w-20 bg-linear-to-r", onCream ? "from-gold-dark/40 to-transparent" : "from-gold to-transparent")} />
       </motion.div>
 

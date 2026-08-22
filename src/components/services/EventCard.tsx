@@ -48,7 +48,7 @@ export default function EventCard({
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="card-3d group relative aspect-[4/5] sm:aspect-auto sm:h-[480px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl transition-all duration-500"
+      className="card-3d group relative aspect-[4/5] sm:aspect-auto sm:h-[480px] overflow-hidden border border-white/10 shadow-2xl transition-all duration-500"
     >
       <Link href={`/services/${slug}`} className="absolute inset-0 z-0">
         {/* Full Card Background Image */}
@@ -74,16 +74,16 @@ export default function EventCard({
       <div className="relative h-full flex flex-col justify-between p-6 sm:p-8 z-10 pointer-events-none">
         {/* Top: Category & Date */}
         <div className="flex items-start justify-between">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
+          <span className="inline-flex items-center gap-1.5 bg-gold/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-gold/30 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+              <span className="absolute inline-flex h-full w-full bg-gold/30 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 bg-gold" />
             </span>
             {category || "Event"}
           </span>
           
           <div className="flex flex-col items-end gap-2">
-            <span className="rounded-xl bg-white/10 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md border border-white/10">
+            <span className="bg-white/10 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md border border-white/10">
               {date}
             </span>
           </div>
@@ -118,7 +118,7 @@ export default function EventCard({
                 href={rsvpUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
+                className="inline-flex items-center gap-2 bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
               >
                 <HiExternalLink size={14} />
                 RSVP NOW
@@ -126,7 +126,7 @@ export default function EventCard({
             ) : (
               <Link
                 href={`/services/${slug}`}
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
+                className="inline-flex items-center gap-2 bg-gold px-5 py-2.5 text-xs font-bold text-navy transition-all duration-300 hover:bg-white hover:scale-105"
               >
                 VIEW DETAILS
                 <HiArrowRight size={14} />
@@ -142,7 +142,7 @@ export default function EventCard({
                 link.download = `${title.replace(/\s+/g, "-").toLowerCase()}.ics`;
                 link.click();
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white/40"
+              className="flex h-10 w-10 items-center justify-center border border-white/20 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white/40"
               aria-label="Add to Calendar"
             >
               <HiCalendar size={18} />
@@ -152,7 +152,7 @@ export default function EventCard({
       </div>
 
       {/* Hover visual effect */}
-      <div className="absolute inset-0 border-2 border-gold/0 transition-all duration-500 group-hover:border-gold/30 pointer-events-none rounded-3xl" />
+      <div className="absolute inset-0 border-2 border-gold/0 transition-all duration-500 group-hover:border-gold/30 pointer-events-none" />
     </motion.div>
   );
 }

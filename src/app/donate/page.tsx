@@ -49,7 +49,7 @@ export default async function DonatePage() {
       ? heroImageUrl(settings.donateHeaderImage) 
       : settings?.defaultHeaderImage
         ? heroImageUrl(settings.defaultHeaderImage)
-        : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80&fm=webp&fit=crop";
+        : "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=1200&q=80&fm=webp&fit=crop";
 
   return (
     <>
@@ -86,7 +86,7 @@ export default async function DonatePage() {
                   <span className="text-base font-medium text-cream-heading transition-colors duration-300 group-hover:text-gold-dark min-[375px]:text-lg sm:text-xl">
                     {category.label}
                   </span>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-dark/40 text-gold-dark transition-all duration-300 group-hover:bg-gold group-hover:text-navy group-hover:border-gold group-hover:shadow-[0_0_20px_rgba(201,168,76,0.3)] sm:h-11 sm:w-11">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-gold-dark/40 text-gold-dark transition-all duration-300 group-hover:bg-gold group-hover:text-navy group-hover:border-gold group-hover:shadow-[0_0_20px_rgba(201,168,76,0.3)] sm:h-11 sm:w-11">
                     <HiArrowUpRight size={18} />
                   </span>
                 </a>
@@ -94,7 +94,7 @@ export default async function DonatePage() {
             </div>
 
             {/* Scripture quote */}
-            <div className="mt-10 rounded-2xl border border-black/6 bg-white px-5 py-7 text-center sm:mt-16 sm:p-10">
+            <div className="mt-10 border border-black/6 bg-white px-5 py-7 text-center sm:mt-16 sm:p-10">
               <p className="font-(family-name:--font-playfair) text-base italic leading-relaxed text-cream-body min-[375px]:text-lg sm:text-xl">
                 &ldquo;Each of you should give what you have decided in your
                 heart to give, not reluctantly or under compulsion, for God

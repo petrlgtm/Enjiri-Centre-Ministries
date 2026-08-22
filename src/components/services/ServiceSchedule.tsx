@@ -64,10 +64,10 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl"
+              className="group relative aspect-16/10 sm:aspect-4/3 overflow-hidden"
             >
               <Image
-                src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
+                src={image || "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop"}
                 alt="Congregation gathered in worship"
                 fill
                 className="object-cover transition-all duration-900 group-hover:scale-[1.08]"
@@ -78,7 +78,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
 
               {/* Scripture overlay with glass effect */}
               <div className="absolute inset-x-4 bottom-4">
-                <div className="glass rounded-2xl p-5">
+                <div className="glass p-5">
                   <p className="font-(family-name:--font-playfair) text-sm leading-relaxed text-foreground/90 italic">
                     &ldquo;For where two or three gather in my name, there am I
                     with them.&rdquo;
@@ -102,7 +102,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
                   delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="card-3d card-premium group overflow-hidden rounded-2xl border border-white/6 border-l-2 border-l-gold bg-(--gray-100)"
+                className="card-3d card-premium group overflow-hidden border border-white/6 border-l-2 border-l-gold bg-(--gray-100)"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between">
@@ -117,7 +117,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
                     {item.services.map((service) => (
                       <div
                         key={service.name}
-                        className="flex items-center justify-between gap-4 rounded-xl bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/4"
+                        className="flex items-center justify-between gap-4 bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/4"
                       >
                         <span className="text-[0.9rem] font-medium text-(--gray-600)">
                           {service.name}

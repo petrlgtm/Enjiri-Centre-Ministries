@@ -30,7 +30,7 @@ export default function ProgramAbout({
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <span className="inline-block rounded-full border border-gold/25 bg-gold/[0.1] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+            <span className="inline-block border border-gold/25 bg-gold/[0.1] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
               About This Program
             </span>
             <h2 className="mt-6 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
@@ -38,7 +38,7 @@ export default function ProgramAbout({
             </h2>
             <div className="mt-4 flex items-center gap-2">
               <span className="h-px w-8 bg-gold/40" />
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              <span className="h-1.5 w-1.5 bg-gold" />
               <span className="h-px w-16 bg-linear-to-r from-gold to-transparent" />
             </div>
             <div className="mt-6">
@@ -67,7 +67,7 @@ export default function ProgramAbout({
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden">
               <Image
                 src={aboutImage}
                 alt={title}

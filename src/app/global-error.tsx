@@ -17,7 +17,7 @@ export default function GlobalError({
           </p>
           <button
             onClick={reset}
-            className="mt-8 rounded-full bg-[#c9a84c] px-8 py-3 text-sm font-semibold text-[#0c0f1a] transition-all hover:bg-[#c9a84c]/90"
+            className="mt-8 bg-[#c9a84c] px-8 py-3 text-sm font-semibold text-[#0c0f1a] transition-all hover:bg-[#c9a84c]/90"
           >
             Try Again
           </button>

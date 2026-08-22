@@ -42,12 +42,12 @@ export default function ContactForm() {
   };
 
   const inputClasses =
-    "w-full rounded-2xl border border-black/[0.08] bg-white px-4 py-3.5 text-sm text-cream-heading outline-none transition-all duration-300 placeholder:text-cream-muted/60 focus:border-gold-dark focus:bg-white focus:shadow-[0_0_0_3px_rgba(138,109,27,0.1)]";
+    "w-full  border border-black/[0.08] bg-white px-4 py-3.5 text-sm text-cream-heading outline-none transition-all duration-300 placeholder:text-cream-muted/60 focus:border-gold-dark focus:bg-white focus:shadow-[0_0_0_3px_rgba(138,109,27,0.1)]";
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-gold-dark/20 bg-gold-dark/6 p-10 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-dark/10">
+      <div className="border border-gold-dark/20 bg-gold-dark/6 p-10 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center bg-gold-dark/10">
           <HiMail className="text-gold-dark" size={24} />
         </div>
         <h3 className="mt-4 text-xl font-bold text-cream-heading">

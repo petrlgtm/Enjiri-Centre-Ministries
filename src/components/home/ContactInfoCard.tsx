@@ -97,7 +97,7 @@ export default function ContactInfoCard({ settings }: ContactInfoCardProps) {
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   className="flex items-center gap-4"
                 >
-                  <div className="icon-breathe flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 hover:bg-gold hover:text-navy">
+                  <div className="icon-breathe flex h-12 w-12 shrink-0 items-center justify-center bg-gold-dark/10 text-gold-dark transition-all duration-500 hover:bg-gold hover:text-navy">
                     <item.icon size={20} />
                   </div>
                   <div>
@@ -140,9 +140,9 @@ export default function ContactInfoCard({ settings }: ContactInfoCardProps) {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl border border-black/6 shadow-lg">
+            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden border border-black/6 shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80&fm=webp&fit=crop"
+                src="https://cdn.sanity.io/images/shcw5txc/production/71a477e89d22616d81996b60eab8574efaa72552-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop"
                 alt="Map location of Enjiri Center"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -150,7 +150,7 @@ export default function ContactInfoCard({ settings }: ContactInfoCardProps) {
               />
               <div className="absolute inset-0 bg-linear-to-t from-navy/40 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
-                <span className="rounded-full bg-white/90 backdrop-blur-md border border-black/6 px-4 py-2 text-xs font-semibold text-cream-heading">
+                <span className="bg-white/90 backdrop-blur-md border border-black/6 px-4 py-2 text-xs font-semibold text-cream-heading">
                   <HiLocationMarker className="mr-1.5 inline text-gold-dark" size={14} />
                   Enjiri Center
                 </span>

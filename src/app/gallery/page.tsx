@@ -59,7 +59,7 @@ export default async function GalleryPage() {
                 <Link
                   key={gallery._id}
                   href={`/gallery/${gallery.slug}`}
-                  className="group overflow-hidden rounded-2xl border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
+                  className="group overflow-hidden border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
                 >
                   {gallery.coverImage && (
                     <div className="relative aspect-4/3 overflow-hidden">
@@ -71,14 +71,14 @@ export default async function GalleryPage() {
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      <div className="absolute bottom-3 right-3 rounded-full bg-navy/70 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
+                      <div className="absolute bottom-3 right-3 bg-navy/70 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
                         {gallery.imageCount} photos
                       </div>
                     </div>
                   )}
                   <div className="p-5">
                     {gallery.category && (
-                      <span className="mb-2 inline-block rounded-full bg-gold/10 px-2.5 py-0.5 text-[11px] font-medium text-gold">
+                      <span className="mb-2 inline-block bg-gold/10 px-2.5 py-0.5 text-[11px] font-medium text-gold">
                         {gallery.category}
                       </span>
                     )}

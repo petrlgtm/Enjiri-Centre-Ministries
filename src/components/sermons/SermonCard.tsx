@@ -6,10 +6,10 @@ import { HiPlay, HiMusicNote } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 
 const fallbackImages = [
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=80&fm=webp&fit=crop",
-  "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=80&fm=webp&fit=crop",
-  "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80&fm=webp&fit=crop",
-  "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&q=80&fm=webp&fit=crop",
+  "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
+  "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=400&q=80&fm=webp&fit=crop",
+  "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
+  "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=400&q=80&fm=webp&fit=crop",
 ];
 
 interface SermonCardProps {
@@ -54,7 +54,7 @@ export default function SermonCard({
         onClick={onClick}
         data-slug={slug}
         className={cn(
-          "card-3d card-premium group block w-full overflow-hidden rounded-3xl border bg-(--gray-100) text-left shadow-sm ring-1 transition-all duration-500 hover:shadow-xl hover:shadow-black/20",
+          "card-3d card-premium group block w-full overflow-hidden  border bg-(--gray-100) text-left shadow-sm ring-1 transition-all duration-500 hover:shadow-xl hover:shadow-black/20",
           isActive
             ? "border-gold/40 ring-gold/30 shadow-gold-glow"
             : "border-white/6 ring-transparent hover:ring-2 hover:ring-gold/30"
@@ -77,11 +77,11 @@ export default function SermonCard({
           {/* Play button with pulse */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative" role="img" aria-label={`Play sermon: ${title}`}>
-              <div className="absolute inset-0 rounded-full bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
+              <div className="absolute inset-0 bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
               <motion.div
                 whileHover={{ scale: 1.15 }}
                 transition={{ type: "spring", bounce: 0.5 }}
-                className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gold/90 text-navy shadow-[0_4px_25px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_35px_rgba(201,168,76,0.7)]"
+                className="relative flex h-14 w-14 items-center justify-center bg-gold/90 text-navy shadow-[0_4px_25px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_35px_rgba(201,168,76,0.7)]"
               >
                 <HiPlay size={24} className="ml-0.5" />
               </motion.div>
@@ -96,7 +96,7 @@ export default function SermonCard({
           {/* Series badge */}
           {series && (
             <div className="absolute top-3 left-3">
-              <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
+              <span className="bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
                 {series}
               </span>
             </div>
@@ -105,7 +105,7 @@ export default function SermonCard({
           {/* Now Playing badge */}
           {isActive && (
             <div className="absolute top-3 right-3">
-              <span className="flex items-center gap-1.5 rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold tracking-wide text-navy">
+              <span className="flex items-center gap-1.5 bg-gold px-3 py-1.5 text-[11px] font-bold tracking-wide text-navy">
                 <HiMusicNote size={12} className="animate-pulse" />
                 Now Playing
               </span>
@@ -120,7 +120,7 @@ export default function SermonCard({
           </h3>
           <div className="mt-2.5 flex items-center gap-2 text-sm text-(--gray-500)">
             <span className="font-medium">{speaker}</span>
-            <span className="h-1 w-1 rounded-full bg-(--gray-300)" />
+            <span className="h-1 w-1 bg-(--gray-300)" />
             <span>{date}</span>
           </div>
 

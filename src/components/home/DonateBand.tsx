@@ -29,7 +29,7 @@ export default function DonateBand({ heading, text, image }: DonateBandProps) {
       {/* Parallax background */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-[-20%]">
         <Image
-          src={image || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"}
+          src={image || "https://cdn.sanity.io/images/shcw5txc/production/cfebaa48374a9e505d13c8600ba52f621c2c427a-3508x2480.jpg?w=800&q=80&fm=webp&fit=crop"}
           alt="Community gathered together"
           fill
           sizes="100vw"
@@ -51,7 +51,7 @@ export default function DonateBand({ heading, text, image }: DonateBandProps) {
             transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
             className="mx-auto mb-8"
           >
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red/15 ring-1 ring-red/30">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center bg-red/15 ring-1 ring-red/30">
               <HiHeart className="text-red-light" size={34} />
             </div>
           </motion.div>
@@ -87,7 +87,7 @@ export default function DonateBand({ heading, text, image }: DonateBandProps) {
             {amounts.map((amount) => (
               <span
                 key={amount}
-                className="rounded-full border border-gold/30 bg-gold/8 px-5 py-2.5 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/20 hover:border-gold/50 cursor-pointer"
+                className="border border-gold/30 bg-gold/8 px-5 py-2.5 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/20 hover:border-gold/50 cursor-pointer"
               >
                 ${amount}
               </span>

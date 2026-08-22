@@ -89,7 +89,7 @@ export default async function BlogPostPage({
                 {post.categories.map((cat) => (
                   <span
                     key={cat}
-                    className="rounded-full bg-gold/20 px-3 py-1 text-xs font-medium text-gold"
+                    className="bg-gold/20 px-3 py-1 text-xs font-medium text-gold"
                   >
                     {cat}
                   </span>
@@ -103,7 +103,7 @@ export default async function BlogPostPage({
               {post.author && (
                 <div className="flex items-center gap-2">
                   {post.author.image && (
-                    <div className="relative h-7 w-7 overflow-hidden rounded-full">
+                    <div className="relative h-7 w-7 overflow-hidden">
                       <Image
                         src={cardImage(post.author.image, 56)}
                         alt={post.author.name}
@@ -118,7 +118,7 @@ export default async function BlogPostPage({
               )}
               {post.publishedAt && (
                 <>
-                  <span className="h-1 w-1 rounded-full bg-gold/30" />
+                  <span className="h-1 w-1 bg-gold/30" />
                   <time dateTime={post.publishedAt}>
                     {formatDate(post.publishedAt)}
                   </time>
@@ -152,7 +152,7 @@ export default async function BlogPostPage({
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/6 bg-(--gray-50) px-3 py-1 text-xs text-(--gray-400)"
+                      className="border border-white/6 bg-(--gray-50) px-3 py-1 text-xs text-(--gray-400)"
                     >
                       {tag}
                     </span>

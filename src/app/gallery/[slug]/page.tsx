@@ -64,7 +64,7 @@ export default async function GalleryDetailPage({
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             {gallery.category && (
-              <span className="mb-3 inline-block rounded-full bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
+              <span className="mb-3 inline-block bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
                 {gallery.category}
               </span>
             )}
@@ -88,7 +88,7 @@ export default async function GalleryDetailPage({
               {gallery.images.map((img, index) => (
                 <div
                   key={index}
-                  className="mb-4 break-inside-avoid overflow-hidden rounded-xl"
+                  className="mb-4 break-inside-avoid overflow-hidden"
                 >
                   {img.image && (
                     <Image

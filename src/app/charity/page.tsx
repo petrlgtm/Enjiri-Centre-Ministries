@@ -70,7 +70,7 @@ export default async function CharityPage() {
       ? heroImageBuilder(settings.charityHeaderImage) 
       : settings?.defaultHeaderImage
         ? heroImageBuilder(settings.defaultHeaderImage)
-        : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop";
+        : "https://cdn.sanity.io/images/shcw5txc/production/0eb438e79a3d8db672b409d7761b4477df23d549-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop";
 
   // Merge Sanity data with static fallback images
   const programsData = (programs && programs.length > 0 ? programs : []).map(
@@ -131,7 +131,7 @@ export default async function CharityPage() {
           <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Text Content */}
             <div className="lg:w-1/2">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-(--gold-muted) ring-1 ring-gold/20">
+              <div className="flex h-16 w-16 items-center justify-center bg-(--gold-muted) ring-1 ring-gold/20">
                 <HiHeart className="text-gold" size={28} />
               </div>
 
@@ -157,14 +157,14 @@ export default async function CharityPage() {
               {/* Gold divider */}
               <div className="mt-8 flex items-center gap-2">
                 <span className="h-px w-8 bg-gold/40" />
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                <span className="h-1.5 w-1.5 bg-gold" />
                 <span className="h-px w-16 bg-linear-to-r from-gold to-transparent" />
               </div>
             </div>
 
             {/* RIGHT — Image Panel */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl transition-transform duration-700 hover:scale-[1.02]">
+              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden transition-transform duration-700 hover:scale-[1.02]">
                 <Image
                   src={missionImage}
                   alt="Community outreach and charity programs in East Africa"
@@ -174,7 +174,7 @@ export default async function CharityPage() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/30 to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                  <span className="rounded-full bg-gold/90 px-4 py-1.5 text-xs font-semibold text-navy">
+                  <span className="bg-gold/90 px-4 py-1.5 text-xs font-semibold text-navy">
                     Giving Back to Society
                   </span>
                 </div>
@@ -205,7 +205,7 @@ export default async function CharityPage() {
                 <Link
                   key={`${program.slug}-${index}`}
                   href={`/charity/${program.slug}`}
-                  className={`group relative overflow-hidden rounded-2xl ${program.gridSpan}`}
+                  className={`group relative overflow-hidden ${program.gridSpan}`}
                 >
                   {/* Background image */}
                   <Image
@@ -220,7 +220,7 @@ export default async function CharityPage() {
 
                   {/* Content */}
                   <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                    <div className="flex h-10 w-10 items-center justify-center bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
                       <Icon size={18} />
                     </div>
                     <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
@@ -254,7 +254,7 @@ export default async function CharityPage() {
           <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
             {/* LEFT — Image Panel with Stats */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl">
+              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden">
                 <Image
                   src={missionImage}
                   alt="Soul Winner Campaign — community outreach"
@@ -310,7 +310,7 @@ export default async function CharityPage() {
                 centered={false}
               />
 
-              <div className="card-premium rounded-2xl border border-white/6 bg-(--gray-50) p-6">
+              <div className="card-premium border border-white/6 bg-(--gray-50) p-6">
                 <h3 className="font-bold text-foreground">
                   What This Campaign Does
                 </h3>
@@ -338,7 +338,7 @@ export default async function CharityPage() {
                     },
                   ].map((item) => (
                     <li key={item.label} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-gold" />
                       <span>
                         <strong className="text-foreground">
                           {item.label}:
@@ -375,7 +375,7 @@ export default async function CharityPage() {
       {/* SECTION 5 — Impact Statistics */}
       <section className="relative overflow-hidden py-20">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden">
             <div className="relative p-6 sm:p-10 md:p-14">
               <div className="absolute inset-0 bg-navy" />
               <div className="absolute inset-0 bg-navy" />
@@ -417,7 +417,7 @@ export default async function CharityPage() {
       {/* SECTION 6 — Scripture Quote */}
       <section className="py-16">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden">
             <div className="relative p-10 sm:p-12">
               <div className="absolute inset-0 bg-navy" />
               <div className="absolute inset-0 bg-navy" />
@@ -440,7 +440,7 @@ export default async function CharityPage() {
             </div>
           </div>
 
-          <div className="mt-6 relative overflow-hidden rounded-3xl">
+          <div className="mt-6 relative overflow-hidden">
             <div className="relative p-10 sm:p-12">
               <div className="absolute inset-0 bg-navy" />
               <div className="absolute inset-0 bg-navy" />
@@ -510,7 +510,7 @@ export default async function CharityPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-foreground/50">
               <span className="h-px w-6 bg-gold/20" />
               <span>+256 779 226290</span>
-              <span className="h-1 w-1 rounded-full bg-gold/30" />
+              <span className="h-1 w-1 bg-gold/30" />
               <span>@ev_k_peter</span>
               <span className="h-px w-6 bg-gold/20" />
             </div>

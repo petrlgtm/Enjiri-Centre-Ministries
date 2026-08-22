@@ -71,7 +71,7 @@ const components: PortableTextComponents = {
       const imgUrl = urlFor(value).width(1200).quality(80).auto("format").url();
       return (
         <figure className="my-8">
-          <div className="relative aspect-video overflow-hidden rounded-2xl">
+          <div className="relative aspect-video overflow-hidden">
             <Image
               src={imgUrl}
               alt={value.alt || ""}

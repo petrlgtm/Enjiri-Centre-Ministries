@@ -18,13 +18,13 @@ export default function Error({ error, reset }: ErrorProps) {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background">
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/[0.06] blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-red/[0.06] blur-[120px]" />
       </div>
 
       <Container className="relative py-32 text-center">
         <div className="mx-auto max-w-lg">
           {/* Icon */}
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-red/20 bg-red/10">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center border border-red/20 bg-red/10">
             <svg
               width="36"
               height="36"

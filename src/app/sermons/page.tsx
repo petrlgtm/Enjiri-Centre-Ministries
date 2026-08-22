@@ -37,13 +37,13 @@ export default async function SermonsPage() {
       ? heroImageUrl(settings.sermonsHeaderImage) 
       : settings?.defaultHeaderImage
         ? heroImageUrl(settings.defaultHeaderImage)
-        : "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80&fm=webp&fit=crop";
+        : "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop";
 
   return (
     <Suspense
       fallback={
         <div className="py-40 text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-gold border-t-transparent" />
+          <div className="mx-auto h-8 w-8 animate-spin border-2 border-gold border-t-transparent" />
         </div>
       }
     >

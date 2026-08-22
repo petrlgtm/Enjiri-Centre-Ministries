@@ -23,7 +23,7 @@ function FloatingParticle({ delay, left, size = 1.5 }: { delay: number; left: st
         repeat: Infinity,
         ease: "easeOut",
       }}
-      className="absolute bottom-0 rounded-full"
+      className="absolute bottom-0"
       style={{ left, width: size * 2, height: size * 2, background: delay % 2 < 1 ? 'rgba(201,168,76,0.5)' : 'rgba(196,125,42,0.5)' }}
     />
   );
@@ -50,7 +50,7 @@ export default function CallToAction({ heading, text, image }: CallToActionProps
       {/* Background image with parallax + scale */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-[-20%]">
         <Image
-          src={image || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fm=webp&fit=crop"}
+          src={image || "https://cdn.sanity.io/images/shcw5txc/production/cfebaa48374a9e505d13c8600ba52f621c2c427a-3508x2480.jpg?w=800&q=80&fm=webp&fit=crop"}
           alt="Community"
           fill
           sizes="100vw"
@@ -102,11 +102,11 @@ export default function CallToAction({ heading, text, image }: CallToActionProps
             transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
             className="mx-auto mb-10 relative"
           >
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red/15 ring-1 ring-red/30">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center bg-red/15 ring-1 ring-red/30">
               <HiHeart className="text-red-light" size={34} />
             </div>
             {/* Animated ring */}
-            <div className="absolute inset-0 mx-auto h-20 w-20 rounded-full border border-red/20 animate-ping" style={{ animationDuration: "3s" }} />
+            <div className="absolute inset-0 mx-auto h-20 w-20 border border-red/20 animate-ping" style={{ animationDuration: "3s" }} />
           </motion.div>
 
           {/* Title with stagger */}

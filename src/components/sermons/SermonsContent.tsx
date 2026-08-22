@@ -15,7 +15,7 @@ import { fetchYouTubeVideos, searchYouTubeVideos, type YouTubeVideo } from "@/li
 import { formatDate, getYouTubeVideoId, cn } from "@/lib/utils";
 
 const featuredFallbackImage =
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80&fm=webp&fit=crop";
+  "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=800&q=80&fm=webp&fit=crop";
 
 const CHANNEL_ID = "UCFStM9EkCFD3h8b4xtlHIOQ";
 
@@ -191,14 +191,14 @@ export default function SermonsContent({
 
           {/* Featured latest sermon */}
           {loading && !featuredSermon ? (
-            <div className="mb-10 animate-pulse rounded-3xl bg-(--gray-100) border border-white/6">
+            <div className="mb-10 animate-pulse bg-(--gray-100) border border-white/6">
               <div className="flex flex-col md:flex-row">
-                <div className="aspect-video w-full md:w-1/2 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none bg-(--gray-200)" />
+                <div className="aspect-video w-full md:w-1/2 bg-(--gray-200)" />
                 <div className="flex-1 p-8 space-y-4">
-                  <div className="h-5 w-28 rounded-full bg-(--gray-200)" />
-                  <div className="h-8 w-3/4 rounded bg-(--gray-200)" />
-                  <div className="h-4 w-1/2 rounded bg-(--gray-200)" />
-                  <div className="h-12 w-40 rounded-full bg-(--gray-200)" />
+                  <div className="h-5 w-28 bg-(--gray-200)" />
+                  <div className="h-8 w-3/4 bg-(--gray-200)" />
+                  <div className="h-4 w-1/2 bg-(--gray-200)" />
+                  <div className="h-12 w-40 bg-(--gray-200)" />
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function SermonsContent({
                 type="button"
                 onClick={() => setSelectedSlug(featuredSermon.slug)}
                 className={cn(
-                  "card-premium group block w-full overflow-hidden rounded-3xl border bg-(--gray-100) text-left shadow-lg ring-1 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30",
+                  "card-premium group block w-full overflow-hidden  border bg-(--gray-100) text-left shadow-lg ring-1 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30",
                   selectedSlug === featuredSermon.slug
                     ? "border-gold/40 ring-gold/30 shadow-gold-glow"
                     : "border-white/6 ring-transparent hover:ring-2 hover:ring-gold/30"
@@ -221,7 +221,7 @@ export default function SermonsContent({
               >
                 <div className="flex flex-col md:flex-row">
                   {/* Thumbnail */}
-                  <div className="relative aspect-video w-full md:w-1/2 overflow-hidden rounded-t-2xl sm:rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none">
+                  <div className="relative aspect-video w-full md:w-1/2 overflow-hidden">
                     <Image
                       src={featuredSermon.thumbnail || featuredFallbackImage}
                       alt={featuredSermon.title}
@@ -235,11 +235,11 @@ export default function SermonsContent({
                     {/* Large play overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
+                        <div className="absolute inset-0 bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
                         <motion.div
                           whileHover={{ scale: 1.15 }}
                           transition={{ type: "spring", bounce: 0.5 }}
-                          className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gold/90 text-navy shadow-[0_4px_30px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.7)]"
+                          className="relative flex h-20 w-20 items-center justify-center bg-gold/90 text-navy shadow-[0_4px_30px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.7)]"
                         >
                           <HiPlay size={36} className="ml-1" />
                         </motion.div>
@@ -249,7 +249,7 @@ export default function SermonsContent({
                     {/* Now Playing badge on thumbnail */}
                     {selectedSlug === featuredSermon.slug && (
                       <div className="absolute top-4 right-4">
-                        <span className="flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-xs font-bold tracking-wide text-navy">
+                        <span className="flex items-center gap-1.5 bg-gold px-3.5 py-1.5 text-xs font-bold tracking-wide text-navy">
                           <HiMusicNote size={14} className="animate-pulse" />
                           Now Playing
                         </span>
@@ -259,7 +259,7 @@ export default function SermonsContent({
 
                   {/* Content */}
                   <div className="flex flex-1 flex-col justify-center p-7 md:p-10">
-                    <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
+                    <span className="mb-3 inline-flex w-fit items-center gap-1.5 border border-gold/30 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
                       {featuredLabel}
                     </span>
                     <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold md:text-3xl line-clamp-2">
@@ -267,7 +267,7 @@ export default function SermonsContent({
                     </h3>
                     <div className="mt-3 flex items-center gap-2 text-sm text-(--gray-500)">
                       <span className="font-medium">{featuredSermon.speaker}</span>
-                      <span className="h-1 w-1 rounded-full bg-(--gray-300)" />
+                      <span className="h-1 w-1 bg-(--gray-300)" />
                       <span>{featuredSermon.date}</span>
                     </div>
                     <div className="mt-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold opacity-70 transition-opacity duration-500 group-hover:opacity-100">
@@ -290,7 +290,7 @@ export default function SermonsContent({
           {(loading && youtubeSermons.length === 0) || searching ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="aspect-4/5 animate-pulse rounded-3xl bg-(--gray-100)" />
+                <div key={i} className="aspect-4/5 animate-pulse bg-(--gray-100)" />
               ))}
             </div>
           ) : displaySermons.length > 0 ? (

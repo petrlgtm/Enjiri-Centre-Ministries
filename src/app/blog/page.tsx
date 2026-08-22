@@ -60,7 +60,7 @@ export default async function BlogPage() {
                 <Link
                   key={post._id}
                   href={`/blog/${post.slug}`}
-                  className="group overflow-hidden rounded-2xl border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
+                  className="group overflow-hidden border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
                 >
                   {post.coverImage && (
                     <div className="relative aspect-video overflow-hidden">
@@ -79,7 +79,7 @@ export default async function BlogPage() {
                         {post.categories.map((cat) => (
                           <span
                             key={cat}
-                            className="rounded-full bg-gold/10 px-2.5 py-0.5 text-[11px] font-medium text-gold"
+                            className="bg-gold/10 px-2.5 py-0.5 text-[11px] font-medium text-gold"
                           >
                             {cat}
                           </span>
@@ -97,7 +97,7 @@ export default async function BlogPage() {
                     <div className="mt-3 flex items-center gap-2 text-xs text-(--gray-400)">
                       {post.author && <span>{post.author.name}</span>}
                       {post.author && post.publishedAt && (
-                        <span className="h-1 w-1 rounded-full bg-gold/30" />
+                        <span className="h-1 w-1 bg-gold/30" />
                       )}
                       {post.publishedAt && (
                         <span>{formatDate(post.publishedAt)}</span>

@@ -24,8 +24,8 @@ export default function NewsletterSignup() {
     <div className="relative overflow-hidden border-b border-white/[0.04] bg-navy-light">
       {/* Subtle background accent */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 h-32 w-32 rounded-full bg-gold/5 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-24 w-24 rounded-full bg-gold/5 blur-3xl" />
+        <div className="absolute top-0 left-1/4 h-32 w-32 bg-gold/5 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-24 w-24 bg-gold/5 blur-3xl" />
       </div>
 
       <Container className="relative py-14">
@@ -38,7 +38,7 @@ export default function NewsletterSignup() {
         >
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center gap-3 lg:justify-start">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/10">
+              <div className="flex h-10 w-10 items-center justify-center bg-gold/10">
                 <HiMail className="text-gold" size={20} />
               </div>
               <h3 className="font-(family-name:--font-playfair) text-xl font-bold text-foreground">
@@ -57,14 +57,14 @@ export default function NewsletterSignup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full rounded-full border border-white/10 bg-white/[0.04] px-5 py-3.5 text-sm text-foreground placeholder:text-foreground/25 backdrop-blur-sm transition-all duration-300 focus:border-gold/40 focus:bg-white/[0.06] focus:outline-none"
+                className="w-full border border-white/10 bg-white/[0.04] px-5 py-3.5 text-sm text-foreground placeholder:text-foreground/25 backdrop-blur-sm transition-all duration-300 focus:border-gold/40 focus:bg-white/[0.06] focus:outline-none"
                 required
               />
             </div>
             <motion.button
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="shrink-0 rounded-full bg-linear-to-r from-gold to-gold-dark px-7 py-3.5 text-sm font-medium text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,168,76,0.5)] cursor-pointer"
+              className="shrink-0 bg-linear-to-r from-gold to-gold-dark px-7 py-3.5 text-sm font-medium text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,168,76,0.5)] cursor-pointer"
             >
               {submitted ? (
                 <span className="flex items-center gap-2">

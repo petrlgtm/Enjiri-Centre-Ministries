@@ -108,7 +108,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           
           <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <span className="mb-4 inline-block rounded-full bg-gold/20 px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
+              <span className="mb-4 inline-block bg-gold/20 px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
                 {event.category || "Special Event"}
               </span>
               <h1 className="font-(family-name:--font-playfair) text-4xl font-bold text-white sm:text-5xl lg:text-7xl leading-[1.1]">
@@ -126,9 +126,9 @@ export default async function EventDetailPage({ params }: EventPageProps) {
       {/* Info Grid */}
       <section className="relative -mt-8 z-10">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-3xl border border-white/6 bg-(--gray-100) p-6 shadow-premium backdrop-blur-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border border-white/6 bg-(--gray-100) p-6 shadow-premium backdrop-blur-sm">
             <div className="flex items-center gap-4 px-4 py-2">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-gold/10 text-gold">
                 <HiCalendar size={24} />
               </div>
               <div>
@@ -138,7 +138,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             </div>
             
             <div className="flex items-center gap-4 px-4 py-2 border-y md:border-y-0 md:border-x border-white/5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-gold/10 text-gold">
                 <HiClock size={24} />
               </div>
               <div>
@@ -148,7 +148,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             </div>
             
             <div className="flex items-center gap-4 px-4 py-2">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-gold/10 text-gold">
                 <HiLocationMarker size={24} />
               </div>
               <div>
@@ -203,7 +203,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 {event.tags && event.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-8 border-t border-white/5">
                     {event.tags.map(tag => (
-                      <span key={tag} className="rounded-full bg-(--gray-100) px-4 py-2 text-xs font-semibold text-(--gray-400) border border-white/5 hover:border-gold/30 transition-colors">
+                      <span key={tag} className="bg-(--gray-100) px-4 py-2 text-xs font-semibold text-(--gray-400) border border-white/5 hover:border-gold/30 transition-colors">
                         #{tag}
                       </span>
                     ))}
@@ -216,7 +216,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             <div className="lg:col-span-4">
               <div className="sticky top-28 space-y-8">
                 {/* RSVP Card */}
-                <div className="overflow-hidden rounded-3xl border border-white/6 bg-(--gray-100) shadow-premium">
+                <div className="overflow-hidden border border-white/6 bg-(--gray-100) shadow-premium">
                   <div className="bg-linear-to-br from-gold/20 to-transparent p-8">
                     <HiTicket className="text-gold mb-4" size={32} />
                     <h3 className="text-xl font-bold text-foreground">Secure your spot</h3>
@@ -250,7 +250,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 </div>
 
                 {/* Quick Help Card */}
-                <div className="rounded-3xl border border-white/6 bg-navy p-8">
+                <div className="border border-white/6 bg-navy p-8">
                   <h4 className="text-lg font-bold text-foreground mb-4">Need Help?</h4>
                   <p className="text-sm leading-relaxed text-foreground/60 mb-6">
                     Have questions about this event, transportation, or how you can get involved?

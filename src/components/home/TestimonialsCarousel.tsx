@@ -118,7 +118,7 @@ export default function TestimonialsCarousel({ testimonies }: TestimonialsCarous
           <div className="mt-8 flex items-center justify-center gap-4">
             <button
               onClick={prev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/6 bg-white text-cream-muted transition-all duration-300 hover:border-gold-dark/30 hover:text-gold-dark focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none"
+              className="flex h-10 w-10 items-center justify-center border border-black/6 bg-white text-cream-muted transition-all duration-300 hover:border-gold-dark/30 hover:text-gold-dark focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none"
               aria-label="Previous testimonial"
             >
               <HiChevronLeft size={18} />
@@ -129,11 +129,11 @@ export default function TestimonialsCarousel({ testimonies }: TestimonialsCarous
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-2 rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none ${
-                    i === current
-                      ? "w-6 bg-gold-dark"
-                      : "w-2 bg-black/10 hover:bg-black/20"
-                  }`}
+                  className={`h-2 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none ${
+ i === current
+ ? "w-6 bg-gold-dark"
+ : "w-2 bg-black/10 hover:bg-black/20"
+ }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                   aria-current={i === current ? "true" : undefined}
                 />
@@ -142,7 +142,7 @@ export default function TestimonialsCarousel({ testimonies }: TestimonialsCarous
 
             <button
               onClick={next}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/6 bg-white text-cream-muted transition-all duration-300 hover:border-gold-dark/30 hover:text-gold-dark focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none"
+              className="flex h-10 w-10 items-center justify-center border border-black/6 bg-white text-cream-muted transition-all duration-300 hover:border-gold-dark/30 hover:text-gold-dark focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:outline-none"
               aria-label="Next testimonial"
             >
               <HiChevronRight size={18} />

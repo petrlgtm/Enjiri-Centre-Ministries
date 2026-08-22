@@ -9,19 +9,19 @@ import Container from "@/components/ui/Container";
 
 const FALLBACK_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1400&q=80&fm=webp&fit=crop",
+    src: "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=1400&q=80&fm=webp&fit=crop",
     alt: "Worship service with raised hands",
   },
   {
-    src: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1400&q=80&fm=webp&fit=crop",
+    src: "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=1400&q=80&fm=webp&fit=crop",
     alt: "Beautiful church interior with warm lighting",
   },
   {
-    src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1400&q=80&fm=webp&fit=crop",
+    src: "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=1400&q=80&fm=webp&fit=crop",
     alt: "Congregation gathered together in prayer",
   },
   {
-    src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1400&q=80&fm=webp&fit=crop",
+    src: "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=1400&q=80&fm=webp&fit=crop",
     alt: "Community fellowship and togetherness",
   },
 ];
@@ -114,11 +114,11 @@ export default function Hero({ heroImages: customImages, heading, subheading, ct
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="relative inline-flex items-center gap-1.5 min-[375px]:gap-2 overflow-hidden rounded-full border border-gold/20 bg-gold/8 px-3 min-[375px]:px-4 sm:px-5 py-2 text-[10px] min-[375px]:text-[11px] sm:text-[12px] font-medium tracking-[0.08em] min-[375px]:tracking-[0.12em] sm:tracking-[0.15em] text-gold/90 backdrop-blur-md">
+            <span className="relative inline-flex items-center gap-1.5 min-[375px]:gap-2 overflow-hidden border border-gold/20 bg-gold/8 px-3 min-[375px]:px-4 sm:px-5 py-2 text-[10px] min-[375px]:text-[11px] sm:text-[12px] font-medium tracking-[0.08em] min-[375px]:tracking-[0.12em] sm:tracking-[0.15em] text-gold/90 backdrop-blur-md">
               <span className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_3s_ease-in-out_infinite] bg-linear-to-r from-transparent via-gold/15 to-transparent" />
               <span className="relative flex h-2 w-2 shrink-0">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-light opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-light" />
+                <span className="absolute inline-flex h-full w-full animate-ping bg-red-light opacity-75" />
+                <span className="relative inline-flex h-2 w-2 bg-red-light" />
               </span>
               <span className="relative uppercase">PREACHING CHRIST IN ALL NATIONS</span>
             </span>

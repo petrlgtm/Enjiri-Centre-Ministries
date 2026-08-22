@@ -33,24 +33,24 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Large-scale evangelistic events preaching Christ and restoring hope across East Africa and beyond.",
     image:
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/e4baa1e0a5b3d6d1ac60be1e81b03f9e512aa58e-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "sm:col-span-2 sm:row-span-2",
     heroImage:
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/e4baa1e0a5b3d6d1ac60be1e81b03f9e512aa58e-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "Gospel Crusades are the heartbeat of Enjiri Center Ministries International's evangelistic mission. Under the leadership of Evangelist Peter Kalagi, these large-scale events draw thousands of people together to hear the life-transforming message of Jesus Christ.",
       "Our crusades are organized across cities and villages in Uganda and East Africa, bringing the gospel to communities that may have never experienced such gatherings. These events feature powerful preaching, worship, and prayer, creating an atmosphere where lives are changed and hope is restored.",
       "Beyond the main events, our crusade teams work alongside local churches to ensure that new believers are discipled and integrated into faith communities. Every crusade is preceded by weeks of prayer and community engagement, ensuring lasting spiritual fruit.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/e4baa1e0a5b3d6d1ac60be1e81b03f9e512aa58e-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/83f76adf2c3c11aa1065f1bdc4d328eb69d0bef4-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/997d1dbd81869e428c2097f381f067796dacd937-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {
@@ -94,23 +94,23 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Organized prayer gatherings and revival meetings that bring spiritual renewal and hope to communities.",
     image:
-      "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "",
     heroImage:
-      "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "Revival Prayer Summits are powerful gatherings where believers come together for extended periods of prayer, worship, and seeking God's face. These summits are designed to ignite spiritual renewal in individuals and entire communities.",
       "Enjiri Center Ministries International believes that lasting transformation begins on our knees. Our prayer summits bring together pastors, church leaders, and congregants from across denominations, creating a unified cry for revival across the nation.",
       "These gatherings often span multiple days, featuring intense intercession, prophetic worship, and teaching on prayer. Many participants testify of personal breakthroughs, restored relationships, and a deeper hunger for God that transforms their churches and communities.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/83f76adf2c3c11aa1065f1bdc4d328eb69d0bef4-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {
@@ -149,23 +149,23 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Reaching underserved communities with practical support, meeting needs in different locations across Uganda.",
     image:
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a892dcb0583d50ec1482ed9443ca6741840ac4d8-3318x2480.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "",
     heroImage:
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a892dcb0583d50ec1482ed9443ca6741840ac4d8-3318x2480.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "Community Outreach is at the heart of how Enjiri Center Ministries International demonstrates the love of Christ through action. We believe that the gospel is not only preached with words but demonstrated through acts of love, compassion, and service.",
       "Our outreach programs target underserved communities across Uganda, providing practical support such as food distribution, clothing donations, medical assistance, and educational supplies. We go to where the need is greatest — from urban slums to remote villages.",
       "Each outreach event is an opportunity to share both physical and spiritual nourishment. As we meet practical needs, we also share the hope of the gospel, pray for the sick, and connect people with local churches for ongoing support.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0eb438e79a3d8db672b409d7761b4477df23d549-1890x1417.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1593113630400-ea4288922497?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a892dcb0583d50ec1482ed9443ca6741840ac4d8-3318x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0eb438e79a3d8db672b409d7761b4477df23d549-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/a5531ae1eb800418ed9aa839bbd726e6b872e982-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/7af02c1fe9ba39271e8ba9c9d97f2ae8871b2732-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/afdab6a2aa4dfa8d3874752b3e86ea3d4e0633b8-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {
@@ -209,23 +209,23 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Hosting communal meals that bring people together, foster fellowship, and provide nourishment to those in need.",
     image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/cfebaa48374a9e505d13c8600ba52f621c2c427a-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "",
     heroImage:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/cfebaa48374a9e505d13c8600ba52f621c2c427a-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "Community Dinners are a beautiful expression of hospitality and fellowship that lie at the core of our ministry. Inspired by the early church's practice of breaking bread together, these gatherings bring people from all walks of life to share a meal and experience community.",
       "We organize regular communal meals in various locations across Uganda, creating spaces where the hungry are fed, the lonely find companionship, and the hopeless discover that they are valued and loved. These dinners serve both a physical and spiritual purpose.",
       "Beyond nourishment, our community dinners are opportunities for relationship building, testimony sharing, and prayer. Many people have come to know Christ through the simple act of being invited to share a meal with brothers and sisters in faith.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/39abf7cc391750f087b0715de6175de9ad2b6b93-1890x1417.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/cfebaa48374a9e505d13c8600ba52f621c2c427a-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/39abf7cc391750f087b0715de6175de9ad2b6b93-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/b1a5cd3212031b047ac35b287fe4c6ae5b6a6024-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/bd2638db2711d9f2d7bedcc3eae4e00518b88eff-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/cefe4ad8be7bb268c477b23c6951f5ebdbc9a553-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {
@@ -264,23 +264,23 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Equipping believers through discipleship trainings, leadership development, and Miracle Bible College programs.",
     image:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0b80b0ed2146db8a13b12c7ce14b5bd242bb620f-1920x1277.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "sm:col-span-2",
     heroImage:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0b80b0ed2146db8a13b12c7ce14b5bd242bb620f-1920x1277.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "Capacity Building & Discipleship is our commitment to equipping the next generation of believers and leaders for effective ministry. Through structured programs, trainings, and mentorship, we invest in people who will continue to spread the gospel and serve their communities.",
       "Our flagship program, Miracle Bible College, provides accessible theological education to pastors, church leaders, and aspiring ministers. The curriculum covers biblical studies, ministry skills, leadership development, and practical theology — all grounded in a deep love for God's Word.",
       "Beyond formal education, we run regular discipleship trainings, mentorship groups, and leadership workshops. These programs are designed to strengthen believers in their faith, develop their gifts, and send them out as equipped workers for God's harvest.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/1a6e00769235fb5556e8689588116bcdd2671d43-1890x1417.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0b80b0ed2146db8a13b12c7ce14b5bd242bb620f-1920x1277.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/1a6e00769235fb5556e8689588116bcdd2671d43-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/d003cb1ca2fd7a22874b749fd3b61109cb04bc9a-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/da77298bed64270937136e77b50baf19232647bb-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/e1a23a98f0f6e3daa3d1798ec511e204e6b58a8c-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {
@@ -324,23 +324,23 @@ export const charityPrograms: CharityProgram[] = [
     description:
       "Annual women's summit empowering women of faith through teaching, fellowship, and spiritual growth.",
     image:
-      "https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/b072120f4cdc087f191dfb0765d83d15729abed6-1920x1280.jpg?w=600&q=80&fm=webp&fit=crop",
     span: "",
     heroImage:
-      "https://images.unsplash.com/photo-1609234656388-0ff363383899?w=1200&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/b072120f4cdc087f191dfb0765d83d15729abed6-1920x1280.jpg?w=1200&q=80&fm=webp&fit=crop",
     longDescription: [
       "The Women's Summit — My Legacy is an annual gathering that celebrates, empowers, and equips women of faith. This signature event brings together women from across Uganda and East Africa for a transformative experience of worship, teaching, and sisterhood.",
       "Under the theme 'My Legacy,' the summit encourages women to discover their God-given purpose, develop their gifts, and leave a lasting impact in their families, churches, and communities. Speakers include anointed women leaders, pastors, and professionals who share from Scripture and personal experience.",
       "The summit features dynamic worship sessions, breakout workshops, panel discussions, and times of prayer and ministry. It is a safe space where women can be transparent, receive healing, and be launched into a new season of purpose and impact.",
     ],
     aboutImage:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/487cb7f990d9a8d0e10fab5a98e4b1e7b93106cc-1890x1417.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&fm=webp&fit=crop",
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/b072120f4cdc087f191dfb0765d83d15729abed6-1920x1280.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/487cb7f990d9a8d0e10fab5a98e4b1e7b93106cc-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/e6021d4b8a256e8e3c0437cc3c578437402e19e0-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/0f26c8fbb0343655dad3a9f646705f288a62caff-1730x1148.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/584610b2f592b556d68d99058e951402ec80f023-1730x1148.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
       {

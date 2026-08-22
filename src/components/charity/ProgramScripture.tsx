@@ -20,7 +20,7 @@ export default function ProgramScripture({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-3xl"
+          className="relative overflow-hidden"
         >
           <div className="relative p-10 sm:p-12">
             <div className="absolute inset-0 bg-navy" />

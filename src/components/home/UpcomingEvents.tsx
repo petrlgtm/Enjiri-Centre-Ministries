@@ -31,7 +31,7 @@ const placeholderEvents: EventProp[] = [
     location: "Main Sanctuary",
     description:
       "Join us for a powerful time of worship, praise, and the Word of God.",
-    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
     accent: "from-gold to-gold-dark",
     featured: true,
   },
@@ -42,7 +42,7 @@ const placeholderEvents: EventProp[] = [
     location: "Church Grounds",
     description:
       "A life-changing conference for young people. Theme: 'Rising Above'.",
-    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/1a6e00769235fb5556e8689588116bcdd2671d43-1890x1417.jpg?w=400&q=80&fm=webp&fit=crop",
     accent: "from-gold-dark to-gold",
     featured: false,
   },
@@ -53,7 +53,7 @@ const placeholderEvents: EventProp[] = [
     location: "Various Locations",
     description:
       "Serving our community with food, clothing, and the love of Christ.",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/a892dcb0583d50ec1482ed9443ca6741840ac4d8-3318x2480.jpg?w=400&q=80&fm=webp&fit=crop",
     accent: "from-red to-red-light",
     featured: false,
   },
@@ -97,7 +97,7 @@ function useCountdown() {
 
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex-1 rounded-xl bg-navy/70 px-1.5 py-2 sm:px-2 sm:py-2.5 text-center backdrop-blur-md border border-white/5">
+    <div className="flex-1 bg-navy/70 px-1.5 py-2 sm:px-2 sm:py-2.5 text-center backdrop-blur-md border border-white/5">
       <motion.span
         key={value}
         initial={{ y: -10, opacity: 0 }}
@@ -139,7 +139,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="card-hover card-premium group relative overflow-hidden rounded-3xl border border-white/6 bg-(--gray-100)"
+              className="card-hover card-premium group relative overflow-hidden border border-white/6 bg-(--gray-100)"
             >
               <div className="flex flex-col md:flex-row">
                 <div className="relative aspect-16/10 md:aspect-auto md:w-[55%] overflow-hidden">
@@ -153,7 +153,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                   <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-navy/70 via-navy/20 to-transparent" />
                   <div className="absolute inset-0 bg-linear-to-t from-gold/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-linear-to-r ${event.accent || "from-gold to-gold-dark"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
+                    <span className={`inline-flex items-center gap-1.5 bg-linear-to-r ${event.accent || "from-gold to-gold-dark"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>
@@ -168,7 +168,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                   </div>
                 </div>
                 <div className="flex flex-col justify-center p-5 sm:p-8 md:w-[45%] md:p-10">
-                  <span className="mb-3 inline-block w-fit rounded-full bg-(--red-muted) px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-red-light border border-red/15">
+                  <span className="mb-3 inline-block w-fit bg-(--red-muted) px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-red-light border border-red/15">
                     Featured Event
                   </span>
                   <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
@@ -205,7 +205,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="card-hover group relative h-56 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/6 sm:h-72 lg:h-80"
+                className="card-hover group relative h-56 overflow-hidden border border-white/6 sm:h-72 lg:h-80"
               >
                 {/* Full background image */}
                 <Image
@@ -222,7 +222,7 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
                 <div className="relative flex h-full flex-col justify-between p-6">
                   {/* Top — date badge */}
                   <div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-full bg-linear-to-r ${event.accent || "from-gold-dark to-gold"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
+                    <span className={`inline-flex items-center gap-1.5 bg-linear-to-r ${event.accent || "from-gold-dark to-gold"} px-4 py-2 text-[11px] font-bold tracking-wide text-foreground shadow-lg`}>
                       <HiCalendar size={13} />
                       {event.date}
                     </span>

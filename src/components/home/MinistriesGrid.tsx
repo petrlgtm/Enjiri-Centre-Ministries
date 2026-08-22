@@ -130,9 +130,9 @@ function MinistryCard({
         delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group rounded-2xl border border-black/6 bg-white p-5 sm:p-7 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-xl hover:shadow-gold-dark/5"
+      className="group border border-black/6 bg-white p-5 sm:p-7 shadow-sm transition-all duration-500 hover:border-gold-dark/20 hover:shadow-xl hover:shadow-gold-dark/5"
     >
-      <div className="icon-breathe flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:bg-gold group-hover:text-navy group-hover:scale-110">
+      <div className="icon-breathe flex h-14 w-14 items-center justify-center bg-gold-dark/10 text-gold-dark transition-all duration-500 group-hover:bg-gold group-hover:text-navy group-hover:scale-110">
         <IconComponent size={26} />
       </div>
 
@@ -142,7 +142,7 @@ function MinistryCard({
 
       <div className="mt-3 flex items-center gap-2">
         <span className="h-px w-8 bg-linear-to-r from-gold-dark/30 to-transparent transition-all duration-500 group-hover:w-14" />
-        <span className="h-1 w-1 rounded-full bg-gold-dark/20 transition-colors duration-500 group-hover:bg-gold-dark/50" />
+        <span className="h-1 w-1 bg-gold-dark/20 transition-colors duration-500 group-hover:bg-gold-dark/50" />
       </div>
 
       <p className="mt-4 text-[0.88rem] leading-[1.75] text-cream-body">

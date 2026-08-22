@@ -39,7 +39,7 @@ export default function ProgramHero({ title, heroImage }: ProgramHeroProps) {
               className="mt-4 flex origin-left items-center gap-2"
             >
               <span className="h-px w-10 bg-gold/50" />
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              <span className="h-1.5 w-1.5 bg-gold" />
               <span className="h-px w-20 bg-linear-to-r from-gold to-transparent" />
             </motion.div>
           </div>

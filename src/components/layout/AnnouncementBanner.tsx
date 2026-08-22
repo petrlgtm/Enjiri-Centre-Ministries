@@ -65,14 +65,14 @@ export default function AnnouncementBanner({
             <>
               <button 
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)}
-                className="rounded-full p-1 hover:bg-black/5"
+                className="p-1 hover:bg-black/5"
                 aria-label="Previous announcement"
               >
                 <HiChevronLeft size={16} />
               </button>
               <button 
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % slides.length)}
-                className="rounded-full p-1 hover:bg-black/5"
+                className="p-1 hover:bg-black/5"
                 aria-label="Next announcement"
               >
                 <HiChevronRight size={16} />
@@ -106,7 +106,7 @@ export default function AnnouncementBanner({
 
         <button
           onClick={handleDismiss}
-          className="shrink-0 rounded-full p-1 hover:bg-black/5"
+          className="shrink-0 p-1 hover:bg-black/5"
           aria-label="Dismiss announcement"
         >
           <HiX size={16} />

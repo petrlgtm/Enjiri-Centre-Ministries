@@ -92,7 +92,7 @@ export default function PageHeader({
             initial={{ opacity: 0, y: 15, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block rounded-full border border-gold/25 bg-gold/[0.1] px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-gold backdrop-blur-sm"
+            className="inline-block border border-gold/25 bg-gold/[0.1] px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-gold backdrop-blur-sm"
           >
             {label}
           </motion.span>

@@ -165,7 +165,7 @@ export default function SermonPlayerPanel({
         animate={{ opacity: 1, height: "auto" }}
         exit={{ opacity: 0, height: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-10 overflow-hidden rounded-3xl border border-gold/20 bg-(--gray-100) shadow-gold-glow"
+        className="mb-10 overflow-hidden border border-gold/20 bg-(--gray-100) shadow-gold-glow"
         ref={containerRef}
       >
         {/* Control bar — above iframe, high z-index to prevent iframe touch steal */}
@@ -173,7 +173,7 @@ export default function SermonPlayerPanel({
           {/* Row 1: Title + Close */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="flex h-2 w-2 shrink-0 rounded-full bg-gold animate-pulse" />
+              <div className="flex h-2 w-2 shrink-0 bg-gold animate-pulse" />
               <div className="min-w-0">
                 <p className="text-sm font-bold text-foreground truncate">{title}</p>
                 <p className="text-[11px] text-(--gray-400) truncate">
@@ -186,7 +186,7 @@ export default function SermonPlayerPanel({
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); onClose(); }}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/8 text-(--gray-300) transition-colors active:bg-red-500/30 active:text-red-400 hover:bg-red-500/20 hover:text-red-400"              aria-label="Close player"
+              className="flex h-11 w-11 shrink-0 items-center justify-center bg-white/8 text-(--gray-300) transition-colors active:bg-red-500/30 active:text-red-400 hover:bg-red-500/20 hover:text-red-400"              aria-label="Close player"
             >
               <HiX size={22} />
             </button>
@@ -194,12 +194,12 @@ export default function SermonPlayerPanel({
 
           {/* Row 2: Mode toggle — full width on mobile for easy tapping */}
           <div className="mt-3 flex items-center gap-2">
-            <div className="flex flex-1 rounded-full bg-(--gray-50) p-1 border border-white/6">
+            <div className="flex flex-1 bg-(--gray-50) p-1 border border-white/6">
               <button
                 type="button"
                 onClick={(e) => { e.stopPropagation(); setMode("video"); }}
                 className={cn(
-                  "flex-1 rounded-full py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
+                  "flex-1  py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
                   mode === "video"
                     ? "bg-gold text-navy shadow-sm"
                     : "text-(--gray-500) active:text-foreground hover:text-foreground"
@@ -211,7 +211,7 @@ export default function SermonPlayerPanel({
                 type="button"
                 onClick={(e) => { e.stopPropagation(); setMode("audio"); }}
                 className={cn(
-                  "flex-1 rounded-full py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
+                  "flex-1  py-2.5 text-xs font-semibold transition-all duration-300 sm:py-2",
                   mode === "audio"
                     ? "bg-gold text-navy shadow-sm"
                     : "text-(--gray-500) active:text-foreground hover:text-foreground"
@@ -248,7 +248,7 @@ export default function SermonPlayerPanel({
                 className="flex flex-col sm:flex-row items-center gap-5 p-5 sm:gap-6 sm:p-6"
               >
                 {/* Thumbnail */}
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl shadow-premium sm:h-28 sm:w-28">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden shadow-premium sm:h-28 sm:w-28">
                   {thumbnail ? (
                     <Image
                       src={thumbnail}
@@ -265,7 +265,7 @@ export default function SermonPlayerPanel({
                     {Array.from({ length: 16 }).map((_, i) => (
                       <motion.div
                         key={i}
-                        className="w-[2px] rounded-t-full bg-gold/70"
+                        className="w-[2px] bg-gold/70"
                         animate={
                           isPlaying
                             ? {
@@ -301,7 +301,7 @@ export default function SermonPlayerPanel({
                       type="button"
                       onClick={togglePlay}
                       disabled={!playerReady}
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold text-navy shadow-sm transition-transform active:scale-95 hover:scale-105 disabled:opacity-50"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center bg-gold text-navy shadow-sm transition-transform active:scale-95 hover:scale-105 disabled:opacity-50"
                       aria-label={isPlaying ? "Pause" : "Play"}
                     >
                       {isPlaying ? <HiPause size={22} /> : <HiPlay size={22} className="ml-0.5" />}
@@ -310,7 +310,7 @@ export default function SermonPlayerPanel({
                     {/* Progress bar */}
                     <div className="flex-1 min-w-0">
                       <div
-                        className="sermon-progress group relative h-2 cursor-pointer rounded-full bg-white/[0.08]"
+                        className="sermon-progress group relative h-2 cursor-pointer bg-white/[0.08]"
                         onClick={handleSeek}
                         role="progressbar"
                         aria-valuenow={Math.round(currentTime)}
@@ -319,11 +319,11 @@ export default function SermonPlayerPanel({
                         aria-label="Seek"
                       >
                         <div
-                          className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-gold-dark via-gold to-gold-light transition-[width] duration-200"
+                          className="absolute inset-y-0 left-0 bg-linear-to-r from-gold-dark via-gold to-gold-light transition-[width] duration-200"
                           style={{ width: `${progress}%` }}
                         />
                         <div
-                          className="absolute top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full bg-gold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute top-1/2 -translate-y-1/2 h-3.5 w-3.5 bg-gold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
                           style={{ left: `calc(${progress}% - 7px)` }}
                         />
                       </div>
@@ -338,7 +338,7 @@ export default function SermonPlayerPanel({
                       type="button"
                       onClick={toggleMute}
                       disabled={!playerReady}
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-(--gray-400) transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center text-(--gray-400) transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
                       aria-label={isMuted ? "Unmute" : "Mute"}
                     >
                       {isMuted ? <HiVolumeOff size={18} /> : <HiVolumeUp size={18} />}
@@ -357,7 +357,7 @@ export default function SermonPlayerPanel({
               type="button"
               onClick={togglePlay}
               disabled={!playerReady}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors active:bg-gold/30 hover:bg-gold/20 disabled:opacity-50"
+              className="flex h-9 w-9 shrink-0 items-center justify-center bg-gold/10 text-gold transition-colors active:bg-gold/30 hover:bg-gold/20 disabled:opacity-50"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? <HiPause size={16} /> : <HiPlay size={16} className="ml-0.5" />}
@@ -365,7 +365,7 @@ export default function SermonPlayerPanel({
 
             <div className="flex-1 min-w-0">
               <div
-                className="sermon-progress group relative h-1.5 cursor-pointer rounded-full bg-white/[0.08]"
+                className="sermon-progress group relative h-1.5 cursor-pointer bg-white/[0.08]"
                 onClick={handleSeek}
                 role="progressbar"
                 aria-valuenow={Math.round(currentTime)}
@@ -374,7 +374,7 @@ export default function SermonPlayerPanel({
                 aria-label="Seek"
               >
                 <div
-                  className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-gold-dark via-gold to-gold-light transition-[width] duration-200"
+                  className="absolute inset-y-0 left-0 bg-linear-to-r from-gold-dark via-gold to-gold-light transition-[width] duration-200"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -388,7 +388,7 @@ export default function SermonPlayerPanel({
               type="button"
               onClick={toggleMute}
               disabled={!playerReady}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-(--gray-400) transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
+              className="flex h-8 w-8 shrink-0 items-center justify-center text-(--gray-400) transition-colors active:text-foreground hover:text-foreground disabled:opacity-50"
               aria-label={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? <HiVolumeOff size={15} /> : <HiVolumeUp size={15} />}

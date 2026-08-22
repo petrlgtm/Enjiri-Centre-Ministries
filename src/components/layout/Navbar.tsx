@@ -177,7 +177,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
             <div className="flex h-20 items-center justify-between lg:h-24">
               {/* Logo */}
               <Link href="/" className="group relative flex items-center gap-3">
-                <div className="logo-glow relative h-11 w-11 overflow-hidden rounded-xl shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
+                <div className="logo-glow relative h-11 w-11 overflow-hidden shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
                   <Image
                     src={logoImg}
                     alt="Enjiri Center Ministries International"
@@ -218,7 +218,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                       {hoveredLink === link.href && !isActive && (
                         <motion.span
                           layoutId="nav-hover-bg"
-                          className="absolute inset-0 rounded-xl bg-white/[0.06]"
+                          className="absolute inset-0 bg-white/[0.06]"
                           transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
                         />
                       )}
@@ -226,7 +226,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                       {isActive && (
                         <motion.span
                           layoutId="nav-indicator"
-                          className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-linear-to-r from-gold to-gold-light"
+                          className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 bg-linear-to-r from-gold to-gold-light"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                         />
                       )}
@@ -246,7 +246,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                  "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:hidden",
+                  "relative z-50 flex h-11 w-11 items-center justify-center  transition-all duration-300 lg:hidden",
                   isOpen
                     ? "bg-white/10 text-foreground"
                     : "text-foreground hover:bg-white/10"
@@ -306,7 +306,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
+                        className="flex h-8 w-8 items-center justify-center text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
                       >
                         <social.icon size={15} />
                       </a>
@@ -364,7 +364,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         {isActive && (
                           <motion.span
                             layoutId="mobile-active"
-                            className="absolute -right-6 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-gold"
+                            className="absolute -right-6 top-1/2 h-1.5 w-1.5 -translate-y-1/2 bg-gold"
                           />
                         )}
                       </Link>

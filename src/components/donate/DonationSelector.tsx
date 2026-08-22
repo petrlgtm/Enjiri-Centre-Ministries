@@ -24,13 +24,13 @@ export default function DonationSelector() {
   return (
     <div className="mt-6 max-w-md space-y-5">
       {/* Frequency Toggle */}
-      <div className="flex items-center gap-1 rounded-full border border-white/6 bg-(--gray-50) p-1">
+      <div className="flex items-center gap-1 border border-white/6 bg-(--gray-50) p-1">
         {(["one-time", "recurring"] as const).map((freq) => (
           <button
             key={freq}
             onClick={() => setFrequency(freq)}
             className={cn(
-              "flex-1 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+              "flex-1  px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
               frequency === freq
                 ? "bg-gold text-navy shadow-[0_2px_12px_rgba(201,168,76,0.3)]"
                 : "text-(--gray-400) hover:text-foreground"
@@ -48,7 +48,7 @@ export default function DonationSelector() {
             key={amount}
             onClick={() => handlePresetClick(amount)}
             className={cn(
-              "rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
+              " px-5 py-2.5 text-sm font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
               selectedAmount === amount
                 ? "bg-gold text-navy shadow-[0_4px_16px_rgba(201,168,76,0.3)]"
                 : "border border-gold/30 bg-gold/8 text-gold hover:bg-gold/20 hover:border-gold/50"
@@ -70,12 +70,12 @@ export default function DonationSelector() {
           placeholder="Custom amount"
           value={customAmount}
           onChange={(e) => handleCustomChange(e.target.value)}
-          className="w-full rounded-xl border border-white/6 bg-(--gray-50) py-3 pl-8 pr-4 text-sm font-medium text-foreground placeholder:text-(--gray-400) transition-all duration-300 focus:border-gold/40 focus:outline-none focus:ring-2 focus:ring-gold/20"
+          className="w-full border border-white/6 bg-(--gray-50) py-3 pl-8 pr-4 text-sm font-medium text-foreground placeholder:text-(--gray-400) transition-all duration-300 focus:border-gold/40 focus:outline-none focus:ring-2 focus:ring-gold/20"
         />
       </div>
 
       {/* Visual display */}
-      <div className="rounded-xl border border-gold/10 bg-gold/[0.04] px-5 py-3 text-center">
+      <div className="border border-gold/10 bg-gold/[0.04] px-5 py-3 text-center">
         <p className="text-xs font-medium text-(--gray-400)">
           {frequency === "one-time" ? "One-time gift" : "Monthly gift"} of
         </p>

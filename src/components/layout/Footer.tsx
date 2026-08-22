@@ -102,7 +102,7 @@ export default function Footer({ siteSettings }: FooterProps) {
   const footerLogo = siteSettings?.logo ? urlFor(siteSettings.logo).width(100).url() : logoImg;
   const mapImageUrl = siteSettings?.footerMapImage 
     ? urlFor(siteSettings.footerMapImage).width(600).height(300).url() 
-    : "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&q=75&fm=webp&fit=crop";
+    : "https://cdn.sanity.io/images/shcw5txc/production/71a477e89d22616d81996b60eab8574efaa72552-1890x1417.jpg?w=400&q=75&fm=webp&fit=crop";
 
   return (
     <footer className="relative overflow-hidden">
@@ -122,7 +122,7 @@ export default function Footer({ siteSettings }: FooterProps) {
             {/* Brand Column */}
             <div className="col-span-2 lg:col-span-4">
               <Link href="/" className="group inline-flex items-center gap-3">
-                <div className="relative h-12 w-12 overflow-hidden rounded-xl shadow-[0_2px_12px_rgba(201,168,76,0.3)] transition-transform duration-500 group-hover:scale-105">
+                <div className="relative h-12 w-12 overflow-hidden shadow-[0_2px_12px_rgba(201,168,76,0.3)] transition-transform duration-500 group-hover:scale-105">
                   <Image
                     src={footerLogo}
                     alt="Enjiri Center Ministries International"
@@ -152,7 +152,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                   <a
                     key={social.label}
                     href={social.href}
-                    className={`flex h-10 w-10 items-center justify-center rounded-xl border border-white/6 bg-white/[0.03] text-foreground/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
+                    className={`flex h-10 w-10 items-center justify-center border border-white/6 bg-white/[0.03] text-foreground/60 transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
                     aria-label={social.label}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -212,7 +212,7 @@ export default function Footer({ siteSettings }: FooterProps) {
               </ul>
 
               {/* Static Map Image */}
-              <div className="mt-5 overflow-hidden rounded-xl border border-white/6 transition-all duration-500 hover:border-gold/10">
+              <div className="mt-5 overflow-hidden border border-white/6 transition-all duration-500 hover:border-gold/10">
                 <div className="relative aspect-video w-full">
                   <Image
                     src={mapImageUrl}

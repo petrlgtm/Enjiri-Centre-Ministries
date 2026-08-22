@@ -46,9 +46,9 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative aspect-4/5 overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div className="relative aspect-4/5 overflow-hidden">
               <Image
-                src={image || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&q=80&fm=webp&fit=crop"}
+                src={image || "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Our Story"
                 fill
                 className="object-cover"
@@ -59,7 +59,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
               <div className="noise-overlay absolute inset-0" />
 
               {/* Decorative gold frame */}
-              <div className="absolute inset-3 rounded-2xl border border-gold/10 pointer-events-none" />
+              <div className="absolute inset-3 border border-gold/10 pointer-events-none" />
             </div>
 
             {/* Stats bar overlapping the image */}
@@ -70,7 +70,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative -mt-16 mx-4 sm:mx-6"
             >
-              <div className="glass rounded-2xl p-5 sm:p-6">
+              <div className="glass p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   {displayStats.map((stat, i) => (
                     <div key={stat.label} className="flex items-center">
@@ -166,9 +166,9 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
                     className="relative"
                   >
                     <div className="absolute -left-8 top-2.5 flex items-center justify-center">
-                      <span className="h-3 w-3 rounded-full border-2 border-gold bg-navy shadow-[0_0_6px_rgba(201,168,76,0.3)]" />
+                      <span className="h-3 w-3 border-2 border-gold bg-navy shadow-[0_0_6px_rgba(201,168,76,0.3)]" />
                     </div>
-                    <div className="rounded-xl border border-white/6 bg-(--gray-100) p-4 transition-all duration-300 hover:border-gold/20 hover:shadow-sm">
+                    <div className="border border-white/6 bg-(--gray-100) p-4 transition-all duration-300 hover:border-gold/20 hover:shadow-sm">
                       <div className="flex items-baseline gap-3">
                         <span className="text-xs font-bold uppercase tracking-wider text-gold">
                           {item.year}

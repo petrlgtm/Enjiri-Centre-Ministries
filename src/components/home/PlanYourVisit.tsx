@@ -43,9 +43,9 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:w-1/2"
           >
-            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg">
+            <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden shadow-lg">
               <Image
-                src={image || "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&q=80&fm=webp&fit=crop"}
+                src={image || "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop"}
                 alt="Enjiri Center Ministries — Plan Your Visit"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -81,7 +81,7 @@ export default function PlanYourVisit({ image }: PlanYourVisitProps) {
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
                   className="flex items-center gap-4 text-left"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold-dark/10 text-gold-dark">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-gold-dark/10 text-gold-dark">
                     <item.icon size={18} />
                   </div>
                   <div>

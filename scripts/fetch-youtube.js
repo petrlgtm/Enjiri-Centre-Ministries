@@ -104,8 +104,54 @@ async function fetchYouTubeVideos(config) {
     }
   } while (nextPageToken);
 
-  // Combine new items with existing ones
-  return [...newItems, ...existingCollection];
+  // Combine new items with existing ones, then drop anything no longer public
+  // (covers newly-fetched videos and previously-cached ones that were made
+  // private/unlisted since the last run).
+  const combined = [...newItems, ...existingCollection];
+  return filterPublicVideos(combined);
+}
+
+/**
+ * Looks up privacyStatus for a batch of video IDs and keeps only public ones.
+ * videos.list accepts up to 50 IDs per call.
+ */
+async function filterPublicVideos(items) {
+  const BASE_URL = 'https://www.googleapis.com/youtube/v3';
+  const publicIds = new Set();
+
+  for (let i = 0; i < items.length; i += 50) {
+    const batch = items.slice(i, i + 50);
+    const params = new URLSearchParams({
+      part: 'status',
+      id: batch.map((v) => v.id).join(','),
+      key: API_KEY,
+    });
+
+    try {
+      const res = await fetch(`${BASE_URL}/videos?${params}`);
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(`YouTube API error: ${error.error?.message || res.statusText}`);
+      }
+      const data = await res.json();
+      for (const item of data.items) {
+        if (item.status?.privacyStatus === 'public') {
+          publicIds.add(item.id);
+        }
+      }
+    } catch (error) {
+      console.error('Error checking video privacy status:', error);
+      // On failure, keep the batch as-is rather than silently dropping videos.
+      batch.forEach((v) => publicIds.add(v.id));
+    }
+  }
+
+  const dropped = items.filter((v) => !publicIds.has(v.id));
+  if (dropped.length) {
+    console.log(`Excluding ${dropped.length} non-public video(s): ${dropped.map((v) => v.id).join(', ')}`);
+  }
+
+  return items.filter((v) => publicIds.has(v.id));
 }
 
 async function main() {

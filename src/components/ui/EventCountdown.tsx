@@ -76,7 +76,7 @@ export default function EventCountdown({ targetDate, isRecurring }: EventCountdo
 
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex flex-col items-center rounded-2xl bg-white/10 p-3 backdrop-blur-md border border-white/10 sm:p-4">
+    <div className="flex flex-col items-center bg-white/10 p-3 backdrop-blur-md border border-white/10 sm:p-4">
       <div className="relative h-8 overflow-hidden sm:h-10">
         <AnimatePresence mode="popLayout">
           <motion.span

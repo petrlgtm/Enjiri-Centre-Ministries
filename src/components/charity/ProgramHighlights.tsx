@@ -34,9 +34,9 @@ export default function ProgramHighlights({
                 delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group rounded-2xl border border-gold-dark/10 bg-white/80 p-6 shadow-sm transition-all duration-500 hover:shadow-md hover:border-gold-dark/25"
+              className="group border border-gold-dark/10 bg-white/80 p-6 shadow-sm transition-all duration-500 hover:shadow-md hover:border-gold-dark/25"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-dark/10 font-(family-name:--font-playfair) text-lg font-bold text-gold-dark transition-transform duration-500 group-hover:scale-110">
+              <span className="flex h-10 w-10 items-center justify-center bg-gold-dark/10 font-(family-name:--font-playfair) text-lg font-bold text-gold-dark transition-transform duration-500 group-hover:scale-110">
                 {i + 1}
               </span>
               <h3 className="mt-4 font-(family-name:--font-playfair) text-lg font-bold text-cream-heading">

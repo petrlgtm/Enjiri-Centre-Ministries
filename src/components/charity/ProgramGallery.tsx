@@ -37,7 +37,7 @@ export default function ProgramGallery({
                 delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mb-4 overflow-hidden rounded-2xl"
+              className="mb-4 overflow-hidden"
             >
               <div
                 className={`relative ${i % 3 === 0 ? "aspect-3/4" : "aspect-4/3"}`}

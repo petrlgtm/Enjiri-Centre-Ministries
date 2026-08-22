@@ -16,7 +16,7 @@ const defaultSermons = [
     series: "Living by Faith",
     duration: "42:15",
     slug: "walking-in-gods-purpose",
-    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
   },
   {
     title: "The Power of Prayer",
@@ -25,7 +25,7 @@ const defaultSermons = [
     series: "Living by Faith",
     duration: "38:20",
     slug: "the-power-of-prayer",
-    image: "https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=400&q=80&fm=webp&fit=crop",
   },
   {
     title: "Grace That Transforms",
@@ -34,7 +34,7 @@ const defaultSermons = [
     series: "Amazing Grace",
     duration: "45:08",
     slug: "grace-that-transforms",
-    image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&q=80&fm=webp&fit=crop",
+    image: "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function LatestSermons({ sermons }: LatestSermonsProps) {
             >
               <Link
                 href={`/sermons?play=${sermon.slug}`}
-                className="card-3d card-premium group block overflow-hidden rounded-3xl border border-white/6 bg-(--gray-100)"
+                className="card-3d card-premium group block overflow-hidden border border-white/6 bg-(--gray-100)"
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-video overflow-hidden">
@@ -97,11 +97,11 @@ export default function LatestSermons({ sermons }: LatestSermonsProps) {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
                       {/* Pulse ring */}
-                      <div className="absolute inset-0 rounded-full bg-gold/30 animate-ping" style={{ animationDuration: "2s" }} />
+                      <div className="absolute inset-0 bg-gold/30 animate-ping" style={{ animationDuration: "2s" }} />
                       <motion.div
                         whileHover={{ scale: 1.15 }}
                         transition={{ type: "spring", bounce: 0.5 }}
-                        className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gold/90 text-navy shadow-[0_4px_30px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.7)]"
+                        className="relative flex h-16 w-16 items-center justify-center bg-gold/90 text-navy shadow-[0_4px_30px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.7)]"
                       >
                         <HiPlay size={28} className="ml-1" />
                       </motion.div>
@@ -111,7 +111,7 @@ export default function LatestSermons({ sermons }: LatestSermonsProps) {
                   {/* Series badge */}
                   {sermon.series && (
                     <div className="absolute bottom-3 left-3">
-                      <span className="rounded-full bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
+                      <span className="bg-navy/80 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-gold backdrop-blur-md border border-white/5">
                         {sermon.series}
                       </span>
                     </div>
@@ -126,7 +126,7 @@ export default function LatestSermons({ sermons }: LatestSermonsProps) {
                   </h3>
                   <div className="mt-3 flex items-center gap-2 text-sm text-foreground/70">
                     <span className="font-medium">{sermon.speaker}</span>
-                    <span className="h-1 w-1 rounded-full bg-white/40" />
+                    <span className="h-1 w-1 bg-white/40" />
                     <span>{sermon.date}</span>
                   </div>
 
