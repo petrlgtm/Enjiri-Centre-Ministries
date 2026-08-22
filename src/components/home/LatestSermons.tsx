@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -7,50 +8,48 @@ import { HiPlay, HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
+import { fetchYouTubeVideos } from "@/lib/youtube";
+import { formatDate } from "@/lib/utils";
 
-const defaultSermons = [
-  {
-    title: "Walking in God's Purpose",
-    speaker: "Pastor John",
-    date: "February 16, 2026",
-    series: "Living by Faith",
-    duration: "42:15",
-    slug: "walking-in-gods-purpose",
-    image: "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
-  },
-  {
-    title: "The Power of Prayer",
-    speaker: "Pastor John",
-    date: "February 9, 2026",
-    series: "Living by Faith",
-    duration: "38:20",
-    slug: "the-power-of-prayer",
-    image: "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=400&q=80&fm=webp&fit=crop",
-  },
-  {
-    title: "Grace That Transforms",
-    speaker: "Guest Speaker",
-    date: "February 2, 2026",
-    series: "Amazing Grace",
-    duration: "45:08",
-    slug: "grace-that-transforms",
-    image: "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
-  },
-];
+interface SermonDisplay {
+  title: string;
+  speaker: string;
+  date: string;
+  series?: string;
+  slug: string;
+  image: string;
+}
 
 interface LatestSermonsProps {
-  sermons?: Array<{
-    title: string;
-    speaker: string;
-    date: string;
-    series?: string;
-    slug: string;
-    image: string;
-  }>;
+  sermons?: SermonDisplay[];
 }
 
 export default function LatestSermons({ sermons }: LatestSermonsProps) {
-  const displaySermons = sermons && sermons.length > 0 ? sermons : defaultSermons;
+  const [youtubeSermons, setYoutubeSermons] = useState<SermonDisplay[]>([]);
+
+  useEffect(() => {
+    if (sermons && sermons.length > 0) return;
+    let cancelled = false;
+    fetchYouTubeVideos("sermons", 3).then((videos) => {
+      if (cancelled) return;
+      setYoutubeSermons(
+        videos.map((v) => ({
+          title: v.title,
+          speaker: v.channelTitle,
+          date: formatDate(v.publishedAt),
+          slug: v.id,
+          image: v.thumbnail,
+        }))
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [sermons]);
+
+  const displaySermons = sermons && sermons.length > 0 ? sermons : youtubeSermons;
+
+  if (displaySermons.length === 0) return null;
 
   return (
     <section className="relative overflow-hidden py-32">
