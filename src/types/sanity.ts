@@ -80,7 +80,7 @@ export interface HomePageData {
   heroCta?: CTA;
   heroSecondaryText?: string;
   heroSecondaryUrl?: string;
-  snapshotItems?: Array<{ label: string; value: string }>;
+  snapshotItems?: Array<{ title: string; description: string }>;
   missionText?: string;
   visionText?: string;
   donateBandHeading?: string;

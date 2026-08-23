@@ -376,7 +376,7 @@ export const homePageQuery = groq`
     heroCta { label, url, style },
     heroSecondaryText,
     heroSecondaryUrl,
-    snapshotItems[] { label, value },
+    snapshotItems[] { title, description },
     missionText,
     visionText,
     donateBandHeading,
