@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Instrument_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,15 +8,17 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { Event } from "@/types/sanity";
 
-const inter = Inter({
+const inter = Instrument_Sans({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: "variable",
 });
 
-const playfair = Playfair_Display({
+const playfair = Fraunces({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: "variable",
+  style: ["normal", "italic"],
 });
 
 export const viewport: Viewport = {

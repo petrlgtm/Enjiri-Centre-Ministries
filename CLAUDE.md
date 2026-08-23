@@ -31,7 +31,7 @@ src/
 │   ├── sermons/            # Sermons listing + [slug] detail
 │   ├── services/           # Services page
 │   ├── studio/[[...tool]]/ # Embedded Sanity Studio
-│   ├── layout.tsx          # Root layout (Inter + Playfair Display fonts)
+│   ├── layout.tsx          # Root layout (Instrument Sans + Fraunces fonts)
 │   ├── page.tsx            # Home page
 │   └── globals.css         # Global styles + 50+ animation keyframes
 ├── components/
@@ -74,7 +74,7 @@ pnpm lint         # Run ESLint
 - **Tailwind CSS v4** with PostCSS — no tailwind.config file; uses CSS-first configuration in `globals.css`
 - **Mobile-first responsive** — base styles are mobile, scale up with `md:`, `lg:`, `xl:` prefixes
 - **CSS custom properties** in `:root` for brand colors (gold `#b8952e`, red `#b91c1c`, warm neutrals)
-- **Two font families**: Inter (sans, body text) and Playfair Display (serif, headings/display)
+- **Two font families**: Instrument Sans (sans, body text) and Fraunces (serif, headings/display)
 - **Glass morphism** effects via `backdrop-blur` + semi-transparent backgrounds
 - **Gradient borders** and **mesh gradients** for premium visual treatment
 - `cn()` utility from `@/lib/utils` for conditional class merging (simple string join, not clsx)
@@ -137,11 +137,11 @@ All queries live in `src/sanity/queries.ts`. Use the `groq` tagged template from
 | Warm neutrals | gray-50 to gray-900 | Text, borders, surfaces |
 
 ### Typography Scale
-- **Display/Hero**: Playfair Display, text-5xl to text-7xl, font-bold
-- **Section Headings**: Playfair Display, text-3xl to text-4xl, font-bold
-- **Subheadings**: Inter, text-xl to text-2xl, font-semibold
-- **Body**: Inter, text-base to text-lg, font-normal
-- **Small/Caption**: Inter, text-sm, text-gray-600
+- **Display/Hero**: Fraunces, text-5xl to text-7xl, font-bold
+- **Section Headings**: Fraunces, text-3xl to text-4xl, font-bold
+- **Subheadings**: Instrument Sans, text-xl to text-2xl, font-semibold
+- **Body**: Instrument Sans, text-base to text-lg, font-normal
+- **Small/Caption**: Instrument Sans, text-sm, text-gray-600
 
 ### Button Variants (src/components/ui/Button.tsx)
 - **primary**: Gold gradient background with shine overlay
