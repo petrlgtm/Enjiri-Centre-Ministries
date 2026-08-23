@@ -7,4 +7,8 @@ export const client = createClient({
   apiVersion,
   useCdn,
   token: process.env.SANITY_API_TOKEN,
+  // The public site must only ever see published content — without this,
+  // passing a token makes queries return draft copies alongside published
+  // ones, duplicating any document with an unpublished edit pending.
+  perspective: "published",
 });

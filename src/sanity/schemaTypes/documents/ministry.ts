@@ -44,6 +44,8 @@ export default defineType({
           { title: "Book", value: "book" },
           { title: "Globe", value: "globe" },
           { title: "Star", value: "star" },
+          { title: "Sparkles", value: "sparkles" },
+          { title: "Academic Cap", value: "academicCap" },
         ],
       },
     }),

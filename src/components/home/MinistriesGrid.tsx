@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HiUserGroup, HiHeart, HiMusicNote, HiBookOpen, HiGlobe, HiStar, HiArrowRight } from "react-icons/hi";
+import { HiUserGroup, HiHeart, HiMusicNote, HiBookOpen, HiGlobe, HiStar, HiSparkles, HiAcademicCap, HiArrowRight } from "react-icons/hi";
 import type { IconType } from "react-icons";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -26,6 +26,8 @@ const iconMap: Record<string, IconType> = {
   book: HiBookOpen,
   globe: HiGlobe,
   star: HiStar,
+  sparkles: HiSparkles,
+  academicCap: HiAcademicCap,
 };
 
 const fallbackMinistries: (MinistryProp & { iconComponent: IconType })[] = [
