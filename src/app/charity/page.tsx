@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
 
   const title = pageData?.seo?.seoTitle || pageData?.title || "Charity";
-  const description = pageData?.seo?.seoDescription || pageData?.description || "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the #IAMASOULWINNER campaign.";
+  const description = pageData?.seo?.seoDescription || pageData?.description || "How We Give Back to Society — Enjiri Center Ministries International's community outreach, feeding programs, and the I Am A Soul Winner campaign.";
   const image = pageData?.seo?.seoImage ? heroImageBuilder(pageData.seo.seoImage) : "";
 
   return {
@@ -305,7 +305,7 @@ export default async function CharityPage() {
             <div className="lg:w-1/2">
               <SectionHeading
                 label="Featured Campaign"
-                title="#I Am A Soul Winner"
+                title="I Am A Soul Winner"
                 subtitle="The season is now to take the gospel of our Lord Jesus Christ to nations and cities of the world."
                 centered={false}
               />
