@@ -1,24 +1,15 @@
 {
-  "lastUpdated": "2026-09-01T03:50:27.628Z",
+  "lastUpdated": "2026-09-02T03:10:15.932Z",
   "collections": {
     "sermons": [
       {
-        "id": "pbAa-Z1iwuU",
-        "title": "HOLY SPIRIT EXPERIENCE | PR. KWESIGWA DAVID | EV. PETER KALAGI",
+        "id": "EBGLEqjQNlY",
+        "title": "Holy Spirit Experience Kyambogo",
         "description": "",
-        "thumbnail": "https://i.ytimg.com/vi/pbAa-Z1iwuU/hqdefault.jpg",
-        "publishedAt": "2026-08-30T15:17:03Z",
+        "thumbnail": "https://i.ytimg.com/vi/EBGLEqjQNlY/hqdefault.jpg",
+        "publishedAt": "2026-09-01T17:10:08Z",
         "channelTitle": "Enjiri Center Ministries ",
-        "videoUrl": "https://www.youtube.com/watch?v=pbAa-Z1iwuU"
-      },
-      {
-        "id": "9A3HvC8qYMo",
-        "title": "SPECIAL YOUTH SERVICE | 30TH | AUGUST | 2026",
-        "description": "",
-        "thumbnail": "https://i.ytimg.com/vi/9A3HvC8qYMo/hqdefault.jpg",
-        "publishedAt": "2026-08-30T11:00:09Z",
-        "channelTitle": "Enjiri Center Ministries ",
-        "videoUrl": "https://www.youtube.com/watch?v=9A3HvC8qYMo"
+        "videoUrl": "https://www.youtube.com/watch?v=EBGLEqjQNlY"
       },
       {
         "id": "D0HcQy5kVus",
@@ -28,15 +19,6 @@
         "publishedAt": "2026-08-30T06:03:23Z",
         "channelTitle": "Enjiri Center Ministries ",
         "videoUrl": "https://www.youtube.com/watch?v=D0HcQy5kVus"
-      },
-      {
-        "id": "SBqKVT_mJ58",
-        "title": "REDEFINING DESTINIES | EV. PETER KALAGI | 11.08.2026",
-        "description": "",
-        "thumbnail": "https://i.ytimg.com/vi/SBqKVT_mJ58/hqdefault.jpg",
-        "publishedAt": "2026-08-12T11:19:50Z",
-        "channelTitle": "Enjiri Center Ministries ",
-        "videoUrl": "https://www.youtube.com/watch?v=SBqKVT_mJ58"
       },
       {
         "id": "Lwp1kRkwG9Y",
@@ -861,22 +843,13 @@
   },
   "videos": [
     {
-      "id": "pbAa-Z1iwuU",
-      "title": "HOLY SPIRIT EXPERIENCE | PR. KWESIGWA DAVID | EV. PETER KALAGI",
+      "id": "EBGLEqjQNlY",
+      "title": "Holy Spirit Experience Kyambogo",
       "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/pbAa-Z1iwuU/hqdefault.jpg",
-      "publishedAt": "2026-08-30T15:17:03Z",
+      "thumbnail": "https://i.ytimg.com/vi/EBGLEqjQNlY/hqdefault.jpg",
+      "publishedAt": "2026-09-01T17:10:08Z",
       "channelTitle": "Enjiri Center Ministries ",
-      "videoUrl": "https://www.youtube.com/watch?v=pbAa-Z1iwuU"
-    },
-    {
-      "id": "9A3HvC8qYMo",
-      "title": "SPECIAL YOUTH SERVICE | 30TH | AUGUST | 2026",
-      "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/9A3HvC8qYMo/hqdefault.jpg",
-      "publishedAt": "2026-08-30T11:00:09Z",
-      "channelTitle": "Enjiri Center Ministries ",
-      "videoUrl": "https://www.youtube.com/watch?v=9A3HvC8qYMo"
+      "videoUrl": "https://www.youtube.com/watch?v=EBGLEqjQNlY"
     },
     {
       "id": "D0HcQy5kVus",
@@ -886,15 +859,6 @@
       "publishedAt": "2026-08-30T06:03:23Z",
       "channelTitle": "Enjiri Center Ministries ",
       "videoUrl": "https://www.youtube.com/watch?v=D0HcQy5kVus"
-    },
-    {
-      "id": "SBqKVT_mJ58",
-      "title": "REDEFINING DESTINIES | EV. PETER KALAGI | 11.08.2026",
-      "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/SBqKVT_mJ58/hqdefault.jpg",
-      "publishedAt": "2026-08-12T11:19:50Z",
-      "channelTitle": "Enjiri Center Ministries ",
-      "videoUrl": "https://www.youtube.com/watch?v=SBqKVT_mJ58"
     },
     {
       "id": "Lwp1kRkwG9Y",
