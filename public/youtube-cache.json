@@ -1,7 +1,16 @@
 {
-  "lastUpdated": "2026-09-05T03:13:24.818Z",
+  "lastUpdated": "2026-09-06T03:13:28.250Z",
   "collections": {
     "sermons": [
+      {
+        "id": "3P9G5tFLYcY",
+        "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/3P9G5tFLYcY/hqdefault.jpg",
+        "publishedAt": "2026-09-05T14:03:47Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=3P9G5tFLYcY"
+      },
       {
         "id": "EBGLEqjQNlY",
         "title": "Holy Spirit Experience Kyambogo",
@@ -842,6 +851,15 @@
     ]
   },
   "videos": [
+    {
+      "id": "3P9G5tFLYcY",
+      "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/3P9G5tFLYcY/hqdefault.jpg",
+      "publishedAt": "2026-09-05T14:03:47Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=3P9G5tFLYcY"
+    },
     {
       "id": "EBGLEqjQNlY",
       "title": "Holy Spirit Experience Kyambogo",
