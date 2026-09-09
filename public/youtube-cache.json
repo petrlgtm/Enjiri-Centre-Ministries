@@ -1,7 +1,25 @@
 {
-  "lastUpdated": "2026-09-08T03:19:38.292Z",
+  "lastUpdated": "2026-09-09T03:22:56.060Z",
   "collections": {
     "sermons": [
+      {
+        "id": "sbzRw06r5ME",
+        "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/sbzRw06r5ME/hqdefault.jpg",
+        "publishedAt": "2026-09-09T03:06:20Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=sbzRw06r5ME"
+      },
+      {
+        "id": "JtHO7xUHxSM",
+        "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/JtHO7xUHxSM/hqdefault.jpg",
+        "publishedAt": "2026-09-08T18:11:44Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=JtHO7xUHxSM"
+      },
       {
         "id": "3P9G5tFLYcY",
         "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
@@ -851,6 +869,24 @@
     ]
   },
   "videos": [
+    {
+      "id": "sbzRw06r5ME",
+      "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/sbzRw06r5ME/hqdefault.jpg",
+      "publishedAt": "2026-09-09T03:06:20Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=sbzRw06r5ME"
+    },
+    {
+      "id": "JtHO7xUHxSM",
+      "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/JtHO7xUHxSM/hqdefault.jpg",
+      "publishedAt": "2026-09-08T18:11:44Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=JtHO7xUHxSM"
+    },
     {
       "id": "3P9G5tFLYcY",
       "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
