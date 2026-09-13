@@ -1,7 +1,16 @@
 {
-  "lastUpdated": "2026-09-12T03:23:18.682Z",
+  "lastUpdated": "2026-09-13T03:29:01.250Z",
   "collections": {
     "sermons": [
+      {
+        "id": "uhOQipuZcJo",
+        "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU EDITION LUGAZI 2 | GREATER LOVE COMMUNITY",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/uhOQipuZcJo/hqdefault.jpg",
+        "publishedAt": "2026-09-10T10:58:42Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=uhOQipuZcJo"
+      },
       {
         "id": "sbzRw06r5ME",
         "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
@@ -10,15 +19,6 @@
         "publishedAt": "2026-09-09T03:06:20Z",
         "channelTitle": "Enjiri Center Ministries ",
         "videoUrl": "https://www.youtube.com/watch?v=sbzRw06r5ME"
-      },
-      {
-        "id": "3P9G5tFLYcY",
-        "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
-        "description": "",
-        "thumbnail": "https://i.ytimg.com/vi/3P9G5tFLYcY/hqdefault.jpg",
-        "publishedAt": "2026-09-05T14:03:47Z",
-        "channelTitle": "Enjiri Center Ministries ",
-        "videoUrl": "https://www.youtube.com/watch?v=3P9G5tFLYcY"
       },
       {
         "id": "EBGLEqjQNlY",
@@ -852,6 +852,15 @@
   },
   "videos": [
     {
+      "id": "uhOQipuZcJo",
+      "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU EDITION LUGAZI 2 | GREATER LOVE COMMUNITY",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/uhOQipuZcJo/hqdefault.jpg",
+      "publishedAt": "2026-09-10T10:58:42Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=uhOQipuZcJo"
+    },
+    {
       "id": "sbzRw06r5ME",
       "title": "REDEFINING DESTINIES - EV. PETER KALAGI - ENJIRI CENTER MINISTRIES - JINJA",
       "description": "",
@@ -859,15 +868,6 @@
       "publishedAt": "2026-09-09T03:06:20Z",
       "channelTitle": "Enjiri Center Ministries ",
       "videoUrl": "https://www.youtube.com/watch?v=sbzRw06r5ME"
-    },
-    {
-      "id": "3P9G5tFLYcY",
-      "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU LUGAZI 2 | GREATER LOVE COMMUNITY",
-      "description": "",
-      "thumbnail": "https://i.ytimg.com/vi/3P9G5tFLYcY/hqdefault.jpg",
-      "publishedAt": "2026-09-05T14:03:47Z",
-      "channelTitle": "Enjiri Center Ministries ",
-      "videoUrl": "https://www.youtube.com/watch?v=3P9G5tFLYcY"
     },
     {
       "id": "EBGLEqjQNlY",
