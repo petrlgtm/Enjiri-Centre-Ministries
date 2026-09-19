@@ -1,7 +1,16 @@
 {
-  "lastUpdated": "2026-09-18T03:28:11.155Z",
+  "lastUpdated": "2026-09-19T03:24:45.508Z",
   "collections": {
     "sermons": [
+      {
+        "id": "KltJ905l5Ho",
+        "title": "BULUMBA CRUSADE - EV. PETER KALAGI | ENJIRI CENTER INTERNATIONALL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/KltJ905l5Ho/hqdefault.jpg",
+        "publishedAt": "2026-09-18T17:14:03Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=KltJ905l5Ho"
+      },
       {
         "id": "uhOQipuZcJo",
         "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU EDITION LUGAZI 2 | GREATER LOVE COMMUNITY",
@@ -851,6 +860,15 @@
     ]
   },
   "videos": [
+    {
+      "id": "KltJ905l5Ho",
+      "title": "BULUMBA CRUSADE - EV. PETER KALAGI | ENJIRI CENTER INTERNATIONALL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/KltJ905l5Ho/hqdefault.jpg",
+      "publishedAt": "2026-09-18T17:14:03Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=KltJ905l5Ho"
+    },
     {
       "id": "uhOQipuZcJo",
       "title": "HOLY SPIRIT EXPERIENCE | EV. PETER KALAGI | NJERU EDITION LUGAZI 2 | GREATER LOVE COMMUNITY",
