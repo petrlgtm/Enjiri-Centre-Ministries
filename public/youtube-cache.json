@@ -1,7 +1,16 @@
 {
-  "lastUpdated": "2026-09-20T03:41:29.640Z",
+  "lastUpdated": "2026-09-21T03:36:59.636Z",
   "collections": {
     "sermons": [
+      {
+        "id": "2tbbf47JfmY",
+        "title": "BULUMBA CRUSADE DAY 3 - EV. PETER KALAGI | ENJIRI CENTER MINISTRIES INTERNATIONAL",
+        "description": "",
+        "thumbnail": "https://i.ytimg.com/vi/2tbbf47JfmY/hqdefault.jpg",
+        "publishedAt": "2026-09-20T18:30:22Z",
+        "channelTitle": "Enjiri Center Ministries ",
+        "videoUrl": "https://www.youtube.com/watch?v=2tbbf47JfmY"
+      },
       {
         "id": "F_zNgEeqPyw",
         "title": "BULUMBA CRUSADE DAY 2 - EV. PETER KALAGI | ENJIRI CENTER MINISTRIES INTERNATIONAL",
@@ -869,6 +878,15 @@
     ]
   },
   "videos": [
+    {
+      "id": "2tbbf47JfmY",
+      "title": "BULUMBA CRUSADE DAY 3 - EV. PETER KALAGI | ENJIRI CENTER MINISTRIES INTERNATIONAL",
+      "description": "",
+      "thumbnail": "https://i.ytimg.com/vi/2tbbf47JfmY/hqdefault.jpg",
+      "publishedAt": "2026-09-20T18:30:22Z",
+      "channelTitle": "Enjiri Center Ministries ",
+      "videoUrl": "https://www.youtube.com/watch?v=2tbbf47JfmY"
+    },
     {
       "id": "F_zNgEeqPyw",
       "title": "BULUMBA CRUSADE DAY 2 - EV. PETER KALAGI | ENJIRI CENTER MINISTRIES INTERNATIONAL",
