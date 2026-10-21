@@ -56,8 +56,6 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
   const [bannerVisible, setBannerVisible] = useState(true);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
-  // The home hero is white: use dark ink on the transparent bar until the page scrolls.
-  const onLight = pathname === "/" && !scrolled && !isOpen;
 
   const slides = useMemo(() => {
     const s: (BannerSlide & { sortDate: Date })[] = [];
@@ -177,10 +175,10 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                   <Image src={logoImg} alt="Enjiri Center Ministries International" fill className="object-cover" sizes="44px" />
                 </div>
                 <div className="hidden sm:block">
-                  <span className={cn("block text-[15px] font-bold tracking-wide transition-colors duration-500", onLight ? "text-cream-heading" : "text-white")}>
+                  <span className={"block text-[15px] font-bold tracking-wide text-white"}>
                     ENJIRI CENTER
                   </span>
-                  <span className={cn("block text-[10px] font-medium tracking-[0.25em] transition-colors duration-500", onLight ? "text-gold-dark" : "text-gold/80")}>
+                  <span className={"block text-[10px] font-medium tracking-[0.25em] text-gold/80"}>
                     MINISTRIES INTL
                   </span>
                 </div>
@@ -248,10 +246,10 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         {/* Social Links Bar — only visible on homepage */}
         {pathname === "/" && (
           <div className={cn("relative", isOpen && "hidden")}>
-            <div className={cn("border-y transition-colors duration-700", onLight ? "border-black/6 bg-white" : "border-white/8 bg-royal-deep/95 backdrop-blur-md")}>
+            <div className={"border-y border-black/6 bg-white"}>
               <Container>
                 <div className="flex h-10 items-center justify-between">
-                  <span className={cn("hidden min-[360px]:inline font-mono text-[11px] uppercase tracking-[0.2em]", onLight ? "text-cream-muted" : "text-white/45")}>
+                  <span className={"hidden font-mono text-[11px] tracking-[0.2em] text-cream-muted uppercase min-[360px]:inline"}>
                     Follow us
                   </span>
                   <div className="flex items-center gap-1 min-[360px]:gap-2">
@@ -262,7 +260,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className={cn("flex h-8 w-8 items-center justify-center transition-colors duration-200", onLight ? "text-cream-body hover:text-gold-dark" : "text-white/60 hover:text-gold")}
+                        className={"flex h-8 w-8 items-center justify-center text-cream-body transition-colors duration-200 hover:text-royal"}
                       >
                         <social.icon size={15} />
                       </a>

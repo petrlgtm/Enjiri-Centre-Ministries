@@ -1132,3 +1132,17 @@ body {
 .header-straddle-navy {
   background: linear-gradient(180deg, var(--navy) 50%, var(--navy-light) 50%);
 }
+
+/* Home hero: royal blue with a gold daybreak behind the leader */
+.hero-royal {
+  background:
+    radial-gradient(ellipse 42% 55% at 74% 62%, rgba(226, 204, 126, 0.32) 0%, rgba(201, 168, 76, 0.1) 45%, transparent 72%),
+    radial-gradient(ellipse 60% 50% at 10% 0%, rgba(29, 69, 144, 0.9) 0%, transparent 70%),
+    linear-gradient(165deg, var(--royal-light) 0%, var(--royal) 42%, var(--royal-deep) 100%);
+}
+
+.hero-royal-rays {
+  background: repeating-conic-gradient(from 210deg at 74% 100%, rgba(226, 204, 126, 0.09) 0deg, rgba(226, 204, 126, 0.09) 3deg, transparent 3deg, transparent 12deg);
+  -webkit-mask-image: radial-gradient(ellipse 55% 85% at 74% 100%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 55% 85% at 74% 100%, #000 15%, transparent 75%);
+}
