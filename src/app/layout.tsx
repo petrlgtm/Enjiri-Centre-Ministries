@@ -10,6 +10,7 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { Event } from "@/types/sanity";
+import { SITE_URL } from "@/lib/site";
 
 const body = Inter({
   variable: "--font-body",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     "outreach",
     "teachings",
   ],
-  metadataBase: new URL("https://enjiriministries.org"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",

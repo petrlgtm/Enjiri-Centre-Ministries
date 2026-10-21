@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { HiMail, HiPhone, HiLocationMarker, HiClock } from "react-icons/hi";
+import { HiArrowRight } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import ContactForm from "@/components/contact/ContactForm";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { siteSettingsQuery, contactPageQuery } from "@/sanity/queries";
@@ -46,27 +46,13 @@ export default async function ContactPage() {
         ? heroImageUrl(settings.defaultHeaderImage)
         : "https://cdn.sanity.io/images/shcw5txc/production/a58fbadb6868c41f76df2874983f82d632551243-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop";
 
-  const contactInfo = [
-    { 
-      icon: HiLocationMarker, 
-      title: "Visit Us", 
-      lines: [settings?.address || "Kampala, Uganda"] 
-    },
-    { 
-      icon: HiPhone, 
-      title: "Call Us", 
-      lines: [settings?.phone || "+256 779 226290"] 
-    },
-    { 
-      icon: HiMail, 
-      title: "Email Us", 
-      lines: [settings?.email || "info@enjiriministries.org"] 
-    },
-    { 
-      icon: HiClock, 
-      title: "Service Times", 
-      lines: settings?.serviceSchedule?.map(s => `${s.day}: ${s.time}`) || ["Sunday: 9:00 AM - 12:00 PM"] 
-    },
+  const address = settings?.address || "Kampala, Uganda";
+  const phone = settings?.phone || "+256 779 226290";
+  const email = settings?.email || "info@enjiriministries.org";
+  const direct = [
+    { label: "Visit", value: address, href: `https://maps.google.com/?q=${encodeURIComponent(address)}`, external: true },
+    { label: "Call", value: phone, href: `tel:${phone.replace(/\s/g, "")}`, external: false },
+    { label: "Write", value: email, href: `mailto:${email}`, external: false },
   ];
 
   const socialLinks = [
@@ -75,7 +61,7 @@ export default async function ContactPage() {
     { href: settings?.socialLinks?.instagram, icon: FaInstagram, label: "Instagram" },
     { href: settings?.socialLinks?.twitter, icon: FaTwitter, label: "Twitter" },
     { href: settings?.socialLinks?.tiktok, icon: FaTiktok, label: "TikTok" },
-  ].filter(link => link.href);
+  ].filter((link) => link.href);
 
   return (
     <>
@@ -86,141 +72,116 @@ export default async function ContactPage() {
         backgroundImage={headerImage}
       />
 
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
+      {/* Direct lines + weekly times */}
+      <section className="bg-cream pt-14 pb-36 text-cream-heading sm:pt-16 sm:pb-44">
         <Container>
-          <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-start lg:gap-16">
-            <div className="lg:w-5/12">
-              <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 sm:gap-4">
-                {contactInfo.map((info) => (
-                  <div
-                    key={info.title}
-                    className="group card-premium border border-white/6 bg-(--gray-100) p-5 transition-all duration-500 hover:ring-1 hover:ring-gold/20"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center bg-(--gold-muted) text-gold transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gold/20">
-                      <info.icon size={18} />
-                    </div>
-                    <h3 className="mt-3 text-sm font-bold text-foreground">{info.title}</h3>
-                    {info.lines.map((line) => (
-                      <p key={line} className="mt-0.5 text-xs leading-relaxed text-(--gray-400)">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
+          <SectionMasthead label="Direct Lines" index="01" />
+          <ul className="mt-10 grid gap-px bg-cream-heading/10 sm:grid-cols-3">
+            {direct.map((d, i) => (
+              <Reveal as="li" key={d.label} delay={i * 0.06} className="bg-cream">
+                <a
+                  href={d.href}
+                  target={d.external ? "_blank" : undefined}
+                  rel={d.external ? "noopener noreferrer" : undefined}
+                  className="group block py-6 sm:px-8 sm:py-4 sm:first:pl-0"
+                >
+                  <span className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">
+                    <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
+                    {d.label}
+                  </span>
+                  <span className="mt-4 block font-display text-2xl break-words transition-colors duration-300 group-hover:text-royal sm:text-[1.7rem]">
+                    {d.value}
+                  </span>
+                  <span className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
+                    {d.label === "Visit" ? "Get directions" : d.label === "Call" ? "Tap to call" : "Send an email"}
+                    <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </ul>
 
-            <div className="lg:w-7/12">
-              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden lg:aspect-3-4">
-                <Image
-                  src={headerImage}
-                  alt="Church location scenery"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-navy/30 to-transparent" />
-                <div className="absolute inset-x-5 bottom-5 lg:inset-x-6 lg:bottom-6">
-                  <div className="glass border border-white/10 bg-white/10 p-5 backdrop-blur-xl">
-                    <div className="flex items-start gap-3">
-                      <HiLocationMarker className="mt-0.5 shrink-0 text-gold" size={20} />
-                      <div>
-                        <p className="font-medium text-foreground">Our Location</p>
-                        <p className="mt-1 text-sm text-foreground/70">
-                          {settings?.address || "Kampala, Uganda"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {settings?.serviceSchedule && settings.serviceSchedule.length > 0 && (
+            <div className="mt-16">
+              <p className="text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">When we gather</p>
+              <ul className="mt-5 grid gap-6 sm:grid-cols-3">
+                {settings.serviceSchedule.map((s) => (
+                  <li key={s.serviceName} className="grid grid-cols-[4rem_1fr] items-baseline gap-3">
+                    <span className="font-display text-3xl font-semibold text-gold-dark">{s.day.slice(0, 3)}</span>
+                    <span>
+                      <span className="block font-display text-lg">{s.serviceName}</span>
+                      <span className="mt-1 block font-mono text-xs text-cream-muted">{s.time}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          )}
         </Container>
       </section>
 
-      {pageData?.mapUrl && (
-        <section className="h-[400px] w-full">
-          <iframe 
-            src={pageData.mapUrl}
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={false} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Church Location Map"
-          />
-        </section>
-      )}
+      {/* Message band — the form card rises into the cream above */}
+      <section className="flow-root bg-royal-deep pb-16 text-white sm:pb-20">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="relative z-10 -mt-24 bg-white p-6 text-cream-heading shadow-[0_40px_90px_-40px_rgba(11,31,69,0.7)] sm:-mt-32 sm:p-10 lg:col-span-7">
+            <p className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">
+              <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
+              Get in touch
+            </p>
+            <h2 className="mt-5 mb-8 font-display text-3xl leading-tight font-semibold sm:text-4xl">
+              {pageData?.formHeading || "Send Us a Message"}
+            </h2>
+            <ContactForm />
+          </div>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
-        <div className="absolute inset-0 bg-cream" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold-dark/15 to-transparent" />
-        <Container className="relative">
-          <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-start lg:gap-16">
-            <div className="lg:w-7/12">
-              <SectionHeading
-                label="Get in Touch"
-                title={pageData?.formHeading || "Send Us a Message"}
-                subtitle="Fill out the form and we'll get back to you as soon as possible."
-                centered={false}
-                onCream
-              />
+          <div className="lg:col-span-5 lg:pt-16">
+            <p className="font-display text-3xl leading-snug sm:text-4xl">
+              &ldquo;Cast all your anxiety on him because he cares for you.&rdquo;
+            </p>
+            <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold uppercase">1 Peter 5:7</p>
+            <p className="mt-8 max-w-md text-base leading-relaxed text-white/70">
+              We are here for you. Reach out with prayer requests, questions, or simply to connect with our community —
+              someone from the ministry will get back to you.
+            </p>
 
-              <div className="relative border border-black/6 bg-white p-5 sm:p-8 card-premium">
-                <div className="absolute top-0 left-0 h-16 w-16 overflow-hidden">
-                  <div className="absolute -top-px -left-px h-0.75 w-10 bg-linear-to-r from-gold-dark to-transparent" />
-                  <div className="absolute -top-px -left-px h-10 w-0.75 bg-linear-to-b from-gold-dark to-transparent" />
-                </div>
-
-                <ContactForm />
-              </div>
-            </div>
-
-            <div className="space-y-6 lg:w-5/12">
-              <div className="border border-black/6 bg-white p-6">
-                <h3 className="font-bold text-cream-heading">{pageData?.infoHeading || "Follow Us"}</h3>
-                <p className="mt-1 text-sm text-cream-muted">
-                  Stay connected on social media
+            {socialLinks.length > 0 && (
+              <div className="mt-10">
+                <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
+                  {pageData?.infoHeading || "Follow us"}
                 </p>
-                <div className="mt-4 flex gap-3">
+                <div className="mt-4 flex gap-2">
                   {socialLinks.map((social) => (
                     <a
                       key={social.label}
                       href={social.href}
-                      className="icon-breathe flex h-11 w-11 items-center justify-center bg-gold-dark/10 text-cream-body transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-black"
                       aria-label={social.label}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex h-11 w-11 items-center justify-center bg-white/10 text-white transition-colors duration-300 hover:bg-gold hover:text-navy"
                     >
                       <social.icon size={16} />
                     </a>
                   ))}
                 </div>
               </div>
-
-              <div className="bg-navy p-8 shadow-premium-lg shine">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-px w-8 bg-gold/40" />
-                  <span className="h-1.5 w-1.5 bg-gold" />
-                  <span className="h-px w-8 bg-gold/40" />
-                </div>
-                <p className="font-display text-lg leading-relaxed text-gold italic">
-                  &ldquo;Cast all your anxiety on him because he cares for
-                  you.&rdquo;
-                </p>
-                <p className="mt-3 text-sm text-foreground/50">1 Peter 5:7</p>
-                <p className="mt-6 text-sm leading-relaxed text-foreground/70">
-                  We are here for you. Do not hesitate to reach out with any
-                  prayer requests, questions, or simply to connect with our
-                  community.
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </Container>
       </section>
+
+      {pageData?.mapUrl && (
+        <section className="h-[420px] w-full bg-royal-deep">
+          <iframe
+            src={pageData.mapUrl}
+            width="100%"
+            height="100%"
+            className="border-0 grayscale-[30%]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Church location map"
+          />
+        </section>
+      )}
     </>
   );
 }

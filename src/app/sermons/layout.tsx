@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sermons & Teachings",
+  title: "Sermons, Teachings, Charities & Reach Outs",
   description:
     "Watch or listen to sermons and teachings from Enjiri Center Ministries International.",
   openGraph: {
-    title: "Sermons & Teachings",
+    title: "Sermons, Teachings, Charities & Reach Outs",
     description:
       "Watch or listen to sermons and teachings from Enjiri Center Ministries International.",
   },

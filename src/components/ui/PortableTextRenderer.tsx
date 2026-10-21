@@ -16,37 +16,43 @@ interface LinkMark {
   blank?: boolean;
 }
 
-const components: PortableTextComponents = {
+function buildComponents(onLight: boolean): PortableTextComponents {
+  const heading = onLight ? "text-cream-heading" : "text-foreground";
+  const text = onLight ? "text-cream-body" : "text-(--gray-400)";
+  const muted = onLight ? "text-cream-muted" : "text-(--gray-500)";
+  const link = onLight ? "text-royal hover:text-royal-light" : "text-gold hover:text-gold-light";
+
+  return {
   block: {
     h2: ({ children }) => (
-      <h2 className="mt-10 mb-4 font-display text-2xl font-bold text-foreground sm:text-3xl">
+      <h2 className={`mt-10 mb-4 font-display text-2xl font-semibold sm:text-3xl ${heading}`}>
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-8 mb-3 font-display text-xl font-bold text-foreground sm:text-2xl">
+      <h3 className={`mt-8 mb-3 font-display text-xl font-semibold sm:text-2xl ${heading}`}>
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="mt-6 mb-2 text-lg font-semibold text-foreground">
+      <h4 className={`mt-6 mb-2 text-lg font-semibold ${heading}`}>
         {children}
       </h4>
     ),
     normal: ({ children }) => (
-      <p className="mb-5 text-[0.95rem] leading-[1.85] text-(--gray-400)">
+      <p className={`mb-5 text-[1.02rem] leading-[1.85] ${text}`}>
         {children}
       </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l-2 border-gold/40 pl-5 italic text-(--gray-500)">
+      <blockquote className={`my-8 border-l-2 border-gold pl-6 font-display text-xl leading-snug italic ${muted}`}>
         {children}
       </blockquote>
     ),
   },
   marks: {
     strong: ({ children }) => (
-      <strong className="font-semibold text-foreground">{children}</strong>
+      <strong className={`font-semibold ${heading}`}>{children}</strong>
     ),
     em: ({ children }) => <em>{children}</em>,
     link: ({ children, value }) => {
@@ -58,7 +64,7 @@ const components: PortableTextComponents = {
           href={mark.href}
           rel={rel}
           target={target}
-          className="text-gold underline underline-offset-2 transition-colors duration-200 hover:text-gold-light"
+          className={`underline underline-offset-2 transition-colors duration-200 ${link}`}
         >
           {children}
         </a>
@@ -81,7 +87,7 @@ const components: PortableTextComponents = {
             />
           </div>
           {value.caption && (
-            <figcaption className="mt-2 text-center text-sm text-(--gray-400)">
+            <figcaption className={`mt-2 text-center text-sm ${muted}`}>
               {value.caption}
             </figcaption>
           )}
@@ -90,13 +96,14 @@ const components: PortableTextComponents = {
     },
   },
 };
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function PortableTextRenderer({ value }: { value: any }) {
+export default function PortableTextRenderer({ value, tone = "onDark" }: { value: any; tone?: "onDark" | "onLight" }) {
   if (!value) return null;
   return (
     <div className="portable-text">
-      <PortableText value={value} components={components} />
+      <PortableText value={value} components={buildComponents(tone === "onLight")} />
     </div>
   );
 }

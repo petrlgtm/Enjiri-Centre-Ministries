@@ -1104,8 +1104,8 @@ body {
    ═══════════════════════════════════════════════════ */
 .hero-editorial-glow {
   background:
-    radial-gradient(ellipse 55% 70% at 78% 60%, rgba(201, 168, 76, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 50% at 10% 20%, rgba(196, 125, 42, 0.07) 0%, transparent 60%);
+    radial-gradient(ellipse 55% 70% at 78% 60%, rgba(201, 168, 76, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 65% at 8% 10%, rgba(29, 69, 144, 0.45) 0%, transparent 65%);
 }
 
 .hero-editorial-glow-light {

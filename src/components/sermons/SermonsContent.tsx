@@ -79,7 +79,7 @@ interface SermonsContentProps {
 
 export default function SermonsContent({ 
   headerImage, 
-  title = "Sermons & Teachings",
+  title = "Sermons, Teachings, Charities & Reach Outs",
   description = "Watch or listen to our sermons and be encouraged by the teaching of God's Word.",
   featuredLabel = "Latest Sermon"
 }: SermonsContentProps) {

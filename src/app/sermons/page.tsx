@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const pageData = await fetchSanity<SermonsPageData>(sermonsPageQuery);
   const settings = await fetchSanity<SiteSettings>(siteSettingsQuery);
 
-  const title = pageData?.seo?.seoTitle || pageData?.title || "Sermons & Teachings";
+  const title = pageData?.seo?.seoTitle || pageData?.title || "Sermons, Teachings, Charities & Reach Outs";
   const description = pageData?.seo?.seoDescription || pageData?.description || "Watch or listen to our sermons and be encouraged by the teaching of God's Word.";
   const image = pageData?.seo?.seoImage ? heroImageUrl(pageData.seo.seoImage) : "";
 

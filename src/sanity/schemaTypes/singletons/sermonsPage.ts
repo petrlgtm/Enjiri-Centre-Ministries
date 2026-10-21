@@ -11,7 +11,7 @@ export default defineType({
       name: 'title',
       title: 'Page Title',
       type: 'string',
-      initialValue: 'Sermons & Teachings',
+      initialValue: 'Sermons, Teachings, Charities & Reach Outs',
     }),
     defineField({
       name: 'description',

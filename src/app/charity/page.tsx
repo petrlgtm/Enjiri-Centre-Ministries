@@ -178,7 +178,7 @@ export default async function CharityPage() {
 
       {/* Programs — the featured programme rises into the cream above */}
       {featured && (
-        <section className="flow-root bg-navy-light pb-16 sm:pb-20">
+        <section className="flow-root bg-royal-deep pb-16 sm:pb-20">
           <Container className="relative z-10 -mt-24 sm:-mt-32">
             <Link
               href={`/charity/${featured.slug}`}

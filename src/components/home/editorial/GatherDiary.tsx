@@ -25,7 +25,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
   const next = schedule?.[0];
 
   return (
-    <section className="relative flow-root overflow-x-clip bg-navy-light pb-14 sm:pb-16">
+    <section className="relative flow-root overflow-x-clip bg-royal-deep pb-14 sm:pb-16">
       {/* Next-gathering card — rises into the section above */}
       {next && (
         <Container className="relative z-10 -mt-14 flex justify-end">

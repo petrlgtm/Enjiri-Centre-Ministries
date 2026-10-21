@@ -53,14 +53,14 @@ export default function VideoTheater() {
         "fixed z-[60]",
         popup
           ? "right-3 bottom-24 w-[min(22rem,calc(100vw-1.5rem))] sm:right-6"
-          : "inset-0 overflow-y-auto overscroll-contain bg-navy/[0.97] pt-20 backdrop-blur-sm lg:pt-24"
+          : "inset-0 overflow-y-auto overscroll-contain bg-royal-deep/[0.97] pt-20 backdrop-blur-sm lg:pt-24"
       )}
     >
       <section
         ref={panelRef}
         tabIndex={-1}
         aria-label={`Now playing: ${current.title}`}
-        className={cn("outline-none", popup && "overflow-hidden bg-navy shadow-[0_20px_50px_rgba(0,0,0,0.55)] ring-1 ring-gold/40")}
+        className={cn("outline-none", popup && "overflow-hidden bg-royal-deep shadow-[0_20px_50px_rgba(0,0,0,0.55)] ring-1 ring-gold/40")}
       >
         <div
           className={cn(
@@ -85,7 +85,7 @@ export default function VideoTheater() {
                     type="button"
                     onClick={expand}
                     aria-label="Expand video player"
-                    className="grid h-9 w-9 place-items-center bg-navy/90 text-gold ring-1 ring-white/30 transition-colors hover:bg-navy-surface"
+                    className="grid h-9 w-9 place-items-center bg-royal/90 text-gold ring-1 ring-white/30 transition-colors hover:bg-navy-surface"
                   >
                     <HiArrowsExpand size={16} />
                   </button>
@@ -93,7 +93,7 @@ export default function VideoTheater() {
                     type="button"
                     onClick={stop}
                     aria-label="Close video and stop playback"
-                    className="grid h-9 w-9 place-items-center bg-navy/90 text-white ring-1 ring-white/30 transition-colors hover:bg-red-dark"
+                    className="grid h-9 w-9 place-items-center bg-royal/90 text-white ring-1 ring-white/30 transition-colors hover:bg-red-dark"
                   >
                     <HiX size={16} />
                   </button>
@@ -143,7 +143,7 @@ export default function VideoTheater() {
                       onClick={() => play(item)}
                       className="group grid w-full grid-cols-[8rem_minmax(0,1fr)] items-center gap-3 py-3 text-left"
                     >
-                      <span className="relative block aspect-video overflow-hidden bg-navy-mid">
+                      <span className="relative block aspect-video overflow-hidden bg-royal">
                         {item.thumbnail && (
                           <Image
                             src={item.thumbnail}

@@ -41,7 +41,7 @@ export default function NewsletterSignup() {
           />
           <button
             type="submit"
-            className="shrink-0 cursor-pointer bg-navy px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-navy-surface"
+            className="shrink-0 cursor-pointer bg-royal-deep px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-royal"
           >
             {submitted ? (
               <span className="flex items-center gap-2">

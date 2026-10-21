@@ -5,6 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
+import Reveal from "@/components/ui/Reveal";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
+import { HiArrowRight } from "react-icons/hi";
+import { cn, formatDate } from "@/lib/utils";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allGalleriesQuery, siteSettingsQuery, galleryPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
@@ -51,55 +55,65 @@ export default async function GalleryPage() {
         backgroundImage={headerImg}
       />
 
-      <section className="py-16 sm:py-20 md:py-28">
+      <section className="bg-cream pt-14 pb-24 text-cream-heading sm:pt-16 sm:pb-28">
         <Container>
+          <SectionMasthead label="Albums" index={String(galleries?.length ?? 0).padStart(2, "0")} />
+
           {galleries && galleries.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {galleries.map((gallery) => (
-                <Link
-                  key={gallery._id}
-                  href={`/gallery/${gallery.slug}`}
-                  className="group overflow-hidden border border-white/6 bg-(--gray-50) transition-all duration-500 hover:border-gold/20"
-                >
-                  {gallery.coverImage && (
-                    <div className="relative aspect-4/3 overflow-hidden">
-                      <Image
-                        src={cardImage(gallery.coverImage)}
-                        alt={gallery.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-navy/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      <div className="absolute bottom-3 right-3 bg-navy/70 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
-                        {gallery.imageCount} photos
-                      </div>
-                    </div>
-                  )}
-                  <div className="p-5">
-                    {gallery.category && (
-                      <span className="mb-2 inline-block bg-gold/10 px-2.5 py-0.5 text-[11px] font-medium text-gold">
-                        {gallery.category}
+            <ol className="mt-10 space-y-16 sm:space-y-20">
+              {galleries.map((gallery, i) => {
+                const flip = i % 2 === 1;
+                return (
+                  <Reveal as="li" key={gallery._id}>
+                    <Link href={`/gallery/${gallery.slug}`} className="group grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+                      {gallery.coverImage && (
+                        <span className={cn("relative block aspect-4/3 overflow-hidden bg-navy lg:col-span-7", flip && "lg:order-2")}>
+                          <Image
+                            src={cardImage(gallery.coverImage, 1200)}
+                            alt={gallery.coverImage.alt || gallery.title}
+                            fill
+                            sizes="(min-width: 1024px) 58vw, 100vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          />
+                          <span className="absolute bottom-0 left-0 bg-royal px-5 py-3 font-mono text-[11px] tracking-[0.18em] text-white uppercase">
+                            {gallery.imageCount ?? 0} photos
+                          </span>
+                        </span>
+                      )}
+                      <span className="lg:col-span-5">
+                        <span className="flex flex-wrap gap-x-4 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">
+                          <span>Album {String(i + 1).padStart(2, "0")}</span>
+                          {gallery.category && <span className="text-cream-muted">{gallery.category}</span>}
+                          {gallery.date && <span className="text-cream-muted">{formatDate(gallery.date)}</span>}
+                        </span>
+                        <span className="mt-4 block font-display text-3xl leading-[1.1] font-semibold transition-colors duration-300 group-hover:text-royal sm:text-4xl">
+                          {gallery.title}
+                        </span>
+                        {gallery.description && (
+                          <span className="mt-4 block text-base leading-relaxed text-cream-body">{gallery.description}</span>
+                        )}
+                        {gallery.previews && gallery.previews.length > 0 && (
+                          <span className="mt-8 grid grid-cols-3 gap-2">
+                            {gallery.previews.map((p, j) => (
+                              <span key={j} className="relative block aspect-square overflow-hidden bg-navy">
+                                <Image src={cardImage(p.image, 300)} alt={p.alt || ""} fill sizes="140px" className="object-cover" />
+                              </span>
+                            ))}
+                          </span>
+                        )}
+                        <span className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase">
+                          Open album <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
                       </span>
-                    )}
-                    <h2 className="font-display text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
-                      {gallery.title}
-                    </h2>
-                    {gallery.description && (
-                      <p className="mt-2 text-sm leading-relaxed text-(--gray-400) line-clamp-2">
-                        {gallery.description}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </ol>
           ) : (
-            <div className="text-center">
-              <p className="text-lg text-(--gray-400)">
-                No galleries yet. Check back soon!
-              </p>
-            </div>
+            <p className="mt-10 max-w-xl font-display text-3xl leading-snug text-cream-body">
+              No albums yet — photos from services and outreach will appear here soon.
+            </p>
           )}
         </Container>
       </section>

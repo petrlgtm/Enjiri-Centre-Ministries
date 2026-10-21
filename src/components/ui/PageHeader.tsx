@@ -18,9 +18,12 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 /** Editorial page opener: kicker, display title with a gold italic last word, standfirst, and an optional lead image band. */
 export default function PageHeader({ label, title, description, backgroundImage, nextTone = "cream" }: PageHeaderProps) {
-  const words = title.trim().split(" ");
-  const lead = words.slice(0, -1).join(" ");
-  const accent = words[words.length - 1];
+  // Gold accent: everything after the last "&" (e.g. "Reach Outs"), otherwise the last word
+  const clean = title.trim();
+  const amp = clean.lastIndexOf("& ");
+  const split = amp > 0 ? amp + 2 : clean.lastIndexOf(" ") + 1;
+  const lead = clean.slice(0, split).trimEnd();
+  const accent = clean.slice(split);
 
   return (
     <section className="relative overflow-hidden bg-navy">
@@ -46,7 +49,7 @@ export default function PageHeader({ label, title, description, backgroundImage,
             className="font-display text-4xl leading-[1.05] font-semibold text-white sm:text-5xl lg:col-span-8 lg:text-[4rem]"
           >
             {lead && <>{lead} </>}
-            <em className="not-italic text-gold">{accent}</em>
+            <em className="whitespace-nowrap not-italic text-gold">{accent}</em>
           </motion.h1>
 
           <motion.p

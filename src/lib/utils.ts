@@ -148,3 +148,8 @@ export function cleanVideoTitle(raw: string): string {
     .toLowerCase()
     .replace(/(^|[\s(-])(\p{L})/gu, (_, pre: string, ch: string) => pre + ch.toUpperCase());
 }
+
+/** True once the given date/time is in the past. */
+export function hasPassed(dateString: string): boolean {
+  return new Date(dateString).getTime() < Date.now();
+}

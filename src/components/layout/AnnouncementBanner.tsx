@@ -20,7 +20,7 @@ interface AnnouncementBannerProps {
 }
 
 const styleClasses: Record<string, string> = {
-  info: "bg-navy/95 text-white border-white/10",
+  info: "bg-royal-deep text-white border-white/10",
   warning: "bg-amber-900/90 text-amber-50 border-amber-700/30",
   celebration: "bg-linear-to-r from-gold-dark/95 to-gold/95 text-navy border-gold/30",
 };

@@ -344,6 +344,7 @@ export const allGalleriesQuery = groq`
     description,
     coverImage { ${imageFields} },
     "imageCount": count(images),
+    "previews": images[0...3] { image { ${imageFields} }, alt },
     category,
     date
   }

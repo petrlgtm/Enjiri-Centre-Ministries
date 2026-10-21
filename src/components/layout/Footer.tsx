@@ -104,7 +104,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center bg-cream text-cream-body transition-colors duration-300 hover:bg-gold hover:text-navy"
+                  className="flex h-10 w-10 items-center justify-center bg-cream text-cream-body transition-colors duration-300 hover:bg-royal hover:text-white"
                 >
                   <social.icon size={14} />
                 </a>
@@ -120,7 +120,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-display text-2xl leading-relaxed transition-colors duration-300 hover:text-gold-dark sm:text-[1.7rem]"
+                    className="font-display text-2xl leading-relaxed transition-colors duration-300 hover:text-royal sm:text-[1.7rem]"
                   >
                     {link.label}
                   </Link>

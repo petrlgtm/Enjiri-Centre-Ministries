@@ -65,113 +65,94 @@ export default async function BlogPostPage({
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
-        {post.coverImage && (
-          <>
-            <div className="absolute inset-0">
-              <Image
-                src={heroImage(post.coverImage)}
-                alt={post.title}
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 bg-navy/80" />
-          </>
-        )}
-        <Container className="relative">
-          <div className="mx-auto max-w-3xl text-center">
-            {post.categories && post.categories.length > 0 && (
-              <div className="mb-4 flex justify-center gap-2">
-                {post.categories.map((cat) => (
-                  <span
-                    key={cat}
-                    className="bg-gold/20 px-3 py-1 text-xs font-medium text-gold"
-                  >
-                    {cat}
-                  </span>
-                ))}
-              </div>
-            )}
-            <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+      {/* Header */}
+      <section className="relative overflow-hidden bg-navy">
+        <div aria-hidden className="hero-editorial-glow absolute inset-0" />
+        <Container className="relative pt-40 pb-12 sm:pt-44 lg:pb-14">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
+          >
+            <HiArrowLeft size={14} /> All stories
+          </Link>
+          <div className="mt-8 max-w-4xl">
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">
+              {post.categories?.map((cat) => <span key={cat}>{cat}</span>)}
+              {post.publishedAt && (
+                <time dateTime={post.publishedAt} className="text-white/55">
+                  {formatDate(post.publishedAt)}
+                </time>
+              )}
+            </p>
+            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-semibold text-balance text-white sm:text-5xl lg:text-6xl">
               {post.title}
             </h1>
-            <div className="mt-4 flex items-center justify-center gap-3 text-sm text-foreground/60">
+            {post.excerpt && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">{post.excerpt}</p>}
+          </div>
+        </Container>
+        {post.coverImage && (
+          <div className="header-straddle-cream relative">
+            <Container>
+              <div className="relative aspect-16/9 overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/9]">
+                <Image src={heroImage(post.coverImage)} alt={post.title} fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+              </div>
+            </Container>
+          </div>
+        )}
+      </section>
+
+      {/* Article */}
+      <section className="bg-cream pt-14 pb-24 sm:pt-16 sm:pb-28">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <article className="min-w-0 lg:col-span-8">
+            {post.body && post.body.length > 0 ? (
+              <PortableTextRenderer value={post.body} tone="onLight" />
+            ) : (
+              <p className="font-display text-2xl text-cream-body">This article has no content yet.</p>
+            )}
+          </article>
+
+          <aside className="lg:col-span-4">
+            <div className="space-y-8 bg-white p-7 lg:sticky lg:top-32">
               {post.author && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-4">
                   {post.author.image && (
-                    <div className="relative h-7 w-7 overflow-hidden">
-                      <Image
-                        src={cardImage(post.author.image, 56)}
-                        alt={post.author.name}
-                        fill
-                        className="object-cover"
-                        sizes="28px"
-                      />
-                    </div>
+                    <span className="relative h-14 w-14 shrink-0 overflow-hidden bg-navy">
+                      <Image src={cardImage(post.author.image, 112)} alt={post.author.name} fill sizes="56px" className="object-cover object-top" />
+                    </span>
                   )}
-                  <span>{post.author.name}</span>
+                  <span>
+                    <span className="block font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Written by</span>
+                    <span className="mt-1 block font-display text-lg font-semibold text-cream-heading">{post.author.name}</span>
+                  </span>
                 </div>
               )}
               {post.publishedAt && (
-                <>
-                  <span className="h-1 w-1 bg-gold/30" />
-                  <time dateTime={post.publishedAt}>
-                    {formatDate(post.publishedAt)}
-                  </time>
-                </>
-              )}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Content */}
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            {post.body && post.body.length > 0 ? (
-              <PortableTextRenderer value={post.body} />
-            ) : post.excerpt ? (
-              <p className="text-lg leading-relaxed text-(--gray-400)">
-                {post.excerpt}
-              </p>
-            ) : (
-              <p className="text-(--gray-400)">
-                This article has no content yet.
-              </p>
-            )}
-
-            {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
-              <div className="mt-12 border-t border-white/6 pt-6">
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-white/6 bg-(--gray-50) px-3 py-1 text-xs text-(--gray-400)"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Published</p>
+                  <p className="mt-1 text-sm text-cream-heading">{formatDate(post.publishedAt)}</p>
                 </div>
-              </div>
-            )}
-
-            {/* Back link */}
-            <div className="mt-12">
+              )}
+              {post.tags && post.tags.length > 0 && (
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Topics</p>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <li key={tag} className="bg-cream px-3 py-1.5 font-mono text-[11px] text-cream-body">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gold transition-colors duration-200 hover:text-gold-light"
+                className="flex items-center justify-between bg-royal px-5 py-4 text-[11px] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
               >
-                <HiArrowLeft size={14} />
-                Back to Blog
+                More stories <HiArrowLeft className="rotate-180" />
               </Link>
             </div>
-          </div>
+          </aside>
         </Container>
       </section>
     </>

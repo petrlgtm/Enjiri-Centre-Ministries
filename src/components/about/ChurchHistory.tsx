@@ -4,6 +4,7 @@ import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
 import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
+import MilestoneTimeline from "./MilestoneTimeline";
 import { PortableTextContent } from "@/types/sanity";
 
 const defaultStats = [
@@ -30,8 +31,10 @@ interface ChurchHistoryProps {
 export default function ChurchHistory({ image, title, text, stats, timeline }: ChurchHistoryProps) {
   const displayStats = stats && stats.length > 0 ? stats : defaultStats;
   const displayTimeline = timeline && timeline.length > 0 ? timeline : defaultTimeline;
+  const [lead, ...others] = displayStats;
 
   return (
+    <>
     <section className="bg-cream pt-6 pb-14 text-cream-heading sm:pt-8 sm:pb-16">
       <Container>
         <SectionMasthead label="Our Story" index="01" />
@@ -43,7 +46,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
             </h2>
             <div className="mt-8 space-y-4 text-base leading-[1.85] text-cream-body">
               {text ? (
-                <PortableTextRenderer value={text} />
+                <PortableTextRenderer value={text} tone="onLight" />
               ) : (
                 <p>
                   Enjiri Center Ministries International was founded on a deep conviction to spread the gospel of Jesus
@@ -74,37 +77,60 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
           )}
         </div>
 
-        <dl className="mt-14 grid grid-cols-3 gap-4 sm:gap-8">
-          {displayStats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.08}>
-              <dt className="sr-only">{s.label}</dt>
+      </Container>
+    </section>
+
+    {/* Milestones — bento figures and a chapter timeline on a deep-blue band */}
+    <section className="relative overflow-hidden bg-royal-deep py-16 text-white sm:py-24">
+      <div aria-hidden className="hero-editorial-glow absolute inset-0 opacity-70" />
+      <Container className="relative">
+        <SectionMasthead label="Milestones" index="02" tone="dark" />
+
+        {lead && (
+          <dl className="mt-10 grid gap-3 sm:gap-4 lg:grid-cols-12">
+            {/* Lead figure */}
+            <Reveal className="flex flex-col-reverse justify-between gap-8 bg-gold p-7 text-navy sm:p-10 lg:col-span-6 lg:row-span-2 lg:min-h-[26rem]">
+              <div>
+                <dt className="font-mono text-[11px] tracking-[0.2em] uppercase opacity-70">{lead.label}</dt>
+                <p className="mt-2 max-w-xs font-display text-xl leading-snug font-semibold sm:text-2xl">A decade of faithfulness, one soul at a time.</p>
+              </div>
               <dd>
                 <CountUp
-                  end={s.value}
-                  suffix={s.suffix}
-                  className="block font-display text-3xl font-semibold text-gold-dark sm:text-6xl"
+                  end={lead.value}
+                  suffix={lead.suffix}
+                  className="block font-display text-[6.5rem] leading-[0.85] font-bold tracking-tight sm:text-[10rem]"
                 />
-                <span className="mt-2 block text-[10px] font-semibold uppercase tracking-[0.14em] text-cream-muted sm:text-[11px] sm:tracking-[0.2em]">
-                  {s.label}
-                </span>
               </dd>
             </Reveal>
-          ))}
-        </dl>
 
-        <div className="mt-16">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The journey so far</p>
-          <ol className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
-            {displayTimeline.map((item, i) => (
-              <Reveal as="li" key={`${item.year}-${item.title}`} delay={i * 0.08}>
-                <span className="block font-display text-3xl font-semibold text-gold sm:text-5xl">{item.year}</span>
-                <span className="mt-2 block font-display text-lg font-semibold sm:mt-3 sm:text-2xl">{item.title}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-cream-body">{item.description}</span>
+            {others.map((s, i) => (
+              <Reveal
+                key={s.label}
+                delay={0.08 * (i + 1)}
+                className="flex flex-col-reverse justify-between bg-white/[0.06] p-7 ring-1 ring-white/10 sm:p-8 lg:col-span-6"
+              >
+                <dt className="mt-4 font-mono text-[11px] tracking-[0.2em] text-white/60 uppercase">{s.label}</dt>
+                <dd>
+                  <CountUp
+                    end={s.value}
+                    suffix={s.suffix}
+                    className="block font-display text-6xl leading-none font-bold text-gold sm:text-7xl"
+                  />
+                </dd>
               </Reveal>
             ))}
-          </ol>
+          </dl>
+        )}
+
+        <div className="mt-20 sm:mt-28">
+          <div className="mb-14 max-w-xl lg:mx-auto lg:text-center">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-gold-light uppercase">The journey so far</p>
+            <h3 className="mt-3 font-display text-3xl leading-tight font-semibold sm:text-4xl">Every chapter, written by grace.</h3>
+          </div>
+          <MilestoneTimeline chapters={displayTimeline} />
         </div>
       </Container>
     </section>
+    </>
   );
 }

@@ -268,6 +268,7 @@ export interface Gallery {
     caption?: string;
   }>;
   imageCount?: number;
+  previews?: Array<{ image: SanityImage; alt?: string }>;
   category?: string;
   date?: string;
   seo?: SEO;
