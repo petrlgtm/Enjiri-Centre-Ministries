@@ -53,7 +53,6 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [bannerVisible, setBannerVisible] = useState(true);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
@@ -163,31 +162,22 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
           />
         )}
         
-        {/* Main Navbar */}
+        {/* Main Navbar — transparent bar, logo left, frosted link panel right with a dark "Give" end-cap */}
         <nav
           className={cn(
-            "relative transition-all duration-700",
-            scrolled
-              ? "bg-navy/90 shadow-premium backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/6"
-              : "bg-transparent border-b border-transparent"
+            "relative transition-colors duration-700",
+            scrolled ? "bg-navy/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl" : "bg-transparent"
           )}
         >
           <Container>
-            <div className="flex h-20 items-center justify-between lg:h-24">
+            <div className="flex h-20 items-center justify-between gap-6 lg:h-24">
               {/* Logo */}
               <Link href="/" className="group relative flex items-center gap-3">
-                <div className="logo-glow relative h-11 w-11 overflow-hidden shadow-lg shadow-gold/20 transition-transform duration-500 group-hover:scale-105">
-                  <Image
-                    src={logoImg}
-                    alt="Enjiri Center Ministries International"
-                    fill
-                    className="object-cover"
-                    sizes="44px"
-                  />
-                  <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <div className="relative h-11 w-11 overflow-hidden transition-transform duration-500 group-hover:scale-105">
+                  <Image src={logoImg} alt="Enjiri Center Ministries International" fill className="object-cover" sizes="44px" />
                 </div>
                 <div className="hidden sm:block">
-                  <span className={cn("block text-[15px] font-bold tracking-wide transition-colors duration-500", onLight ? "text-cream-heading" : "text-foreground")}>
+                  <span className={cn("block text-[15px] font-bold tracking-wide transition-colors duration-500", onLight ? "text-cream-heading" : "text-white")}>
                     ENJIRI CENTER
                   </span>
                   <span className={cn("block text-[10px] font-medium tracking-[0.25em] transition-colors duration-500", onLight ? "text-gold-dark" : "text-gold/80")}>
@@ -196,91 +186,65 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                 </div>
               </Link>
 
-              {/* Desktop Nav */}
-              <div className="hidden items-center gap-0.5 lg:flex">
-                {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onMouseEnter={() => setHoveredLink(link.href)}
-                      onMouseLeave={() => setHoveredLink(null)}
-                      className={cn(
-                        "relative px-4 py-2 text-[13px] font-medium uppercase tracking-widest transition-all duration-300",
-                        isActive
-                          ? onLight ? "text-gold-dark" : "text-gold"
-                          : onLight ? "text-cream-heading/70 hover:text-cream-heading" : "text-foreground/60 hover:text-foreground"
-                      )}
-                    >
-                      {/* Hover background pill */}
-                      {hoveredLink === link.href && !isActive && (
-                        <motion.span
-                          layoutId="nav-hover-bg"
-                          className={cn("absolute inset-0", onLight ? "bg-black/[0.05]" : "bg-white/[0.06]")}
-                          transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
-                        />
-                      )}
-                      <span className="relative">{link.label}</span>
-                      {isActive && (
-                        <motion.span
-                          layoutId="nav-indicator"
-                          className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 bg-linear-to-r from-gold to-gold-light"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                        />
-                      )}
-                    </Link>
-                  );
-                })}
-                <div className={cn("ml-5 pl-5 border-l transition-colors duration-500", onLight ? "border-black/10" : "border-white/10")}>
-                  <div className="btn-magnetic">
-                    <Button href="/donate" variant="primary" size="sm">
-                      Give Online
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              {/* Link panel */}
+              <div className="flex items-stretch overflow-hidden rounded-[3px] bg-white/95 shadow-[0_10px_34px_-10px_rgba(10,10,10,0.45)] ring-1 ring-black/10 backdrop-blur-xl backdrop-saturate-150">
+                <ul className="hidden items-center lg:flex">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          aria-current={isActive ? "page" : undefined}
+                          className={cn(
+                            "relative block px-3.5 py-4 font-mono text-[11px] tracking-[0.12em] uppercase transition-colors duration-300 xl:px-4",
+                            isActive ? "text-gold-dark" : "text-cream-heading/80 hover:text-cream-heading"
+                          )}
+                        >
+                          {link.label}
+                          {isActive && (
+                            <motion.span
+                              layoutId="nav-indicator"
+                              className="absolute right-3.5 bottom-2.5 left-3.5 h-px bg-gold-dark xl:right-4 xl:left-4"
+                              transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                            />
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
 
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className={cn(
-                  "relative z-50 flex h-11 w-11 items-center justify-center  transition-all duration-300 lg:hidden",
-                  isOpen
-                    ? "bg-white/10 text-foreground"
-                    : onLight ? "text-cream-heading hover:bg-black/5" : "text-foreground hover:bg-white/10"
-                )}
-                aria-label="Toggle menu"
-                aria-expanded={isOpen}
-              >
-                <AnimatePresence mode="wait">
-                  {isOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                      exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.25 }}
-                    >
-                      <HiX size={22} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
-                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                      exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.25 }}
-                    >
-                      <HiMenuAlt3 size={22} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
+                <Link
+                  href="/donate"
+                  className="flex items-center bg-navy px-4 py-3.5 font-mono sm:px-5 text-[11px] tracking-[0.12em] text-white uppercase transition-colors duration-300 hover:bg-navy-surface hover:text-gold-light"
+                >
+                  Give<span className="hidden sm:inline">&nbsp;Online</span>
+                </Link>
+
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="relative z-50 flex w-12 items-center justify-center text-cream-heading transition-colors duration-300 hover:bg-black/5 lg:hidden"
+                  aria-label="Toggle menu"
+                  aria-expanded={isOpen}
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {isOpen ? (
+                      <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                        <HiX size={20} />
+                      </motion.span>
+                    ) : (
+                      <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                        <HiMenuAlt3 size={20} />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
             </div>
           </Container>
         </nav>
-
         {/* Social Links Bar — only visible on homepage */}
         {pathname === "/" && (
           <div className={cn("relative", isOpen && "hidden")}>
