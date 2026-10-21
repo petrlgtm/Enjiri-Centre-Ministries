@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import PlayerProvider from "@/components/player/PlayerProvider";
 import VideoTheater from "@/components/player/VideoTheater";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { Event } from "@/types/sanity";
@@ -133,6 +134,7 @@ export default async function RootLayout({
           <BackToTop />
           <VideoTheater />
         </PlayerProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );
