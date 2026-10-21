@@ -19,12 +19,12 @@ interface LinkMark {
 const components: PortableTextComponents = {
   block: {
     h2: ({ children }) => (
-      <h2 className="mt-10 mb-4 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
+      <h2 className="mt-10 mb-4 font-display text-2xl font-bold text-foreground sm:text-3xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-8 mb-3 font-(family-name:--font-playfair) text-xl font-bold text-foreground sm:text-2xl">
+      <h3 className="mt-8 mb-3 font-display text-xl font-bold text-foreground sm:text-2xl">
         {children}
       </h3>
     ),

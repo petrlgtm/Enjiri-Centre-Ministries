@@ -59,6 +59,7 @@ export const latestSermonsQuery = groq`
     title,
     "slug": slug.current,
     date,
+    videoUrl,
     speaker->{ _id, name },
     series,
     thumbnail { ${imageFields} }
@@ -81,6 +82,17 @@ export const upcomingEventsQuery = groq`
     featured,
     category,
     rsvpUrl
+  }
+`;
+
+export const recentEventsQuery = groq`
+  *[_type == "event" && date < now() && defined(image)] | order(date desc) [0...4] {
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    location,
+    image { ${imageFields} }
   }
 `;
 
@@ -160,7 +172,8 @@ export const allLeadersQuery = groq`
     bio,
     email,
     featured,
-    image { ${imageFields} }
+    image { ${imageFields} },
+    imageCutout { ${imageFields} }
   }
 `;
 
@@ -170,7 +183,8 @@ export const featuredLeaderQuery = groq`
     name,
     role,
     bio,
-    image { ${imageFields} }
+    image { ${imageFields} },
+    imageCutout { ${imageFields} }
   }
 `;
 
@@ -495,6 +509,7 @@ export const charityPageQuery = groq`
     title,
     description,
     headerImage { ${imageFields} },
+    campaignImage { ${imageFields} },
     ${seoFields}
   }
 `;

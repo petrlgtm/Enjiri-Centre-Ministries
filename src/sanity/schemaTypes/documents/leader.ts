@@ -63,6 +63,20 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "imageCutout",
+      title: "Cut-out Photo (no background)",
+      type: "image",
+      description:
+        "The same photo with the background removed (transparent PNG) so only the person shows. Used on the homepage and About page; falls back to Photo when empty.",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alternative Text",
+          type: "string",
+        }),
+      ],
+    }),
+    defineField({
       name: "featured",
       title: "Featured on Homepage",
       type: "boolean",

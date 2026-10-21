@@ -82,7 +82,7 @@ export default async function GalleryPage() {
                         {gallery.category}
                       </span>
                     )}
-                    <h2 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h2 className="font-display text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {gallery.title}
                     </h2>
                     {gallery.description && (

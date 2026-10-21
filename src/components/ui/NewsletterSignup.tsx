@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { HiMail, HiCheck } from "react-icons/hi";
+import { HiCheck } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 
+/** Gold sign-up card that rises out of the footer into the section above it. */
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -21,63 +21,39 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="relative overflow-hidden border-b border-white/[0.04] bg-navy-light">
-      {/* Subtle background accent */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 h-32 w-32 bg-gold/5 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-24 w-24 bg-gold/5 blur-3xl" />
+    <Container className="relative z-10 -mt-14">
+      <div className="grid gap-6 bg-gold px-7 py-8 text-navy shadow-[0_30px_70px_-30px_rgba(10,10,10,0.5)] sm:px-10 lg:grid-cols-12 lg:items-center">
+        <div className="lg:col-span-6">
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase opacity-70">Stay connected</p>
+          <h3 className="mt-2 font-display text-3xl leading-tight font-semibold">
+            Devotionals, events and sermons in your inbox.
+          </h3>
+        </div>
+        <form onSubmit={handleSubmit} className="flex w-full gap-2 lg:col-span-6">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email address"
+            aria-label="Email address"
+            className="min-w-0 flex-1 bg-white px-5 py-4 text-sm text-cream-heading placeholder:text-cream-muted focus:outline-2 focus:outline-navy"
+            required
+          />
+          <button
+            type="submit"
+            className="shrink-0 cursor-pointer bg-navy px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-navy-surface"
+          >
+            {submitted ? (
+              <span className="flex items-center gap-2">
+                <HiCheck size={16} />
+                Subscribed
+              </span>
+            ) : (
+              "Subscribe"
+            )}
+          </button>
+        </form>
       </div>
-
-      <Container className="relative py-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between"
-        >
-          <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center gap-3 lg:justify-start">
-              <div className="flex h-10 w-10 items-center justify-center bg-gold/10">
-                <HiMail className="text-gold" size={20} />
-              </div>
-              <h3 className="font-(family-name:--font-playfair) text-xl font-bold text-foreground">
-                Stay Connected
-              </h3>
-            </div>
-            <p className="mt-2 max-w-md text-sm text-foreground/60">
-              Get weekly devotionals, event updates, and sermon highlights delivered to your inbox.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="flex w-full max-w-md gap-3">
-            <div className="relative flex-1">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full border border-white/10 bg-white/[0.04] px-5 py-3.5 text-sm text-foreground placeholder:text-foreground/25 backdrop-blur-sm transition-all duration-300 focus:border-gold/40 focus:bg-white/[0.06] focus:outline-none"
-                required
-              />
-            </div>
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="shrink-0 bg-linear-to-r from-gold to-gold-dark px-7 py-3.5 text-sm font-medium text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,168,76,0.5)] cursor-pointer"
-            >
-              {submitted ? (
-                <span className="flex items-center gap-2">
-                  <HiCheck size={16} />
-                  Subscribed!
-                </span>
-              ) : (
-                "Subscribe"
-              )}
-            </motion.button>
-          </form>
-        </motion.div>
-      </Container>
-    </div>
+    </Container>
   );
 }

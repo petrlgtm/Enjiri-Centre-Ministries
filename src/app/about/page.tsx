@@ -5,10 +5,9 @@ import ChurchHistory from "@/components/about/ChurchHistory";
 import VisionMission from "@/components/about/VisionMission";
 import LeadershipTeam from "@/components/about/LeadershipTeam";
 import PageHeader from "@/components/ui/PageHeader";
-import SectionDivider from "@/components/ui/SectionDivider";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allLeadersQuery, siteSettingsQuery, aboutPageQuery } from "@/sanity/queries";
-import { portraitImage, heroImage as heroImageUrl } from "@/sanity/image";
+import { portraitImage, heroImage as heroImageUrl, urlFor } from "@/sanity/image";
 import { Leader, SiteSettings, AboutPageData } from "@/types/sanity";
 
 export const metadata: Metadata = {
@@ -39,12 +38,15 @@ export default async function AboutPage() {
     ? heroImageUrl(aboutData.historyImage) 
     : headerImage;
 
-  const leadersData = leaders?.map((l) => ({
-    name: l.name,
-    role: l.role,
-    bio: l.bio || "",
-    image: l.image ? portraitImage(l.image, 500) : "",
-  })).filter((l) => l.image);
+  const leadersData = leaders
+    ?.filter((l) => l.imageCutout || l.image)
+    .map((l) => ({
+      name: l.name,
+      role: l.role,
+      bio: l.bio || "",
+      isCutout: Boolean(l.imageCutout),
+      image: l.imageCutout ? urlFor(l.imageCutout).auto("format").url() : portraitImage(l.image, 800),
+    }));
 
   return (
     <>
@@ -54,23 +56,21 @@ export default async function AboutPage() {
         description={aboutData?.description || "A community of believers united in faith, love, and the mission to reach the world with the gospel of Christ."}
         backgroundImage={headerImage || undefined}
       />
-      <ChurchHistory 
-        image={storyImage} 
+      <ChurchHistory
+        image={storyImage}
         title={aboutData?.historyTitle}
         text={aboutData?.historyText}
         stats={aboutData?.historyStats}
         timeline={aboutData?.timeline}
       />
-      <SectionDivider accent />
-      <VisionMission 
+      <LeadershipTeam leaders={leadersData} />
+      <VisionMission
         vision={aboutData?.vision}
         mission={aboutData?.mission}
         commission={aboutData?.commission}
         statementOfFaith={aboutData?.statementOfFaith}
         coreValues={aboutData?.coreValues}
       />
-      <SectionDivider accent />
-      <LeadershipTeam leaders={leadersData} />
     </>
   );
 }

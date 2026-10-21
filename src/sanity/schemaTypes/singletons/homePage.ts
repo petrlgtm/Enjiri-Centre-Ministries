@@ -145,6 +145,7 @@ export default defineType({
     defineField({
       name: "visitImage",
       title: "Plan Your Visit Image",
+      description: "Portrait photo in the Gather With Us band (overlaps into the Ministries section)",
       type: "image",
       options: { hotspot: true },
       fields: [defineField({ name: "alt", type: "string" })],

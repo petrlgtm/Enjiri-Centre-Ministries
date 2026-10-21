@@ -33,7 +33,7 @@ export default function ProgramAbout({
             <span className="inline-block border border-gold/25 bg-gold/[0.1] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
               About This Program
             </span>
-            <h2 className="mt-6 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
+            <h2 className="mt-6 font-display text-2xl font-bold text-foreground sm:text-3xl">
               {title}
             </h2>
             <div className="mt-4 flex items-center gap-2">

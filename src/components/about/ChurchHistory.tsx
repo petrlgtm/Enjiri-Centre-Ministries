@@ -1,12 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
 import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
-
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import { PortableTextContent } from "@/types/sanity";
 
 const defaultStats = [
@@ -35,157 +32,77 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
   const displayTimeline = timeline && timeline.length > 0 ? timeline : defaultTimeline;
 
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
+    <section className="bg-cream pt-6 pb-14 text-cream-heading sm:pt-8 sm:pb-16">
       <Container>
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
-          {/* Left: Image + Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src={image || "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop"}
-                alt="Enjiri Center Ministries — Our Story"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/20 to-transparent" />
-              <div className="noise-overlay absolute inset-0" />
+        <SectionMasthead label="Our Story" index="01" />
 
-              {/* Decorative gold frame */}
-              <div className="absolute inset-3 border border-gold/10 pointer-events-none" />
-            </div>
-
-            {/* Stats bar overlapping the image */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="relative -mt-16 mx-4 sm:mx-6"
-            >
-              <div className="glass p-5 sm:p-6">
-                <div className="flex items-center justify-between">
-                  {displayStats.map((stat, i) => (
-                    <div key={stat.label} className="flex items-center">
-                      <div className="text-center">
-                        <CountUp
-                          end={stat.value}
-                          suffix={stat.suffix}
-                          className="block font-(family-name:--font-playfair) text-xl font-bold text-gold sm:text-2xl"
-                        />
-                        <span className="text-[10px] uppercase tracking-[0.15em] text-foreground/60">
-                          {stat.label}
-                        </span>
-                      </div>
-                      {i < displayStats.length - 1 && (
-                        <div className="mx-3 h-8 w-px bg-linear-to-b from-transparent via-white/15 to-transparent sm:mx-5" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right: Story Content */}
-          <div>
-            <SectionHeading
-              label="Our Story"
-              title={title || "A Legacy of Faith & Service"}
-              centered={false}
-              className="mb-8"
-            />
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="space-y-4 text-[0.95rem] leading-[1.85] text-(--gray-400)"
-            >
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="lg:col-span-7">
+            <h2 className="font-display text-3xl leading-[1.1] font-semibold sm:text-4xl lg:text-5xl">
+              {title || "A Legacy of Faith & Service"}
+            </h2>
+            <div className="mt-8 space-y-4 text-base leading-[1.85] text-cream-body">
               {text ? (
                 <PortableTextRenderer value={text} />
               ) : (
-                <>
-                  <p>
-                    Enjiri Center Ministries International was founded on a deep
-                    conviction to spread the gospel of Jesus Christ and serve
-                    communities with the love of God. From humble beginnings, the
-                    ministry has grown into a vibrant community of believers.
-                  </p>
-                  <p>
-                    Through the years, God has been faithful in expanding our reach,
-                    touching lives across cities and nations. Our doors are open to
-                    everyone — regardless of background or walk of life.
-                  </p>
-                </>
+                <p>
+                  Enjiri Center Ministries International was founded on a deep conviction to spread the gospel of Jesus
+                  Christ and serve communities with the love of God.
+                </p>
               )}
-            </motion.div>
-
-            {/* Scripture quote */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="mt-8 border-l-2 border-gold/30 pl-6"
-            >
-              <p className="font-(family-name:--font-playfair) text-lg italic text-foreground/80">
-                &ldquo;For I know the plans I have for you, declares the Lord...&rdquo;
-              </p>
-              <p className="mt-2 text-sm font-semibold text-gold-dark">
-                Jeremiah 29:11
-              </p>
-            </motion.div>
-
-            {/* Timeline */}
-            <div className="mt-12 relative pl-8">
-              <motion.div
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute left-1.75 top-1 bottom-1 w-px origin-top bg-linear-to-b from-gold via-gold/40 to-transparent"
-              />
-
-              <div className="space-y-5">
-                {displayTimeline.map((item, index) => (
-                  <motion.div
-                    key={`${item.year}-${item.title}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="relative"
-                  >
-                    <div className="absolute -left-8 top-2.5 flex items-center justify-center">
-                      <span className="h-3 w-3 border-2 border-gold bg-navy shadow-[0_0_6px_rgba(201,168,76,0.3)]" />
-                    </div>
-                    <div className="border border-white/6 bg-(--gray-100) p-4 transition-all duration-300 hover:border-gold/20 hover:shadow-sm">
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gold">
-                          {item.year}
-                        </span>
-                        <span className="font-semibold text-foreground text-sm">
-                          {item.title}
-                        </span>
-                      </div>
-                      <p className="mt-1 text-sm text-(--gray-400)">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </div>
-          </div>
+            <blockquote className="mt-10 bg-white px-7 py-6">
+              <p className="font-display text-2xl leading-snug italic">
+                &ldquo;For I know the plans I have for you, declares the Lord&hellip;&rdquo;
+              </p>
+              <p className="mt-3 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">Jeremiah 29:11</p>
+            </blockquote>
+          </Reveal>
+
+          {image && (
+            <Reveal delay={0.1} className="lg:col-span-5">
+              <div className="relative aspect-4/5 overflow-hidden">
+                <Image
+                  src={image}
+                  alt="Enjiri Center Ministries — our story"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+          )}
+        </div>
+
+        <dl className="mt-14 grid gap-8 sm:grid-cols-3">
+          {displayStats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.08}>
+              <dt className="sr-only">{s.label}</dt>
+              <dd>
+                <CountUp
+                  end={s.value}
+                  suffix={s.suffix}
+                  className="block font-display text-5xl font-semibold text-gold-dark sm:text-6xl"
+                />
+                <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
+                  {s.label}
+                </span>
+              </dd>
+            </Reveal>
+          ))}
+        </dl>
+
+        <div className="mt-16">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The journey so far</p>
+          <ol className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {displayTimeline.map((item, i) => (
+              <Reveal as="li" key={`${item.year}-${item.title}`} delay={i * 0.08}>
+                <span className="block font-display text-5xl font-semibold text-gold">{item.year}</span>
+                <span className="mt-3 block font-display text-2xl font-semibold">{item.title}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-cream-body">{item.description}</span>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </Container>
     </section>

@@ -6,7 +6,6 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { charityProgramBySlugQuery } from "@/sanity/queries";
 import { heroImage as heroImageBuilder, cardImage, heroImage } from "@/sanity/image";
 import { getProgramBySlug, getAllSlugs } from "@/data/charityPrograms";
-import SectionDivider from "@/components/ui/SectionDivider";
 import ProgramHero from "@/components/charity/ProgramHero";
 import ProgramAbout from "@/components/charity/ProgramAbout";
 import ProgramHighlights from "@/components/charity/ProgramHighlights";
@@ -108,7 +107,6 @@ export default async function CharityProgramPage({
     <>
       <ProgramHero title={title} heroImage={heroImg} />
 
-      <SectionDivider accent />
 
       <ProgramAbout
         title={title}
@@ -117,19 +115,15 @@ export default async function CharityProgramPage({
         body={body}
       />
 
-      <SectionDivider accent />
 
       <ProgramHighlights highlights={highlights} />
 
-      <SectionDivider accent />
 
       <ProgramGallery gallery={gallery} title={title} />
 
-      <SectionDivider accent />
 
       <ProgramScripture text={scripture.text} reference={scripture.reference} />
 
-      <SectionDivider accent />
 
       <ProgramCTA
         ctaTitle={ctaTitle}

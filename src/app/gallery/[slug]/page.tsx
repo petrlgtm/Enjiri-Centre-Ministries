@@ -68,7 +68,7 @@ export default async function GalleryDetailPage({
                 {gallery.category}
               </span>
             )}
-            <h1 className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl">
+            <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
               {gallery.title}
             </h1>
             {gallery.description && (

@@ -28,7 +28,7 @@ export default function ProgramHero({ title, heroImage }: ProgramHeroProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl"
+              className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl"
             >
               {title}
             </motion.h1>

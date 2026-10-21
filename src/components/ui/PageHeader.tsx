@@ -1,132 +1,79 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
+import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
   label: string;
   title: string;
   description: string;
   backgroundImage?: string;
+  /** Colour of the section that follows — the lead image straddles into it. */
+  nextTone?: "cream" | "navy";
 }
 
-function SplitTitle({ text }: { text: string }) {
-  const words = text.split(" ");
-  return (
-    <>
-      {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden">
-          <motion.span
-            initial={{ y: "110%", opacity: 0 }}
-            animate={{ y: "0%", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.15 + i * 0.06,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="inline-block"
-          >
-            {word}
-          </motion.span>
-          {i < words.length - 1 && "\u00A0"}
-        </span>
-      ))}
-    </>
-  );
-}
+const ease = [0.22, 1, 0.36, 1] as const;
 
-export default function PageHeader({
-  label,
-  title,
-  description,
-  backgroundImage,
-}: PageHeaderProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+/** Editorial page opener: kicker, display title with a gold italic last word, standfirst, and an optional lead image band. */
+export default function PageHeader({ label, title, description, backgroundImage, nextTone = "cream" }: PageHeaderProps) {
+  const words = title.trim().split(" ");
+  const lead = words.slice(0, -1).join(" ");
+  const accent = words[words.length - 1];
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
-      {/* Background */}
-      {backgroundImage ? (
-        <>
-          <div className="absolute inset-0">
-            <Image
-              src={backgroundImage}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-navy/75" />
-        </>
-      ) : (
-        <div className="absolute inset-0 bg-navy" />
-      )}
+    <section className="relative overflow-hidden bg-navy">
+      <div aria-hidden className="hero-editorial-glow absolute inset-0" />
+      <div aria-hidden className="noise-overlay pointer-events-none absolute inset-0" />
 
-      {/* Noise texture */}
-      <div className="noise-overlay absolute inset-0" />
+      <Container className="relative pt-40 pb-12 sm:pt-44 lg:pb-14">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+          className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light"
+        >
+          <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
+          {label}
+        </motion.p>
 
-      {/* Subtle pattern grid */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.03 }}
-        transition={{ duration: 1.5 }}
-        className="pattern-grid absolute inset-0"
-      />
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-navy to-transparent" />
-
-      {/* Content */}
-      <Container className="relative z-10">
-        <motion.div style={{ opacity }} className="mx-auto max-w-3xl text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 15, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block border border-gold/25 bg-gold/[0.1] px-4 py-1.5 text-[10px] sm:px-5 sm:py-2 sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-gold backdrop-blur-sm"
+        <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1, ease }}
+            className="font-display text-4xl leading-[1.05] font-semibold text-white sm:text-5xl lg:col-span-8 lg:text-[4rem]"
           >
-            {label}
-          </motion.span>
-
-          <h1 className="mt-5 sm:mt-6 font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] sm:leading-[1.05]">
-            <SplitTitle text={title} />
-          </h1>
-
-          {/* Decorative divider */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-7 flex origin-center items-center justify-center gap-3"
-          >
-            <span className="h-px w-16 bg-linear-to-r from-transparent to-gold/50" />
-            <motion.span
-              animate={{ rotate: [0, 180, 360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="h-2 w-2 rotate-45 bg-red/80"
-            />
-            <span className="h-px w-16 bg-linear-to-l from-transparent to-gold/50" />
-          </motion.div>
+            {lead && <>{lead} </>}
+            <em className="not-italic text-gold">{accent}</em>
+          </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-5 sm:mt-6 max-w-xl text-[0.95rem] sm:text-[1.05rem] leading-[1.7] sm:leading-[1.75] text-foreground/75"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease }}
+            className="max-w-md border-l-2 border-gold/60 pl-5 text-base leading-relaxed text-white/70 lg:col-span-4 lg:pb-3"
           >
             {description}
           </motion.p>
-        </motion.div>
+        </div>
       </Container>
+
+      {backgroundImage && (
+        <div className={cn("relative", nextTone === "cream" ? "header-straddle-cream" : "header-straddle-navy")}>
+          <Container>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.35, ease }}
+              className="relative aspect-[16/9] overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/8]"
+            >
+              <Image src={backgroundImage} alt="" fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+            </motion.div>
+          </Container>
+        </div>
+      )}
     </section>
   );
 }

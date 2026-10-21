@@ -96,7 +96,7 @@ export default async function BlogPostPage({
                 ))}
               </div>
             )}
-            <h1 className="font-(family-name:--font-playfair) text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
               {post.title}
             </h1>
             <div className="mt-4 flex items-center justify-center gap-3 text-sm text-foreground/60">

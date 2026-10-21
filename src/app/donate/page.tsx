@@ -70,7 +70,7 @@ export default async function DonatePage() {
               </div>
             )}
 
-            <h2 className="font-(family-name:--font-playfair) text-xl font-bold text-cream-heading min-[375px]:text-2xl sm:text-3xl">
+            <h2 className="font-display text-xl font-bold text-cream-heading min-[375px]:text-2xl sm:text-3xl">
               {pageData?.waysToGiveHeading || "What would you like to give towards?"}
             </h2>
 
@@ -95,7 +95,7 @@ export default async function DonatePage() {
 
             {/* Scripture quote */}
             <div className="mt-10 border border-black/6 bg-white px-5 py-7 text-center sm:mt-16 sm:p-10">
-              <p className="font-(family-name:--font-playfair) text-base italic leading-relaxed text-cream-body min-[375px]:text-lg sm:text-xl">
+              <p className="font-display text-base italic leading-relaxed text-cream-body min-[375px]:text-lg sm:text-xl">
                 &ldquo;Each of you should give what you have decided in your
                 heart to give, not reluctantly or under compulsion, for God
                 loves a cheerful giver.&rdquo;

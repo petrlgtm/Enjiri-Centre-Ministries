@@ -1,144 +1,83 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 
 interface LeaderProp {
   name: string;
   role: string;
-  bio: string | string[];
+  bio: string;
   image: string;
+  isCutout: boolean;
 }
 
 interface LeadershipTeamProps {
   leaders?: LeaderProp[] | null;
 }
 
-const fallbackLeaders: LeaderProp[] = [
-  {
-    name: "Evangelist Peter Kalagi",
-    role: "President, Enjiri Center Ministries",
-    bio: [
-      "God called Evangelist Kalagi Peter into the ministry of evangelism at the age of 14. He never knew anything about preaching, but the fire to evangelize to people never stopped burning on the inside of him.",
-      "In 2004 Evangelist Kalagi joined a local church in Uganda, Africa; there he started ministering in church through different ministerial departments such as the Choir, the PA system, Youth and Outreach Evangelizing. It was through all those areas of ministry he learnt how to speak in the congregation of the church.",
-      "In 2012 Evangelist Kalagi joined Miracle Center Cathedral, there he learnt many things about ministry operations which developed through prayer and fasting, and much indulgent studying of the Word of God which became his daily bread to date.",
-      "In 2014 Evangelist Kalagi joined the ministerial department of hospitality through which he enjoyed serving the people of God within his local church as well as the community.",
-      "Following hospitality, Evangelist Kalagi's hunger for the things of God continued to grow and so he later joined the leadership training at Miracle Bible College. His passion for winning souls and ever showing the love of God never ceased. The mandate on his life to preach the gospel of Jesus Christ kept increasing.",
-      "Evangelist Kalagi started holding crusades on a small scale, through hospital outreach, visiting the orphans, the elderly, schools and started house to house fellowships. The fire of God never ceased from manifesting throughout his life and ministry, with bodies healed supernaturally and hearts set free by the Power of Almighty God. Evangelist Kalagi has travelled extensively preaching and teaching, leading many souls to Christ both locally and internationally.",
-    ],
-    image: "https://cdn.sanity.io/images/shcw5txc/production/9ca44c73618b843e4103a08e2f15f71fc8a50d0d-1730x1148.jpg?w=400&q=80&fm=webp&fit=crop",
-  },
-];
-
-function getBioParagraphs(bio: string | string[]): string[] {
-  if (Array.isArray(bio)) return bio;
+function paragraphs(bio: string) {
   return bio.split("\n").filter((p) => p.trim().length > 0);
 }
 
 export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
-  const displayLeaders = leaders && leaders.length > 0 ? leaders : fallbackLeaders;
+  if (!leaders?.length) return null;
+  const [head, ...others] = leaders;
+  const [lead, ...rest] = paragraphs(head.bio);
 
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
-      <Container>
-        <SectionHeading
-          label="Our Shepherds"
-          title="Meet the Leadership"
-          subtitle="Dedicated leaders who shepherd and serve our church family with love, wisdom, and integrity."
-        />
+    <section className="relative overflow-hidden bg-navy pt-6 pb-14 sm:pt-8 sm:pb-16">
+      <div aria-hidden className="hero-editorial-glow absolute inset-0" />
+      <Container className="relative">
+        <SectionMasthead label="Our Shepherds" index="02" tone="dark" />
 
-        {/* Asymmetric layout: Senior Pastor wide, others in 3-column row */}
-        <div className="space-y-6">
-          {/* Senior Pastor — wide horizontal card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="group cursor-pointer overflow-hidden bg-navy shadow-lg"
-          >
-            <div className="flex flex-col sm:flex-row">
-              <div className="relative aspect-3/4 sm:aspect-auto sm:w-[45%] overflow-hidden">
-                <Image
-                  src={displayLeaders[0].image}
-                  alt={displayLeaders[0].name}
-                  fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.06]"
-                  sizes="(max-width: 640px) 100vw, 45vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t sm:bg-linear-to-r from-navy/70 via-navy/30 to-transparent" />
-                <div className="absolute inset-0 bg-linear-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
-              <div className="flex flex-col justify-center p-8 sm:w-[55%] sm:p-10">
-                <span className="mb-2 inline-block w-fit bg-gold/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold border border-gold/10">
-                  President &amp; Founder
-                </span>
-                <h3 className="font-(family-name:--font-playfair) text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
-                  {displayLeaders[0].name}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-gold">
-                  {displayLeaders[0].role}
-                </p>
-                <div className="mt-4 space-y-3">
-                  {getBioParagraphs(displayLeaders[0].bio).map((paragraph, i) => (
-                    <p key={i} className="text-sm leading-[1.75] text-foreground/70">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="relative mx-auto h-[30rem] w-full max-w-md sm:h-[38rem] lg:sticky lg:top-32 lg:col-span-5 lg:h-[46rem] lg:max-w-none">
+            <Image
+              src={head.image}
+              alt={head.name}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className={head.isCutout ? "object-contain object-bottom" : "object-cover object-top"}
+            />
+          </Reveal>
 
-          {/* Other leaders — 3-column grid */}
-          {displayLeaders.length > 1 && (
-            <div className="grid gap-6 sm:grid-cols-3">
-              {displayLeaders.slice(1).map((leader, index) => (
-                <motion.div
-                  key={leader.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="group cursor-pointer overflow-hidden bg-navy shadow-lg"
-                >
-                  <div className="relative aspect-3/4 sm:aspect-4/3 overflow-hidden">
-                    <Image
-                      src={leader.image}
-                      alt={leader.name}
-                      fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.06]"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-navy via-navy/30 to-transparent" />
-                    <div className="absolute inset-0 bg-linear-to-t from-gold/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold-light">
-                      {leader.name}
-                    </h3>
-                    <p className="mt-1 text-sm font-semibold text-gold">
-                      {leader.role}
-                    </p>
-                    <div className="mt-3 space-y-2">
-                      {getBioParagraphs(leader.bio).map((paragraph, i) => (
-                        <p key={i} className="text-sm leading-relaxed text-foreground/70">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+          <div className="lg:col-span-7 lg:pt-10">
+            <Reveal>
+              <p className="font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">{head.role}</p>
+              <h2 className="mt-4 font-display text-4xl leading-tight font-semibold text-white sm:text-5xl">{head.name}</h2>
+              {lead && <p className="mt-8 font-display text-2xl leading-snug text-white/90 sm:text-[1.7rem]">{lead}</p>}
+            </Reveal>
+            {rest.length > 0 && (
+              <Reveal delay={0.1} className="mt-8 gap-10 text-[15px] leading-[1.85] text-white/65 md:columns-2">
+                {rest.map((p, i) => (
+                  <p key={i} className="mb-4 break-inside-avoid">
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            )}
+          </div>
         </div>
+
+        {others.length > 0 && (
+          <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {others.map((l, i) => (
+              <Reveal as="li" key={l.name} delay={i * 0.08}>
+                <div className="relative aspect-4/5 overflow-hidden bg-navy-mid">
+                  <Image
+                    src={l.image}
+                    alt={l.name}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className={l.isCutout ? "object-contain object-bottom" : "object-cover object-top"}
+                  />
+                </div>
+                <p className="mt-4 font-display text-2xl text-white">{l.name}</p>
+                <p className="mt-1 font-mono text-[11px] tracking-[0.16em] text-gold-light uppercase">{l.role}</p>
+              </Reveal>
+            ))}
+          </ul>
+        )}
       </Container>
     </section>
   );

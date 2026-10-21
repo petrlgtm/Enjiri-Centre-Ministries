@@ -26,6 +26,14 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'campaignImage',
+      title: 'Featured Campaign Image',
+      type: 'image',
+      description: 'Photo beside the "I Am A Soul Winner" campaign section',
+      options: { hotspot: true },
+      fields: [defineField({ name: 'alt', title: 'Alternative Text', type: 'string' })],
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO Settings',
       type: 'seo',

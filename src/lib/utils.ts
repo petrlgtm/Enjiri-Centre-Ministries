@@ -139,3 +139,12 @@ export function generateICS({
 
   return `data:text/calendar;charset=utf-8,${encodeURIComponent(lines)}`;
 }
+
+/** YouTube titles arrive as "TITLE - SPEAKER | CHANNEL" in capitals; keep the title part, title-cased. */
+export function cleanVideoTitle(raw: string): string {
+  const title = raw.split("|")[0].trim();
+  if (title !== title.toUpperCase()) return title;
+  return title
+    .toLowerCase()
+    .replace(/(^|[\s(-])(\p{L})/gu, (_, pre: string, ch: string) => pre + ch.toUpperCase());
+}

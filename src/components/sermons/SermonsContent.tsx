@@ -3,16 +3,15 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { HiPlay, HiMusicNote } from "react-icons/hi";
 import Container from "@/components/ui/Container";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import PageHeader from "@/components/ui/PageHeader";
 import SermonCard from "@/components/sermons/SermonCard";
 import SermonFilter, { type DateRange } from "@/components/sermons/SermonFilter";
-import SermonPlayerPanel from "@/components/sermons/SermonPlayerPanel";
-import Button from "@/components/ui/Button";
+import { usePlayer, type PlayerItem } from "@/components/player/PlayerProvider";
 import { fetchYouTubeVideos, searchYouTubeVideos, type YouTubeVideo } from "@/lib/youtube";
-import { formatDate, getYouTubeVideoId, cn } from "@/lib/utils";
+import { formatDate, getYouTubeVideoId, cleanVideoTitle } from "@/lib/utils";
 
 const featuredFallbackImage =
   "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=800&q=80&fm=webp&fit=crop";
@@ -41,13 +40,23 @@ interface SermonItem {
 
 function youtubeToSermon(video: YouTubeVideo): SermonItem {
   return {
-    title: video.title,
-    speaker: video.channelTitle,
+    title: cleanVideoTitle(video.title),
+    speaker: video.channelTitle.trim(),
     date: formatDate(video.publishedAt),
     rawDate: video.publishedAt,
     slug: video.id,
     thumbnail: video.thumbnail,
     videoUrl: video.videoUrl,
+  };
+}
+
+function toPlayerItem(s: SermonItem): PlayerItem {
+  return {
+    id: getYouTubeVideoId(s.videoUrl ?? "") ?? s.slug,
+    title: s.title,
+    subtitle: s.speaker,
+    date: s.date,
+    thumbnail: s.thumbnail,
   };
 }
 
@@ -81,10 +90,10 @@ export default function SermonsContent({
   const [searchResults, setSearchResults] = useState<SermonItem[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false);
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(30);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const playerRef = useRef<HTMLDivElement>(null);
+  const { current, play } = usePlayer();
+  const selectedSlug = current?.id ?? null;
 
   // Load channel videos (up to 1000 from the cache)
   useEffect(() => {
@@ -103,27 +112,15 @@ export default function SermonsContent({
     return () => { cancelled = true; };
   }, []);
 
-  // Deep-link: ?play=VIDEO_ID
+  // Deep-link: ?play=VIDEO_ID opens the theatre once the list has loaded
+  const deepLinked = useRef(false);
   useEffect(() => {
-    const playParam = searchParams.get("play");
-    if (playParam) {
-      setSelectedSlug(playParam);
-    }
-  }, [searchParams]);
-
-  // Scroll to player when selected
-  useEffect(() => {
-    if (selectedSlug && playerRef.current) {
-      const timer = setTimeout(() => {
-        const el = playerRef.current;
-        if (!el) return;
-        const navbarHeight = window.innerWidth >= 1024 ? 96 : 80;
-        const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
-        window.scrollTo({ top, behavior: "smooth" });
-      }, 550);
-      return () => clearTimeout(timer);
-    }
-  }, [selectedSlug]);
+    const id = searchParams.get("play");
+    if (!id || deepLinked.current || youtubeSermons.length === 0) return;
+    const match = youtubeSermons.find((s) => s.slug === id);
+    deepLinked.current = true;
+    play(match ? toPlayerItem(match) : { id, title: "Sermon" }, youtubeSermons.map(toPlayerItem));
+  }, [searchParams, youtubeSermons, play]);
 
   // Debounced YouTube search
   const handleSearchChange = useCallback((value: string) => {
@@ -151,18 +148,10 @@ export default function SermonsContent({
   const gridSermons = featuredSermon ? baseSermons.slice(1) : baseSermons;
   const filteredSermons = useMemo(() => filterByDateRange(gridSermons, dateRange), [gridSermons, dateRange]);
   
+  const playSermon = (s: SermonItem) => play(toPlayerItem(s), baseSermons.map(toPlayerItem));
+
   const displaySermons = useMemo(() => filteredSermons.slice(0, visibleCount), [filteredSermons, visibleCount]);
   const hasMore = filteredSermons.length > visibleCount;
-
-  const selectedSermon: SermonItem | null = selectedSlug
-    ? (youtubeSermons.find((s) => s.slug === selectedSlug) ??
-       baseSermons.find((s) => s.slug === selectedSlug) ??
-       null)
-    : null;
-
-  const videoId = selectedSermon
-    ? (getYouTubeVideoId(selectedSermon.videoUrl ?? "") ?? selectedSermon.slug)
-    : null;
 
   return (
     <>
@@ -173,113 +162,50 @@ export default function SermonsContent({
         backgroundImage={headerImage}
       />
 
-      <section className="relative overflow-hidden py-28">
+      <section className="bg-cream pt-14 pb-16 text-cream-heading sm:pt-16 sm:pb-20">
         <Container>
-          {/* Player panel */}
-          <div ref={playerRef}>
-            {selectedSermon && videoId && (
-              <SermonPlayerPanel
-                videoId={videoId}
-                title={selectedSermon.title}
-                thumbnail={selectedSermon.thumbnail}
-                speaker={selectedSermon.speaker}
-                date={selectedSermon.date}
-                onClose={() => setSelectedSlug(null)}
-              />
-            )}
-          </div>
+          <SectionMasthead label={featuredLabel} index="01" />
 
           {/* Featured latest sermon */}
           {loading && !featuredSermon ? (
-            <div className="mb-10 animate-pulse bg-(--gray-100) border border-white/6">
-              <div className="flex flex-col md:flex-row">
-                <div className="aspect-video w-full md:w-1/2 bg-(--gray-200)" />
-                <div className="flex-1 p-8 space-y-4">
-                  <div className="h-5 w-28 bg-(--gray-200)" />
-                  <div className="h-8 w-3/4 bg-(--gray-200)" />
-                  <div className="h-4 w-1/2 bg-(--gray-200)" />
-                  <div className="h-12 w-40 bg-(--gray-200)" />
-                </div>
+            <div className="mt-10 mb-16 grid animate-pulse gap-10 lg:grid-cols-12">
+              <div className="aspect-video bg-cream-heading/10 lg:col-span-7" />
+              <div className="space-y-4 lg:col-span-5">
+                <div className="h-4 w-32 bg-cream-heading/10" />
+                <div className="h-10 w-3/4 bg-cream-heading/10" />
               </div>
             </div>
           ) : featuredSermon ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-10"
+            <button
+              type="button"
+              onClick={() => playSermon(featuredSermon)}
+              className="group mt-10 mb-16 grid w-full gap-8 text-left lg:grid-cols-12 lg:items-center lg:gap-12"
             >
-              <button
-                type="button"
-                onClick={() => setSelectedSlug(featuredSermon.slug)}
-                className={cn(
-                  "card-premium group block w-full overflow-hidden  border bg-(--gray-100) text-left shadow-lg ring-1 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30",
-                  selectedSlug === featuredSermon.slug
-                    ? "border-gold/40 ring-gold/30 shadow-gold-glow"
-                    : "border-white/6 ring-transparent hover:ring-2 hover:ring-gold/30"
-                )}
-              >
-                <div className="flex flex-col md:flex-row">
-                  {/* Thumbnail */}
-                  <div className="relative aspect-video w-full md:w-1/2 overflow-hidden">
-                    <Image
-                      src={featuredSermon.thumbnail || featuredFallbackImage}
-                      alt={featuredSermon.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-all duration-900 ease-out group-hover:scale-[1.06] group-hover:brightness-90"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-navy/10 to-transparent md:bg-linear-to-r md:from-transparent md:via-navy/5 md:to-navy/40" />
-
-                    {/* Large play overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gold/20 animate-ping" style={{ animationDuration: "2.5s" }} />
-                        <motion.div
-                          whileHover={{ scale: 1.15 }}
-                          transition={{ type: "spring", bounce: 0.5 }}
-                          className="relative flex h-20 w-20 items-center justify-center bg-gold/90 text-navy shadow-[0_4px_30px_rgba(201,168,76,0.5)] transition-all duration-500 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.7)]"
-                        >
-                          <HiPlay size={36} className="ml-1" />
-                        </motion.div>
-                      </div>
-                    </div>
-
-                    {/* Now Playing badge on thumbnail */}
-                    {selectedSlug === featuredSermon.slug && (
-                      <div className="absolute top-4 right-4">
-                        <span className="flex items-center gap-1.5 bg-gold px-3.5 py-1.5 text-xs font-bold tracking-wide text-navy">
-                          <HiMusicNote size={14} className="animate-pulse" />
-                          Now Playing
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-1 flex-col justify-center p-7 md:p-10">
-                    <span className="mb-3 inline-flex w-fit items-center gap-1.5 border border-gold/30 bg-gold/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-widest text-gold">
-                      {featuredLabel}
-                    </span>
-                    <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-gold md:text-3xl line-clamp-2">
-                      {featuredSermon.title}
-                    </h3>
-                    <div className="mt-3 flex items-center gap-2 text-sm text-(--gray-500)">
-                      <span className="font-medium">{featuredSermon.speaker}</span>
-                      <span className="h-1 w-1 bg-(--gray-300)" />
-                      <span>{featuredSermon.date}</span>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold opacity-70 transition-opacity duration-500 group-hover:opacity-100">
-                      <HiPlay size={14} />
-                      <span>{selectedSlug === featuredSermon.slug ? "Playing Now" : "Watch Now"}</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </motion.div>
+              <span className="relative block aspect-video overflow-hidden bg-navy lg:col-span-7">
+                <Image
+                  src={featuredSermon.thumbnail || featuredFallbackImage}
+                  alt={featuredSermon.title}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+                <span className="absolute bottom-0 left-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy">
+                  {selectedSlug === featuredSermon.slug ? <HiMusicNote size={16} className="animate-pulse" /> : <HiPlay size={16} />}
+                  {selectedSlug === featuredSermon.slug ? "Playing now" : "Watch now"}
+                </span>
+              </span>
+              <span className="lg:col-span-5">
+                <span className="block font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">{featuredSermon.date}</span>
+                <span className="mt-4 block font-display text-3xl leading-[1.12] font-semibold transition-colors duration-300 group-hover:text-gold-dark sm:text-4xl">
+                  {featuredSermon.title}
+                </span>
+                <span className="mt-4 block text-sm text-cream-muted">{featuredSermon.speaker}</span>
+              </span>
+            </button>
           ) : null}
 
+          <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-heading">The library</p>
           <SermonFilter
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
@@ -288,41 +214,40 @@ export default function SermonsContent({
           />
 
           {(loading && youtubeSermons.length === 0) || searching ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="aspect-4/5 animate-pulse bg-(--gray-100)" />
+                <div key={i} className="aspect-video animate-pulse bg-cream-heading/10" />
               ))}
             </div>
           ) : displaySermons.length > 0 ? (
             <>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
                 {displaySermons.map((sermon, index) => (
                   <SermonCard
                     key={sermon.slug}
                     {...sermon}
                     index={index}
                     isActive={selectedSlug === sermon.slug}
-                    onClick={() => setSelectedSlug(sermon.slug)}
+                    onClick={() => playSermon(sermon)}
                   />
                 ))}
               </div>
               
               {hasMore && (
-                <div className="mt-16 flex justify-center">
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    onClick={() => setVisibleCount(prev => prev + 30)}
-                    className="min-w-[200px] border-gold/30 text-gold hover:bg-gold hover:text-navy"
+                <div className="mt-14 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setVisibleCount((prev) => prev + 30)}
+                    className="bg-cream-heading px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:bg-gold-dark"
                   >
-                    Load More Teachings
-                  </Button>
+                    Load more teachings
+                  </button>
                 </div>
               )}
             </>
           ) : (
             <div className="py-20 text-center">
-              <p className="text-lg text-(--gray-500)">
+              <p className="font-display text-2xl text-cream-body">
                 No sermons found matching your search.
               </p>
             </div>

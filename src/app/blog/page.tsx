@@ -86,7 +86,7 @@ export default async function BlogPage() {
                         ))}
                       </div>
                     )}
-                    <h2 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
+                    <h2 className="font-display text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
                       {post.title}
                     </h2>
                     {post.excerpt && (

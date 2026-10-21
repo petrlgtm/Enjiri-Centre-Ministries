@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { HiClock } from "react-icons/hi";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 
 const schedule = [
   {
@@ -16,9 +13,7 @@ const schedule = [
   },
   {
     day: "Wednesday",
-    services: [
-      { name: "Bible Study & Prayer", time: "6:00 PM - 8:00 PM" },
-    ],
+    services: [{ name: "Bible Study & Prayer", time: "6:00 PM - 8:00 PM" }],
   },
   {
     day: "Friday",
@@ -43,96 +38,56 @@ interface ServiceScheduleProps {
 
 export default function ServiceSchedule({ image, heading }: ServiceScheduleProps) {
   return (
-    <section className="relative overflow-hidden py-32">
+    <section className="bg-cream pt-14 pb-24 text-cream-heading sm:pt-16 sm:pb-28">
       <Container>
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
-          {/* Left side */}
-          <div className="lg:w-1/2">
-            <SectionHeading
-              label="Join Us"
-              title={heading || "Weekly Services"}
-              centered={false}
-            />
+        <SectionMasthead label="Every Week" index="01" />
 
-            <p className="mb-8 max-w-md text-[1.05rem] leading-[1.75] text-(--gray-400)">
-              Join us throughout the week for worship, prayer, and fellowship.
-              Every gathering is an opportunity to grow in faith and community.
+        <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="lg:col-span-5">
+            <h2 className="font-display text-3xl leading-[1.1] font-semibold sm:text-4xl">
+              {heading || "Weekly Services"}
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-cream-body">
+              Join us throughout the week for worship, prayer, and fellowship. Every gathering is an opportunity to grow
+              in faith and community.
             </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative aspect-16/10 sm:aspect-4/3 overflow-hidden"
-            >
-              <Image
-                src={image || "https://cdn.sanity.io/images/shcw5txc/production/503bd41a2cbebbe9e604a843a56b91c93ba7b3ce-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop"}
-                alt="Congregation gathered in worship"
-                fill
-                className="object-cover transition-all duration-900 group-hover:scale-[1.08]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-navy/30 to-transparent" />
-              <div className="noise-overlay absolute inset-0" />
-
-              {/* Scripture overlay with glass effect */}
-              <div className="absolute inset-x-4 bottom-4">
-                <div className="glass p-5">
-                  <p className="font-(family-name:--font-playfair) text-sm leading-relaxed text-foreground/90 italic">
-                    &ldquo;For where two or three gather in my name, there am I
-                    with them.&rdquo;
-                  </p>
-                  <p className="mt-1.5 text-xs font-semibold text-gold/80">Matthew 18:20</p>
+            {image && (
+              <figure className="mt-10">
+                <div className="relative aspect-4/5 max-w-sm overflow-hidden">
+                  <Image src={image} alt="Congregation gathered in worship" fill sizes="384px" className="object-cover" />
                 </div>
-              </div>
-            </motion.div>
-          </div>
+                <figcaption className="mt-5 max-w-sm">
+                  <span className="block font-display text-xl leading-snug italic">
+                    &ldquo;For where two or three gather in my name, there am I with them.&rdquo;
+                  </span>
+                  <span className="mt-2 block font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">
+                    Matthew 18:20
+                  </span>
+                </figcaption>
+              </figure>
+            )}
+          </Reveal>
 
-          {/* Right side — schedule cards */}
-          <div className="space-y-4 lg:w-1/2">
-            {schedule.map((item, index) => (
-              <motion.div
+          <ol className="lg:col-span-7">
+            {schedule.map((item, i) => (
+              <Reveal
+                as="li"
                 key={item.day}
-                initial={{ opacity: 0, x: 50, filter: "blur(4px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.12,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="card-3d card-premium group overflow-hidden border border-white/6 border-l-2 border-l-gold bg-(--gray-100)"
+                delay={i * 0.06}
+                className="grid gap-4 border-b border-cream-heading/12 py-7 first:pt-0 sm:grid-cols-[9rem_1fr]"
               >
-                <div className="p-6">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-(family-name:--font-playfair) text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold">
-                      {item.day}
-                    </h3>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-(--gray-400)">
-                      {item.services.length} {item.services.length === 1 ? "service" : "services"}
-                    </span>
-                  </div>
-                  <div className="mt-4 space-y-3">
-                    {item.services.map((service) => (
-                      <div
-                        key={service.name}
-                        className="flex items-center justify-between gap-4 bg-(--gray-50) px-4 py-3 transition-all duration-300 group-hover:bg-gold/4"
-                      >
-                        <span className="text-[0.9rem] font-medium text-(--gray-600)">
-                          {service.name}
-                        </span>
-                        <span className="flex shrink-0 items-center gap-2 text-sm text-(--gray-500)">
-                          <HiClock size={14} className="text-gold/60" />
-                          {service.time}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+                <span className="font-display text-5xl leading-none font-semibold text-gold-dark">{item.day.slice(0, 3)}</span>
+                <ul className="space-y-3">
+                  {item.services.map((s) => (
+                    <li key={s.name} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span className="font-display text-2xl">{s.name}</span>
+                      <span className="font-mono text-xs text-cream-muted">{s.time}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </Container>
     </section>

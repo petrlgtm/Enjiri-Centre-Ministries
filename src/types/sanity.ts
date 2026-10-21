@@ -169,6 +169,7 @@ export interface CharityPageData {
   title?: string;
   description?: string;
   headerImage?: SanityImage;
+  campaignImage?: SanityImage;
   seo?: SEO;
 }
 
@@ -215,6 +216,7 @@ export interface Leader {
   email?: string;
   featured?: boolean;
   image?: SanityImage;
+  imageCutout?: SanityImage;
   seo?: SEO;
 }
 

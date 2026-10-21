@@ -1,218 +1,109 @@
-"use client";
-
-import { motion } from "framer-motion";
-import {
-  HiEye,
-  HiLightBulb,
-  HiGlobe,
-  HiStar,
-  HiShieldCheck,
-  HiHeart,
-  HiBookOpen,
-} from "react-icons/hi";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 
 const defaultCoreValues = [
-  {
-    icon: HiStar,
-    title: "Faith",
-    description: "Living by faith and trusting in God's promises for our lives.",
-  },
-  {
-    icon: HiHeart,
-    title: "Love",
-    description: "Demonstrating Christ's unconditional love in all we do.",
-  },
-  {
-    icon: HiShieldCheck,
-    title: "Integrity",
-    description: "Walking in truth and transparency before God and man.",
-  },
-  {
-    icon: HiLightBulb,
-    title: "Excellence",
-    description: "Serving God and people with the highest standard of excellence.",
-  },
+  { title: "Faith", description: "Living by faith and trusting in God's promises for our lives." },
+  { title: "Love", description: "Demonstrating Christ's unconditional love in all we do." },
+  { title: "Integrity", description: "Walking in truth and transparency before God and man." },
+  { title: "Excellence", description: "Serving God and people with the highest standard of excellence." },
 ];
 
-const icons = [HiStar, HiHeart, HiShieldCheck, HiLightBulb, HiGlobe, HiBookOpen];
+const defaultBeliefs = [
+  "We believe in the Triune God. God the Father, God the Son and God the Holy Spirit.",
+  "We believe in the death, burial and resurrection of the Lord Jesus Christ.",
+  "We believe in the baptism of water and the baptism of the Holy Spirit.",
+];
+
+interface Statement {
+  text: string;
+  scripture?: string;
+}
 
 interface VisionMissionProps {
-  vision?: { text: string; scripture?: string };
-  mission?: { text: string; scripture?: string };
-  commission?: { text: string; scripture?: string };
+  vision?: Statement;
+  mission?: Statement;
+  commission?: Statement;
   statementOfFaith?: { text: string; beliefs: string[] };
   coreValues?: Array<{ title: string; description: string }>;
 }
 
 export default function VisionMission({ vision, mission, commission, statementOfFaith, coreValues }: VisionMissionProps) {
-  const displayCoreValues = coreValues && coreValues.length > 0
-    ? coreValues.map((v, i) => ({
-        ...v,
-        icon: icons[i % icons.length],
-      }))
-    : defaultCoreValues;
+  const statements = [
+    {
+      label: "Vision",
+      text: vision?.text || "Preaching Christ and Restoring Hope through the power of the Holy Spirit.",
+      scripture: vision ? vision.scripture : "Colossians 1:27, 1 Corinthians 2:4",
+    },
+    {
+      label: "Mission",
+      text: mission?.text || "Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations.",
+      scripture: mission ? mission.scripture : "Luke 24:47",
+    },
+    {
+      label: "Commission",
+      text:
+        commission?.text ||
+        "Proclaiming to all the Nations that God made Jesus both Lord and Christ, who is the only way, the truth and the Life.",
+      scripture: commission ? commission.scripture : "Acts 2:36, John 14:6",
+    },
+  ];
+  const values = coreValues && coreValues.length > 0 ? coreValues : defaultCoreValues;
+  const beliefs = statementOfFaith?.beliefs?.length ? statementOfFaith.beliefs : defaultBeliefs;
 
   return (
-    <section className="relative overflow-hidden bg-cream py-24 lg:py-32">
-
+    <section className="bg-cream pt-6 pb-14 text-cream-heading sm:pt-8 sm:pb-16">
       <Container>
-        {/* Vision & Mission — side by side */}
-        <div className="grid gap-10 md:grid-cols-2 lg:gap-16">
-          {/* Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="border border-black/6 bg-white p-8 lg:p-10"
-          >
-            <div className="flex h-12 w-12 items-center justify-center bg-gold-dark/10 border border-gold-dark/15">
-              <HiEye className="text-gold-dark" size={24} />
-            </div>
-            <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
-              Our Vision
-            </h3>
-            <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-              {vision?.text || "Preaching Christ and Restoring Hope through the power of the Holy Spirit."}
+        <SectionMasthead label="What We Believe" index="03" />
+
+        <ol className="mt-10">
+          {statements.map((s, i) => (
+            <Reveal
+              as="li"
+              key={s.label}
+              delay={i * 0.06}
+              className="grid gap-4 py-8 md:grid-cols-[4rem_10rem_1fr_12rem] md:items-baseline md:gap-8"
+            >
+              <span className="font-display text-4xl font-semibold text-gold">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-heading">Our {s.label}</span>
+              <p className="font-display text-2xl leading-snug sm:text-[1.5rem]">{s.text}</p>
+              {s.scripture && (
+                <span className="font-mono text-[11px] tracking-[0.14em] text-gold-dark uppercase md:text-right">{s.scripture}</span>
+              )}
+            </Reveal>
+          ))}
+        </ol>
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="bg-navy p-8 text-white sm:p-10 lg:col-span-7">
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light">
+              <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
+              Statement of Faith
             </p>
-            {vision?.scripture && (
-              <p className="mt-3 text-sm italic text-gold-dark/70">
-                {vision.scripture}
-              </p>
-            )}
-            {!vision && (
-              <p className="mt-3 text-sm italic text-gold-dark/70">
-                Colossians 1:27, 1 Corinthians 2:4
-              </p>
-            )}
-          </motion.div>
-
-          {/* Mission */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="border border-black/6 bg-white p-8 lg:p-10"
-          >
-            <div className="flex h-12 w-12 items-center justify-center bg-gold-dark/10 border border-gold-dark/15">
-              <HiLightBulb className="text-gold-dark" size={24} />
-            </div>
-            <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
-              Our Mission
-            </h3>
-            <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-              {mission?.text || "Ministering the Gospel of our Lord Jesus Christ through repentance and remission of sins to all nations."}
+            <p className="mt-6 font-display text-2xl leading-snug">
+              {statementOfFaith?.text ||
+                "We are a ministry called to evangelize, equip and disciple people locally and internationally with the approach of God's Word through love."}
             </p>
-            {mission?.scripture && (
-              <p className="mt-3 text-sm italic text-gold-dark/70">
-                {mission.scripture}
-              </p>
-            )}
-            {!mission && (
-              <p className="mt-3 text-sm italic text-gold-dark/70">
-                Luke 24:47
-              </p>
-            )}
-          </motion.div>
-        </div>
+            <ul className="mt-8 space-y-4">
+              {beliefs.map((b, i) => (
+                <li key={b} className="grid grid-cols-[2.5rem_1fr] gap-3 text-[15px] leading-relaxed text-white/70">
+                  <span className="font-mono text-xs text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-        {/* Commission — full width */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 border border-black/6 bg-white p-8 lg:p-10"
-        >
-          <div className="flex h-12 w-12 items-center justify-center bg-gold-dark/10 border border-gold-dark/15">
-            <HiGlobe className="text-gold-dark" size={24} />
-          </div>
-          <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
-            Our Commission
-          </h3>
-          <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-            {commission?.text || "Proclaiming to all the Nations that God made Jesus both Lord and Christ, who is the only way, the truth and the Life. Who never came to condemn the world but to save and give Eternal Life through His death, burial and triumphant resurrection. He paid the ultimate sacrifice for all mankind."}
-          </p>
-          {commission?.scripture && (
-            <p className="mt-3 text-sm italic text-gold-dark/70">
-              {commission.scripture}
-            </p>
-          )}
-          {!commission && (
-            <p className="mt-3 text-sm italic text-gold-dark/70">
-              Acts 2:36, John 14:6
-            </p>
-          )}
-        </motion.div>
-
-        {/* Statement of Faith */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 border border-black/6 bg-white p-8 lg:p-10"
-        >
-          <div className="flex h-12 w-12 items-center justify-center bg-gold-dark/10 border border-gold-dark/15">
-            <HiBookOpen className="text-gold-dark" size={24} />
-          </div>
-          <h3 className="mt-5 font-(family-name:--font-playfair) text-2xl font-bold text-cream-heading">
-            Statement of Faith
-          </h3>
-          <p className="mt-4 text-[0.95rem] leading-[1.85] text-cream-body">
-            {statementOfFaith?.text || "We are a ministry called to evangelize, equip and disciple people locally and internationally with the approach of God's Word through love."}
-          </p>
-          <ul className="mt-4 space-y-3">
-            {(statementOfFaith?.beliefs || [
-              "We believe in the Triune God. God the Father, God the Son and God the Holy Spirit.",
-              "We believe in the death, burial and resurrection of the Lord Jesus Christ.",
-              "We believe in the baptism of water and the baptism of the Holy Spirit.",
-            ]).map((belief) => (
-              <li key={belief} className="flex items-start gap-3 text-[0.95rem] leading-[1.85] text-cream-body">
-                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-gold-dark" />
-                <span>{belief}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* Core Values */}
-        <div className="mt-20">
-          <SectionHeading
-            label="What Guides Us"
-            title="Core Values"
-            className="mb-12"
-            onCream
-          />
-
-          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-            {displayCoreValues.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="group border border-black/6 bg-white p-6 text-center transition-all duration-300 hover:border-gold-dark/20 hover:shadow-md"
-              >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center bg-gold-dark/10 text-gold-dark transition-all duration-400 group-hover:bg-gold group-hover:text-black group-hover:shadow-[0_0_16px_rgba(201,168,76,0.2)]">
-                  <value.icon size={22} />
-                </div>
-                <h4 className="mt-4 font-bold text-cream-heading transition-colors duration-300 group-hover:text-gold-dark">
-                  {value.title}
-                </h4>
-                <p className="mt-2 text-sm leading-[1.7] text-cream-body">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+          <div className="lg:col-span-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">Core values</p>
+            <ul className="mt-6 grid gap-x-8 gap-y-8 sm:grid-cols-2">
+              {values.map((v, i) => (
+                <Reveal as="li" key={v.title} delay={i * 0.06}>
+                  <span className="block font-display text-3xl font-semibold">{v.title}</span>
+                  <span className="mt-2 block text-sm leading-relaxed text-cream-body">{v.description}</span>
+                </Reveal>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>

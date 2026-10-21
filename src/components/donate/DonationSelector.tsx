@@ -79,7 +79,7 @@ export default function DonationSelector() {
         <p className="text-xs font-medium text-(--gray-400)">
           {frequency === "one-time" ? "One-time gift" : "Monthly gift"} of
         </p>
-        <p className="mt-1 font-(family-name:--font-playfair) text-2xl font-bold text-gold">
+        <p className="mt-1 font-display text-2xl font-bold text-gold">
           ${selectedAmount ?? (customAmount || "0")}
         </p>
       </div>

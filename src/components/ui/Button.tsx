@@ -32,23 +32,19 @@ export default function Button({
   fullWidth = false,
 }: ButtonProps) {
   const baseStyles =
-    "group relative inline-flex items-center justify-center font-medium tracking-wide  transition-all duration-500 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
+    "group relative inline-flex items-center justify-center font-semibold uppercase tracking-[0.18em] transition-colors duration-300 cursor-pointer overflow-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
 
   const variants = {
-    primary:
-      "bg-linear-to-r from-gold via-gold-light to-gold text-navy shadow-[0_4px_20px_rgba(201,168,76,0.3)] hover:shadow-[0_8px_35px_rgba(201,168,76,0.5)] hover:scale-[1.03] active:scale-[0.97]",
-    secondary:
-      "bg-navy-mid text-foreground shadow-[0_4px_20px_rgba(10,10,10,0.3)] hover:shadow-[0_8px_30px_rgba(10,10,10,0.5)] hover:bg-navy-surface hover:scale-[1.03] active:scale-[0.97]",
-    outline:
-      "border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold/80 hover:scale-[1.03] active:scale-[0.97] hover:shadow-[0_0_30px_rgba(201,168,76,0.12)]",
-    ghost:
-      "text-gold hover:bg-gold/5 hover:scale-[1.03] active:scale-[0.97]",
+    primary: "bg-gold text-navy hover:bg-gold-light",
+    secondary: "bg-navy-mid text-foreground hover:bg-navy-surface",
+    outline: "border border-gold/50 text-gold hover:border-gold hover:bg-gold/10",
+    ghost: "text-gold hover:bg-gold/5",
   };
 
   const sizes = {
-    sm: "px-5 py-2.5 text-sm gap-2",
-    md: "px-7 py-3 text-sm gap-2.5",
-    lg: "px-9 py-4 text-[15px] gap-3",
+    sm: "px-5 py-2.5 text-[11px] gap-2",
+    md: "px-7 py-3.5 text-[11px] gap-2.5",
+    lg: "px-8 py-4 text-[12px] gap-3",
   };
 
   const disabledStyles = disabled
@@ -66,16 +62,6 @@ export default function Button({
 
   const inner = (
     <>
-      {/* Multi-layer shine overlay on hover */}
-      {variant === "primary" && (
-        <>
-          <span className="absolute inset-0 bg-linear-to-r from-transparent via-black/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-          <span className="absolute inset-0 bg-linear-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-100 ease-out" />
-        </>
-      )}
-      {variant === "outline" && (
-        <span className="absolute inset-0 bg-linear-to-r from-transparent via-gold/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-      )}
       <span className="relative flex items-center gap-2.5">
         {icon && (
           <span className="shrink-0 transition-transform duration-300 group-hover:scale-110">

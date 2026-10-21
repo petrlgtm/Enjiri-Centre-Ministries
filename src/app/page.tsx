@@ -1,16 +1,13 @@
 export const revalidate = 60;
 
-import Hero from "@/components/home/Hero";
-import SnapshotBand from "@/components/home/SnapshotBand";
-import MissionSection from "@/components/home/MissionSection";
-import PlanYourVisit from "@/components/home/PlanYourVisit";
-import LatestSermons from "@/components/home/LatestSermons";
-import UpcomingEvents from "@/components/home/UpcomingEvents";
-import MinistriesGrid from "@/components/home/MinistriesGrid";
-import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
-import DonateBand from "@/components/home/DonateBand";
-import ContactInfoCard from "@/components/home/ContactInfoCard";
-import SectionDivider from "@/components/ui/SectionDivider";
+import LeaderHero from "@/components/home/editorial/LeaderHero";
+import CallingSection from "@/components/home/editorial/CallingSection";
+import WordSection, { WordItem } from "@/components/home/editorial/WordSection";
+import GatherDiary from "@/components/home/editorial/GatherDiary";
+import MinistryIndex from "@/components/home/editorial/MinistryIndex";
+import TestimonyFeature from "@/components/home/editorial/TestimonyFeature";
+import PartnerBand from "@/components/home/editorial/PartnerBand";
+import ContactStrip from "@/components/home/editorial/ContactStrip";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import {
   homepageEventsQuery,
@@ -19,9 +16,12 @@ import {
   siteSettingsQuery,
   homePageQuery,
   latestSermonsQuery,
+  allLeadersQuery,
+  allGalleriesQuery,
 } from "@/sanity/queries";
-import { cardImage, heroImage } from "@/sanity/image";
-import { formatDate, formatTime } from "@/lib/utils";
+import { cardImage, portraitImage, urlFor } from "@/sanity/image";
+import { formatDate, formatTime, cleanVideoTitle, getYouTubeVideoId } from "@/lib/utils";
+import youtubeCache from "@/../public/youtube-cache.json";
 import {
   Event,
   Testimony,
@@ -29,45 +29,81 @@ import {
   SiteSettings,
   HomePageData,
   Sermon,
+  Leader,
+  Gallery,
 } from "@/types/sanity";
 
 export default async function HomePage() {
-  const [events, testimonies, ministries, settings, homePage, sermons] = await Promise.all([
+  const [events, testimonies, ministries, settings, homePage, sermons, leaders, galleries] = await Promise.all([
     fetchSanity<Event[]>(homepageEventsQuery),
     fetchSanity<Testimony[]>(allTestimoniesQuery),
     fetchSanity<Ministry[]>(allMinistriesQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<HomePageData>(homePageQuery),
     fetchSanity<Sermon[]>(latestSermonsQuery),
+    fetchSanity<Leader[]>(allLeadersQuery),
+    fetchSanity<Gallery[]>(allGalleriesQuery),
   ]);
 
-  const heroImagesData = homePage?.heroImages?.map(img => ({
-    src: heroImage(img),
-    alt: img.alt
-  })) || [];
-  
-  const visitImageUrl = homePage?.visitImage ? heroImage(homePage.visitImage) : "";
-  const ctaImageUrl = homePage?.ctaImage ? heroImage(homePage.ctaImage) : "";
+  // Editable in Studio (Home Page → Plan Your Visit Image); falls back to the latest gallery cover.
+  const gatherGallery = galleries?.find((g) => g.coverImage);
+  const gatherPhoto = homePage?.visitImage
+    ? { src: portraitImage(homePage.visitImage, 600), alt: homePage.visitImage.alt || "Enjiri Center Ministries" }
+    : gatherGallery?.coverImage
+    ? { src: portraitImage(gatherGallery.coverImage, 600), alt: gatherGallery.coverImage.alt || gatherGallery.title }
+    : null;
 
-  const eventsData = events?.map((e) => ({
-    title: e.title,
-    date: e.isRecurring ? "Every Sunday" : formatDate(e.date),
-    time: formatTime(e.date) + (e.endDate ? ` - ${formatTime(e.endDate)}` : ""),
-    location: e.location || "TBD",
-    description: e.description || "",
-    image: e.image ? cardImage(e.image) : "",
-    accent: e.featured ? "from-gold to-gold-dark" : "from-gold-dark to-gold",
-    featured: e.featured || false,
-  })).filter((e) => e.image);
+  const leader = leaders?.find((l) => l.featured) ?? leaders?.[0];
+  const leaderData = leader && (leader.imageCutout || leader.image)
+    ? {
+        name: leader.name,
+        role: leader.role,
+        isCutout: Boolean(leader.imageCutout),
+        image: leader.imageCutout
+          ? urlFor(leader.imageCutout).auto("format").url()
+          : portraitImage(leader.image, 900),
+        alt: leader.imageCutout?.alt || leader.image?.alt,
+      }
+    : null;
 
-  const sermonsData = sermons?.map((s) => ({
-    title: s.title,
-    speaker: s.speaker?.name || "Pastor",
-    date: formatDate(s.date),
-    series: s.series,
-    slug: s.slug,
-    image: s.thumbnail ? cardImage(s.thumbnail) : "",
-  })).filter((s) => s.image);
+  // Sanity sermons first; fall back to the cached YouTube channel feed.
+  const sanitySermons: WordItem[] = (sermons ?? [])
+    .filter((s) => s.thumbnail)
+    .map((s) => ({
+      title: s.title,
+      speaker: s.speaker?.name,
+      date: formatDate(s.date),
+      videoId: getYouTubeVideoId(s.videoUrl ?? "") ?? "",
+      image: cardImage(s.thumbnail, 1200),
+    }));
+  const wordItems: WordItem[] = sanitySermons.length > 0
+    ? sanitySermons
+    : (youtubeCache.collections?.sermons ?? youtubeCache.videos ?? []).slice(0, 5).map((v) => ({
+        title: cleanVideoTitle(v.title),
+        speaker: v.channelTitle.trim(),
+        date: formatDate(v.publishedAt),
+        videoId: v.id,
+        image: v.thumbnail,
+      }));
+
+  const diaryEvents = (events ?? [])
+    .filter((e) => !e.isRecurring)
+    .map((e) => {
+      const d = new Date(e.date);
+      return {
+        day: d.toLocaleDateString("en-US", { day: "2-digit", timeZone: "Africa/Kampala" }),
+        month: d.toLocaleDateString("en-US", { month: "short", timeZone: "Africa/Kampala" }),
+        title: e.title,
+        time: formatTime(e.date) + (e.endDate ? ` – ${formatTime(e.endDate)}` : ""),
+        location: e.location || "TBD",
+      };
+    });
+
+  const ministriesData = ministries?.map((m) => ({
+    title: m.title,
+    description: m.description || "",
+    ctaUrl: m.ctaUrl || "/contact",
+  }));
 
   const testimoniesData = testimonies?.map((t) => ({
     quote: t.quote,
@@ -75,65 +111,33 @@ export default async function HomePage() {
     role: t.role || "",
   }));
 
-  const ministriesData = ministries?.map((m) => ({
-    title: m.title,
-    description: m.description || "",
-    icon: m.icon,
-    ctaText: m.ctaText || "Learn More",
-    ctaUrl: m.ctaUrl || "/contact",
-  }));
-
-  const snapshotData = homePage?.snapshotItems;
-
-  const donateBandData = homePage ? {
-    heading: homePage.donateBandHeading,
-    text: homePage.donateBandText,
-    image: ctaImageUrl,
-  } : undefined;
-
-  const heroData = {
-    heading: homePage?.heroHeading,
-    subheading: homePage?.heroSubheading,
-    cta: homePage?.heroCta,
-    secondaryText: homePage?.heroSecondaryText,
-    secondaryUrl: homePage?.heroSecondaryUrl,
-  };
-
-  const missionValuesData = homePage?.missionValues?.map((v) => ({
-    title: v.title,
-    description: v.description,
-    image: v.image ? cardImage(v.image) : "",
-    link: v.link,
-  }));
-
   return (
     <>
-      <Hero heroImages={heroImagesData} {...heroData} />
-      <SectionDivider />
-      <SnapshotBand items={snapshotData} />
-      <SectionDivider />
-      <MissionSection
+      <LeaderHero
+        heading={homePage?.heroHeading}
+        subheading={homePage?.heroSubheading}
+        cta={homePage?.heroCta}
+        secondaryText={homePage?.heroSecondaryText}
+        secondaryUrl={homePage?.heroSecondaryUrl}
+        leader={leaderData}
+        schedule={settings?.serviceSchedule}
+      />
+      <CallingSection
         missionText={homePage?.missionText}
-        values={missionValuesData}
+        visionText={homePage?.visionText}
+        stats={homePage?.snapshotItems}
       />
-      <SectionDivider accent />
-      <PlanYourVisit image={visitImageUrl} />
-      <SectionDivider />
-      <LatestSermons sermons={sermonsData} />
-      <SectionDivider accent />
-      <UpcomingEvents events={eventsData} />
-      <SectionDivider accent />
-      <MinistriesGrid ministries={ministriesData} />
-      <SectionDivider />
-      <TestimonialsCarousel testimonies={testimoniesData} />
-      <SectionDivider accent />
-      <DonateBand
-        heading={donateBandData?.heading}
-        text={donateBandData?.text}
-        image={donateBandData?.image}
+      <WordSection sermons={wordItems} />
+      <GatherDiary
+        events={diaryEvents}
+        schedule={settings?.serviceSchedule}
+        address={settings?.address}
+        photo={gatherPhoto}
       />
-      <SectionDivider />
-      <ContactInfoCard settings={settings} />
+      <MinistryIndex ministries={ministriesData} />
+      <TestimonyFeature testimonies={testimoniesData} />
+      <PartnerBand heading={homePage?.donateBandHeading} text={homePage?.donateBandText} />
+      <ContactStrip address={settings?.address} phone={settings?.phone} email={settings?.email} />
     </>
   );
 }

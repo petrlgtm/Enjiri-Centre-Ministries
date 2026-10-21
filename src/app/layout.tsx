@@ -1,24 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Fraunces } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import PlayerProvider from "@/components/player/PlayerProvider";
+import VideoTheater from "@/components/player/VideoTheater";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { Event } from "@/types/sanity";
 
-const inter = Instrument_Sans({
-  variable: "--font-inter",
+const body = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: "variable",
 });
 
-const playfair = Fraunces({
-  variable: "--font-playfair",
+const heading = Plus_Jakarta_Sans({
+  variable: "--font-heading",
   subsets: ["latin"],
   weight: "variable",
   style: ["normal", "italic"],
+});
+
+const label = DM_Mono({
+  variable: "--font-label",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const viewport: Viewport = {
@@ -106,7 +114,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+        className={`${body.variable} ${heading.variable} ${label.variable} font-sans antialiased`}
       >
         <a
           href="#main-content"
@@ -119,9 +127,12 @@ export default async function RootLayout({
           events={upcomingEvents} 
           serviceSchedule={siteSettings?.serviceSchedule} 
         />
-        <main id="main-content" className="min-h-screen">{children}</main>
-        <Footer siteSettings={siteSettings} />
-        <BackToTop />
+        <PlayerProvider>
+          <main id="main-content" className="min-h-screen">{children}</main>
+          <Footer siteSettings={siteSettings} />
+          <BackToTop />
+          <VideoTheater />
+        </PlayerProvider>
       </body>
     </html>
   );

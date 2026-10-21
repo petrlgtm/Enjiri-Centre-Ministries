@@ -91,7 +91,7 @@ export default function EventCard({
 
         {/* Bottom: Info & Actions */}
         <div className="space-y-4">
-          <h3 className="text-2xl sm:text-3xl font-bold text-white font-(family-name:--font-playfair) leading-tight drop-shadow-md">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white font-display leading-tight drop-shadow-md">
             {title}
           </h3>
 

@@ -57,6 +57,8 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
   const [bannerVisible, setBannerVisible] = useState(true);
   const pathname = usePathname();
   const lastScrollY = useRef(0);
+  // The home hero is white: use dark ink on the transparent bar until the page scrolls.
+  const onLight = pathname === "/" && !scrolled && !isOpen;
 
   const slides = useMemo(() => {
     const s: (BannerSlide & { sortDate: Date })[] = [];
@@ -124,16 +126,13 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
 
   const handleScroll = useCallback(() => {
     const currentY = window.scrollY;
-    const isScrolled = currentY > 30;
+    const delta = currentY - lastScrollY.current;
 
-    setScrolled(isScrolled);
+    setScrolled(currentY > 30);
 
-    if (currentY > 200 && currentY > lastScrollY.current) {
-      setHidden(true);
-    } else if (currentY < lastScrollY.current) {
-      setHidden(false);
-    }
-
+    // Hide while scrolling down, reveal on any scroll up; ignore tiny jitters.
+    if (Math.abs(delta) < 6) return;
+    setHidden(delta > 0 && currentY > 160);
     lastScrollY.current = currentY;
   }, []);
 
@@ -151,7 +150,12 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <motion.div
+        initial={false}
+        animate={{ y: hidden && !isOpen ? "-100%" : "0%" }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 left-0 right-0 z-50"
+      >
         {showBanner && (
           <AnnouncementBanner
             slides={slides}
@@ -160,12 +164,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         )}
         
         {/* Main Navbar */}
-        <motion.nav
-          initial={{ y: -100 }}
-          animate={{
-            y: hidden && !isOpen ? -100 : 0,
-          }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        <nav
           className={cn(
             "relative transition-all duration-700",
             scrolled
@@ -188,10 +187,10 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                   <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-black/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 </div>
                 <div className="hidden sm:block">
-                  <span className="block text-[15px] font-bold tracking-wide text-foreground transition-colors duration-500">
+                  <span className={cn("block text-[15px] font-bold tracking-wide transition-colors duration-500", onLight ? "text-cream-heading" : "text-foreground")}>
                     ENJIRI CENTER
                   </span>
-                  <span className="block text-[10px] font-medium tracking-[0.25em] text-gold/80 transition-colors duration-500">
+                  <span className={cn("block text-[10px] font-medium tracking-[0.25em] transition-colors duration-500", onLight ? "text-gold-dark" : "text-gold/80")}>
                     MINISTRIES INTL
                   </span>
                 </div>
@@ -210,15 +209,15 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                       className={cn(
                         "relative px-4 py-2 text-[13px] font-medium uppercase tracking-widest transition-all duration-300",
                         isActive
-                          ? "text-gold"
-                          : "text-foreground/60 hover:text-foreground"
+                          ? onLight ? "text-gold-dark" : "text-gold"
+                          : onLight ? "text-cream-heading/70 hover:text-cream-heading" : "text-foreground/60 hover:text-foreground"
                       )}
                     >
                       {/* Hover background pill */}
                       {hoveredLink === link.href && !isActive && (
                         <motion.span
                           layoutId="nav-hover-bg"
-                          className="absolute inset-0 bg-white/[0.06]"
+                          className={cn("absolute inset-0", onLight ? "bg-black/[0.05]" : "bg-white/[0.06]")}
                           transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
                         />
                       )}
@@ -233,7 +232,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                     </Link>
                   );
                 })}
-                <div className="ml-5 pl-5 border-l border-white/10 transition-colors duration-500">
+                <div className={cn("ml-5 pl-5 border-l transition-colors duration-500", onLight ? "border-black/10" : "border-white/10")}>
                   <div className="btn-magnetic">
                     <Button href="/donate" variant="primary" size="sm">
                       Give Online
@@ -249,7 +248,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                   "relative z-50 flex h-11 w-11 items-center justify-center  transition-all duration-300 lg:hidden",
                   isOpen
                     ? "bg-white/10 text-foreground"
-                    : "text-foreground hover:bg-white/10"
+                    : onLight ? "text-cream-heading hover:bg-black/5" : "text-foreground hover:bg-white/10"
                 )}
                 aria-label="Toggle menu"
                 aria-expanded={isOpen}
@@ -280,22 +279,15 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
               </button>
             </div>
           </Container>
-        </motion.nav>
+        </nav>
 
         {/* Social Links Bar — only visible on homepage */}
         {pathname === "/" && (
-          <motion.div
-            initial={{ y: -100 }}
-            animate={{
-              y: hidden || isOpen ? -100 : 0,
-            }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative transition-all duration-700"
-          >
-            <div className="bg-cream border-b border-black/6">
+          <div className={cn("relative", isOpen && "hidden")}>
+            <div className={cn("border-y transition-colors duration-700", onLight ? "border-black/6 bg-white" : "border-white/8 bg-navy-light/95 backdrop-blur-md")}>
               <Container>
                 <div className="flex h-10 items-center justify-between">
-                  <span className="hidden min-[360px]:inline text-[12px] font-medium tracking-wide text-cream-muted">
+                  <span className={cn("hidden min-[360px]:inline font-mono text-[11px] uppercase tracking-[0.2em]", onLight ? "text-cream-muted" : "text-white/45")}>
                     Follow us
                   </span>
                   <div className="flex items-center gap-1 min-[360px]:gap-2">
@@ -306,7 +298,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="flex h-8 w-8 items-center justify-center text-cream-body transition-all duration-200 hover:bg-gold-dark/10 hover:text-gold-dark"
+                        className={cn("flex h-8 w-8 items-center justify-center transition-colors duration-200", onLight ? "text-cream-body hover:text-gold-dark" : "text-white/60 hover:text-gold")}
                       >
                         <social.icon size={15} />
                       </a>
@@ -315,9 +307,9 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                 </div>
               </Container>
             </div>
-          </motion.div>
+          </div>
         )}
-      </div>
+      </motion.div>
 
       {/* Mobile Full-Screen Nav */}
       <AnimatePresence>
@@ -353,7 +345,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "group relative block py-2.5 text-center font-(family-name:--font-playfair) text-2xl font-medium transition-all duration-300",
+                          "group relative block py-2.5 text-center font-display text-2xl font-medium transition-all duration-300",
                           isActive ? "text-gold" : "text-foreground/60 hover:text-foreground"
                         )}
                       >

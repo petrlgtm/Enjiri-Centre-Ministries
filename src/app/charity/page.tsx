@@ -10,15 +10,13 @@ import {
   HiSparkles,
   HiUserGroup,
   HiAcademicCap,
-  HiStar,
 } from "react-icons/hi";
-import type { IconType } from "react-icons";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
-import SectionHeading from "@/components/ui/SectionHeading";
-import SectionDivider from "@/components/ui/SectionDivider";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
+import EditorialLink from "@/components/home/editorial/EditorialLink";
+import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
-import Button from "@/components/ui/Button";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { allCharityProgramsQuery, siteSettingsQuery, charityPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageBuilder } from "@/sanity/image";
@@ -42,19 +40,6 @@ export async function generateMetadata(): Promise<Metadata> {
       images: image ? [{ url: image }] : [],
     },
   };
-}
-
-const iconMap: Record<string, IconType> = {
-  globe: HiGlobe,
-  sparkles: HiSparkles,
-  heart: HiHeart,
-  userGroup: HiUserGroup,
-  academicCap: HiAcademicCap,
-  star: HiStar,
-};
-
-function getIcon(name?: string): IconType {
-  return (name && iconMap[name]) || HiStar;
 }
 
 export default async function CharityPage() {
@@ -113,9 +98,25 @@ export default async function CharityPage() {
           image: sp.image,
         }));
 
+  const [featured, ...otherPrograms] = gridPrograms;
+  const campaignImage = pageData?.campaignImage ? cardImage(pageData.campaignImage, 900) : missionImage;
+
+  const impact = [
+    { end: 15, suffix: "+", label: "Communities Reached" },
+    { end: 5000, suffix: "+", label: "Meals Served" },
+    { end: 2000, suffix: "+", label: "Lives Touched" },
+    { end: 30, suffix: "+", label: "Crusades Held" },
+  ];
+
+  const campaign = [
+    { label: "Gospel Crusades", detail: "Organizing large-scale evangelism crusades in communities across Uganda and East Africa." },
+    { label: "Hospital & School Outreach", detail: "Visiting the sick, orphans, the elderly, and students — sharing practical love and the gospel." },
+    { label: "House Fellowships", detail: "Establishing house-to-house fellowships and Enjiri Center Fellowships in cities." },
+    { label: "Annual Prayer March", detail: "Leading prayer walks on the streets of Kampala and other cities, interceding for the nation." },
+  ];
+
   return (
     <>
-      {/* SECTION 1 — Hero */}
       <PageHeader
         label="How We Give Back"
         title={pageData?.title || "Our Outreach Mission"}
@@ -123,398 +124,217 @@ export default async function CharityPage() {
         backgroundImage={missionImage || undefined}
       />
 
-      <SectionDivider accent />
-
-      {/* SECTION 2 — Mission (Split Layout) */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
+      {/* Mission */}
+      <section className="bg-cream pt-14 pb-36 text-cream-heading sm:pt-16 sm:pb-44">
         <Container>
-          <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
-            {/* LEFT — Text Content */}
-            <div className="lg:w-1/2">
-              <div className="flex h-16 w-16 items-center justify-center bg-(--gold-muted) ring-1 ring-gold/20">
-                <HiHeart className="text-gold" size={28} />
-              </div>
-
-              <h2 className="mt-6 font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl">
-                Preaching Christ, Restoring Hope
+          <SectionMasthead label="Giving Back" index="01" />
+          <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <Reveal className="lg:col-span-7">
+              <h2 className="font-display text-3xl leading-[1.1] font-semibold sm:text-4xl">
+                Preaching Christ, <em className="not-italic text-gold-dark">restoring hope</em>
               </h2>
-
-              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-(--gray-400)">
-                Under the leadership of Evangelist Peter Kalagi, Enjiri Center
-                Ministries International is committed to giving back to society.
-                From feeding the hungry to planting churches in unreached areas,
-                our charity work extends the love of Christ to communities across
-                East Africa.
-              </p>
-
-              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-(--gray-400)">
-                We believe that the gospel is not only preached with words but
-                demonstrated through acts of love, compassion, and service to
-                those in need. Reaching out to communities through meeting some
-                of their needs in different locations of Uganda and beyond.
-              </p>
-
-              {/* Gold divider */}
-              <div className="mt-8 flex items-center gap-2">
-                <span className="h-px w-8 bg-gold/40" />
-                <span className="h-1.5 w-1.5 bg-gold" />
-                <span className="h-px w-16 bg-linear-to-r from-gold to-transparent" />
+              <div className="mt-8 space-y-4 text-base leading-[1.85] text-cream-body">
+                <p>
+                  Under the leadership of Evangelist Peter Kalagi, Enjiri Center Ministries International is committed to
+                  giving back to society. From feeding the hungry to planting churches in unreached areas, our charity work
+                  extends the love of Christ to communities across East Africa.
+                </p>
+                <p>
+                  We believe that the gospel is not only preached with words but demonstrated through acts of love,
+                  compassion, and service to those in need.
+                </p>
               </div>
-            </div>
-
-            {/* RIGHT — Image Panel */}
-            <div className="lg:w-1/2">
-              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden transition-transform duration-700 hover:scale-[1.02]">
-                <Image
-                  src={missionImage}
-                  alt="Community outreach and charity programs in East Africa"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/30 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <span className="bg-gold/90 px-4 py-1.5 text-xs font-semibold text-navy">
-                    Giving Back to Society
-                  </span>
-                </div>
-              </div>
-            </div>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:col-span-5 lg:pt-4">
+              <blockquote className="bg-white px-8 py-8">
+                <p className="font-display text-2xl leading-snug italic sm:text-[1.7rem]">
+                  &ldquo;Now that you have purified yourselves by obeying the truth so that you have sincere love for each
+                  other, love one another deeply, from the heart.&rdquo;
+                </p>
+                <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">1 Peter 1:22</p>
+              </blockquote>
+            </Reveal>
           </div>
-        </Container>
-      </section>
 
-      <SectionDivider accent />
-
-      {/* SECTION 3 — Programs Visual Grid */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32">
-        <div className="absolute inset-0 bg-cream" />
-
-        <Container className="relative">
-          <SectionHeading
-            label="Our Programs"
-            title="How We Serve Communities"
-            subtitle="Through faith-driven initiatives, we bring practical help and spiritual hope to those who need it most."
-            onCream
-          />
-
-          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-3 sm:auto-rows-[200px] md:auto-rows-[220px]">
-            {gridPrograms.map((program, index) => {
-              const Icon = getIcon(program.icon);
-              return (
-                <Link
-                  key={`${program.slug}-${index}`}
-                  href={`/charity/${program.slug}`}
-                  className={`group relative overflow-hidden ${program.gridSpan}`}
-                >
-                  {/* Background image */}
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-110"
+          <dl className="mt-14 grid grid-cols-2 gap-8 lg:grid-cols-4">
+            {impact.map((stat, i) => (
+              <Reveal key={stat.label} delay={i * 0.06}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <CountUp
+                    end={stat.end}
+                    suffix={stat.suffix}
+                    className="block font-display text-5xl font-semibold text-gold-dark sm:text-6xl"
                   />
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-navy/60 transition-colors duration-500 group-hover:bg-navy/50" />
-
-                  {/* Content */}
-                  <div className="relative flex h-full flex-col justify-end p-5 sm:p-6">
-                    <div className="flex h-10 w-10 items-center justify-center bg-gold/20 text-gold backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-                      <Icon size={18} />
-                    </div>
-                    <h3 className="mt-3 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-gold font-(family-name:--font-playfair)">
-                      {program.title}
-                    </h3>
-                    <p className="mt-1.5 text-[13px] leading-relaxed text-foreground/70">
-                      {program.description}
-                    </p>
-                    {/* Learn More indicator */}
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold opacity-0 transition-all duration-500 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
-                      Learn More <HiArrowRight size={12} />
-                    </span>
-                  </div>
-
-                  {/* Bottom gold line on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5">
-                    <div className="absolute inset-y-0 left-1/2 w-0 -translate-x-1/2 bg-gold transition-all duration-700 group-hover:left-0 group-hover:w-full group-hover:translate-x-0" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+                  <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
+                    {stat.label}
+                  </span>
+                </dd>
+              </Reveal>
+            ))}
+          </dl>
         </Container>
       </section>
 
-      <SectionDivider accent />
-
-      {/* SECTION 4 — #IAMASOULWINNER Campaign Spotlight */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
-        <Container>
-          <div className="flex flex-col-reverse gap-8 sm:gap-12 lg:flex-row lg:items-center lg:gap-16">
-            {/* LEFT — Image Panel with Stats */}
-            <div className="lg:w-1/2">
-              <div className="relative aspect-16/10 sm:aspect-4/3 overflow-hidden">
+      {/* Programs — the featured programme rises into the cream above */}
+      {featured && (
+        <section className="flow-root bg-navy-light pb-16 sm:pb-20">
+          <Container className="relative z-10 -mt-24 sm:-mt-32">
+            <Link
+              href={`/charity/${featured.slug}`}
+              className="group grid bg-navy shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] lg:grid-cols-12"
+            >
+              <span className="relative block aspect-16/10 overflow-hidden lg:col-span-7 lg:aspect-auto lg:min-h-[26rem]">
                 <Image
-                  src={missionImage}
-                  alt="Soul Winner Campaign — community outreach"
+                  src={featured.image}
+                  alt={featured.title}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-navy/60" />
+              </span>
+              <span className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-5">
+                <span className="font-mono text-[11px] tracking-[0.2em] text-gold-light uppercase">Programme 01 · Featured</span>
+                <span className="mt-4 block font-display text-3xl leading-tight font-semibold text-white sm:text-4xl">
+                  {featured.title}
+                </span>
+                <span className="mt-4 block text-[15px] leading-relaxed text-white/65">{featured.description}</span>
+                <span className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                  Read more <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </span>
+            </Link>
+          </Container>
 
-                {/* Overlaid quick stats */}
-                <div className="absolute inset-0 flex items-end p-6 sm:p-8">
-                  <div className="flex flex-wrap gap-6">
-                    <div className="text-center">
-                      <CountUp
-                        end={1000}
-                        suffix="+"
-                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
+          <Container className="pt-16">
+            <SectionMasthead label="How We Serve" index="02" tone="dark" />
+            <ul className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {otherPrograms.map((program, i) => (
+                <Reveal as="li" key={`${program.slug}-${i}`} delay={(i % 3) * 0.06}>
+                  <Link href={`/charity/${program.slug}`} className="group block">
+                    <span className="relative block aspect-4/3 overflow-hidden">
+                      <Image
+                        src={program.image}
+                        alt={program.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, 50vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
-                        Lives Touched
+                    </span>
+                    <span className="mt-5 flex items-baseline gap-4">
+                      <span className="font-display text-3xl font-semibold text-gold">{String(i + 2).padStart(2, "0")}</span>
+                      <span className="font-display text-2xl leading-tight text-white transition-colors duration-300 group-hover:text-gold-light">
+                        {program.title}
                       </span>
-                    </div>
-                    <div className="text-center">
-                      <CountUp
-                        end={50}
-                        suffix="+"
-                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
-                      />
-                      <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
-                        Outreach Events
-                      </span>
-                    </div>
-                    <div className="text-center">
-                      <CountUp
-                        end={3}
-                        className="block font-(family-name:--font-playfair) text-3xl font-bold text-foreground"
-                      />
-                      <span className="mt-1 block text-xs font-medium tracking-wider text-gold/80">
-                        Nations
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </span>
+                    <span className="mt-3 block text-sm leading-relaxed text-white/60">{program.description}</span>
+                  </Link>
+                </Reveal>
+              ))}
+            </ul>
+          </Container>
+        </section>
+      )}
+
+      {/* Campaign — gold band; the photo rises into the programmes and drops into the partner band */}
+      <section className="relative z-10 flow-root bg-gold py-16 text-navy sm:py-20">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-7">
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em]">
+              <span aria-hidden className="inline-block h-2.5 w-2.5 bg-navy" />
+              Featured Campaign
+              <span className="font-mono tracking-normal opacity-50">/ 03</span>
+            </p>
+            <Reveal>
+              <h2 className="mt-8 font-display text-5xl leading-[1.02] font-bold sm:text-6xl lg:text-7xl">I Am A Soul Winner</h2>
+              <p className="mt-4 font-mono text-xs tracking-[0.25em] uppercase opacity-70">#IAmASoulWinner</p>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-navy/80">
+                The season is now to take the gospel of our Lord Jesus Christ to nations and cities of the world.
+              </p>
+            </Reveal>
+
+            <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+              {campaign.map((item, i) => (
+                <Reveal as="li" key={item.label} delay={i * 0.06}>
+                  <span className="block font-display text-4xl font-bold text-navy/35">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="mt-3 block font-display text-xl font-semibold">{item.label}</span>
+                  <span className="mt-2 block text-sm leading-relaxed text-navy/75">{item.detail}</span>
+                </Reveal>
+              ))}
+            </ol>
+
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/donate"
+                className="group inline-flex items-center justify-center gap-3 bg-navy px-7 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-navy-surface"
+              >
+                Support the mission
+                <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-3 border border-navy/40 px-7 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300 hover:border-navy hover:bg-navy/5"
+              >
+                Join a crusade team
+                <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </div>
+          </div>
 
-            {/* RIGHT — Campaign Details */}
-            <div className="lg:w-1/2">
-              <SectionHeading
-                label="Featured Campaign"
-                title="I Am A Soul Winner"
-                subtitle="The season is now to take the gospel of our Lord Jesus Christ to nations and cities of the world."
-                centered={false}
+          <div className="relative lg:col-span-5">
+            <div className="relative aspect-4/5 overflow-hidden shadow-[0_40px_90px_-30px_rgba(10,10,10,0.55)] lg:absolute lg:inset-x-0 lg:-top-36 lg:-bottom-36 lg:aspect-auto">
+              <Image
+                src={campaignImage}
+                alt="I Am A Soul Winner campaign — crusade outreach"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
               />
-
-              <div className="card-premium border border-white/6 bg-(--gray-50) p-6">
-                <h3 className="font-bold text-foreground">
-                  What This Campaign Does
-                </h3>
-                <ul className="mt-4 space-y-3 text-sm text-(--gray-400)">
-                  {[
-                    {
-                      label: "Gospel Crusades",
-                      detail:
-                        "Organizing large-scale evangelism crusades in communities across Uganda and East Africa.",
-                    },
-                    {
-                      label: "Hospital & School Outreach",
-                      detail:
-                        "Visiting the sick, orphans, the elderly, and students — sharing practical love and the gospel.",
-                    },
-                    {
-                      label: "House Fellowships",
-                      detail:
-                        "Establishing house-to-house fellowships and Enjiri Center Fellowships in cities.",
-                    },
-                    {
-                      label: "Annual Prayer March",
-                      detail:
-                        "Leading prayer walks on the streets of Kampala and other cities, interceding for the nation.",
-                    },
-                  ].map((item) => (
-                    <li key={item.label} className="flex items-start gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-gold" />
-                      <span>
-                        <strong className="text-foreground">
-                          {item.label}:
-                        </strong>{" "}
-                        {item.detail}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <div className="btn-magnetic">
-                  <Button
-                    href="/donate"
-                    variant="primary"
-                    size="lg"
-                    icon={<HiHeart size={18} />}
-                  >
-                    Support the Mission
-                  </Button>
-                </div>
-                <div className="btn-magnetic">
-                  <Button href="/contact" variant="outline" size="lg">
-                    Learn More
-                  </Button>
-                </div>
-              </div>
+              <dl className="absolute right-0 bottom-0 left-0 grid grid-cols-3 bg-navy/90 px-6 py-5 text-white backdrop-blur-sm">
+                {[
+                  { end: 1000, suffix: "+", label: "Lives touched" },
+                  { end: 50, suffix: "+", label: "Outreach events" },
+                  { end: 3, suffix: "", label: "Nations" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd>
+                      <CountUp end={s.end} suffix={s.suffix} className="block font-display text-2xl font-bold text-gold sm:text-3xl" />
+                      <span className="mt-1 block font-mono text-[10px] tracking-[0.14em] text-white/60 uppercase">{s.label}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* SECTION 5 — Impact Statistics */}
-      <section className="relative overflow-hidden py-20">
-        <Container>
-          <div className="relative overflow-hidden">
-            <div className="relative p-6 sm:p-10 md:p-14">
-              <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 bg-navy" />
-              <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
-
-              <div className="relative">
-                <SectionHeading
-                  label="Our Impact"
-                  title="Lives Touched by Grace"
-                  subtitle="By God's grace, our outreach continues to grow and transform communities across East Africa."
-                  light
-                />
-
-                <div className="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-4">
-                  {[
-                    { end: 15, suffix: "+", label: "Communities Reached" },
-                    { end: 5000, suffix: "+", label: "Meals Served" },
-                    { end: 2000, suffix: "+", label: "Lives Touched" },
-                    { end: 30, suffix: "+", label: "Crusades Held" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="text-center">
-                      <CountUp
-                        end={stat.end}
-                        suffix={stat.suffix}
-                        className="block font-(family-name:--font-playfair) text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl"
-                      />
-                      <span className="mt-2 block text-xs font-medium tracking-wider text-gold/80">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* Partner */}
+      <section className="bg-navy py-16 sm:py-20 lg:pt-44">
+        <Container className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-7">
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light">
+              <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
+              Get Involved
+            </p>
+            <p className="mt-6 font-display text-3xl leading-[1.2] text-white sm:text-4xl">
+              &ldquo;Go ye into all the world and preach the gospel to every creature.&rdquo;
+            </p>
+            <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold uppercase">Mark 16:15</p>
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <p className="text-base leading-relaxed text-white/70">
+              Whether through giving, volunteering, or prayer, your support helps us continue to serve communities and
+              share the love of Christ.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <EditorialLink href="/donate">Give today</EditorialLink>
+              <EditorialLink href="/contact" variant="outline-light">
+                Contact us
+              </EditorialLink>
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* SECTION 6 — Scripture Quote */}
-      <section className="py-16">
-        <Container>
-          <div className="relative overflow-hidden">
-            <div className="relative p-10 sm:p-12">
-              <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 bg-navy" />
-              <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
-              <div className="relative text-center">
-                <p className="font-(family-name:--font-playfair) text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
-                  &ldquo;Now that you have purified yourselves by obeying the
-                  truth so that you have sincere love for each other, love one
-                  another deeply, from the heart.&rdquo;
-                </p>
-                <div className="mx-auto mt-5 flex items-center justify-center gap-3">
-                  <span className="h-px w-8 bg-gold/30" />
-                  <span className="h-1.5 w-1.5 rotate-45 border border-gold/40" />
-                  <span className="h-px w-8 bg-gold/30" />
-                </div>
-                <p className="mt-4 text-sm font-semibold tracking-wider text-gold">
-                  1 PETER 1:22
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 relative overflow-hidden">
-            <div className="relative p-10 sm:p-12">
-              <div className="absolute inset-0 bg-navy" />
-              <div className="absolute inset-0 bg-navy" />
-              <div className="noise-overlay absolute inset-0 opacity-[0.03]" />
-              <div className="relative text-center">
-                <p className="font-(family-name:--font-playfair) text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
-                  &ldquo;And He said unto them, go ye into all the world and
-                  preach the gospel to every creature.&rdquo;
-                </p>
-                <div className="mx-auto mt-5 flex items-center justify-center gap-3">
-                  <span className="h-px w-8 bg-gold/30" />
-                  <span className="h-1.5 w-1.5 rotate-45 border border-gold/40" />
-                  <span className="h-px w-8 bg-gold/30" />
-                </div>
-                <p className="mt-4 text-sm font-semibold tracking-wider text-gold">
-                  MARK 16:15
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* SECTION 7 — Get Involved CTA */}
-      <section className="relative overflow-hidden py-16 sm:py-20 md:py-28">
-        <div className="absolute inset-0">
-          <Image
-            src={missionImage}
-            alt="Community gathering and worship"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-navy/85" />
-        <div className="absolute inset-0 bg-navy" />
-        <div className="noise-overlay absolute inset-0" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
-
-        <Container className="relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <SectionHeading
-              label="Get Involved"
-              title="Partner With Us"
-              subtitle="Whether through giving, volunteering, or prayer, your support helps us continue to serve communities and share the love of Christ."
-              light
-            />
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <div className="btn-magnetic">
-                <Button
-                  href="/donate"
-                  variant="primary"
-                  size="lg"
-                  icon={<HiHeart size={18} />}
-                >
-                  Give Today
-                </Button>
-              </div>
-              <div className="btn-magnetic">
-                <Button href="/contact" variant="outline" size="lg">
-                  Contact Us
-                </Button>
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-foreground/50">
-              <span className="h-px w-6 bg-gold/20" />
-              <span>+256 779 226290</span>
-              <span className="h-1 w-1 bg-gold/30" />
-              <span>@ev_k_peter</span>
-              <span className="h-px w-6 bg-gold/20" />
-            </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>

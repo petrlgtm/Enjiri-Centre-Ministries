@@ -2,13 +2,14 @@ export const revalidate = 60;
 
 import type { Metadata } from "next";
 import ServiceSchedule from "@/components/services/ServiceSchedule";
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
+import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import PageHeader from "@/components/ui/PageHeader";
-import SectionDivider from "@/components/ui/SectionDivider";
 import EventsGrid from "@/components/services/EventsGrid";
 import { fetchSanity } from "@/sanity/lib/helpers";
-import { upcomingEventsQuery, siteSettingsQuery, servicesPageQuery } from "@/sanity/queries";
+import { upcomingEventsQuery, recentEventsQuery, siteSettingsQuery, servicesPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 import { Event, SiteSettings, ServicesPageData } from "@/types/sanity";
@@ -33,8 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ServicesPage() {
-  const [sanityEvents, settings, pageData] = await Promise.all([
+  const [sanityEvents, recentEvents, settings, pageData] = await Promise.all([
     fetchSanity<Event[]>(upcomingEventsQuery),
+    fetchSanity<Event[]>(recentEventsQuery),
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<ServicesPageData>(servicesPageQuery),
   ]);
@@ -53,7 +55,8 @@ export default async function ServicesPage() {
     ? sanityEvents.map((e) => ({
         title: e.title,
         slug: e.slug,
-        date: e.isRecurring ? "Recurring" : formatDate(e.date),
+        day: e.isRecurring ? "∞" : new Date(e.date).toLocaleDateString("en-US", { day: "2-digit", timeZone: "Africa/Kampala" }),
+        month: e.isRecurring ? "Recurring" : new Date(e.date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "Africa/Kampala" }),
         time: formatTime(e.date) + (e.endDate ? ` - ${formatTime(e.endDate)}` : ""),
         location: e.location || "TBD",
         description: e.description || "",
@@ -65,6 +68,14 @@ export default async function ServicesPage() {
 
   const displayEvents = eventsData || [];
 
+  const recentData = (recentEvents ?? []).map((e) => ({
+    title: e.title,
+    slug: e.slug,
+    date: formatDate(e.date),
+    location: e.location,
+    image: e.image ? cardImage(e.image, 700) : "",
+  }));
+
   return (
     <>
       <PageHeader
@@ -74,23 +85,42 @@ export default async function ServicesPage() {
         backgroundImage={headerImg}
       />
 
-      <ServiceSchedule 
-        heading={pageData?.scheduleHeading} 
-        image={venueImg} 
-      />
+      <ServiceSchedule heading={pageData?.scheduleHeading} image={venueImg} />
 
-      <SectionDivider accent />
-
-      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-cream" />
-        <Container className="relative">
-          <SectionHeading
-            label="Mark Your Calendar"
-            title={pageData?.eventsHeading || "Upcoming Events"}
-            subtitle="Join us for these upcoming gatherings and be part of what God is doing."
-            onCream
-          />
+      <section className="bg-navy-light py-14 sm:py-16">
+        <Container>
+          <SectionMasthead label="Mark Your Calendar" index="02" tone="dark" />
+          <h2 className="mt-10 mb-10 font-display text-5xl leading-[1.02] font-semibold text-white sm:text-6xl">
+            {pageData?.eventsHeading || "Upcoming Events"}
+          </h2>
           <EventsGrid events={displayEvents} />
+
+          {recentData.length > 0 && (
+            <div className="mt-16">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">Recent gatherings</p>
+              <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {recentData.map((e) => (
+                  <li key={e.slug}>
+                    <Link href={`/services/${e.slug}`} className="group block">
+                      <span className="relative block aspect-4/5 overflow-hidden">
+                        <Image
+                          src={e.image}
+                          alt={e.title}
+                          fill
+                          sizes="(min-width: 1024px) 25vw, 50vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </span>
+                      <span className="mt-4 block font-mono text-[11px] text-gold-light">{e.date}</span>
+                      <span className="mt-1 block font-display text-2xl text-white transition-colors duration-300 group-hover:text-gold-light">
+                        {e.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Container>
       </section>
     </>

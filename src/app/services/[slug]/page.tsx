@@ -16,7 +16,6 @@ import {
 } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import SectionDivider from "@/components/ui/SectionDivider";
 import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import EventCountdown from "@/components/ui/EventCountdown";
 import EventCard from "@/components/services/EventCard";
@@ -111,7 +110,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               <span className="mb-4 inline-block bg-gold/20 px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-gold backdrop-blur-md border border-gold/20">
                 {event.category || "Special Event"}
               </span>
-              <h1 className="font-(family-name:--font-playfair) text-4xl font-bold text-white sm:text-5xl lg:text-7xl leading-[1.1]">
+              <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-7xl leading-[1.1]">
                 {event.title}
               </h1>
             </div>
@@ -174,7 +173,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   
                   <div className="prose prose-invert prose-gold max-w-none">
                     {event.description && (
-                      <p className="text-2xl leading-relaxed text-foreground/90 mb-10 font-medium font-(family-name:--font-playfair)">
+                      <p className="text-2xl leading-relaxed text-foreground/90 mb-10 font-medium font-display">
                         {event.description}
                       </p>
                     )}
@@ -276,7 +275,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div>
                 <span className="text-gold text-sm font-bold uppercase tracking-widest mb-2 block">Don't Miss Out</span>
-                <h2 className="text-3xl md:text-4xl font-bold font-(family-name:--font-playfair)">Other Upcoming Events</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-display">Other Upcoming Events</h2>
               </div>
               <Button href="/services" variant="outline">View Calendar</Button>
             </div>
@@ -303,7 +302,6 @@ export default async function EventDetailPage({ params }: EventPageProps) {
         )}
       </div>
 
-      <SectionDivider />
     </main>
   );
 }

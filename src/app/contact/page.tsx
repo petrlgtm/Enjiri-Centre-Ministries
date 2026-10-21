@@ -206,7 +206,7 @@ export default async function ContactPage() {
                   <span className="h-1.5 w-1.5 bg-gold" />
                   <span className="h-px w-8 bg-gold/40" />
                 </div>
-                <p className="font-(family-name:--font-playfair) text-lg leading-relaxed text-gold italic">
+                <p className="font-display text-lg leading-relaxed text-gold italic">
                   &ldquo;Cast all your anxiety on him because he cares for
                   you.&rdquo;
                 </p>

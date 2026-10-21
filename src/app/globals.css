@@ -68,8 +68,9 @@
   --color-cream-heading: var(--cream-heading);
   --color-cream-body: var(--cream-body);
   --color-cream-muted: var(--cream-muted);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --font-mono: var(--font-label), ui-monospace, monospace;
 }
 
 html {
@@ -82,7 +83,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -1088,4 +1089,38 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ═══════════════════════════════════════════════════
+   EDITORIAL HOME
+   ═══════════════════════════════════════════════════ */
+.hero-editorial-glow {
+  background:
+    radial-gradient(ellipse 55% 70% at 78% 60%, rgba(201, 168, 76, 0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 10% 20%, rgba(196, 125, 42, 0.07) 0%, transparent 60%);
+}
+
+.hero-editorial-glow-light {
+  background:
+    radial-gradient(ellipse 50% 65% at 80% 62%, rgba(201, 168, 76, 0.14) 0%, transparent 65%),
+    linear-gradient(180deg, #ffffff 0%, var(--warm-white) 100%);
+}
+
+.text-outline-gold {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--gold);
+}
+
+/* Display headings: tighter tracking for the geometric sans */
+.font-display {
+  letter-spacing: -0.02em;
+}
+
+/* Page-header lead image sits half in the dark header, half in the next section */
+.header-straddle-cream {
+  background: linear-gradient(180deg, var(--navy) 50%, var(--cream) 50%);
+}
+
+.header-straddle-navy {
+  background: linear-gradient(180deg, var(--navy) 50%, var(--navy-light) 50%);
 }

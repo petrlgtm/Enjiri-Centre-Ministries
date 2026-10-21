@@ -85,7 +85,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="block font-(family-name:--font-playfair) text-2xl font-bold text-gold sm:text-3xl"
+            className="block font-display text-2xl font-bold text-gold sm:text-3xl"
           >
             {value.toString().padStart(2, "0")}
           </motion.span>
