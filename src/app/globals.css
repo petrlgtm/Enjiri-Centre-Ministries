@@ -35,6 +35,11 @@
   --gray-800: #dbd6cf;
   --gray-900: #f0ece4;
 
+  /* Royal blue (navigation) */
+  --royal: #14336f;
+  --royal-light: #1d4590;
+  --royal-deep: #0b1f45;
+
   /* Warm tones */
   --cream: #fffbf5;
   --warm-white: #faf7f2;
@@ -63,6 +68,9 @@
   --color-red: var(--red);
   --color-red-light: var(--red-light);
   --color-red-dark: var(--red-dark);
+  --color-royal: var(--royal);
+  --color-royal-light: var(--royal-light);
+  --color-royal-deep: var(--royal-deep);
   --color-cream: var(--cream);
   --color-warm-white: var(--warm-white);
   --color-cream-heading: var(--cream-heading);

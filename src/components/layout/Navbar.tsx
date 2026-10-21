@@ -166,7 +166,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         <nav
           className={cn(
             "relative transition-colors duration-700",
-            scrolled ? "bg-navy/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl" : "bg-transparent"
+            scrolled ? "bg-royal-deep/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl" : "bg-transparent"
           )}
         >
           <Container>
@@ -187,7 +187,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
               </Link>
 
               {/* Link panel */}
-              <div className="flex items-stretch overflow-hidden rounded-[3px] bg-white/95 shadow-[0_10px_34px_-10px_rgba(10,10,10,0.45)] ring-1 ring-black/10 backdrop-blur-xl backdrop-saturate-150">
+              <div className="flex items-stretch overflow-hidden rounded-[3px] bg-royal shadow-[0_10px_34px_-10px_rgba(11,31,69,0.6)] ring-1 ring-white/10">
                 <ul className="hidden items-center lg:flex">
                   {navLinks.map((link) => {
                     const isActive = pathname === link.href;
@@ -198,14 +198,14 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                           aria-current={isActive ? "page" : undefined}
                           className={cn(
                             "relative block px-3.5 py-4 font-mono text-[11px] tracking-[0.12em] uppercase transition-colors duration-300 xl:px-4",
-                            isActive ? "text-gold-dark" : "text-cream-heading/80 hover:text-cream-heading"
+                            isActive ? "text-gold-light" : "text-white/75 hover:text-white"
                           )}
                         >
                           {link.label}
                           {isActive && (
                             <motion.span
                               layoutId="nav-indicator"
-                              className="absolute right-3.5 bottom-2.5 left-3.5 h-px bg-gold-dark xl:right-4 xl:left-4"
+                              className="absolute right-3.5 bottom-2.5 left-3.5 h-px bg-gold xl:right-4 xl:left-4"
                               transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                             />
                           )}
@@ -217,7 +217,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
 
                 <Link
                   href="/donate"
-                  className="flex items-center bg-navy px-4 py-3.5 font-mono sm:px-5 text-[11px] tracking-[0.12em] text-white uppercase transition-colors duration-300 hover:bg-navy-surface hover:text-gold-light"
+                  className="flex items-center bg-gold px-4 py-3.5 font-mono text-[11px] font-medium tracking-[0.12em] text-royal-deep uppercase transition-colors duration-300 hover:bg-gold-light sm:px-5"
                 >
                   Give<span className="hidden sm:inline">&nbsp;Online</span>
                 </Link>
@@ -225,7 +225,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="relative z-50 flex w-12 items-center justify-center text-cream-heading transition-colors duration-300 hover:bg-black/5 lg:hidden"
+                  className="relative z-50 flex w-12 items-center justify-center text-white transition-colors duration-300 hover:bg-royal-light lg:hidden"
                   aria-label="Toggle menu"
                   aria-expanded={isOpen}
                 >
@@ -248,7 +248,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         {/* Social Links Bar — only visible on homepage */}
         {pathname === "/" && (
           <div className={cn("relative", isOpen && "hidden")}>
-            <div className={cn("border-y transition-colors duration-700", onLight ? "border-black/6 bg-white" : "border-white/8 bg-navy-light/95 backdrop-blur-md")}>
+            <div className={cn("border-y transition-colors duration-700", onLight ? "border-black/6 bg-white" : "border-white/8 bg-royal-deep/95 backdrop-blur-md")}>
               <Container>
                 <div className="flex h-10 items-center justify-between">
                   <span className={cn("hidden min-[360px]:inline font-mono text-[11px] uppercase tracking-[0.2em]", onLight ? "text-cream-muted" : "text-white/45")}>
