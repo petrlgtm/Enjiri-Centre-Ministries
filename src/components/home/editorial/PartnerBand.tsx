@@ -12,7 +12,7 @@ export default function PartnerBand({ heading, text }: PartnerBandProps) {
     <section className="relative overflow-x-clip bg-navy pt-20 pb-32 sm:pt-28 sm:pb-36">
       <span
         aria-hidden
-        className="text-outline-gold pointer-events-none absolute top-0 right-4 -translate-y-1/2 font-display text-[8rem] leading-none font-bold select-none sm:right-10 sm:text-[13rem]"
+        className="text-outline-gold pointer-events-none absolute top-0 right-4 -translate-y-1/2 font-display text-[5.5rem] leading-none font-bold select-none sm:right-10 sm:text-[13rem]"
       >
         Give
       </span>

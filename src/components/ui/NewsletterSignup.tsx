@@ -22,14 +22,14 @@ export default function NewsletterSignup() {
 
   return (
     <Container className="relative z-10 -mt-14">
-      <div className="grid gap-6 bg-gold px-7 py-8 text-navy shadow-[0_30px_70px_-30px_rgba(10,10,10,0.5)] sm:px-10 lg:grid-cols-12 lg:items-center">
+      <div className="grid gap-5 bg-gold px-5 py-7 text-navy shadow-[0_30px_70px_-30px_rgba(10,10,10,0.5)] sm:px-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-6">
           <p className="font-mono text-[10px] tracking-[0.2em] uppercase opacity-70">Stay connected</p>
-          <h3 className="mt-2 font-display text-3xl leading-tight font-semibold">
+          <h3 className="mt-2 font-display text-2xl leading-tight font-semibold sm:text-3xl">
             Devotionals, events and sermons in your inbox.
           </h3>
         </div>
-        <form onSubmit={handleSubmit} className="flex w-full gap-2 lg:col-span-6">
+        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-2 sm:flex-row lg:col-span-6">
           <input
             type="email"
             value={email}

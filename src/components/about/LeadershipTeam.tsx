@@ -31,7 +31,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
         <SectionMasthead label="Our Shepherds" index="02" tone="dark" />
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="relative mx-auto h-[30rem] w-full max-w-md sm:h-[38rem] lg:sticky lg:top-32 lg:col-span-5 lg:h-[46rem] lg:max-w-none">
+          <Reveal className="relative mx-auto h-[26rem] w-full max-w-md sm:h-[38rem] lg:sticky lg:top-32 lg:col-span-5 lg:h-[46rem] lg:max-w-none">
             <Image
               src={head.image}
               alt={head.name}
@@ -45,7 +45,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
             <Reveal>
               <p className="font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">{head.role}</p>
               <h2 className="mt-4 font-display text-4xl leading-tight font-semibold text-white sm:text-5xl">{head.name}</h2>
-              {lead && <p className="mt-8 font-display text-2xl leading-snug text-white/90 sm:text-[1.7rem]">{lead}</p>}
+              {lead && <p className="mt-6 font-display text-lg leading-snug text-white/90 sm:mt-8 sm:text-[1.7rem]">{lead}</p>}
             </Reveal>
             {rest.length > 0 && (
               <Reveal delay={0.1} className="mt-8 gap-10 text-[15px] leading-[1.85] text-white/65 md:columns-2">

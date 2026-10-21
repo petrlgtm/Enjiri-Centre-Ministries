@@ -52,7 +52,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
               )}
             </div>
             <blockquote className="mt-10 bg-white px-7 py-6">
-              <p className="font-display text-2xl leading-snug italic">
+              <p className="font-display text-xl leading-snug italic sm:text-2xl">
                 &ldquo;For I know the plans I have for you, declares the Lord&hellip;&rdquo;
               </p>
               <p className="mt-3 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">Jeremiah 29:11</p>
@@ -74,7 +74,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
           )}
         </div>
 
-        <dl className="mt-14 grid gap-8 sm:grid-cols-3">
+        <dl className="mt-14 grid grid-cols-3 gap-4 sm:gap-8">
           {displayStats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
               <dt className="sr-only">{s.label}</dt>
@@ -82,9 +82,9 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
                 <CountUp
                   end={s.value}
                   suffix={s.suffix}
-                  className="block font-display text-5xl font-semibold text-gold-dark sm:text-6xl"
+                  className="block font-display text-3xl font-semibold text-gold-dark sm:text-6xl"
                 />
-                <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
+                <span className="mt-2 block text-[10px] font-semibold uppercase tracking-[0.14em] text-cream-muted sm:text-[11px] sm:tracking-[0.2em]">
                   {s.label}
                 </span>
               </dd>
@@ -94,11 +94,11 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
 
         <div className="mt-16">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The journey so far</p>
-          <ol className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
             {displayTimeline.map((item, i) => (
               <Reveal as="li" key={`${item.year}-${item.title}`} delay={i * 0.08}>
-                <span className="block font-display text-5xl font-semibold text-gold">{item.year}</span>
-                <span className="mt-3 block font-display text-2xl font-semibold">{item.title}</span>
+                <span className="block font-display text-3xl font-semibold text-gold sm:text-5xl">{item.year}</span>
+                <span className="mt-2 block font-display text-lg font-semibold sm:mt-3 sm:text-2xl">{item.title}</span>
                 <span className="mt-2 block text-sm leading-relaxed text-cream-body">{item.description}</span>
               </Reveal>
             ))}

@@ -57,7 +57,7 @@ export default function SermonCard({
           />
           <span
             className={cn(
-              "absolute bottom-0 left-0 inline-flex items-center gap-2 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
+              "absolute bottom-0 left-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[9px] sm:gap-2 sm:px-4 sm:py-2.5 sm:text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
               isActive ? "bg-gold text-navy" : "bg-navy text-gold group-hover:bg-gold group-hover:text-navy"
             )}
           >
@@ -65,11 +65,11 @@ export default function SermonCard({
             {isActive ? "Now playing" : "Watch"}
           </span>
         </span>
-        <span className="mt-4 block font-mono text-[11px] text-gold-dark">
+        <span className="mt-3 block font-mono text-[10px] text-gold-dark sm:mt-4 sm:text-[11px]">
           {date}
           {series && <> · {series}</>}
         </span>
-        <span className="mt-1.5 block font-display text-xl leading-snug text-cream-heading transition-colors duration-300 group-hover:text-gold-dark line-clamp-2">
+        <span className="mt-1 block font-display text-sm leading-snug text-cream-heading sm:mt-1.5 sm:text-xl transition-colors duration-300 group-hover:text-gold-dark line-clamp-2">
           {title}
         </span>
         <span className="mt-1 block text-xs text-cream-muted">{speaker}</span>

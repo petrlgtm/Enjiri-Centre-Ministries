@@ -146,8 +146,8 @@ export default async function CharityPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1} className="lg:col-span-5 lg:pt-4">
-              <blockquote className="bg-white px-8 py-8">
-                <p className="font-display text-2xl leading-snug italic sm:text-[1.7rem]">
+              <blockquote className="bg-white px-6 py-6 sm:px-8 sm:py-8">
+                <p className="font-display text-xl leading-snug italic sm:text-[1.7rem]">
                   &ldquo;Now that you have purified yourselves by obeying the truth so that you have sincere love for each
                   other, love one another deeply, from the heart.&rdquo;
                 </p>
@@ -156,7 +156,7 @@ export default async function CharityPage() {
             </Reveal>
           </div>
 
-          <dl className="mt-14 grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <dl className="mt-12 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
             {impact.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 0.06}>
                 <dt className="sr-only">{stat.label}</dt>
@@ -164,7 +164,7 @@ export default async function CharityPage() {
                   <CountUp
                     end={stat.end}
                     suffix={stat.suffix}
-                    className="block font-display text-5xl font-semibold text-gold-dark sm:text-6xl"
+                    className="block font-display text-4xl font-semibold text-gold-dark sm:text-6xl"
                   />
                   <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
                     {stat.label}
@@ -193,7 +193,7 @@ export default async function CharityPage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </span>
-              <span className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-5">
+              <span className="flex flex-col justify-center p-6 sm:p-10 lg:col-span-5">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-gold-light uppercase">Programme 01 · Featured</span>
                 <span className="mt-4 block font-display text-3xl leading-tight font-semibold text-white sm:text-4xl">
                   {featured.title}
@@ -208,11 +208,11 @@ export default async function CharityPage() {
 
           <Container className="pt-16">
             <SectionMasthead label="How We Serve" index="02" tone="dark" />
-            <ul className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">
               {otherPrograms.map((program, i) => (
                 <Reveal as="li" key={`${program.slug}-${i}`} delay={(i % 3) * 0.06}>
-                  <Link href={`/charity/${program.slug}`} className="group block">
-                    <span className="relative block aspect-4/3 overflow-hidden">
+                  <Link href={`/charity/${program.slug}`} className="group grid grid-cols-[7.5rem_1fr] gap-4 sm:block">
+                    <span className="relative block aspect-square overflow-hidden sm:aspect-4/3">
                       <Image
                         src={program.image}
                         alt={program.title}
@@ -221,13 +221,17 @@ export default async function CharityPage() {
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </span>
-                    <span className="mt-5 flex items-baseline gap-4">
-                      <span className="font-display text-3xl font-semibold text-gold">{String(i + 2).padStart(2, "0")}</span>
-                      <span className="font-display text-2xl leading-tight text-white transition-colors duration-300 group-hover:text-gold-light">
-                        {program.title}
+                    <span className="block sm:mt-5">
+                      <span className="flex items-baseline gap-3 sm:gap-4">
+                        <span className="font-display text-xl font-semibold text-gold sm:text-3xl">{String(i + 2).padStart(2, "0")}</span>
+                        <span className="font-display text-lg leading-tight text-white transition-colors duration-300 group-hover:text-gold-light sm:text-2xl">
+                          {program.title}
+                        </span>
+                      </span>
+                      <span className="mt-2 line-clamp-3 block text-sm leading-relaxed text-white/60 sm:mt-3 sm:line-clamp-none">
+                        {program.description}
                       </span>
                     </span>
-                    <span className="mt-3 block text-sm leading-relaxed text-white/60">{program.description}</span>
                   </Link>
                 </Reveal>
               ))}
@@ -246,17 +250,17 @@ export default async function CharityPage() {
               <span className="font-mono tracking-normal opacity-50">/ 03</span>
             </p>
             <Reveal>
-              <h2 className="mt-8 font-display text-5xl leading-[1.02] font-bold sm:text-6xl lg:text-7xl">I Am A Soul Winner</h2>
+              <h2 className="mt-6 font-display text-4xl leading-[1.02] font-bold sm:mt-8 sm:text-6xl lg:text-7xl">I Am A Soul Winner</h2>
               <p className="mt-4 font-mono text-xs tracking-[0.25em] uppercase opacity-70">#IAmASoulWinner</p>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-navy/80">
                 The season is now to take the gospel of our Lord Jesus Christ to nations and cities of the world.
               </p>
             </Reveal>
 
-            <ol className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            <ol className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
               {campaign.map((item, i) => (
                 <Reveal as="li" key={item.label} delay={i * 0.06}>
-                  <span className="block font-display text-4xl font-bold text-navy/35">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="block font-display text-3xl font-bold text-navy/35 sm:text-4xl">{String(i + 1).padStart(2, "0")}</span>
                   <span className="mt-3 block font-display text-xl font-semibold">{item.label}</span>
                   <span className="mt-2 block text-sm leading-relaxed text-navy/75">{item.detail}</span>
                 </Reveal>
@@ -290,7 +294,7 @@ export default async function CharityPage() {
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
-              <dl className="absolute right-0 bottom-0 left-0 grid grid-cols-3 bg-navy/90 px-6 py-5 text-white backdrop-blur-sm">
+              <dl className="absolute right-0 bottom-0 left-0 grid grid-cols-3 gap-3 bg-navy/90 px-4 py-4 text-white backdrop-blur-sm sm:px-6 sm:py-5">
                 {[
                   { end: 1000, suffix: "+", label: "Lives touched" },
                   { end: 50, suffix: "+", label: "Outreach events" },
@@ -300,7 +304,7 @@ export default async function CharityPage() {
                     <dt className="sr-only">{s.label}</dt>
                     <dd>
                       <CountUp end={s.end} suffix={s.suffix} className="block font-display text-2xl font-bold text-gold sm:text-3xl" />
-                      <span className="mt-1 block font-mono text-[10px] tracking-[0.14em] text-white/60 uppercase">{s.label}</span>
+                      <span className="mt-1 block font-mono text-[9px] leading-tight tracking-[0.1em] text-white/60 uppercase sm:text-[10px] sm:tracking-[0.14em]">{s.label}</span>
                     </dd>
                   </div>
                 ))}
@@ -318,7 +322,7 @@ export default async function CharityPage() {
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
               Get Involved
             </p>
-            <p className="mt-6 font-display text-3xl leading-[1.2] text-white sm:text-4xl">
+            <p className="mt-6 font-display text-2xl leading-[1.25] text-white sm:text-4xl">
               &ldquo;Go ye into all the world and preach the gospel to every creature.&rdquo;
             </p>
             <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold uppercase">Mark 16:15</p>

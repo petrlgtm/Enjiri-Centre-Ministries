@@ -17,10 +17,10 @@ export default function TestimonyFeature({ testimonies }: TestimonyFeatureProps)
 
         <div className="mt-10 grid gap-14 lg:grid-cols-12">
           <Reveal as="article" className="lg:col-span-7">
-            <span aria-hidden className="block font-display text-[7rem] leading-[0.6] text-gold">
+            <span aria-hidden className="block font-display text-[5rem] leading-[0.6] text-gold sm:text-[7rem]">
               &ldquo;
             </span>
-            <blockquote className="mt-4 font-display text-2xl leading-snug italic sm:text-[1.6rem] sm:leading-[1.45]">
+            <blockquote className="mt-4 font-display text-xl leading-snug italic sm:text-[1.6rem] sm:leading-[1.45]">
               {lead.quote}
             </blockquote>
             <p className="mt-8 flex items-center gap-4">

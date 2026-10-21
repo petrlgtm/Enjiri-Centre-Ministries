@@ -62,7 +62,7 @@ export default function LeaderHero({
 
         {/* Leader portrait */}
         {leader && (
-          <Reveal delay={0.1} className="relative mx-auto mt-6 h-[34rem] w-full max-w-xl sm:h-[46rem] lg:col-span-7 lg:h-[56rem] lg:max-w-none">
+          <Reveal delay={0.1} className="relative mx-auto mt-2 h-[30rem] w-full max-w-xl sm:mt-6 sm:h-[46rem] lg:col-span-7 lg:h-[56rem] lg:max-w-none">
             <Image
               src={leader.image}
               alt={leader.alt || leader.name}
@@ -71,8 +71,8 @@ export default function LeaderHero({
               sizes="(min-width: 1024px) 58vw, 100vw"
               className={leader.isCutout ? "object-contain object-bottom" : "object-cover object-top"}
             />
-            <div className="absolute bottom-8 left-0 max-w-[15rem] bg-navy px-5 py-4 sm:bottom-12">
-              <p className="font-display text-xl leading-tight text-white">{leader.name}</p>
+            <div className="absolute bottom-24 left-0 max-w-[13rem] bg-navy px-4 py-3 sm:bottom-12 sm:max-w-[15rem] sm:px-5 sm:py-4">
+              <p className="font-display text-base leading-tight text-white sm:text-xl">{leader.name}</p>
               <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-gold-light/80">{leader.role}</p>
             </div>
           </Reveal>

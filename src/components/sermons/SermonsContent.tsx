@@ -214,14 +214,14 @@ export default function SermonsContent({
           />
 
           {(loading && youtubeSermons.length === 0) || searching ? (
-            <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="aspect-video animate-pulse bg-cream-heading/10" />
               ))}
             </div>
           ) : displaySermons.length > 0 ? (
             <>
-              <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-3">
                 {displaySermons.map((sermon, index) => (
                   <SermonCard
                     key={sermon.slug}

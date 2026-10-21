@@ -74,13 +74,13 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
                 as="li"
                 key={item.day}
                 delay={i * 0.06}
-                className="grid gap-4 border-b border-cream-heading/12 py-7 first:pt-0 sm:grid-cols-[9rem_1fr]"
+                className="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-cream-heading/12 py-6 first:pt-0 sm:grid-cols-[9rem_1fr] sm:py-7"
               >
-                <span className="font-display text-5xl leading-none font-semibold text-gold-dark">{item.day.slice(0, 3)}</span>
+                <span className="font-display text-3xl leading-none font-semibold text-gold-dark sm:text-5xl">{item.day.slice(0, 3)}</span>
                 <ul className="space-y-3">
                   {item.services.map((s) => (
                     <li key={s.name} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                      <span className="font-display text-2xl">{s.name}</span>
+                      <span className="font-display text-lg sm:text-2xl">{s.name}</span>
                       <span className="font-mono text-xs text-cream-muted">{s.time}</span>
                     </li>
                   ))}

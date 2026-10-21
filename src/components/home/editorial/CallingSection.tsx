@@ -20,7 +20,7 @@ export default function CallingSection({ missionText, visionText, stats }: Calli
           {missionText && (
             <Reveal className="lg:col-span-8">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The Mission</p>
-              <p className="mt-5 font-display text-2xl leading-snug text-cream-heading sm:text-[1.6rem] sm:leading-[1.45]">
+              <p className="mt-5 font-display text-xl leading-snug text-cream-heading sm:text-[1.6rem] sm:leading-[1.45]">
                 {missionText}
               </p>
             </Reveal>
@@ -35,15 +35,15 @@ export default function CallingSection({ missionText, visionText, stats }: Calli
         </div>
 
         {stats && stats.length > 0 && (
-          <dl className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+          <dl className="mt-12 grid grid-cols-3 gap-4 sm:gap-8">
             {stats.map((s, i) => (
               <Reveal key={s.description} delay={i * 0.08}>
                 <dt className="sr-only">{s.description}</dt>
                 <dd>
-                  <span className="block font-display text-5xl font-semibold text-gold-dark sm:text-6xl">
+                  <span className="block font-display text-3xl font-semibold text-gold-dark sm:text-6xl">
                     {s.title}
                   </span>
-                  <span className="mt-3 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
+                  <span className="mt-2 block text-[10px] font-semibold uppercase tracking-[0.14em] text-cream-muted sm:mt-3 sm:text-[11px] sm:tracking-[0.2em]">
                     {s.description}
                   </span>
                 </dd>

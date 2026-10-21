@@ -31,12 +31,12 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
         <Container className="relative z-10 -mt-14 flex justify-end">
           <Link
             href="/services"
-            className="group grid w-full max-w-xl grid-cols-[auto_1fr_auto] items-center gap-6 bg-gold px-7 py-6 text-navy shadow-[0_24px_60px_-24px_rgba(10,10,10,0.5)] transition-colors duration-300 hover:bg-gold-light"
+            className="group grid w-full max-w-xl grid-cols-[auto_1fr_auto] items-center gap-4 bg-gold px-5 py-5 sm:gap-6 sm:px-7 sm:py-6 text-navy shadow-[0_24px_60px_-24px_rgba(10,10,10,0.5)] transition-colors duration-300 hover:bg-gold-light"
           >
-            <span className="font-display text-5xl leading-none font-semibold uppercase">{next.day.slice(0, 3)}</span>
+            <span className="font-display text-4xl leading-none font-semibold uppercase sm:text-5xl">{next.day.slice(0, 3)}</span>
             <span>
               <span className="block font-mono text-[10px] tracking-[0.2em] uppercase opacity-70">Next gathering</span>
-              <span className="mt-1 block font-display text-2xl leading-tight font-semibold">{next.serviceName}</span>
+              <span className="mt-1 block font-display text-lg leading-tight font-semibold sm:text-2xl">{next.serviceName}</span>
               <span className="mt-1 block font-mono text-xs">{next.time}</span>
             </span>
             <HiArrowRight className="text-xl transition-transform duration-300 group-hover:translate-x-1" />
@@ -94,11 +94,11 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
                 </p>
                 <ul>
                   {schedule.map((s, i) => (
-                    <Reveal as="li" key={s.serviceName} delay={i * 0.06} className="group grid grid-cols-[6.5rem_1fr] items-center gap-x-6 gap-y-1 border-b border-white/10 py-6 sm:grid-cols-[9.5rem_1fr_auto]">
-                      <span className="text-outline-gold font-display text-5xl leading-none font-semibold uppercase sm:text-6xl">
+                    <Reveal as="li" key={s.serviceName} delay={i * 0.06} className="group grid grid-cols-[5rem_1fr] items-center gap-x-4 gap-y-1 border-b border-white/10 py-5 sm:grid-cols-[9.5rem_1fr_auto] sm:gap-x-6 sm:py-6">
+                      <span className="text-outline-gold font-display text-4xl leading-none font-semibold uppercase sm:text-6xl">
                         {s.day.slice(0, 3)}
                       </span>
-                      <span className="font-display text-2xl text-white">{s.serviceName}</span>
+                      <span className="font-display text-lg text-white sm:text-2xl">{s.serviceName}</span>
                       <span className="col-start-2 font-mono text-xs text-white/55 sm:col-start-auto sm:text-right">{s.time}</span>
                     </Reveal>
                   ))}
