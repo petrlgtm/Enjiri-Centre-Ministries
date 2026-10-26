@@ -58,7 +58,11 @@ async function run() {
 
   // ── Site settings ───────────────────────────────────────────
   set("siteSettings", {
+    tagline: "Preaching Christ, Restoring Hope",
     email: "enjiricenter@gmail.com",
+    phone: "+256 742 735 862",
+    phone2: "+256 781 573 536",
+    address: "Maggwa Third-Lane, Jinja, Uganda",
     defaultHeaderImage: await img("IMG_9613.JPG", "Night crusade stage lit up before a large crowd"),
     sermonsHeaderImage: await img("IMG_0584.JPG", `${PREACH} at the pulpit`, { x: 0.55, y: 0.4 }),
     eventsHeaderImage: await img("IMG_0999.JPG", "Worship team on stage at an open-air gathering"),

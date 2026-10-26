@@ -52,6 +52,12 @@ export default defineType({
         'Contact phone number with country code (e.g. "+250 000 000 000")',
     }),
     defineField({
+      name: "phone2",
+      title: "Secondary Phone",
+      type: "string",
+      description: "Optional second contact number, shown alongside the main phone",
+    }),
+    defineField({
       name: "email",
       title: "Email",
       type: "string",

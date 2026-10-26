@@ -197,6 +197,7 @@ export const siteSettingsQuery = groq`
     logo { ${imageFields} },
     address,
     phone,
+    phone2,
     email,
     socialLinks {
       facebook,

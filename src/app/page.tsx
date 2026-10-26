@@ -138,7 +138,7 @@ export default async function HomePage() {
       <MinistryIndex ministries={ministriesData} />
       <TestimonyFeature testimonies={testimoniesData} />
       <PartnerBand heading={homePage?.donateBandHeading} text={homePage?.donateBandText} />
-      <ContactStrip address={settings?.address} phone={settings?.phone} email={settings?.email} />
+      <ContactStrip address={settings?.address} phone={settings?.phone} phone2={settings?.phone2} email={settings?.email} />
     </>
   );
 }

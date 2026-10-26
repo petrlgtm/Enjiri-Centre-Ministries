@@ -48,6 +48,7 @@ export interface SiteSettings {
   logo?: SanityImage;
   address?: string;
   phone?: string;
+  phone2?: string;
   email?: string;
   socialLinks?: {
     facebook?: string;

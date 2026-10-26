@@ -22,9 +22,11 @@ const quickLinks = [
 interface FooterProps {
   siteSettings?: {
     logo?: SanityImage;
+    tagline?: string;
     footerMapImage?: SanityImage;
     address?: string;
     phone?: string;
+    phone2?: string;
     email?: string;
     socialLinks?: {
       facebook?: string;
@@ -93,8 +95,11 @@ export default function Footer({ siteSettings }: FooterProps) {
                 <span className="block text-xs font-medium tracking-[0.25em] text-gold-dark">MINISTRIES INTL</span>
               </span>
             </Link>
-            <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-cream-body">
-              Reaching the world with the love of Christ through worship, outreach, and service to our communities.
+            <p className="mt-6 font-display text-xl font-semibold text-cream-heading">
+              {siteSettings?.tagline || "Preaching Christ, Restoring Hope"}
+            </p>
+            <p className="mt-2 max-w-xs text-[15px] leading-relaxed text-cream-body">
+              Raising passionate disciples, transforming communities, and advancing God&apos;s Kingdom with excellence and love.
             </p>
             <div className="mt-6 flex gap-2">
               {socialLinks.map((social) => (
@@ -133,8 +138,9 @@ export default function Footer({ siteSettings }: FooterProps) {
           <div className="lg:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">Visit</p>
             <address className="mt-5 space-y-1 text-[15px] not-italic leading-relaxed text-cream-body">
-              <span className="block">{siteSettings?.address || "Kampala, Uganda"}</span>
-              <span className="block">{siteSettings?.phone || "+256 779 226290"}</span>
+              <span className="block">{siteSettings?.address || "Maggwa Third-Lane, Jinja, Uganda"}</span>
+              <span className="block">{siteSettings?.phone || "+256 742 735 862"}</span>
+              <span className="block">{siteSettings?.phone2 || "+256 781 573 536"}</span>
               <span className="block">{siteSettings?.email || "enjiricenter@gmail.com"}</span>
             </address>
             <ul className="mt-6 space-y-3">

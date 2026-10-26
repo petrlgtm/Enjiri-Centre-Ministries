@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HiArrowRight } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
@@ -46,13 +47,13 @@ export default async function ContactPage() {
         ? heroImageUrl(settings.defaultHeaderImage)
         : "https://cdn.sanity.io/images/shcw5txc/production/a58fbadb6868c41f76df2874983f82d632551243-3508x2480.jpg?w=1200&q=80&fm=webp&fit=crop";
 
-  const address = settings?.address || "Kampala, Uganda";
-  const phone = settings?.phone || "+256 779 226290";
+  const address = settings?.address || "Maggwa Third-Lane, Jinja, Uganda";
+  const phones = [settings?.phone || "+256 742 735 862", settings?.phone2 || "+256 781 573 536"];
   const email = settings?.email || "enjiricenter@gmail.com";
   const direct = [
-    { label: "Visit", value: address, href: `https://maps.google.com/?q=${encodeURIComponent(address)}`, external: true },
-    { label: "Call", value: phone, href: `tel:${phone.replace(/\s/g, "")}`, external: false },
-    { label: "Write", value: email, href: `mailto:${email}`, external: false },
+    { label: "Visit", lines: [{ text: address, href: `https://maps.google.com/?q=${encodeURIComponent(address)}` }], external: true, hint: "Get directions" },
+    { label: "Call", lines: phones.map((p) => ({ text: p, href: `tel:${p.replace(/\s/g, "")}` })), external: false, hint: "Tap to call" },
+    { label: "Write", lines: [{ text: email, href: `mailto:${email}` }], external: false, hint: "Send an email" },
   ];
 
   const socialLinks = [
@@ -78,25 +79,30 @@ export default async function ContactPage() {
           <SectionMasthead label="Direct Lines" index="01" />
           <ul className="mt-10 grid gap-px bg-cream-heading/10 sm:grid-cols-3">
             {direct.map((d, i) => (
-              <Reveal as="li" key={d.label} delay={i * 0.06} className="bg-cream">
-                <a
-                  href={d.href}
-                  target={d.external ? "_blank" : undefined}
-                  rel={d.external ? "noopener noreferrer" : undefined}
-                  className="group block py-6 sm:px-8 sm:py-4 sm:first:pl-0"
-                >
-                  <span className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
-                    <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
-                    {d.label}
-                  </span>
-                  <span className="mt-4 block font-display text-2xl break-words transition-colors duration-300 group-hover:text-royal sm:text-[1.7rem]">
-                    {d.value}
-                  </span>
-                  <span className="mt-3 inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
-                    {d.label === "Visit" ? "Get directions" : d.label === "Call" ? "Tap to call" : "Send an email"}
-                    <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </a>
+              <Reveal as="li" key={d.label} delay={i * 0.06} className="bg-cream py-6 sm:px-8 sm:py-4 sm:first:pl-0">
+                <span className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
+                  <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
+                  {d.label}
+                </span>
+                {d.lines.map((line, j) => (
+                  <a
+                    key={line.text}
+                    href={line.href}
+                    target={d.external ? "_blank" : undefined}
+                    rel={d.external ? "noopener noreferrer" : undefined}
+                    className="group block"
+                  >
+                    <span className={cn("block font-display text-2xl break-words transition-colors duration-300 group-hover:text-royal sm:text-[1.7rem]", j === 0 ? "mt-4" : "mt-1")}>
+                      {line.text}
+                    </span>
+                    {j === d.lines.length - 1 && (
+                      <span className="mt-3 inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
+                        {d.hint}
+                        <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    )}
+                  </a>
+                ))}
               </Reveal>
             ))}
           </ul>

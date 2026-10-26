@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     template: "%s | Enjiri Center Ministries",
   },
   description:
-    "Reaching the world with the love of Christ through worship, outreach, teachings, and service. Join us at Enjiri Center Ministries International.",
+    "Preaching Christ, Restoring Hope. Raising passionate disciples, transforming communities, and advancing God's Kingdom with excellence and love.",
   keywords: [
     "Enjiri Center Ministries",
     "church",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "Enjiri Center Ministries International",
     title: "Enjiri Center Ministries International",
     description:
-      "Reaching the world with the love of Christ through worship, outreach, teachings, and service.",
+      "Preaching Christ, Restoring Hope. Raising passionate disciples, transforming communities, and advancing God's Kingdom with excellence and love.",
     images: [
       {
         url: "/images/og-default.jpg",
@@ -86,8 +86,10 @@ interface AnnouncementBannerData {
 
 interface SiteSettingsData {
   churchName?: string;
+  tagline?: string;
   address?: string;
   phone?: string;
+  phone2?: string;
   email?: string;
   socialLinks?: {
     facebook?: string;
