@@ -37,7 +37,7 @@ export default function LeaderHero({
 
       <Container className="relative grid items-end gap-8 pt-40 sm:pt-44 lg:grid-cols-12 lg:gap-10 lg:pt-40">
         {/* Copy */}
-        <div className="pb-4 lg:col-span-5 lg:self-center lg:pb-24">
+        <div className="pb-4 lg:order-2 lg:col-span-5 lg:self-center lg:pb-24">
           <Reveal>
             <h1 className="max-w-xl font-display text-[2.4rem] leading-[1.08] font-semibold text-white sm:text-5xl xl:text-[3.6rem]">
               {lead} <em className="not-italic text-gold-light">{accent}</em>
@@ -62,9 +62,9 @@ export default function LeaderHero({
           </Reveal>
         </div>
 
-        {/* Leader portrait */}
+        {/* Leader portrait — left of the copy, pointing towards it */}
         {leader && (
-          <Reveal delay={0.1} className="relative mx-auto mt-2 h-[30rem] w-full max-w-xl sm:mt-6 sm:h-[46rem] lg:col-span-7 lg:h-[56rem] lg:max-w-none">
+          <Reveal delay={0.1} className="relative mx-auto mt-2 h-[28rem] w-full max-w-xl sm:mt-6 sm:h-[40rem] lg:order-1 lg:col-span-7 lg:h-[46rem] lg:max-w-none">
             <Image
               src={leader.image}
               alt={leader.alt || leader.name}
@@ -73,7 +73,7 @@ export default function LeaderHero({
               sizes="(min-width: 1024px) 58vw, 100vw"
               className={leader.isCutout ? "object-contain object-bottom" : "object-cover object-top"}
             />
-            <div className="absolute bottom-24 left-0 max-w-[13rem] bg-white px-4 py-3 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)] sm:bottom-12 sm:max-w-[15rem] sm:px-5 sm:py-4">
+            <div className="absolute right-0 bottom-24 max-w-[13rem] bg-white px-4 py-3 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)] sm:bottom-12 sm:max-w-[15rem] sm:px-5 sm:py-4">
               <p className="font-display text-base leading-tight font-semibold text-cream-heading sm:text-xl">{leader.name}</p>
               <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold-dark">{leader.role}</p>
             </div>

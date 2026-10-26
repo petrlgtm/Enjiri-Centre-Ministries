@@ -45,7 +45,7 @@ export default async function AboutPage() {
       role: l.role,
       bio: l.bio || "",
       isCutout: Boolean(l.imageCutout),
-      image: l.imageCutout ? urlFor(l.imageCutout).auto("format").url() : portraitImage(l.image, 800),
+      image: l.imageCutout ? urlFor(l.imageCutout).format("png").url() : portraitImage(l.image, 800),
     }));
 
   return (

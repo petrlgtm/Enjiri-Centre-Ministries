@@ -63,7 +63,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   const formattedTime = formatTime(event.date) + (event.endDate ? ` – ${formatTime(event.endDate)}` : "");
   const location = event.location || "Enjiri Center";
   const headerImg = event.image ? heroImage(event.image) : "";
-  const cutout = event.cutoutImage ? urlFor(event.cutoutImage).width(900).auto("format").url() : null;
+  const cutout = event.cutoutImage ? urlFor(event.cutoutImage).width(900).format("png").url() : null;
   const rsvpHref = event.rsvpUrl || "/contact";
   const shareHref = `mailto:?subject=${encodeURIComponent(`Join me at ${event.title}`)}&body=${encodeURIComponent(
     `I thought you might be interested in ${event.title} at Enjiri Center Ministries.`

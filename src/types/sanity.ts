@@ -78,6 +78,7 @@ export interface HomePageData {
   heroHeading?: string;
   heroSubheading?: string;
   heroImages?: SanityImage[];
+  heroCutout?: SanityImage;
   heroCta?: CTA;
   heroSecondaryText?: string;
   heroSecondaryUrl?: string;

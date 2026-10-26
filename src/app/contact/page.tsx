@@ -40,7 +40,7 @@ export default async function ContactPage() {
     fetchSanity<ContactPageData>(contactPageQuery),
   ]);
 
-  const cutout = pageData?.cutoutImage ? urlFor(pageData.cutoutImage).width(900).auto("format").url() : null;
+  const cutout = pageData?.cutoutImage ? urlFor(pageData.cutoutImage).width(900).format("png").url() : null;
 
   const headerImage = pageData?.headerImage
     ? heroImageUrl(pageData.headerImage)

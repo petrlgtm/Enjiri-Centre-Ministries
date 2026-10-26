@@ -143,6 +143,14 @@ export default defineType({
       validation: (rule) => rule.max(4),
     }),
     defineField({
+      name: "heroCutout",
+      title: "Hero Cut-out",
+      description:
+        "Transparent PNG of a person (background removed) for the home hero — overrides the featured leader's cut-out",
+      type: "image",
+      fields: [defineField({ name: "alt", type: "string" })],
+    }),
+    defineField({
       name: "visitImage",
       title: "Plan Your Visit Image",
       description: "Portrait photo in the Gather With Us band (overlaps into the Ministries section)",

@@ -54,15 +54,15 @@ export default async function HomePage() {
     : null;
 
   const leader = leaders?.find((l) => l.featured) ?? leaders?.[0];
-  const leaderData = leader && (leader.imageCutout || leader.image)
+  // Home Page → Hero Cut-out wins; otherwise the featured leader's cut-out or portrait.
+  const cutout = homePage?.heroCutout ?? leader?.imageCutout;
+  const leaderData = leader && (cutout || leader.image)
     ? {
         name: leader.name,
         role: leader.role,
-        isCutout: Boolean(leader.imageCutout),
-        image: leader.imageCutout
-          ? urlFor(leader.imageCutout).auto("format").url()
-          : portraitImage(leader.image, 900),
-        alt: leader.imageCutout?.alt || leader.image?.alt,
+        isCutout: Boolean(cutout),
+        image: cutout ? urlFor(cutout).format("png").url() : portraitImage(leader.image, 900),
+        alt: cutout?.alt || leader.image?.alt,
       }
     : null;
 

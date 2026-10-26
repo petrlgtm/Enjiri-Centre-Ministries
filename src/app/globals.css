@@ -1142,9 +1142,9 @@ body {
 /* Home hero: ink blue with a gold daybreak behind the leader */
 .hero-ink {
   background:
-    radial-gradient(ellipse 42% 55% at 74% 62%, rgba(226, 204, 126, 0.32) 0%, rgba(201, 168, 76, 0.1) 45%, transparent 72%),
-    radial-gradient(ellipse 60% 50% at 10% 0%, rgba(201, 168, 76, 0.16) 0%, transparent 70%),
-    linear-gradient(165deg, var(--ink-light) 0%, var(--ink) 42%, var(--ink-deep) 100%);
+    radial-gradient(ellipse 42% 55% at 30% 62%, rgba(226, 204, 126, 0.32) 0%, rgba(201, 168, 76, 0.1) 45%, transparent 72%),
+    radial-gradient(ellipse 60% 50% at 90% 0%, rgba(201, 168, 76, 0.16) 0%, transparent 70%),
+    linear-gradient(195deg, var(--ink-light) 0%, var(--ink) 42%, var(--ink-deep) 100%);
 }
 
 .cutout-glow {
@@ -1152,7 +1152,7 @@ body {
 }
 
 .hero-ink-rays {
-  background: repeating-conic-gradient(from 210deg at 74% 100%, rgba(226, 204, 126, 0.09) 0deg, rgba(226, 204, 126, 0.09) 3deg, transparent 3deg, transparent 12deg);
-  -webkit-mask-image: radial-gradient(ellipse 55% 85% at 74% 100%, #000 15%, transparent 75%);
-  mask-image: radial-gradient(ellipse 55% 85% at 74% 100%, #000 15%, transparent 75%);
+  background: repeating-conic-gradient(from 210deg at 30% 100%, rgba(226, 204, 126, 0.09) 0deg, rgba(226, 204, 126, 0.09) 3deg, transparent 3deg, transparent 12deg);
+  -webkit-mask-image: radial-gradient(ellipse 55% 85% at 30% 100%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 55% 85% at 30% 100%, #000 15%, transparent 75%);
 }

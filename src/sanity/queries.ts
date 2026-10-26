@@ -394,6 +394,7 @@ export const homePageQuery = groq`
     heroHeading,
     heroSubheading,
     heroImages[] { ${imageFields} },
+    heroCutout { ${imageFields} },
     heroCta { label, url, style },
     heroSecondaryText,
     heroSecondaryUrl,
