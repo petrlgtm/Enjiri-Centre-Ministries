@@ -137,6 +137,7 @@ export const eventBySlugQuery = groq`
     description,
     body,
     image { ${imageFields} },
+    cutoutImage { ${imageFields} },
     isRecurring,
     recurrence,
     featured,
@@ -466,6 +467,7 @@ export const contactPageQuery = groq`
     title,
     description,
     headerImage { ${imageFields} },
+    cutoutImage { ${imageFields} },
     formHeading,
     infoHeading,
     mapUrl,
@@ -480,6 +482,7 @@ export const donatePageQuery = groq`
     title,
     description,
     headerImage { ${imageFields} },
+    cutoutImage { ${imageFields} },
     content,
     waysToGiveHeading,
     ${seoFields}

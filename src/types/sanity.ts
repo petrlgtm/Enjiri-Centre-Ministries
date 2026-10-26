@@ -137,6 +137,7 @@ export interface ContactPageData {
   title?: string;
   description?: string;
   headerImage?: SanityImage;
+  cutoutImage?: SanityImage;
   formHeading?: string;
   infoHeading?: string;
   mapUrl?: string;
@@ -147,6 +148,7 @@ export interface DonatePageData {
   title?: string;
   description?: string;
   headerImage?: SanityImage;
+  cutoutImage?: SanityImage;
   content?: PortableTextContent;
   waysToGiveHeading?: string;
   seo?: SEO;
@@ -186,6 +188,7 @@ export interface Event {
   image?: SanityImage;
   isRecurring?: boolean;
   recurrence?: "weekly" | "monthly";
+  cutoutImage?: SanityImage;
   featured?: boolean;
   category?: string;
   rsvpUrl?: string;

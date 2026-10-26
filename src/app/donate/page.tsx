@@ -6,9 +6,10 @@ import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import Reveal from "@/components/ui/Reveal";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import EditorialLink from "@/components/home/editorial/EditorialLink";
+import CutoutFigure from "@/components/ui/CutoutFigure";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { siteSettingsQuery, donatePageQuery } from "@/sanity/queries";
-import { heroImage as heroImageUrl } from "@/sanity/image";
+import { heroImage as heroImageUrl, urlFor } from "@/sanity/image";
 import { SiteSettings, DonatePageData } from "@/types/sanity";
 
 export const revalidate = 60;
@@ -45,6 +46,8 @@ export default async function DonatePage() {
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<DonatePageData>(donatePageQuery),
   ]);
+
+  const cutout = pageData?.cutoutImage ? urlFor(pageData.cutoutImage).width(900).auto("format").url() : null;
 
   const headerImage = pageData?.headerImage
     ? heroImageUrl(pageData.headerImage)
@@ -130,9 +133,23 @@ export default async function DonatePage() {
               </div>
             ))}
           </div>
-          <div className="mt-12 flex flex-col gap-3 sm:flex-row">
-            <EditorialLink href="/contact">Contact the ministry</EditorialLink>
-            <EditorialLink href="/charity" variant="outline-light">See what your giving supports</EditorialLink>
+          <div className="mt-12 grid items-end gap-10 lg:grid-cols-12">
+            <div className={cutout ? "lg:col-span-7 lg:pb-16" : "lg:col-span-12"}>
+              <p className="max-w-lg font-display text-2xl leading-snug sm:text-3xl">
+                Every gift helps us preach Christ and restore hope across Jinja and beyond.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <EditorialLink href="/contact">Contact the ministry</EditorialLink>
+                <EditorialLink href="/charity" variant="outline-light">See what your giving supports</EditorialLink>
+              </div>
+            </div>
+            {cutout && (
+              <CutoutFigure
+                src={cutout}
+                alt={pageData?.cutoutImage?.alt || "Evangelist Peter Kalagi"}
+                className="-mb-16 h-80 sm:-mb-20 sm:h-96 lg:col-span-5 lg:h-[28rem]"
+              />
+            )}
           </div>
         </Container>
       </section>

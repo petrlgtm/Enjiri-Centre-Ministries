@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import CutoutFigure from "@/components/ui/CutoutFigure";
 
 export default function NotFound() {
   return (
@@ -20,7 +21,15 @@ export default function NotFound() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-lg"
         >
-          {/* Large 404 display */}
+          {/* Large 404 display with the evangelist standing on it */}
+          <CutoutFigure
+            src="/images/kalagi-cutout-suit.png"
+            width={621}
+            height={657}
+            alt="Evangelist Peter Kalagi"
+            sizes="288px"
+            className="mx-auto -mb-16 h-56 md:-mb-20 md:h-72"
+          />
           <span className="block font-display text-[8rem] font-bold leading-none text-gold/20 md:text-[10rem]">
             404
           </span>

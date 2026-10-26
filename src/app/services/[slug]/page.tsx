@@ -10,10 +10,11 @@ import EventCountdown from "@/components/ui/EventCountdown";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { eventBySlugQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
-import { heroImage } from "@/sanity/image";
+import { heroImage, urlFor } from "@/sanity/image";
 import { formatDate, formatTime, hasPassed, recurrenceLabel } from "@/lib/utils";
 import { Event, SiteSettings } from "@/types/sanity";
 import FitImage from "@/components/ui/FitImage";
+import CutoutFigure from "@/components/ui/CutoutFigure";
 
 interface EventPageProps {
   params: Promise<{ slug: string }>;
@@ -62,6 +63,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   const formattedTime = formatTime(event.date) + (event.endDate ? ` – ${formatTime(event.endDate)}` : "");
   const location = event.location || "Enjiri Center";
   const headerImg = event.image ? heroImage(event.image) : "";
+  const cutout = event.cutoutImage ? urlFor(event.cutoutImage).width(900).auto("format").url() : null;
   const rsvpHref = event.rsvpUrl || "/contact";
   const shareHref = `mailto:?subject=${encodeURIComponent(`Join me at ${event.title}`)}&body=${encodeURIComponent(
     `I thought you might be interested in ${event.title} at Enjiri Center Ministries.`
@@ -80,7 +82,8 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             <HiArrowLeft size={14} /> All events
           </Link>
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end">
-            <div className="flex gap-6 sm:gap-8 lg:col-span-8">
+            <div className={cutout ? "lg:col-span-7 lg:pb-6" : "contents"}>
+            <div className={cutout ? "flex gap-6 sm:gap-8" : "flex gap-6 sm:gap-8 lg:col-span-8"}>
               <div className="shrink-0 leading-none">
                 <span className="block font-display text-6xl font-semibold text-gold sm:text-7xl">{day}</span>
                 <span className="mt-2 block font-mono text-xs tracking-[0.2em] text-white/55 uppercase">{month}</span>
@@ -90,13 +93,22 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 <h1 className="mt-3 font-display text-4xl leading-[1.05] font-semibold text-white sm:text-5xl lg:text-6xl">{event.title}</h1>
               </div>
             </div>
-            <div className="lg:col-span-4">
+            <div className={cutout ? "mt-10 max-w-md" : "lg:col-span-4"}>
               {isPast ? (
                 <p className="border-l-2 border-gold/60 pl-5 text-base text-white/70">This gathering has passed — see what&apos;s coming up next.</p>
               ) : (
                 <EventCountdown targetDate={event.date} isRecurring={event.isRecurring} recurrence={event.recurrence} />
               )}
             </div>
+            </div>
+            {cutout && (
+              <CutoutFigure
+                src={cutout}
+                alt={event.cutoutImage?.alt || event.title}
+                priority
+                className="-mb-12 h-72 sm:h-96 lg:col-span-5 lg:-mb-14 lg:h-[30rem]"
+              />
+            )}
           </div>
         </Container>
         {headerImg && (

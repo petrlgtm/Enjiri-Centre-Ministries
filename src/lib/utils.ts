@@ -182,6 +182,12 @@ export function nextOccurrence(dateString: string, recurrence?: string): Date {
   return next < start ? start : next;
 }
 
+/** Original pixel size from a Sanity asset URL ("…-1600x1066.jpg"); falls back to 3:2. */
+export function dimensionsFromUrl(src: string): { width: number; height: number } {
+  const match = src.match(/-(\d+)x(\d+)\.(?:jpe?g|png|webp|gif)/i);
+  return match ? { width: Number(match[1]), height: Number(match[2]) } : { width: 1200, height: 800 };
+}
+
 /** True once the given date/time is in the past. */
 export function hasPassed(dateString: string): boolean {
   return new Date(dateString).getTime() < Date.now();

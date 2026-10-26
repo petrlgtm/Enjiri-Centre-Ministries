@@ -26,6 +26,14 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'cutoutImage',
+      title: 'Cut-out Image',
+      type: 'image',
+      description:
+        'Optional transparent PNG of a person (background removed) — stands over the dark band, like the home hero',
+      fields: [defineField({ name: 'alt', title: 'Alternative Text', type: 'string' })],
+    }),
+    defineField({
       name: 'content',
       title: 'Page Content',
       type: 'portableText',

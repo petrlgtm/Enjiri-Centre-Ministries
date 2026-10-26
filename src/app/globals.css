@@ -1147,6 +1147,10 @@ body {
     linear-gradient(165deg, var(--ink-light) 0%, var(--ink) 42%, var(--ink-deep) 100%);
 }
 
+.cutout-glow {
+  background: radial-gradient(ellipse 55% 60% at 50% 78%, rgba(226, 204, 126, 0.3) 0%, rgba(201, 168, 76, 0.1) 45%, transparent 72%);
+}
+
 .hero-ink-rays {
   background: repeating-conic-gradient(from 210deg at 74% 100%, rgba(226, 204, 126, 0.09) 0deg, rgba(226, 204, 126, 0.09) 3deg, transparent 3deg, transparent 12deg);
   -webkit-mask-image: radial-gradient(ellipse 55% 85% at 74% 100%, #000 15%, transparent 75%);

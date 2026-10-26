@@ -3,13 +3,14 @@ import { HiArrowRight } from "react-icons/hi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import Container from "@/components/ui/Container";
+import CutoutFigure from "@/components/ui/CutoutFigure";
 import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import ContactForm from "@/components/contact/ContactForm";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { siteSettingsQuery, contactPageQuery } from "@/sanity/queries";
-import { heroImage as heroImageUrl } from "@/sanity/image";
+import { heroImage as heroImageUrl, urlFor } from "@/sanity/image";
 import { SiteSettings, ContactPageData } from "@/types/sanity";
 
 export const revalidate = 60;
@@ -38,6 +39,8 @@ export default async function ContactPage() {
     fetchSanity<SiteSettings>(siteSettingsQuery),
     fetchSanity<ContactPageData>(contactPageQuery),
   ]);
+
+  const cutout = pageData?.cutoutImage ? urlFor(pageData.cutoutImage).width(900).auto("format").url() : null;
 
   const headerImage = pageData?.headerImage
     ? heroImageUrl(pageData.headerImage)
@@ -140,7 +143,7 @@ export default async function ContactPage() {
             <ContactForm />
           </div>
 
-          <div className="lg:col-span-5 lg:pt-16">
+          <div className="flex flex-col lg:col-span-5 lg:pt-16">
             <p className="font-display text-3xl leading-snug sm:text-4xl">
               &ldquo;Cast all your anxiety on him because he cares for you.&rdquo;
             </p>
@@ -170,6 +173,14 @@ export default async function ContactPage() {
                   ))}
                 </div>
               </div>
+            )}
+
+            {cutout && (
+              <CutoutFigure
+                src={cutout}
+                alt={pageData?.cutoutImage?.alt || "Evangelist Peter Kalagi"}
+                className="mt-10 -mb-16 h-80 sm:-mb-20 sm:h-96 lg:mt-auto"
+              />
             )}
           </div>
         </Container>
