@@ -69,7 +69,7 @@ export const latestSermonsQuery = groq`
 // ── Events ──────────────────────────────────────────────────────
 
 export const upcomingEventsQuery = groq`
-  *[_type == "event" && date >= now()] | order(date asc) {
+  *[_type == "event" && (date >= now() || isRecurring == true)] | order(date asc) {
     _id,
     title,
     "slug": slug.current,
@@ -79,6 +79,7 @@ export const upcomingEventsQuery = groq`
     description,
     image { ${imageFields} },
     isRecurring,
+    recurrence,
     featured,
     category,
     rsvpUrl
@@ -107,6 +108,7 @@ export const homepageEventsQuery = groq`
     description,
     image { ${imageFields} },
     isRecurring,
+    recurrence,
     featured,
     category
   }
@@ -136,6 +138,7 @@ export const eventBySlugQuery = groq`
     body,
     image { ${imageFields} },
     isRecurring,
+    recurrence,
     featured,
     category,
     rsvpUrl,
@@ -155,6 +158,7 @@ export const upcomingEventsWithCategoryQuery = groq`
     description,
     image { ${imageFields} },
     isRecurring,
+    recurrence,
     featured,
     category,
     rsvpUrl

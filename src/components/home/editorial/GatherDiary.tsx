@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SectionMasthead from "./SectionMasthead";
 import EditorialLink from "./EditorialLink";
+import FitImage from "@/components/ui/FitImage";
 
 interface DiaryEvent {
   day: string;
@@ -108,7 +108,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
 
             {photo && (
               <div className="relative z-10 mt-12 ml-auto hidden h-96 w-72 overflow-hidden lg:-mb-60 lg:block">
-                <Image src={photo.src} alt={photo.alt} fill sizes="288px" className="object-cover" />
+                <FitImage src={photo.src} alt={photo.alt} sizes="288px" />
               </div>
             )}
           </div>

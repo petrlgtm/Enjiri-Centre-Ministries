@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
+import FitImage from "@/components/ui/FitImage";
 
 interface PageHeaderProps {
   label: string;
@@ -72,7 +72,7 @@ export default function PageHeader({ label, title, description, backgroundImage,
               transition={{ duration: 1, delay: 0.35, ease }}
               className="relative aspect-[16/9] overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/8]"
             >
-              <Image src={backgroundImage} alt="" fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+              <FitImage src={backgroundImage} alt="" sizes="(min-width: 1280px) 1216px, 100vw" priority />
             </motion.div>
           </Container>
         </div>

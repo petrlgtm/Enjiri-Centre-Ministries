@@ -6,7 +6,6 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { charityProgramBySlugQuery } from "@/sanity/queries";
 import { heroImage as heroImageBuilder, cardImage, heroImage, urlFor } from "@/sanity/image";
 import { getProgramBySlug, getAllSlugs } from "@/data/charityPrograms";
-import Image from "next/image";
 import Link from "next/link";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import Container from "@/components/ui/Container";
@@ -15,6 +14,7 @@ import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import AlbumGrid, { type AlbumPhoto } from "@/components/gallery/AlbumGrid";
 import { CharityProgram } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -147,7 +147,7 @@ export default async function CharityProgramPage({
           <div className="header-straddle-cream relative">
             <Container>
               <div className="relative aspect-16/9 overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/9]">
-                <Image src={heroImg} alt={title} fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+                <FitImage src={heroImg} alt={title} sizes="(min-width: 1280px) 1216px, 100vw" priority />
               </div>
             </Container>
           </div>
@@ -175,7 +175,7 @@ export default async function CharityProgramPage({
             {aboutImg && (
               <div className="relative lg:col-span-5">
                 <div className="relative aspect-4/5 overflow-hidden shadow-[0_40px_90px_-40px_rgba(11,31,69,0.6)] lg:absolute lg:inset-x-0 lg:top-0 lg:-bottom-40 lg:aspect-auto">
-                  <Image src={aboutImg} alt={`${title} in action`} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+                  <FitImage src={aboutImg} alt={`${title} in action`} sizes="(min-width: 1024px) 40vw, 100vw" />
                 </div>
               </div>
             )}

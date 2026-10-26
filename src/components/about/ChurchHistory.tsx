@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
@@ -6,6 +5,7 @@ import PortableTextRenderer from "@/components/ui/PortableTextRenderer";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import MilestoneTimeline from "./MilestoneTimeline";
 import { PortableTextContent } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 const defaultStats = [
   { value: 10, suffix: "+", label: "Years of Ministry" },
@@ -65,13 +65,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
           {image && (
             <Reveal delay={0.1} className="lg:col-span-5">
               <div className="relative aspect-4/5 overflow-hidden">
-                <Image
-                  src={image}
-                  alt="Enjiri Center Ministries — our story"
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                />
+                <FitImage src={image} alt="Enjiri Center Ministries — our story" sizes="(min-width: 1024px) 40vw, 100vw" />
               </div>
             </Reveal>
           )}

@@ -2,7 +2,6 @@ export const revalidate = 60;
 
 import type { Metadata } from "next";
 import ServiceSchedule from "@/components/services/ServiceSchedule";
-import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
@@ -13,6 +12,7 @@ import { upcomingEventsQuery, recentEventsQuery, siteSettingsQuery, servicesPage
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate, formatTime } from "@/lib/utils";
 import { Event, SiteSettings, ServicesPageData } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await fetchSanity<ServicesPageData>(servicesPageQuery);
@@ -56,7 +56,7 @@ export default async function ServicesPage() {
         title: e.title,
         slug: e.slug,
         day: e.isRecurring ? "∞" : new Date(e.date).toLocaleDateString("en-US", { day: "2-digit", timeZone: "Africa/Kampala" }),
-        month: e.isRecurring ? "Recurring" : new Date(e.date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "Africa/Kampala" }),
+        month: e.isRecurring ? (e.recurrence === "monthly" ? "Monthly" : "Weekly") : new Date(e.date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "Africa/Kampala" }),
         time: formatTime(e.date) + (e.endDate ? ` - ${formatTime(e.endDate)}` : ""),
         location: e.location || "TBD",
         description: e.description || "",
@@ -103,13 +103,7 @@ export default async function ServicesPage() {
                   <li key={e.slug}>
                     <Link href={`/services/${e.slug}`} className="group block">
                       <span className="relative block aspect-4/5 overflow-hidden">
-                        <Image
-                          src={e.image}
-                          alt={e.title}
-                          fill
-                          sizes="(min-width: 1024px) 25vw, 50vw"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        <FitImage src={e.image} alt={e.title} sizes="(min-width: 1024px) 25vw, 50vw" className="transition-transform duration-700 group-hover:scale-105" />
                       </span>
                       <span className="mt-4 block font-mono text-xs text-gold-light">{e.date}</span>
                       <span className="mt-1 block font-display text-2xl text-white transition-colors duration-300 group-hover:text-gold-light">

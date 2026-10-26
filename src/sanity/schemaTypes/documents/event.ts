@@ -116,8 +116,23 @@ export default defineType({
       title: "Is Recurring",
       type: "boolean",
       description:
-        'Turn on for weekly events like Sunday Worship — date will show as "Every Sunday"',
+        'Turn on for events that repeat — the start date sets the weekday (and week of the month for monthly events)',
       initialValue: false,
+    }),
+    defineField({
+      name: "recurrence",
+      title: "Repeats",
+      type: "string",
+      description: 'Weekly shows "Every Tuesday"; monthly shows "Every second Tuesday of the month"',
+      options: {
+        list: [
+          { title: "Weekly", value: "weekly" },
+          { title: "Monthly (same week & weekday)", value: "monthly" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "weekly",
+      hidden: ({ document }) => !document?.isRecurring,
     }),
     defineField({
       name: "rsvpUrl",

@@ -2,7 +2,6 @@ export const revalidate = 60;
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { HiArrowLeft, HiArrowRight, HiShare } from "react-icons/hi";
 import Container from "@/components/ui/Container";
@@ -12,8 +11,9 @@ import SectionMasthead from "@/components/home/editorial/SectionMasthead";
 import { fetchSanity } from "@/sanity/lib/helpers";
 import { eventBySlugQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { heroImage } from "@/sanity/image";
-import { formatDate, formatTime, hasPassed } from "@/lib/utils";
+import { formatDate, formatTime, hasPassed, recurrenceLabel } from "@/lib/utils";
 import { Event, SiteSettings } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 interface EventPageProps {
   params: Promise<{ slug: string }>;
@@ -56,9 +56,9 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   const isPast = !event.isRecurring && hasPassed(event.date);
   const day = event.isRecurring ? "∞" : when.toLocaleDateString("en-US", { day: "2-digit", timeZone: "Africa/Kampala" });
   const month = event.isRecurring
-    ? "Recurring"
+    ? (event.recurrence === "monthly" ? "Monthly" : "Weekly")
     : when.toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "Africa/Kampala" });
-  const formattedDate = event.isRecurring ? "Every Sunday" : formatDate(event.date);
+  const formattedDate = event.isRecurring ? recurrenceLabel(event.date, event.recurrence) : formatDate(event.date);
   const formattedTime = formatTime(event.date) + (event.endDate ? ` – ${formatTime(event.endDate)}` : "");
   const location = event.location || "Enjiri Center";
   const headerImg = event.image ? heroImage(event.image) : "";
@@ -94,7 +94,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               {isPast ? (
                 <p className="border-l-2 border-gold/60 pl-5 text-base text-white/70">This gathering has passed — see what&apos;s coming up next.</p>
               ) : (
-                <EventCountdown targetDate={event.date} isRecurring={event.isRecurring} />
+                <EventCountdown targetDate={event.date} isRecurring={event.isRecurring} recurrence={event.recurrence} />
               )}
             </div>
           </div>
@@ -103,7 +103,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           <div className="header-straddle-cream relative">
             <Container>
               <div className="relative aspect-16/9 overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/9]">
-                <Image src={headerImg} alt={event.title} fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+                <FitImage src={headerImg} alt={event.title} sizes="(min-width: 1280px) 1216px, 100vw" priority />
               </div>
             </Container>
           </div>

@@ -18,10 +18,9 @@ export function heroImage(source: any) {
   return builder
     .image(source)
     .width(1920)
-    .height(1080)
     .quality(85)
     .auto("format")
-    .fit("crop")
+    .fit("max")
     .url();
 }
 
@@ -30,10 +29,9 @@ export function cardImage(source: any, width = 800) {
   return builder
     .image(source)
     .width(width)
-    .height(Math.round(width * 0.625))
     .quality(80)
     .auto("format")
-    .fit("crop")
+    .fit("max")
     .url();
 }
 

@@ -185,6 +185,7 @@ export interface Event {
   body?: PortableTextContent;
   image?: SanityImage;
   isRecurring?: boolean;
+  recurrence?: "weekly" | "monthly";
   featured?: boolean;
   category?: string;
   rsvpUrl?: string;

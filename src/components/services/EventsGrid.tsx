@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi";
 import EventFilter from "@/components/services/EventFilter";
+import FitImage from "@/components/ui/FitImage";
 
 interface EventItem {
   title: string;
@@ -52,13 +52,7 @@ export default function EventsGrid({ events }: EventsGridProps) {
               </span>
               {event.image && (
                 <span className="relative block aspect-4/3 overflow-hidden">
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    fill
-                    sizes="192px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  <FitImage src={event.image} alt={event.title} sizes="192px" className="transition-transform duration-700 group-hover:scale-105" />
                 </span>
               )}
               <span>

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SectionMasthead from "@/components/home/editorial/SectionMasthead";
+import FitImage from "@/components/ui/FitImage";
 
 const schedule = [
   {
@@ -54,7 +54,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
             {image && (
               <figure className="mt-10">
                 <div className="relative aspect-4/5 max-w-sm overflow-hidden">
-                  <Image src={image} alt="Congregation gathered in worship" fill sizes="384px" className="object-cover" />
+                  <FitImage src={image} alt="Congregation gathered in worship" sizes="384px" />
                 </div>
                 <figcaption className="mt-5 max-w-sm">
                   <span className="block font-display text-xl leading-snug italic">

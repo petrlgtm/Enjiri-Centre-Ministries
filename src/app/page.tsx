@@ -48,9 +48,9 @@ export default async function HomePage() {
   // Editable in Studio (Home Page → Plan Your Visit Image); falls back to the latest gallery cover.
   const gatherGallery = galleries?.find((g) => g.coverImage);
   const gatherPhoto = homePage?.visitImage
-    ? { src: portraitImage(homePage.visitImage, 600), alt: homePage.visitImage.alt || "Enjiri Center Ministries" }
+    ? { src: cardImage(homePage.visitImage, 700), alt: homePage.visitImage.alt || "Enjiri Center Ministries" }
     : gatherGallery?.coverImage
-    ? { src: portraitImage(gatherGallery.coverImage, 600), alt: gatherGallery.coverImage.alt || gatherGallery.title }
+    ? { src: cardImage(gatherGallery.coverImage, 700), alt: gatherGallery.coverImage.alt || gatherGallery.title }
     : null;
 
   const leader = leaders?.find((l) => l.featured) ?? leaders?.[0];

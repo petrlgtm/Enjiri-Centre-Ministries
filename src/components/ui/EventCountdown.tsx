@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { nextOccurrence } from "@/lib/utils";
 
 interface EventCountdownProps {
   targetDate: string;
   isRecurring?: boolean;
+  recurrence?: string;
 }
 
-export default function EventCountdown({ targetDate, isRecurring }: EventCountdownProps) {
+export default function EventCountdown({ targetDate, isRecurring, recurrence }: EventCountdownProps) {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
     hours: number;
@@ -22,21 +24,7 @@ export default function EventCountdown({ targetDate, isRecurring }: EventCountdo
       let target = new Date(targetDate).getTime();
       const now = new Date().getTime();
 
-      if (isRecurring) {
-        // For recurring events like "Every Sunday", we calculate the next occurrence
-        // This is a simplified version - in a real app, you'd want more complex logic
-        const date = new Date(targetDate);
-        const dayOfWeek = date.getDay();
-        const nowObj = new Date();
-        const nextDate = new Date();
-        nextDate.setDate(nowObj.getDate() + (dayOfWeek + 7 - nowObj.getDay()) % 7);
-        nextDate.setHours(date.getHours(), date.getMinutes(), 0, 0);
-        
-        if (nextDate.getTime() < now) {
-          nextDate.setDate(nextDate.getDate() + 7);
-        }
-        target = nextDate.getTime();
-      }
+      if (isRecurring) target = nextOccurrence(targetDate, recurrence).getTime();
 
       const difference = target - now;
 
@@ -60,7 +48,7 @@ export default function EventCountdown({ targetDate, isRecurring }: EventCountdo
     setTimeLeft(calculateTimeLeft());
 
     return () => clearInterval(timer);
-  }, [targetDate, isRecurring]);
+  }, [targetDate, isRecurring, recurrence]);
 
   if (!timeLeft || timeLeft.isOver) return null;
 

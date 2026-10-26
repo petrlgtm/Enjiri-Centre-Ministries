@@ -149,6 +149,38 @@ export function cleanVideoTitle(raw: string): string {
     .replace(/(^|[\s(-])(\p{L})/gu, (_, pre: string, ch: string) => pre + ch.toUpperCase());
 }
 
+const ORDINALS = ["first", "second", "third", "fourth", "last"];
+
+/** "Every Sunday" or "Every second Tuesday of the month", from a recurring event's start date. */
+export function recurrenceLabel(dateString: string, recurrence?: string): string {
+  const d = new Date(dateString);
+  const weekday = d.toLocaleDateString("en-US", { weekday: "long", timeZone: "Africa/Kampala" });
+  if (recurrence !== "monthly") return `Every ${weekday}`;
+  const dayOfMonth = Number(d.toLocaleDateString("en-US", { day: "numeric", timeZone: "Africa/Kampala" }));
+  return `Every ${ORDINALS[Math.ceil(dayOfMonth / 7) - 1]} ${weekday} of the month`;
+}
+
+/** Next upcoming date of a recurring event (weekly, or monthly on the same nth weekday). */
+export function nextOccurrence(dateString: string, recurrence?: string): Date {
+  const start = new Date(dateString);
+  const now = new Date();
+  if (recurrence === "monthly") {
+    const nth = Math.ceil(start.getDate() / 7);
+    for (let m = 0; m < 14; m++) {
+      const first = new Date(now.getFullYear(), now.getMonth() + m, 1);
+      const day = 1 + ((start.getDay() - first.getDay() + 7) % 7) + (nth - 1) * 7;
+      const next = new Date(first.getFullYear(), first.getMonth(), day, start.getHours(), start.getMinutes());
+      if (next.getMonth() === first.getMonth() && next >= now && next >= start) return next;
+    }
+    return start;
+  }
+  const next = new Date(now);
+  next.setDate(now.getDate() + ((start.getDay() + 7 - now.getDay()) % 7));
+  next.setHours(start.getHours(), start.getMinutes(), 0, 0);
+  if (next < now) next.setDate(next.getDate() + 7);
+  return next < start ? start : next;
+}
+
 /** True once the given date/time is in the past. */
 export function hasPassed(dateString: string): boolean {
   return new Date(dateString).getTime() < Date.now();

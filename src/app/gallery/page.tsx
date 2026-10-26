@@ -1,7 +1,6 @@
 export const revalidate = 60;
 
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
@@ -13,6 +12,7 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { allGalleriesQuery, siteSettingsQuery, galleryPageQuery } from "@/sanity/queries";
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { Gallery, SiteSettings, GalleryPageData } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await fetchSanity<GalleryPageData>(galleryPageQuery);
@@ -68,13 +68,7 @@ export default async function GalleryPage() {
                     <Link href={`/gallery/${gallery.slug}`} className="group grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
                       {gallery.coverImage && (
                         <span className={cn("relative block aspect-4/3 overflow-hidden bg-navy lg:col-span-7", flip && "lg:order-2")}>
-                          <Image
-                            src={cardImage(gallery.coverImage, 1200)}
-                            alt={gallery.coverImage.alt || gallery.title}
-                            fill
-                            sizes="(min-width: 1024px) 58vw, 100vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                          />
+                          <FitImage src={cardImage(gallery.coverImage, 1200)} alt={gallery.coverImage.alt || gallery.title} sizes="(min-width: 1024px) 58vw, 100vw" className="transition-transform duration-700 group-hover:scale-[1.03]" />
                           <span className="absolute bottom-0 left-0 bg-royal px-5 py-3 font-mono text-xs tracking-[0.18em] text-white uppercase">
                             {gallery.imageCount ?? 0} photos
                           </span>
@@ -96,7 +90,7 @@ export default async function GalleryPage() {
                           <span className="mt-8 grid grid-cols-3 gap-2">
                             {gallery.previews.map((p, j) => (
                               <span key={j} className="relative block aspect-square overflow-hidden bg-navy">
-                                <Image src={cardImage(p.image, 300)} alt={p.alt || ""} fill sizes="140px" className="object-cover" />
+                                <FitImage src={cardImage(p.image, 300)} alt={p.alt || ""} sizes="140px" />
                               </span>
                             ))}
                           </span>

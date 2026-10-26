@@ -1,7 +1,6 @@
 export const revalidate = 60;
 
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHeader from "@/components/ui/PageHeader";
@@ -13,6 +12,7 @@ import { allBlogPostsQuery, siteSettingsQuery, blogPageQuery } from "@/sanity/qu
 import { cardImage, heroImage as heroImageUrl } from "@/sanity/image";
 import { formatDate } from "@/lib/utils";
 import { BlogPost, SiteSettings, BlogPageData } from "@/types/sanity";
+import FitImage from "@/components/ui/FitImage";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await fetchSanity<BlogPageData>(blogPageQuery);
@@ -67,14 +67,7 @@ export default async function BlogPage() {
               <Link href={`/blog/${lead.slug}`} className="group mt-10 grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
                 {lead.coverImage && (
                   <span className="relative block aspect-16/10 overflow-hidden bg-navy lg:col-span-7">
-                    <Image
-                      src={cardImage(lead.coverImage, 1200)}
-                      alt={lead.title}
-                      fill
-                      priority
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
+                    <FitImage src={cardImage(lead.coverImage, 1200)} alt={lead.title} sizes="(min-width: 1024px) 58vw, 100vw" priority className="transition-transform duration-700 group-hover:scale-[1.03]" />
                   </span>
                 )}
                 <span className="lg:col-span-5">
@@ -101,13 +94,7 @@ export default async function BlogPage() {
                         <Link href={`/blog/${post.slug}`} className="group block">
                           {post.coverImage && (
                             <span className="relative block aspect-16/10 overflow-hidden bg-navy">
-                              <Image
-                                src={cardImage(post.coverImage)}
-                                alt={post.title}
-                                fill
-                                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                              />
+                              <FitImage src={cardImage(post.coverImage)} alt={post.title} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="transition-transform duration-700 group-hover:scale-105" />
                             </span>
                           )}
                           <span className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs tracking-[0.16em] text-gold-dark uppercase">
