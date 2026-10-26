@@ -148,7 +148,7 @@ export default async function BlogPostPage({
               )}
               <Link
                 href="/blog"
-                className="flex items-center justify-between bg-royal px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
+                className="flex items-center justify-between bg-ink px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-ink-light"
               >
                 More stories <HiArrowLeft className="rotate-180" />
               </Link>

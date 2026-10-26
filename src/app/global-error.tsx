@@ -9,7 +9,7 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#0c0f1a] text-white font-sans antialiased">
+      <body className="bg-[#120f0b] text-white font-sans antialiased">
         <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
           <h1 className="text-4xl font-bold">Something went wrong</h1>
           <p className="mt-4 max-w-md text-lg text-white/60">
@@ -17,7 +17,7 @@ export default function GlobalError({
           </p>
           <button
             onClick={reset}
-            className="mt-8 bg-[#c9a84c] px-8 py-3 text-sm font-semibold text-[#0c0f1a] transition-all hover:bg-[#c9a84c]/90"
+            className="mt-8 bg-[#c9a84c] px-8 py-3 text-sm font-semibold text-[#120f0b] transition-all hover:bg-[#c9a84c]/90"
           >
             Try Again
           </button>

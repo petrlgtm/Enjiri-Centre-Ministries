@@ -33,7 +33,7 @@ const label = DM_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0c0f1a",
+  themeColor: "#120f0b",
   width: "device-width",
   initialScale: 1,
 };

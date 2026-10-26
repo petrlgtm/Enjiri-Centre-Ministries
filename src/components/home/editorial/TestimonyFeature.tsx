@@ -25,7 +25,7 @@ function Avatar({ name, image, size }: { name: string; image?: string; size: "sm
     );
   }
   return (
-    <span aria-hidden className={cn("flex shrink-0 items-center justify-center rounded-full bg-gold font-display font-semibold text-royal-deep", dims)}>
+    <span aria-hidden className={cn("flex shrink-0 items-center justify-center rounded-full bg-gold font-display font-semibold text-ink-deep", dims)}>
       {name.charAt(0)}
     </span>
   );
@@ -36,7 +36,7 @@ export default function TestimonyFeature({ testimonies }: TestimonyFeatureProps)
   const [lead, ...rest] = testimonies;
 
   return (
-    <section className="relative overflow-x-clip bg-royal-deep pt-20 pb-24 text-white sm:pt-24 sm:pb-32">
+    <section className="relative overflow-x-clip bg-ink-deep pt-20 pb-24 text-white sm:pt-24 sm:pb-32">
       <div aria-hidden className="hero-editorial-glow pointer-events-none absolute inset-0" />
       <div aria-hidden className="noise-overlay pointer-events-none absolute inset-0" />
 
@@ -62,7 +62,7 @@ export default function TestimonyFeature({ testimonies }: TestimonyFeatureProps)
         {rest.length > 0 && (
           <ul className="mt-20 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
             {rest.slice(0, 3).map((t, i) => (
-              <Reveal as="li" key={t.name} delay={i * 0.06} className="flex flex-col bg-royal-deep p-6 sm:p-8">
+              <Reveal as="li" key={t.name} delay={i * 0.06} className="flex flex-col bg-ink-deep p-6 sm:p-8">
                 <p className="flex-1 text-[15px] leading-relaxed text-white/80">&ldquo;{t.quote}&rdquo;</p>
                 <p className="mt-6 flex items-center gap-3">
                   <Avatar name={t.name} image={t.image} size="sm" />

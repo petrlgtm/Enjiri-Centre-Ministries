@@ -174,7 +174,7 @@ export default async function CharityProgramPage({
             </div>
             {aboutImg && (
               <div className="relative lg:col-span-5">
-                <div className="relative overflow-hidden shadow-[0_40px_90px_-40px_rgba(11,31,69,0.6)]">
+                <div className="relative overflow-hidden shadow-[0_40px_90px_-40px_rgba(18,15,11,0.6)]">
                   <FitImage src={aboutImg} alt={`${title} in action`} sizes="(min-width: 1024px) 40vw, 100vw" />
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default async function CharityProgramPage({
 
       {/* Highlights */}
       {highlights.length > 0 && (
-        <section className="bg-royal-deep pt-16 pb-16 text-white sm:pt-20 sm:pb-20 lg:pt-52">
+        <section className="bg-ink-deep pt-16 pb-16 text-white sm:pt-20 sm:pb-20 lg:pt-52">
           <Container>
             <SectionMasthead label="What we do" index="02" tone="dark" />
             <ol className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -230,7 +230,7 @@ export default async function CharityProgramPage({
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/donate"
-                className="group inline-flex items-center justify-center gap-3 bg-navy px-7 py-4 text-[12px] font-semibold tracking-[0.2em] text-gold uppercase transition-colors hover:bg-royal-deep"
+                className="group inline-flex items-center justify-center gap-3 bg-navy px-7 py-4 text-[12px] font-semibold tracking-[0.2em] text-gold uppercase transition-colors hover:bg-ink-deep"
               >
                 Give today <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>

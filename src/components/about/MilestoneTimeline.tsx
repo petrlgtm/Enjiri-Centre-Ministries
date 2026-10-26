@@ -44,7 +44,7 @@ export default function MilestoneTimeline({ chapters }: MilestoneTimelineProps) 
             {/* Marker */}
             <span
               aria-hidden
-              className="absolute top-5 left-0 h-3.5 w-3.5 bg-gold ring-[6px] ring-royal-deep lg:left-1/2 lg:-translate-x-1/2"
+              className="absolute top-5 left-0 h-3.5 w-3.5 bg-gold ring-[6px] ring-ink-deep lg:left-1/2 lg:-translate-x-1/2"
             />
 
             <div className={cn("lg:px-14", right ? "lg:col-start-2" : "lg:text-right")}>

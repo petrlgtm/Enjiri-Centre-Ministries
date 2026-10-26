@@ -20,7 +20,7 @@ function buildComponents(onLight: boolean): PortableTextComponents {
   const heading = onLight ? "text-cream-heading" : "text-foreground";
   const text = onLight ? "text-cream-body" : "text-(--gray-400)";
   const muted = onLight ? "text-cream-muted" : "text-(--gray-500)";
-  const link = onLight ? "text-royal hover:text-royal-light" : "text-gold hover:text-gold-light";
+  const link = onLight ? "text-gold-dark hover:text-ink" : "text-gold hover:text-gold-light";
 
   return {
   block: {

@@ -68,7 +68,7 @@ export default function AlbumGrid({ photos }: AlbumGridProps) {
       </ul>
 
       {current && open !== null && (
-        <div role="dialog" aria-modal="true" aria-label={current.alt} className="fixed inset-0 z-[70] flex flex-col bg-royal-deep/[0.97]">
+        <div role="dialog" aria-modal="true" aria-label={current.alt} className="fixed inset-0 z-[70] flex flex-col bg-ink-deep/[0.97]">
           <div className="flex items-center justify-between px-4 py-4 text-white sm:px-8">
             <span className="font-mono text-xs tracking-[0.18em] text-white/60">
               {String(open + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}

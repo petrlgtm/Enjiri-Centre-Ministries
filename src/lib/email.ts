@@ -11,7 +11,7 @@ export const MINISTRY_INBOX = process.env.CONTACT_INBOX || "enjiricenter@gmail.c
 
 const LOGO = "https://cdn.sanity.io/images/shcw5txc/production/a155b222da98472fa175f3f5015421f4fe5ca14f-1170x1174.jpg?w=144&h=144&fit=crop&auto=format";
 const C = {
-  royal: "#0b1f45",
+  ink: "#120f0b",
   gold: "#c9a84c",
   goldDark: "#8a6d1b",
   cream: "#fffbf5",
@@ -37,7 +37,7 @@ const paragraphs = (text: string) =>
 export function button(label: string, href: string) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px 0 8px;"><tr>
     <td style="background:${C.gold};">
-      <a href="${href}" style="display:inline-block;padding:14px 28px;font-family:${SANS};font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${C.royal};text-decoration:none;">${label}</a>
+      <a href="${href}" style="display:inline-block;padding:14px 28px;font-family:${SANS};font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${C.ink};text-decoration:none;">${label}</a>
     </td></tr></table>`;
 }
 
@@ -58,7 +58,7 @@ export function details(rows: Array<[string, string]>) {
   </table>`;
 }
 
-/** Branded shell: royal header with logo, cream body, royal footer with slogan and contact lines. */
+/** Branded shell: ink header with logo, cream body, ink footer with slogan and contact lines. */
 export function layout({ preheader, kicker, title, body }: { preheader: string; kicker: string; title: string; body: string }) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHtml(title)}</title></head>
@@ -67,7 +67,7 @@ export function layout({ preheader, kicker, title, body }: { preheader: string; 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.page};">
 <tr><td align="center" style="padding:32px 12px;">
   <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">
-    <tr><td style="background:${C.royal};padding:28px 36px;">
+    <tr><td style="background:${C.ink};padding:28px 36px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
         <td style="padding-right:16px;"><img src="${LOGO}" width="56" height="56" alt="Enjiri Center Ministries" style="display:block;border-radius:50%;border:2px solid ${C.gold};"></td>
         <td style="font-family:${SANS};font-size:12px;font-weight:700;letter-spacing:2px;line-height:1.5;color:#ffffff;text-transform:uppercase;">Enjiri Center<br><span style="color:${C.gold};">Ministries International</span></td>
@@ -79,7 +79,7 @@ export function layout({ preheader, kicker, title, body }: { preheader: string; 
       <h1 style="margin:0 0 22px;font-family:${SERIF};font-size:28px;line-height:1.25;font-weight:700;color:${C.heading};">${title}</h1>
       <div style="font-family:${SANS};font-size:15px;line-height:1.7;color:${C.body};">${body}</div>
     </td></tr>
-    <tr><td style="background:${C.royal};padding:30px 36px;text-align:center;">
+    <tr><td style="background:${C.ink};padding:30px 36px;text-align:center;">
       <p style="margin:0 0 14px;font-family:${SERIF};font-size:18px;font-style:italic;color:${C.gold};">Preaching Christ, Restoring Hope</p>
       <p style="margin:0;font-family:${SANS};font-size:12px;line-height:1.8;color:rgba(255,255,255,0.75);">
         Maggwa Third-Lane, Jinja, Uganda<br>

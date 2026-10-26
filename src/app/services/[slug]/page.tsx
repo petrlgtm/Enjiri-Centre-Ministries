@@ -174,14 +174,14 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   <div className="mt-6 space-y-2">
                     <Link
                       href={isPast ? "/services" : rsvpHref}
-                      className="flex items-center justify-between bg-royal px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
+                      className="flex items-center justify-between bg-ink px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-ink-light"
                     >
                       {isPast ? "See upcoming events" : event.rsvpUrl ? "Register / RSVP" : "Ask about this event"}
                       <HiArrowRight />
                     </Link>
                     <a
                       href={shareHref}
-                      className="flex items-center justify-between border border-cream-heading/20 px-5 py-4 text-xs font-semibold tracking-[0.2em] uppercase transition-colors hover:border-royal hover:text-royal"
+                      className="flex items-center justify-between border border-cream-heading/20 px-5 py-4 text-xs font-semibold tracking-[0.2em] uppercase transition-colors hover:border-ink hover:text-gold-dark"
                     >
                       Share with a friend <HiShare />
                     </a>
@@ -189,7 +189,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 </div>
                 <p className="text-sm leading-relaxed text-cream-body">
                   Questions about transport or how to get involved?{" "}
-                  <Link href="/contact" className="font-semibold text-royal underline underline-offset-2">
+                  <Link href="/contact" className="font-semibold text-ink underline underline-offset-2">
                     Contact our office
                   </Link>
                   .
@@ -202,7 +202,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
       {/* Other upcoming events */}
       {otherEvents.length > 0 && (
-        <section className="bg-royal-deep py-14 text-white sm:py-16">
+        <section className="bg-ink-deep py-14 text-white sm:py-16">
           <Container>
             <SectionMasthead label="Also coming up" index="02" linkLabel="All events" href="/services" tone="dark" />
             <ul className="mt-8">

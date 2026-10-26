@@ -61,7 +61,7 @@ export default function NewsletterSignup() {
           <button
             type="submit"
             disabled={status === "sending" || status === "done"}
-            className="shrink-0 cursor-pointer bg-royal-deep px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-royal"
+            className="shrink-0 cursor-pointer bg-ink-deep px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-ink"
           >
             {status === "done" ? (
               <span className="flex items-center gap-2">

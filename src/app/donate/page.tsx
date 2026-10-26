@@ -94,7 +94,7 @@ export default async function DonatePage() {
                       href={category.href === "#" ? "/contact" : category.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
-                      className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 border-b border-cream-heading/12 px-2 py-6 transition-colors duration-500 hover:bg-royal sm:px-5"
+                      className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 border-b border-cream-heading/12 px-2 py-6 transition-colors duration-500 hover:bg-ink sm:px-5"
                     >
                       <span className="font-display text-3xl font-semibold text-gold-dark transition-colors duration-500 group-hover:text-gold">
                         {String(i + 1).padStart(2, "0")}
@@ -115,9 +115,9 @@ export default async function DonatePage() {
       </section>
 
       {/* Other ways — the card rises into the cream above */}
-      <section className="flow-root bg-royal-deep pb-16 text-white sm:pb-20">
+      <section className="flow-root bg-ink-deep pb-16 text-white sm:pb-20">
         <Container>
-          <div className="relative z-10 -mt-24 grid gap-px bg-white/10 shadow-[0_40px_90px_-40px_rgba(11,31,69,0.7)] sm:-mt-28 sm:grid-cols-3">
+          <div className="relative z-10 -mt-24 grid gap-px bg-white/10 shadow-[0_40px_90px_-40px_rgba(18,15,11,0.7)] sm:-mt-28 sm:grid-cols-3">
             {[
               { label: "In person", text: "Give during any of our weekly services — Sunday worship, Wednesday Bible study or Friday prayer." },
               { label: "Talk to us", text: "Call or message the ministry office and we will guide you through giving towards a specific need." },

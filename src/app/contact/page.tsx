@@ -92,11 +92,11 @@ export default async function ContactPage() {
                     rel={d.external ? "noopener noreferrer" : undefined}
                     className="group block"
                   >
-                    <span className={cn("block font-display text-2xl break-words transition-colors duration-300 group-hover:text-royal sm:text-[1.7rem]", j === 0 ? "mt-4" : "mt-1")}>
+                    <span className={cn("block font-display text-2xl break-words transition-colors duration-300 group-hover:text-gold-dark sm:text-[1.7rem]", j === 0 ? "mt-4" : "mt-1")}>
                       {line.text}
                     </span>
                     {j === d.lines.length - 1 && (
-                      <span className="mt-3 inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
+                      <span className="mt-3 inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-gold-dark">
                         {d.hint}
                         <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
@@ -127,9 +127,9 @@ export default async function ContactPage() {
       </section>
 
       {/* Message band — the form card rises into the cream above */}
-      <section className="flow-root bg-royal-deep pb-16 text-white sm:pb-20">
+      <section className="flow-root bg-ink-deep pb-16 text-white sm:pb-20">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
-          <div className="relative z-10 -mt-24 bg-white p-6 text-cream-heading shadow-[0_40px_90px_-40px_rgba(11,31,69,0.7)] sm:-mt-32 sm:p-10 lg:col-span-7">
+          <div className="relative z-10 -mt-24 bg-white p-6 text-cream-heading shadow-[0_40px_90px_-40px_rgba(18,15,11,0.7)] sm:-mt-32 sm:p-10 lg:col-span-7">
             <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
               Get in touch
@@ -176,7 +176,7 @@ export default async function ContactPage() {
       </section>
 
       {pageData?.mapUrl && (
-        <section className="h-[420px] w-full bg-royal-deep">
+        <section className="h-[420px] w-full bg-ink-deep">
           <iframe
             src={pageData.mapUrl}
             width="100%"

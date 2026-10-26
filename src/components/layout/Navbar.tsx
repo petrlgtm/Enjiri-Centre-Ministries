@@ -164,7 +164,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
         <nav
           className={cn(
             "relative transition-colors duration-700",
-            scrolled ? "bg-royal-deep/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl" : "bg-transparent"
+            scrolled ? "bg-ink-deep/95 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl" : "bg-transparent"
           )}
         >
           <Container>
@@ -185,7 +185,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
               </Link>
 
               {/* Link panel */}
-              <div className="flex items-stretch overflow-hidden rounded-[3px] bg-royal shadow-[0_10px_34px_-10px_rgba(11,31,69,0.6)] ring-1 ring-white/10">
+              <div className="flex items-stretch overflow-hidden rounded-[3px] bg-ink shadow-[0_10px_34px_-10px_rgba(18,15,11,0.6)] ring-1 ring-white/10">
                 <ul className="hidden items-center lg:flex">
                   {navLinks.map((link) => {
                     const isActive = pathname === link.href;
@@ -215,7 +215,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
 
                 <Link
                   href="/donate"
-                  className="flex items-center bg-gold px-4 py-3.5 font-mono text-xs font-medium tracking-[0.12em] text-royal-deep uppercase transition-colors duration-300 hover:bg-gold-light sm:px-5"
+                  className="flex items-center bg-gold px-4 py-3.5 font-mono text-xs font-medium tracking-[0.12em] text-ink-deep uppercase transition-colors duration-300 hover:bg-gold-light sm:px-5"
                 >
                   Give<span className="hidden sm:inline">&nbsp;Online</span>
                 </Link>
@@ -223,7 +223,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="relative z-50 flex w-12 items-center justify-center text-white transition-colors duration-300 hover:bg-royal-light lg:hidden"
+                  className="relative z-50 flex w-12 items-center justify-center text-white transition-colors duration-300 hover:bg-ink-light lg:hidden"
                   aria-label="Toggle menu"
                   aria-expanded={isOpen}
                 >
@@ -260,7 +260,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className={"flex h-8 w-8 items-center justify-center text-cream-body transition-colors duration-200 hover:text-royal"}
+                        className={"flex h-8 w-8 items-center justify-center text-cream-body transition-colors duration-200 hover:text-gold-dark"}
                       >
                         <social.icon size={15} />
                       </a>

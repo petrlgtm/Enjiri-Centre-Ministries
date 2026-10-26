@@ -69,7 +69,7 @@ export default async function GalleryPage() {
                       {gallery.coverImage && (
                         <span className={cn("relative block overflow-hidden bg-navy lg:col-span-7", flip && "lg:order-2")}>
                           <FitImage src={cardImage(gallery.coverImage, 1200)} alt={gallery.coverImage.alt || gallery.title} sizes="(min-width: 1024px) 58vw, 100vw" className="transition-transform duration-700 group-hover:scale-[1.03]" />
-                          <span className="absolute bottom-0 left-0 bg-royal px-5 py-3 font-mono text-xs tracking-[0.18em] text-white uppercase">
+                          <span className="absolute bottom-0 left-0 bg-ink px-5 py-3 font-mono text-xs tracking-[0.18em] text-white uppercase">
                             {gallery.imageCount ?? 0} photos
                           </span>
                         </span>
@@ -80,7 +80,7 @@ export default async function GalleryPage() {
                           {gallery.category && <span className="text-cream-muted">{gallery.category}</span>}
                           {gallery.date && <span className="text-cream-muted">{formatDate(gallery.date)}</span>}
                         </span>
-                        <span className="mt-4 block font-display text-3xl leading-[1.1] font-semibold transition-colors duration-300 group-hover:text-royal sm:text-4xl">
+                        <span className="mt-4 block font-display text-3xl leading-[1.1] font-semibold transition-colors duration-300 group-hover:text-gold-dark sm:text-4xl">
                           {gallery.title}
                         </span>
                         {gallery.description && (

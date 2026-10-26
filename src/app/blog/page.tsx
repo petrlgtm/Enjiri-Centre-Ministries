@@ -75,7 +75,7 @@ export default async function BlogPage() {
                     {lead.categories?.[0] && <span>{lead.categories[0]}</span>}
                     {lead.publishedAt && <span className="text-cream-muted">{formatDate(lead.publishedAt)}</span>}
                   </span>
-                  <span className="mt-4 block font-display text-3xl leading-[1.12] font-semibold transition-colors duration-300 group-hover:text-royal sm:text-4xl">
+                  <span className="mt-4 block font-display text-3xl leading-[1.12] font-semibold transition-colors duration-300 group-hover:text-gold-dark sm:text-4xl">
                     {lead.title}
                   </span>
                   {lead.excerpt && <span className="mt-5 block text-base leading-relaxed text-cream-body">{lead.excerpt}</span>}
@@ -101,7 +101,7 @@ export default async function BlogPage() {
                             {post.categories?.[0] && <span>{post.categories[0]}</span>}
                             {post.publishedAt && <span className="text-cream-muted">{formatDate(post.publishedAt)}</span>}
                           </span>
-                          <span className="mt-2 block font-display text-2xl leading-snug font-semibold transition-colors duration-300 group-hover:text-royal">
+                          <span className="mt-2 block font-display text-2xl leading-snug font-semibold transition-colors duration-300 group-hover:text-gold-dark">
                             {post.title}
                           </span>
                           {post.excerpt && (

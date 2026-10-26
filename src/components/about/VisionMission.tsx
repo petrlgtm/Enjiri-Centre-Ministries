@@ -75,7 +75,7 @@ export default function VisionMission({ vision, mission, commission, statementOf
         </ol>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="bg-royal-deep p-6 text-white sm:p-10 lg:col-span-7">
+          <Reveal className="bg-ink-deep p-6 text-white sm:p-10 lg:col-span-7">
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-light">
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
               Statement of Faith

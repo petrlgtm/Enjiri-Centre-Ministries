@@ -74,7 +74,7 @@ pnpm lint         # Run ESLint
 ### Styling Rules
 - **Tailwind CSS v4** with PostCSS — no tailwind.config file; uses CSS-first configuration in `globals.css`
 - **Mobile-first responsive** — base styles are mobile, scale up with `md:`, `lg:`, `xl:` prefixes
-- **CSS custom properties** in `:root` for brand colors (royal blue, gold, amber, cream — see Design System)
+- **CSS custom properties** in `:root` for brand colors (ink blue, gold, amber, cream — see Design System)
 - **Three font families**: Inter (`font-sans`, body), Plus Jakarta Sans (`font-display`, headings), DM Mono (`font-mono`, labels/kickers)
 - **Glass morphism** effects via `backdrop-blur` + semi-transparent backgrounds
 - **Gradient borders** and **mesh gradients** for premium visual treatment
@@ -131,8 +131,8 @@ All queries live in `src/sanity/queries.ts`. Use the `groq` tagged template from
 ### Color Palette
 | Token | Value | Usage |
 |-------|-------|-------|
-| Royal deep | `#0b1f45` | Hero, navbar, dark bands, email header |
-| Royal | `#14336f` | Navigation, hovers |
+| Ink deep | `#120f0b` | Hero, navbar, dark bands, email header (warm black, no blue anywhere) |
+| Ink | `#2a2118` | Panels, hovers on dark |
 | Gold (primary) | `#c9a84c` | Buttons, accents, headings |
 | Gold light | `#c9a84c` | Hover states, light accents |
 | Gold dark | `#8a6d1b` | Active states, dark accents |

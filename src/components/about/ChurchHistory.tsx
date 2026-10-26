@@ -75,7 +75,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
     </section>
 
     {/* Milestones — bento figures and a chapter timeline on a deep-blue band */}
-    <section className="relative overflow-hidden bg-royal-deep py-16 text-white sm:py-24">
+    <section className="relative overflow-hidden bg-ink-deep py-16 text-white sm:py-24">
       <div aria-hidden className="hero-editorial-glow absolute inset-0 opacity-70" />
       <Container className="relative">
         <SectionMasthead label="Milestones" index="02" tone="dark" />

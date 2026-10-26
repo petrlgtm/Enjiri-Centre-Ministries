@@ -58,7 +58,7 @@ export default function SermonCard({
           <span
             className={cn(
               "absolute bottom-0 left-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs sm:gap-2 sm:px-4 sm:py-2.5 font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
-              isActive ? "bg-gold text-navy" : "bg-royal text-white group-hover:bg-gold group-hover:text-navy"
+              isActive ? "bg-gold text-navy" : "bg-ink text-white group-hover:bg-gold group-hover:text-navy"
             )}
           >
             {isActive ? <HiMusicNote size={13} className="animate-pulse" /> : <HiPlay size={13} />}

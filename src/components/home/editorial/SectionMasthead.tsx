@@ -46,7 +46,7 @@ export default function SectionMasthead({
           href={href}
           className={cn(
             "group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
-            dark ? "text-white/70 hover:text-gold-light" : "text-cream-body hover:text-royal"
+            dark ? "text-white/70 hover:text-gold-light" : "text-cream-body hover:text-gold-dark"
           )}
         >
           {linkLabel}

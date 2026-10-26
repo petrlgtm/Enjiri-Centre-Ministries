@@ -87,7 +87,7 @@ export default async function ServicesPage() {
 
       <ServiceSchedule heading={pageData?.scheduleHeading} image={venueImg} />
 
-      <section className="bg-royal-deep py-14 sm:py-16">
+      <section className="bg-ink-deep py-14 sm:py-16">
         <Container>
           <SectionMasthead label="Mark Your Calendar" index="02" tone="dark" />
           <h2 className="mt-10 mb-10 font-display text-5xl leading-[1.02] font-semibold text-white sm:text-6xl">

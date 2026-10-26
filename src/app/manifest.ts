@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Preaching Christ, Restoring Hope. Raising passionate disciples, transforming communities, and advancing God's Kingdom with excellence and love.",
     start_url: '/',
     display: 'standalone',
-    background_color: '#0c0f1a',
-    theme_color: '#0c0f1a',
+    background_color: '#120f0b',
+    theme_color: '#120f0b',
     icons: [
       {
         src: '/icon.jpeg',

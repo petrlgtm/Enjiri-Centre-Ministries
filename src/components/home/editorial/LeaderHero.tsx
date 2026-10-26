@@ -30,9 +30,9 @@ export default function LeaderHero({
   const accent = words.slice(-accentCount).join(" ");
 
   return (
-    <section className="hero-royal relative overflow-x-clip">
+    <section className="hero-ink relative overflow-x-clip">
       {/* Daybreak rays rising behind the leader, fading out towards the copy */}
-      <div aria-hidden className="hero-royal-rays absolute inset-0" />
+      <div aria-hidden className="hero-ink-rays absolute inset-0" />
       <div aria-hidden className="noise-overlay pointer-events-none absolute inset-0" />
 
       <Container className="relative grid items-end gap-8 pt-40 sm:pt-44 lg:grid-cols-12 lg:gap-10 lg:pt-40">
@@ -84,7 +84,7 @@ export default function LeaderHero({
       {/* Weekly rhythm card — straddles the hero and the next section */}
       {schedule && schedule.length > 0 && (
         <Container className="relative z-10 -mb-16 sm:-mb-12">
-          <div className="grid bg-white px-6 shadow-[0_24px_60px_-20px_rgba(11,31,69,0.5)] sm:grid-cols-3 sm:px-0">
+          <div className="grid bg-white px-6 shadow-[0_24px_60px_-20px_rgba(18,15,11,0.5)] sm:grid-cols-3 sm:px-0">
             {schedule.slice(0, 3).map((item) => (
               <div key={item.serviceName} className="flex items-baseline gap-4 py-5 sm:px-7">
                 <span className="font-mono text-xs tracking-[0.2em] text-gold-dark uppercase">{item.day.slice(0, 3)}</span>
