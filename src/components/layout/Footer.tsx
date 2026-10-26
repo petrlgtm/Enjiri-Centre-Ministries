@@ -90,7 +90,7 @@ export default function Footer({ siteSettings }: FooterProps) {
               </span>
               <span>
                 <span className="block text-[15px] font-bold tracking-wide">ENJIRI CENTER</span>
-                <span className="block text-[10px] font-medium tracking-[0.25em] text-gold-dark">MINISTRIES INTL</span>
+                <span className="block text-xs font-medium tracking-[0.25em] text-gold-dark">MINISTRIES INTL</span>
               </span>
             </Link>
             <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-cream-body">
@@ -114,7 +114,7 @@ export default function Footer({ siteSettings }: FooterProps) {
 
           {/* Navigate — large display links */}
           <nav aria-label="Footer" className="lg:col-span-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">Navigate</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">Navigate</p>
             <ul className="mt-5 grid grid-cols-2 gap-x-8 gap-y-1 sm:grid-cols-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -131,11 +131,11 @@ export default function Footer({ siteSettings }: FooterProps) {
 
           {/* Visit */}
           <div className="lg:col-span-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">Visit</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">Visit</p>
             <address className="mt-5 space-y-1 text-[15px] not-italic leading-relaxed text-cream-body">
               <span className="block">{siteSettings?.address || "Kampala, Uganda"}</span>
               <span className="block">{siteSettings?.phone || "+256 779 226290"}</span>
-              <span className="block">{siteSettings?.email || "info@enjiriministries.org"}</span>
+              <span className="block">{siteSettings?.email || "enjiricenter@gmail.com"}</span>
             </address>
             <ul className="mt-6 space-y-3">
               {serviceSchedule.map((service) => (
@@ -143,7 +143,7 @@ export default function Footer({ siteSettings }: FooterProps) {
                   <span className="font-mono text-xs tracking-[0.15em] text-gold-dark uppercase">{service.day.slice(0, 3)}</span>
                   <span>
                     <span className="block text-cream-heading">{service.serviceName}</span>
-                    <span className="block font-mono text-[11px] text-cream-muted">{service.time}</span>
+                    <span className="block font-mono text-xs text-cream-muted">{service.time}</span>
                   </span>
                 </li>
               ))}

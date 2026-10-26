@@ -24,7 +24,7 @@ export default function NewsletterSignup() {
     <Container className="relative z-10 -mt-14">
       <div className="grid gap-5 bg-gold px-5 py-7 text-navy shadow-[0_30px_70px_-30px_rgba(10,10,10,0.5)] sm:px-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-6">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase opacity-70">Stay connected</p>
+          <p className="font-mono text-xs tracking-[0.2em] uppercase opacity-70">Stay connected</p>
           <h3 className="mt-2 font-display text-2xl leading-tight font-semibold sm:text-3xl">
             Devotionals, events and sermons in your inbox.
           </h3>
@@ -41,7 +41,7 @@ export default function NewsletterSignup() {
           />
           <button
             type="submit"
-            className="shrink-0 cursor-pointer bg-royal-deep px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-royal"
+            className="shrink-0 cursor-pointer bg-royal-deep px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-royal"
           >
             {submitted ? (
               <span className="flex items-center gap-2">

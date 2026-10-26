@@ -35,7 +35,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
           >
             <span className="font-display text-4xl leading-none font-semibold uppercase sm:text-5xl">{next.day.slice(0, 3)}</span>
             <span>
-              <span className="block font-mono text-[10px] tracking-[0.2em] uppercase opacity-70">Next gathering</span>
+              <span className="block font-mono text-xs tracking-[0.2em] uppercase opacity-70">Next gathering</span>
               <span className="mt-1 block font-display text-lg leading-tight font-semibold sm:text-2xl">{next.serviceName}</span>
               <span className="mt-1 block font-mono text-xs">{next.time}</span>
             </span>
@@ -65,7 +65,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
           <div className="lg:col-span-7">
             {events.length > 0 && (
               <>
-                <p className="border-b border-white/15 pb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+                <p className="border-b border-white/15 pb-3 text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
                   Coming up
                 </p>
                 <ul className="mb-12">
@@ -89,7 +89,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
 
             {schedule && schedule.length > 0 && (
               <>
-                <p className="border-b border-white/15 pb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+                <p className="border-b border-white/15 pb-3 text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
                   Every week
                 </p>
                 <ul>

@@ -109,6 +109,7 @@ export default async function HomePage() {
     quote: t.quote,
     name: t.name,
     role: t.role || "",
+    image: t.image ? urlFor(t.image).width(160).height(160).fit("crop").auto("format").url() : undefined,
   }));
 
   return (

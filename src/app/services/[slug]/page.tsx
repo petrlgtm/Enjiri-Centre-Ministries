@@ -75,7 +75,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
         <Container className="relative pt-40 pb-12 sm:pt-44 lg:pb-14">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
           >
             <HiArrowLeft size={14} /> All events
           </Link>
@@ -86,7 +86,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 <span className="mt-2 block font-mono text-xs tracking-[0.2em] text-white/55 uppercase">{month}</span>
               </div>
               <div>
-                <p className="font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">{event.category || "Special event"}</p>
+                <p className="font-mono text-xs tracking-[0.18em] text-gold-light uppercase">{event.category || "Special event"}</p>
                 <h1 className="mt-3 font-display text-4xl leading-[1.05] font-semibold text-white sm:text-5xl lg:text-6xl">{event.title}</h1>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               { label: "Location", value: location },
             ].map((f) => (
               <div key={f.label} className="bg-cream py-4 sm:px-8 sm:first:pl-0">
-                <dt className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">
+                <dt className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
                   <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
                   {f.label}
                 </dt>
@@ -151,7 +151,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               {event.tags && event.tags.length > 0 && (
                 <ul className="mt-10 flex flex-wrap gap-2">
                   {event.tags.map((tag) => (
-                    <li key={tag} className="bg-white px-3 py-1.5 font-mono text-[11px] text-cream-body">
+                    <li key={tag} className="bg-white px-3 py-1.5 font-mono text-xs text-cream-body">
                       #{tag}
                     </li>
                   ))}
@@ -162,7 +162,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             <aside className="lg:col-span-4">
               <div className="space-y-6 lg:sticky lg:top-32">
                 <div className="bg-white p-7">
-                  <p className="font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">
+                  <p className="font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">
                     {isPast ? "Missed this one?" : "Be there"}
                   </p>
                   <p className="mt-3 font-display text-2xl font-semibold">{isPast ? "Join the next gathering" : "Secure your spot"}</p>
@@ -174,14 +174,14 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   <div className="mt-6 space-y-2">
                     <Link
                       href={isPast ? "/services" : rsvpHref}
-                      className="flex items-center justify-between bg-royal px-5 py-4 text-[11px] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
+                      className="flex items-center justify-between bg-royal px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
                     >
                       {isPast ? "See upcoming events" : event.rsvpUrl ? "Register / RSVP" : "Ask about this event"}
                       <HiArrowRight />
                     </Link>
                     <a
                       href={shareHref}
-                      className="flex items-center justify-between border border-cream-heading/20 px-5 py-4 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors hover:border-royal hover:text-royal"
+                      className="flex items-center justify-between border border-cream-heading/20 px-5 py-4 text-xs font-semibold tracking-[0.2em] uppercase transition-colors hover:border-royal hover:text-royal"
                     >
                       Share with a friend <HiShare />
                     </a>

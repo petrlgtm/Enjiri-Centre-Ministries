@@ -19,7 +19,7 @@ export default function CallingSection({ missionText, visionText, stats }: Calli
         <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
           {missionText && (
             <Reveal className="lg:col-span-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The Mission</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">The Mission</p>
               <p className="mt-5 font-display text-xl leading-snug text-cream-heading sm:text-[1.6rem] sm:leading-[1.45]">
                 {missionText}
               </p>
@@ -28,7 +28,7 @@ export default function CallingSection({ missionText, visionText, stats }: Calli
 
           {visionText && (
             <Reveal delay={0.1} className="lg:col-span-4 lg:border-l lg:border-cream-heading/15 lg:pl-10">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">The Vision</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">The Vision</p>
               <p className="mt-5 text-base leading-relaxed text-cream-body">{visionText}</p>
             </Reveal>
           )}
@@ -43,7 +43,7 @@ export default function CallingSection({ missionText, visionText, stats }: Calli
                   <span className="block font-display text-3xl font-semibold text-gold-dark sm:text-6xl">
                     {s.title}
                   </span>
-                  <span className="mt-2 block text-[10px] font-semibold uppercase tracking-[0.14em] text-cream-muted sm:mt-3 sm:text-[11px] sm:tracking-[0.2em]">
+                  <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.14em] text-cream-muted sm:mt-3 sm:tracking-[0.2em]">
                     {s.description}
                   </span>
                 </dd>

@@ -97,7 +97,7 @@ export default async function ServicesPage() {
 
           {recentData.length > 0 && (
             <div className="mt-16">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">Recent gatherings</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/50">Recent gatherings</p>
               <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {recentData.map((e) => (
                   <li key={e.slug}>
@@ -111,7 +111,7 @@ export default async function ServicesPage() {
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                       </span>
-                      <span className="mt-4 block font-mono text-[11px] text-gold-light">{e.date}</span>
+                      <span className="mt-4 block font-mono text-xs text-gold-light">{e.date}</span>
                       <span className="mt-1 block font-display text-2xl text-white transition-colors duration-300 group-hover:text-gold-light">
                         {e.title}
                       </span>

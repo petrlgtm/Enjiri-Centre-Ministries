@@ -60,7 +60,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
                   <span className="block font-display text-xl leading-snug italic">
                     &ldquo;For where two or three gather in my name, there am I with them.&rdquo;
                   </span>
-                  <span className="mt-2 block font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">
+                  <span className="mt-2 block font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">
                     Matthew 18:20
                   </span>
                 </figcaption>

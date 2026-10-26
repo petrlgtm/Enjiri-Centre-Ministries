@@ -78,7 +78,7 @@ export default async function BlogPage() {
                   </span>
                 )}
                 <span className="lg:col-span-5">
-                  <span className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] tracking-[0.16em] text-gold-dark uppercase">
+                  <span className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs tracking-[0.16em] text-gold-dark uppercase">
                     {lead.categories?.[0] && <span>{lead.categories[0]}</span>}
                     {lead.publishedAt && <span className="text-cream-muted">{formatDate(lead.publishedAt)}</span>}
                   </span>
@@ -86,7 +86,7 @@ export default async function BlogPage() {
                     {lead.title}
                   </span>
                   {lead.excerpt && <span className="mt-5 block text-base leading-relaxed text-cream-body">{lead.excerpt}</span>}
-                  <span className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase">
+                  <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
                     Read the story <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </span>
@@ -110,7 +110,7 @@ export default async function BlogPage() {
                               />
                             </span>
                           )}
-                          <span className="mt-5 flex flex-wrap gap-x-4 font-mono text-[11px] tracking-[0.16em] text-gold-dark uppercase">
+                          <span className="mt-5 flex flex-wrap gap-x-4 font-mono text-xs tracking-[0.16em] text-gold-dark uppercase">
                             {post.categories?.[0] && <span>{post.categories[0]}</span>}
                             {post.publishedAt && <span className="text-cream-muted">{formatDate(post.publishedAt)}</span>}
                           </span>

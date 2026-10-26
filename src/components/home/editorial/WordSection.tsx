@@ -42,11 +42,11 @@ export default function WordSection({ sermons }: WordSectionProps) {
                   className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                 />
                 <span className="absolute inset-0 bg-linear-to-t from-navy/60 via-transparent to-transparent" />
-                <span className="absolute bottom-0 left-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy">
+                <span className="absolute bottom-0 left-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-navy">
                   <HiPlay size={16} /> Watch now
                 </span>
               </span>
-              <span className="mt-6 block text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-dark">
+              <span className="mt-6 block text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
                 Latest message · {lead.date}
               </span>
               <span className="mt-3 block font-display text-2xl leading-tight font-semibold transition-colors duration-300 group-hover:text-gold-dark sm:text-3xl">
@@ -59,21 +59,21 @@ export default function WordSection({ sermons }: WordSectionProps) {
           {/* Numbered list */}
           {rest.length > 0 && (
             <div className="lg:col-span-5">
-              <p className="border-b border-cream-heading/20 pb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-muted">
+              <p className="border-b border-cream-heading/20 pb-3 text-xs font-semibold uppercase tracking-[0.22em] text-cream-muted">
                 More messages
               </p>
               <ol>
                 {rest.map((s, i) => (
                   <Reveal as="li" key={s.videoId} delay={i * 0.06} className="border-b border-cream-heading/15">
                     <PlayTrigger item={toItem(s)} queue={queue} className="group grid w-full grid-cols-[auto_1fr_auto] items-start gap-5 py-5 text-left">
-                      <span className="font-display text-3xl leading-none font-semibold text-gold-dark/70 tabular-nums">
+                      <span className="font-display text-3xl leading-none font-semibold text-gold-dark tabular-nums">
                         {String(i + 2).padStart(2, "0")}
                       </span>
                       <span>
                         <span className="block font-display text-lg leading-snug transition-colors duration-300 group-hover:text-gold-dark">
                           {s.title}
                         </span>
-                        <span className="mt-1.5 block font-mono text-[11px] text-cream-muted">{s.date}</span>
+                        <span className="mt-1.5 block font-mono text-xs text-cream-muted">{s.date}</span>
                       </span>
                       <span className="relative hidden h-16 w-24 overflow-hidden bg-navy sm:block">
                         <Image src={s.image} alt="" fill sizes="96px" className="object-cover" />

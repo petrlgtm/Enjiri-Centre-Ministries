@@ -28,7 +28,7 @@ export default function SectionMasthead({
     >
       <p
         className={cn(
-          "flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em]",
+          "flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em]",
           dark ? "text-gold-light" : "text-cream-heading"
         )}
       >
@@ -45,7 +45,7 @@ export default function SectionMasthead({
         <Link
           href={href}
           className={cn(
-            "group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
+            "group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
             dark ? "text-white/70 hover:text-gold-light" : "text-cream-body hover:text-royal"
           )}
         >

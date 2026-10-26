@@ -34,7 +34,7 @@ export default function SectionHeading({
         <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
         <span
           className={cn(
-            "text-[11px] font-semibold uppercase tracking-[0.22em]",
+            "text-xs font-semibold uppercase tracking-[0.22em]",
             onCream ? "text-cream-heading" : "text-gold-light"
           )}
         >

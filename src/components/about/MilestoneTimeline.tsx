@@ -69,7 +69,7 @@ export default function MilestoneTimeline({ chapters }: MilestoneTimelineProps) 
                 viewport={{ once: true, margin: "-20% 0px" }}
                 transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p className="mt-5 font-mono text-[11px] tracking-[0.2em] text-white/50 uppercase">
+                <p className="mt-5 font-mono text-xs tracking-[0.2em] text-white/50 uppercase">
                   Chapter {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-semibold text-white sm:text-3xl">{c.title}</h3>

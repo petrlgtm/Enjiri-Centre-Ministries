@@ -75,7 +75,7 @@ export default function LeaderHero({
             />
             <div className="absolute bottom-24 left-0 max-w-[13rem] bg-white px-4 py-3 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)] sm:bottom-12 sm:max-w-[15rem] sm:px-5 sm:py-4">
               <p className="font-display text-base leading-tight font-semibold text-cream-heading sm:text-xl">{leader.name}</p>
-              <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-gold-dark">{leader.role}</p>
+              <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold-dark">{leader.role}</p>
             </div>
           </Reveal>
         )}

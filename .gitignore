@@ -51,3 +51,6 @@ schema.json
 # misc artifacts
 /image.png
 .env*.local
+
+# Source photos (uploaded to Sanity via scripts/seed-photos.ts)
+/photos

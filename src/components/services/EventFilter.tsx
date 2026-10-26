@@ -26,7 +26,7 @@ export default function EventFilter({ active, onChange }: EventFilterProps) {
           role="tab"
           aria-selected={active === cat.value}
           className={cn(
-            "px-5 py-2 font-mono text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold-dark focus-visible:ring-offset-2 focus-visible:ring-offset-navy focus-visible:outline-none",
+            "px-5 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:ring-2 focus-visible:ring-gold-dark focus-visible:ring-offset-2 focus-visible:ring-offset-navy focus-visible:outline-none",
             active === cat.value
               ? "bg-gold text-navy"
               : "border border-white/15 text-white/60 hover:border-gold hover:text-gold-light"

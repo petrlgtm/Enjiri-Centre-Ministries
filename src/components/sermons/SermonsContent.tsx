@@ -190,13 +190,13 @@ export default function SermonsContent({
                   sizes="(min-width: 1024px) 58vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <span className="absolute bottom-0 left-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-navy">
+                <span className="absolute bottom-0 left-0 inline-flex items-center gap-2 bg-gold px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-navy">
                   {selectedSlug === featuredSermon.slug ? <HiMusicNote size={16} className="animate-pulse" /> : <HiPlay size={16} />}
                   {selectedSlug === featuredSermon.slug ? "Playing now" : "Watch now"}
                 </span>
               </span>
               <span className="lg:col-span-5">
-                <span className="block font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">{featuredSermon.date}</span>
+                <span className="block font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">{featuredSermon.date}</span>
                 <span className="mt-4 block font-display text-3xl leading-[1.12] font-semibold transition-colors duration-300 group-hover:text-gold-dark sm:text-4xl">
                   {featuredSermon.title}
                 </span>
@@ -205,7 +205,7 @@ export default function SermonsContent({
             </button>
           ) : null}
 
-          <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream-heading">The library</p>
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-cream-heading">The library</p>
           <SermonFilter
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}

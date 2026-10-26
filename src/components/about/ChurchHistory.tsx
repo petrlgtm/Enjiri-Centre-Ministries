@@ -58,7 +58,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
               <p className="font-display text-xl leading-snug italic sm:text-2xl">
                 &ldquo;For I know the plans I have for you, declares the Lord&hellip;&rdquo;
               </p>
-              <p className="mt-3 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">Jeremiah 29:11</p>
+              <p className="mt-3 font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">Jeremiah 29:11</p>
             </blockquote>
           </Reveal>
 
@@ -91,7 +91,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
             {/* Lead figure */}
             <Reveal className="flex flex-col-reverse justify-between gap-8 bg-gold p-7 text-navy sm:p-10 lg:col-span-6 lg:row-span-2 lg:min-h-[26rem]">
               <div>
-                <dt className="font-mono text-[11px] tracking-[0.2em] uppercase opacity-70">{lead.label}</dt>
+                <dt className="font-mono text-xs tracking-[0.2em] uppercase opacity-70">{lead.label}</dt>
                 <p className="mt-2 max-w-xs font-display text-xl leading-snug font-semibold sm:text-2xl">A decade of faithfulness, one soul at a time.</p>
               </div>
               <dd>
@@ -109,7 +109,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
                 delay={0.08 * (i + 1)}
                 className="flex flex-col-reverse justify-between bg-white/[0.06] p-7 ring-1 ring-white/10 sm:p-8 lg:col-span-6"
               >
-                <dt className="mt-4 font-mono text-[11px] tracking-[0.2em] text-white/60 uppercase">{s.label}</dt>
+                <dt className="mt-4 font-mono text-xs tracking-[0.2em] text-white/60 uppercase">{s.label}</dt>
                 <dd>
                   <CountUp
                     end={s.value}
@@ -124,7 +124,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
 
         <div className="mt-20 sm:mt-28">
           <div className="mb-14 max-w-xl lg:mx-auto lg:text-center">
-            <p className="font-mono text-[11px] tracking-[0.2em] text-gold-light uppercase">The journey so far</p>
+            <p className="font-mono text-xs tracking-[0.2em] text-gold-light uppercase">The journey so far</p>
             <h3 className="mt-3 font-display text-3xl leading-tight font-semibold sm:text-4xl">Every chapter, written by grace.</h3>
           </div>
           <MilestoneTimeline chapters={displayTimeline} />

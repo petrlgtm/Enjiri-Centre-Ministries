@@ -40,7 +40,7 @@ export default function SermonFilter({ searchQuery, onSearchChange, dateRange, o
             key={opt.value}
             onClick={() => onDateRangeChange(opt.value)}
             className={cn(
-              "px-4 py-3 font-mono text-[11px] uppercase tracking-wider whitespace-nowrap transition-colors duration-300",
+              "px-4 py-3 font-mono text-xs uppercase tracking-wider whitespace-nowrap transition-colors duration-300",
               dateRange === opt.value ? "bg-cream-heading text-cream" : "bg-white text-cream-body hover:text-gold-dark"
             )}
           >

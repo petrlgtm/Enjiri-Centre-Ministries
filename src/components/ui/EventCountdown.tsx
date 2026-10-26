@@ -91,7 +91,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
           </motion.span>
         </AnimatePresence>
       </div>
-      <span className="text-[10px] font-bold uppercase tracking-widest text-white/50 sm:text-[11px]">
+      <span className="text-xs font-bold uppercase tracking-widest text-white/70">
         {label}
       </span>
     </div>

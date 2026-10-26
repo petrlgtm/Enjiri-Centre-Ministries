@@ -62,7 +62,7 @@ export default function EventsGrid({ events }: EventsGridProps) {
                 </span>
               )}
               <span>
-                <span className="block font-mono text-[10px] tracking-[0.2em] text-gold-light uppercase">
+                <span className="block font-mono text-xs tracking-[0.2em] text-gold-light uppercase">
                   {event.category || "Event"}
                 </span>
                 <span className="mt-2 block font-display text-3xl text-white transition-colors duration-300 group-hover:text-gold-light">

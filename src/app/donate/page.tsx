@@ -81,7 +81,7 @@ export default async function DonatePage() {
                   &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under
                   compulsion, for God loves a cheerful giver.&rdquo;
                 </p>
-                <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">2 Corinthians 9:7</p>
+                <p className="mt-4 font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">2 Corinthians 9:7</p>
               </blockquote>
             </div>
 

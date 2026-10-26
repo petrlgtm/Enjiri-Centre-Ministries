@@ -43,7 +43,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
 
           <div className="lg:col-span-7 lg:pt-10">
             <Reveal>
-              <p className="font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">{head.role}</p>
+              <p className="font-mono text-xs tracking-[0.18em] text-gold-light uppercase">{head.role}</p>
               <h2 className="mt-4 font-display text-4xl leading-tight font-semibold text-white sm:text-5xl">{head.name}</h2>
               {lead && <p className="mt-6 font-display text-lg leading-snug text-white/90 sm:mt-8 sm:text-[1.7rem]">{lead}</p>}
             </Reveal>
@@ -73,7 +73,7 @@ export default function LeadershipTeam({ leaders }: LeadershipTeamProps) {
                   />
                 </div>
                 <p className="mt-4 font-display text-2xl text-white">{l.name}</p>
-                <p className="mt-1 font-mono text-[11px] tracking-[0.16em] text-gold-light uppercase">{l.role}</p>
+                <p className="mt-1 font-mono text-xs tracking-[0.16em] text-gold-light uppercase">{l.role}</p>
               </Reveal>
             ))}
           </ul>

@@ -11,6 +11,7 @@ import { fetchSanity } from "@/sanity/lib/helpers";
 import { announcementBannerQuery, siteSettingsQuery, upcomingEventsQuery } from "@/sanity/queries";
 import { Event } from "@/types/sanity";
 import { SITE_URL } from "@/lib/site";
+import MotionProvider from "@/components/ui/MotionProvider";
 
 const body = Inter({
   variable: "--font-body",
@@ -124,17 +125,19 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
-        <Navbar 
-          banner={banner} 
-          events={upcomingEvents} 
-          serviceSchedule={siteSettings?.serviceSchedule} 
-        />
-        <PlayerProvider>
-          <main id="main-content" className="min-h-screen">{children}</main>
-          <Footer siteSettings={siteSettings} />
-          <BackToTop />
-          <VideoTheater />
-        </PlayerProvider>
+        <MotionProvider>
+          <Navbar
+            banner={banner}
+            events={upcomingEvents}
+            serviceSchedule={siteSettings?.serviceSchedule}
+          />
+          <PlayerProvider>
+            <main id="main-content" className="min-h-screen">{children}</main>
+            <Footer siteSettings={siteSettings} />
+            <BackToTop />
+            <VideoTheater />
+          </PlayerProvider>
+        </MotionProvider>
         <GoogleAnalytics />
       </body>
     </html>

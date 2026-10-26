@@ -151,7 +151,7 @@ export default async function CharityPage() {
                   &ldquo;Now that you have purified yourselves by obeying the truth so that you have sincere love for each
                   other, love one another deeply, from the heart.&rdquo;
                 </p>
-                <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">1 Peter 1:22</p>
+                <p className="mt-4 font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">1 Peter 1:22</p>
               </blockquote>
             </Reveal>
           </div>
@@ -166,7 +166,7 @@ export default async function CharityPage() {
                     suffix={stat.suffix}
                     className="block font-display text-4xl font-semibold text-gold-dark sm:text-6xl"
                   />
-                  <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-muted">
+                  <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.2em] text-cream-muted">
                     {stat.label}
                   </span>
                 </dd>
@@ -194,12 +194,12 @@ export default async function CharityPage() {
                 />
               </span>
               <span className="flex flex-col justify-center p-6 sm:p-10 lg:col-span-5">
-                <span className="font-mono text-[11px] tracking-[0.2em] text-gold-light uppercase">Programme 01 · Featured</span>
+                <span className="font-mono text-xs tracking-[0.2em] text-gold-light uppercase">Programme 01 · Featured</span>
                 <span className="mt-4 block font-display text-3xl leading-tight font-semibold text-white sm:text-4xl">
                   {featured.title}
                 </span>
                 <span className="mt-4 block text-[15px] leading-relaxed text-white/65">{featured.description}</span>
-                <span className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   Read more <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </span>
@@ -244,7 +244,7 @@ export default async function CharityPage() {
       <section className="relative z-10 flow-root bg-gold py-16 text-navy sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
-            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em]">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em]">
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-navy" />
               Featured Campaign
               <span className="font-mono tracking-normal opacity-50">/ 03</span>
@@ -304,7 +304,7 @@ export default async function CharityPage() {
                     <dt className="sr-only">{s.label}</dt>
                     <dd>
                       <CountUp end={s.end} suffix={s.suffix} className="block font-display text-2xl font-bold text-gold sm:text-3xl" />
-                      <span className="mt-1 block font-mono text-[9px] leading-tight tracking-[0.1em] text-white/60 uppercase sm:text-[10px] sm:tracking-[0.14em]">{s.label}</span>
+                      <span className="mt-1 block font-mono text-xs leading-tight tracking-[0.1em] text-white/75 uppercase sm:tracking-[0.14em]">{s.label}</span>
                     </dd>
                   </div>
                 ))}
@@ -318,14 +318,14 @@ export default async function CharityPage() {
       <section className="bg-navy py-16 sm:py-20 lg:pt-44">
         <Container className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
-            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-light">
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
               Get Involved
             </p>
             <p className="mt-6 font-display text-2xl leading-[1.25] text-white sm:text-4xl">
               &ldquo;Go ye into all the world and preach the gospel to every creature.&rdquo;
             </p>
-            <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold uppercase">Mark 16:15</p>
+            <p className="mt-4 font-mono text-xs tracking-[0.18em] text-gold uppercase">Mark 16:15</p>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
             <p className="text-base leading-relaxed text-white/70">

@@ -18,7 +18,7 @@ export default function PartnerBand({ heading, text }: PartnerBandProps) {
       </span>
       <Container className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
         <Reveal className="lg:col-span-7">
-          <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light">
+          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-light">
             <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
             Partnership
           </p>

@@ -6,7 +6,7 @@ interface RevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  as?: "div" | "li" | "article";
+  as?: "div" | "li" | "article" | "figure";
 }
 
 /** Fade-and-rise on scroll; with prefers-reduced-motion the movement is dropped and only the fade remains. */

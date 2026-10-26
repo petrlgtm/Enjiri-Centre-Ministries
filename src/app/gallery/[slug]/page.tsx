@@ -81,13 +81,13 @@ export default async function GalleryDetailPage({
         <Container className="relative pt-40 pb-14 sm:pt-44">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
           >
             <HiArrowLeft size={14} /> All albums
           </Link>
           <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="flex flex-wrap gap-x-4 font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">
+              <p className="flex flex-wrap gap-x-4 font-mono text-xs tracking-[0.18em] text-gold-light uppercase">
                 {gallery.category && <span>{gallery.category}</span>}
                 {gallery.date && <span className="text-white/55">{formatDate(gallery.date)}</span>}
               </p>
@@ -95,7 +95,7 @@ export default async function GalleryDetailPage({
             </div>
             <div className="lg:col-span-4 lg:text-right">
               <p className="font-display text-6xl leading-none font-semibold text-gold">{photos.length}</p>
-              <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-white/55 uppercase">Photos in this album</p>
+              <p className="mt-2 font-mono text-xs tracking-[0.18em] text-white/55 uppercase">Photos in this album</p>
             </div>
           </div>
           {gallery.description && <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70">{gallery.description}</p>}

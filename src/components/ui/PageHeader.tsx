@@ -35,7 +35,7 @@ export default function PageHeader({ label, title, description, backgroundImage,
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
-          className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-light"
+          className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-light"
         >
           <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
           {label}

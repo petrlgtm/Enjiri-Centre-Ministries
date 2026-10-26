@@ -75,13 +75,13 @@ export default async function GalleryPage() {
                             sizes="(min-width: 1024px) 58vw, 100vw"
                             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                           />
-                          <span className="absolute bottom-0 left-0 bg-royal px-5 py-3 font-mono text-[11px] tracking-[0.18em] text-white uppercase">
+                          <span className="absolute bottom-0 left-0 bg-royal px-5 py-3 font-mono text-xs tracking-[0.18em] text-white uppercase">
                             {gallery.imageCount ?? 0} photos
                           </span>
                         </span>
                       )}
                       <span className="lg:col-span-5">
-                        <span className="flex flex-wrap gap-x-4 font-mono text-[11px] tracking-[0.18em] text-gold-dark uppercase">
+                        <span className="flex flex-wrap gap-x-4 font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">
                           <span>Album {String(i + 1).padStart(2, "0")}</span>
                           {gallery.category && <span className="text-cream-muted">{gallery.category}</span>}
                           {gallery.date && <span className="text-cream-muted">{formatDate(gallery.date)}</span>}
@@ -101,7 +101,7 @@ export default async function GalleryPage() {
                             ))}
                           </span>
                         )}
-                        <span className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase">
+                        <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
                           Open album <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                         </span>
                       </span>

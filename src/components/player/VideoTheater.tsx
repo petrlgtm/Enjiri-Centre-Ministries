@@ -134,7 +134,7 @@ export default function VideoTheater() {
 
           {!popup && upNext.length > 0 && (
             <aside aria-label="Up next" className="px-4 sm:px-0">
-              <p className="pb-3 font-mono text-[10px] tracking-[0.18em] text-white/55 uppercase">Up next</p>
+              <p className="pb-3 font-mono text-xs tracking-[0.18em] text-white/55 uppercase">Up next</p>
               <ul className="grid gap-x-5 sm:grid-cols-2 lg:grid-cols-1">
                 {upNext.map((item) => (
                   <li key={item.id}>
@@ -158,7 +158,7 @@ export default function VideoTheater() {
                         <span className="line-clamp-3 text-[13px] leading-snug font-semibold text-white transition-colors group-hover:text-gold-light">
                           {item.title}
                         </span>
-                        {item.date && <span className="mt-1.5 block font-mono text-[11px] text-white/45">{item.date}</span>}
+                        {item.date && <span className="mt-1.5 block font-mono text-xs text-white/45">{item.date}</span>}
                       </span>
                     </button>
                   </li>

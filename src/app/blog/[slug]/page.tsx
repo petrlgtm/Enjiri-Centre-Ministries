@@ -71,12 +71,12 @@ export default async function BlogPostPage({
         <Container className="relative pt-40 pb-12 sm:pt-44 lg:pb-14">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
           >
             <HiArrowLeft size={14} /> All stories
           </Link>
           <div className="mt-8 max-w-4xl">
-            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] tracking-[0.18em] text-gold-light uppercase">
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs tracking-[0.18em] text-gold-light uppercase">
               {post.categories?.map((cat) => <span key={cat}>{cat}</span>)}
               {post.publishedAt && (
                 <time dateTime={post.publishedAt} className="text-white/55">
@@ -122,23 +122,23 @@ export default async function BlogPostPage({
                     </span>
                   )}
                   <span>
-                    <span className="block font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Written by</span>
+                    <span className="block font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">Written by</span>
                     <span className="mt-1 block font-display text-lg font-semibold text-cream-heading">{post.author.name}</span>
                   </span>
                 </div>
               )}
               {post.publishedAt && (
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Published</p>
+                  <p className="font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">Published</p>
                   <p className="mt-1 text-sm text-cream-heading">{formatDate(post.publishedAt)}</p>
                 </div>
               )}
               {post.tags && post.tags.length > 0 && (
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.18em] text-gold-dark uppercase">Topics</p>
+                  <p className="font-mono text-xs tracking-[0.18em] text-gold-dark uppercase">Topics</p>
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
-                      <li key={tag} className="bg-cream px-3 py-1.5 font-mono text-[11px] text-cream-body">
+                      <li key={tag} className="bg-cream px-3 py-1.5 font-mono text-xs text-cream-body">
                         {tag}
                       </li>
                     ))}
@@ -147,7 +147,7 @@ export default async function BlogPostPage({
               )}
               <Link
                 href="/blog"
-                className="flex items-center justify-between bg-royal px-5 py-4 text-[11px] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
+                className="flex items-center justify-between bg-royal px-5 py-4 text-xs font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-royal-light"
               >
                 More stories <HiArrowLeft className="rotate-180" />
               </Link>

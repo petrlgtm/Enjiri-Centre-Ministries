@@ -124,13 +124,13 @@ export default async function CharityProgramPage({
         <Container className="relative pt-40 pb-12 sm:pt-44 lg:pb-14">
           <Link
             href="/charity"
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-white/60 uppercase transition-colors hover:text-gold-light"
           >
             <HiArrowLeft size={14} /> All programmes
           </Link>
           <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-light uppercase">
+              <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-light uppercase">
                 <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
                 Outreach programme
               </p>
@@ -220,7 +220,7 @@ export default async function CharityProgramPage({
             <div className="lg:col-span-7">
               <p className="font-display text-3xl leading-[1.2] font-semibold sm:text-4xl">&ldquo;{scripture.text}&rdquo;</p>
               {scripture.reference && (
-                <p className="mt-4 font-mono text-[11px] tracking-[0.18em] uppercase opacity-70">{scripture.reference}</p>
+                <p className="mt-4 font-mono text-xs tracking-[0.18em] uppercase opacity-70">{scripture.reference}</p>
               )}
             </div>
           )}

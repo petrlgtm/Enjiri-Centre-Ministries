@@ -48,7 +48,7 @@ export default async function ContactPage() {
 
   const address = settings?.address || "Kampala, Uganda";
   const phone = settings?.phone || "+256 779 226290";
-  const email = settings?.email || "info@enjiriministries.org";
+  const email = settings?.email || "enjiricenter@gmail.com";
   const direct = [
     { label: "Visit", value: address, href: `https://maps.google.com/?q=${encodeURIComponent(address)}`, external: true },
     { label: "Call", value: phone, href: `tel:${phone.replace(/\s/g, "")}`, external: false },
@@ -85,14 +85,14 @@ export default async function ContactPage() {
                   rel={d.external ? "noopener noreferrer" : undefined}
                   className="group block py-6 sm:px-8 sm:py-4 sm:first:pl-0"
                 >
-                  <span className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">
+                  <span className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
                     <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
                     {d.label}
                   </span>
                   <span className="mt-4 block font-display text-2xl break-words transition-colors duration-300 group-hover:text-royal sm:text-[1.7rem]">
                     {d.value}
                   </span>
-                  <span className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
+                  <span className="mt-3 inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-cream-muted uppercase transition-colors group-hover:text-royal">
                     {d.label === "Visit" ? "Get directions" : d.label === "Call" ? "Tap to call" : "Send an email"}
                     <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
@@ -103,7 +103,7 @@ export default async function ContactPage() {
 
           {settings?.serviceSchedule && settings.serviceSchedule.length > 0 && (
             <div className="mt-16">
-              <p className="text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">When we gather</p>
+              <p className="text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">When we gather</p>
               <ul className="mt-5 grid gap-6 sm:grid-cols-3">
                 {settings.serviceSchedule.map((s) => (
                   <li key={s.serviceName} className="grid grid-cols-[4rem_1fr] items-baseline gap-3">
@@ -124,7 +124,7 @@ export default async function ContactPage() {
       <section className="flow-root bg-royal-deep pb-16 text-white sm:pb-20">
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="relative z-10 -mt-24 bg-white p-6 text-cream-heading shadow-[0_40px_90px_-40px_rgba(11,31,69,0.7)] sm:-mt-32 sm:p-10 lg:col-span-7">
-            <p className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-gold-dark uppercase">
+            <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-gold-dark uppercase">
               <span aria-hidden className="inline-block h-2.5 w-2.5 bg-gold" />
               Get in touch
             </p>
@@ -138,7 +138,7 @@ export default async function ContactPage() {
             <p className="font-display text-3xl leading-snug sm:text-4xl">
               &ldquo;Cast all your anxiety on him because he cares for you.&rdquo;
             </p>
-            <p className="mt-4 font-mono text-[11px] tracking-[0.18em] text-gold uppercase">1 Peter 5:7</p>
+            <p className="mt-4 font-mono text-xs tracking-[0.18em] text-gold uppercase">1 Peter 5:7</p>
             <p className="mt-8 max-w-md text-base leading-relaxed text-white/70">
               We are here for you. Reach out with prayer requests, questions, or simply to connect with our community —
               someone from the ministry will get back to you.
@@ -146,7 +146,7 @@ export default async function ContactPage() {
 
             {socialLinks.length > 0 && (
               <div className="mt-10">
-                <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
+                <p className="font-mono text-xs tracking-[0.18em] text-white/50 uppercase">
                   {pageData?.infoHeading || "Follow us"}
                 </p>
                 <div className="mt-4 flex gap-2">

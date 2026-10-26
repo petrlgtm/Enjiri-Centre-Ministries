@@ -178,7 +178,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                   <span className={"block text-[15px] font-bold tracking-wide text-white"}>
                     ENJIRI CENTER
                   </span>
-                  <span className={"block text-[10px] font-medium tracking-[0.25em] text-gold/80"}>
+                  <span className={"block text-xs font-medium tracking-[0.25em] text-gold/80"}>
                     MINISTRIES INTL
                   </span>
                 </div>
@@ -195,7 +195,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
                           href={link.href}
                           aria-current={isActive ? "page" : undefined}
                           className={cn(
-                            "relative block px-3.5 py-4 font-mono text-[11px] tracking-[0.12em] uppercase transition-colors duration-300 xl:px-4",
+                            "relative block px-3.5 py-4 font-mono text-xs tracking-[0.12em] uppercase transition-colors duration-300 xl:px-4",
                             isActive ? "text-gold-light" : "text-white/75 hover:text-white"
                           )}
                         >
@@ -215,7 +215,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
 
                 <Link
                   href="/donate"
-                  className="flex items-center bg-gold px-4 py-3.5 font-mono text-[11px] font-medium tracking-[0.12em] text-royal-deep uppercase transition-colors duration-300 hover:bg-gold-light sm:px-5"
+                  className="flex items-center bg-gold px-4 py-3.5 font-mono text-xs font-medium tracking-[0.12em] text-royal-deep uppercase transition-colors duration-300 hover:bg-gold-light sm:px-5"
                 >
                   Give<span className="hidden sm:inline">&nbsp;Online</span>
                 </Link>
@@ -249,7 +249,7 @@ export default function Navbar({ banner, events, serviceSchedule }: NavbarProps)
             <div className={"border-y border-black/6 bg-white"}>
               <Container>
                 <div className="flex h-10 items-center justify-between">
-                  <span className={"hidden font-mono text-[11px] tracking-[0.2em] text-cream-muted uppercase min-[360px]:inline"}>
+                  <span className={"hidden font-mono text-xs tracking-[0.2em] text-cream-muted uppercase min-[360px]:inline"}>
                     Follow us
                   </span>
                   <div className="flex items-center gap-1 min-[360px]:gap-2">

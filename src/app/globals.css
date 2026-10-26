@@ -1088,6 +1088,12 @@ body {
 /* ═══════════════════════════════════════════════════
    REDUCED MOTION — Accessibility
    ═══════════════════════════════════════════════════ */
+/* Keyboard focus — currentColor always contrasts with the element's own text background */
+:where(a, button, summary, [role="button"], [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

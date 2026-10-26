@@ -25,7 +25,7 @@ export default function ContactStrip({ address, phone, email }: ContactStripProp
         <div className="grid gap-px bg-cream-heading/10 shadow-[0_30px_70px_-30px_rgba(10,10,10,0.45)] sm:grid-cols-3">
           {items.map((item, i) => (
             <Reveal key={item.label} delay={i * 0.06} className="bg-white px-7 py-8">
-              <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-dark">
+              <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-dark">
                 <span aria-hidden className="inline-block h-2 w-2 bg-gold" />
                 {item.label}
               </p>
@@ -40,7 +40,7 @@ export default function ContactStrip({ address, phone, email }: ContactStripProp
         </div>
         <Link
           href="/contact"
-          className="group mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-cream-body transition-colors duration-300 hover:text-gold-dark"
+          className="group mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-cream-body transition-colors duration-300 hover:text-gold-dark"
         >
           Get in touch
           <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
