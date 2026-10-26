@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { HiMail } from "react-icons/hi";
 import Button from "@/components/ui/Button";
+import { sendContactMessage } from "@/app/actions";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,33 +11,26 @@ export default function ContactForm() {
     email: "",
     subject: "",
     message: "",
+    company: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
-      });
-
-      if (res.ok) {
+      const result = await sendContactMessage(formData);
+      if (result.ok) {
         setStatus("sent");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", subject: "", message: "", company: "" });
       } else {
+        setError(result.error);
         setStatus("error");
       }
     } catch {
+      setError("Something went wrong. Please try again later.");
       setStatus("error");
     }
   };
@@ -54,7 +48,7 @@ export default function ContactForm() {
           Message Sent!
         </h3>
         <p className="mt-2 text-cream-body">
-          Thank you for reaching out. We&apos;ll respond as soon as possible.
+          Thank you for reaching out. We&apos;ve emailed you a copy and will respond as soon as possible.
         </p>
         <button
           onClick={() => setStatus("idle")}
@@ -68,6 +62,16 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        value={formData.company}
+        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+        className="hidden"
+      />
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-cream-heading">
@@ -127,8 +131,8 @@ export default function ContactForm() {
         />
       </div>
       {status === "error" && (
-        <p className="text-sm text-red-500">
-          Something went wrong. Please try again later.
+        <p role="alert" className="text-sm text-red-dark">
+          {error}
         </p>
       )}
       <Button type="submit" variant="primary" size="lg" disabled={status === "sending"}>

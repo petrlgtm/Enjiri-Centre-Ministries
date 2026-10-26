@@ -9,7 +9,7 @@ const fallbackImages = [
   "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
   "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=400&q=80&fm=webp&fit=crop",
   "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=400&q=80&fm=webp&fit=crop",
-  "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=400&q=80&fm=webp&fit=crop",
+  "https://cdn.sanity.io/images/shcw5txc/production/2ae5e82e49aad44aca9eafac04b3eccd9a8ceb2d-1600x1066.jpg?w=400&q=80&fm=webp&fit=crop",
 ];
 
 interface SermonCardProps {

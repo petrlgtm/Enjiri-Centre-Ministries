@@ -52,7 +52,7 @@ export default async function DonatePage() {
       ? heroImageUrl(settings.donateHeaderImage) 
       : settings?.defaultHeaderImage
         ? heroImageUrl(settings.defaultHeaderImage)
-        : "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=1200&q=80&fm=webp&fit=crop";
+        : "https://cdn.sanity.io/images/shcw5txc/production/2ae5e82e49aad44aca9eafac04b3eccd9a8ceb2d-1600x1066.jpg?w=1200&q=80&fm=webp&fit=crop";
 
   return (
     <>

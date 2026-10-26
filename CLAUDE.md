@@ -31,7 +31,8 @@ src/
 │   ├── sermons/            # Sermons listing + [slug] detail
 │   ├── services/           # Services page
 │   ├── studio/[[...tool]]/ # Embedded Sanity Studio
-│   ├── layout.tsx          # Root layout (Instrument Sans + Fraunces fonts)
+│   ├── layout.tsx          # Root layout (Inter + Plus Jakarta Sans + DM Mono)
+│   ├── actions.ts          # Server Actions: contact form + newsletter (Resend)
 │   ├── page.tsx            # Home page
 │   └── globals.css         # Global styles + 50+ animation keyframes
 ├── components/
@@ -47,7 +48,7 @@ src/
 │   ├── client.ts           # Sanity client (projectId from env)
 │   ├── queries.ts          # All GROQ queries
 │   ├── image.ts            # Image URL builder
-│   └── schemas/            # Document types: sermon, event, leader, siteSettings
+│   └── schemaTypes/        # documents/, objects/, singletons/
 └── lib/
     └── utils.ts            # cn(), formatDate(), formatTime(), getYouTubeEmbedUrl()
 ```
@@ -73,8 +74,8 @@ pnpm lint         # Run ESLint
 ### Styling Rules
 - **Tailwind CSS v4** with PostCSS — no tailwind.config file; uses CSS-first configuration in `globals.css`
 - **Mobile-first responsive** — base styles are mobile, scale up with `md:`, `lg:`, `xl:` prefixes
-- **CSS custom properties** in `:root` for brand colors (gold `#b8952e`, red `#b91c1c`, warm neutrals)
-- **Two font families**: Instrument Sans (sans, body text) and Fraunces (serif, headings/display)
+- **CSS custom properties** in `:root` for brand colors (royal blue, gold, amber, cream — see Design System)
+- **Three font families**: Inter (`font-sans`, body), Plus Jakarta Sans (`font-display`, headings), DM Mono (`font-mono`, labels/kickers)
 - **Glass morphism** effects via `backdrop-blur` + semi-transparent backgrounds
 - **Gradient borders** and **mesh gradients** for premium visual treatment
 - `cn()` utility from `@/lib/utils` for conditional class merging (simple string join, not clsx)
@@ -111,7 +112,9 @@ All queries live in `src/sanity/queries.ts`. Use the `groq` tagged template from
 
 #### Image Handling
 - Use `@sanity/image-url` builder from `src/sanity/image.ts`
-- Remote images allowed from: `cdn.sanity.io`, `images.unsplash.com`
+- Remote images allowed from: `cdn.sanity.io` and YouTube thumbnails only — **never stock/Unsplash photos; use the ministry's own photos**
+- Content photos in fixed-ratio frames use `<FitImage>` (`@/components/ui/FitImage`) so the whole photo is visible; image helpers in `src/sanity/image.ts` don't crop server-side (except `portraitImage`, for headshots)
+- `scripts/seed-photos.ts` uploads `/photos` (gitignored) to Sanity: `npx sanity exec scripts/seed-photos.ts`
 - Always use Next.js `<Image>` component with proper `width`, `height`, or `fill` + `sizes` props
 
 ### File Naming
@@ -128,24 +131,25 @@ All queries live in `src/sanity/queries.ts`. Use the `groq` tagged template from
 ### Color Palette
 | Token | Value | Usage |
 |-------|-------|-------|
-| Gold (primary) | `#b8952e` | Buttons, accents, headings |
+| Royal deep | `#0b1f45` | Hero, navbar, dark bands, email header |
+| Royal | `#14336f` | Navigation, hovers |
+| Gold (primary) | `#c9a84c` | Buttons, accents, headings |
 | Gold light | `#c9a84c` | Hover states, light accents |
 | Gold dark | `#8a6d1b` | Active states, dark accents |
-| Red | `#b91c1c` | CTA, alerts, secondary accent |
-| Red light | `#dc2626` | Hover on red elements |
+| Amber (`red` token) | `#c47d2a` | Secondary accent, alerts |
 | Cream bg | `#fffbf5` | Page backgrounds |
 | Warm neutrals | gray-50 to gray-900 | Text, borders, surfaces |
 
 ### Typography Scale
-- **Display/Hero**: Fraunces, text-5xl to text-7xl, font-bold
-- **Section Headings**: Fraunces, text-3xl to text-4xl, font-bold
-- **Subheadings**: Instrument Sans, text-xl to text-2xl, font-semibold
-- **Body**: Instrument Sans, text-base to text-lg, font-normal
-- **Small/Caption**: Instrument Sans, text-sm, text-gray-600
+- **Display/Hero**: `font-display`, text-5xl to text-6xl, font-semibold
+- **Section Headings**: `font-display`, text-3xl to text-4xl, font-semibold
+- **Kickers/labels**: uppercase, `tracking-[0.2em]`, text-xs (12px minimum — never smaller)
+- **Body**: `font-sans`, text-base to text-lg
+- **Muted text on cream**: `text-cream-muted` / `text-cream-body` (gold text on light backgrounds must be `gold-dark`)
 
 ### Button Variants (src/components/ui/Button.tsx)
 - **primary**: Gold gradient background with shine overlay
-- **secondary**: Red gradient background
+- **secondary**: Amber gradient background
 - **outline**: Transparent with gold border
 - **ghost**: Transparent, text only
 - Sizes: `sm`, `md`, `lg`
@@ -154,20 +158,22 @@ All queries live in `src/sanity/queries.ts`. Use the `groq` tagged template from
 ### Spacing & Layout
 - Max content width via `<Container>` component
 - Sections use `py-16 md:py-24` for vertical spacing
-- Cards use `rounded-2xl` with subtle shadows
+- Editorial look: square corners (no rounded cards), numbered section mastheads, deep soft shadows
 
 ## Environment Variables
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=    # Sanity project ID
 NEXT_PUBLIC_SANITY_DATASET=       # Dataset name (default: production)
+RESEND_API_KEY=                   # Resend key (server-only); domain enjiricenterministries.org
+CONTACT_INBOX=                    # Optional, default enjiricenter@gmail.com
 ```
 
 ## Key Architectural Decisions
 
 1. **Embedded Sanity Studio** at `/studio` — the CMS is part of the Next.js app, not a separate deployment
 2. **No external state management** — React useState/useEffect for all client state
-3. **No API routes** — data fetched directly from Sanity in server components or via client
+3. **No API routes** — data fetched directly from Sanity in server components; mutations (emails) go through Server Actions in `src/app/actions.ts`, which call Resend via `src/lib/email.ts` (branded table-based HTML templates — inline styles are allowed only in email HTML)
 4. **Static-first approach** — pages should leverage Next.js static generation where possible
 5. **Animation-heavy design** — this is a premium church website; rich motion and visual effects are intentional, not over-engineering
 6. **Single-page sections** — each page is composed of full-viewport or near-full-viewport sections with scroll-based reveals

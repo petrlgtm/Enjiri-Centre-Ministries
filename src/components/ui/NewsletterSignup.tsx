@@ -3,20 +3,30 @@
 import { useState } from "react";
 import { HiCheck } from "react-icons/hi";
 import Container from "@/components/ui/Container";
+import { subscribeToNewsletter } from "@/app/actions";
 
 /** Gold sign-up card that rises out of the footer into the section above it. */
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [company, setCompany] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
+    setStatus("sending");
+    try {
+      const result = await subscribeToNewsletter({ email, company });
+      if (result.ok) {
+        setStatus("done");
         setEmail("");
-      }, 3000);
+      } else {
+        setError(result.error);
+        setStatus("error");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setStatus("error");
     }
   };
 
@@ -39,20 +49,35 @@ export default function NewsletterSignup() {
             className="min-w-0 flex-1 bg-white px-5 py-4 text-sm text-cream-heading placeholder:text-cream-muted focus:outline-2 focus:outline-navy"
             required
           />
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            className="hidden"
+          />
           <button
             type="submit"
+            disabled={status === "sending" || status === "done"}
             className="shrink-0 cursor-pointer bg-royal-deep px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-royal"
           >
-            {submitted ? (
+            {status === "done" ? (
               <span className="flex items-center gap-2">
                 <HiCheck size={16} />
                 Subscribed
               </span>
+            ) : status === "sending" ? (
+              "Subscribing…"
             ) : (
               "Subscribe"
             )}
           </button>
         </form>
+        <p aria-live="polite" className="text-sm font-medium lg:col-span-12 lg:-mt-2 lg:text-right empty:hidden">
+          {status === "done" ? "Welcome! Check your inbox for a confirmation email." : status === "error" ? error : ""}
+        </p>
       </div>
     </Container>
   );

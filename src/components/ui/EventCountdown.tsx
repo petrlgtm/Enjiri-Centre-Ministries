@@ -45,9 +45,12 @@ export default function EventCountdown({ targetDate, isRecurring, recurrence }: 
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    setTimeLeft(calculateTimeLeft());
+    const first = setTimeout(() => setTimeLeft(calculateTimeLeft()), 0);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(first);
+      clearInterval(timer);
+    };
   }, [targetDate, isRecurring, recurrence]);
 
   if (!timeLeft || timeLeft.isOver) return null;

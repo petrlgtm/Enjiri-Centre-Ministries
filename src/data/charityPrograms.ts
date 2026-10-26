@@ -43,10 +43,10 @@ export const charityPrograms: CharityProgram[] = [
       "Beyond the main events, our crusade teams work alongside local churches to ensure that new believers are discipled and integrated into faith communities. Every crusade is preceded by weeks of prayer and community engagement, ensuring lasting spiritual fruit.",
     ],
     aboutImage:
-      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=800&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/2ae5e82e49aad44aca9eafac04b3eccd9a8ceb2d-1600x1066.jpg?w=800&q=80&fm=webp&fit=crop",
     gallery: [
       "https://cdn.sanity.io/images/shcw5txc/production/e4baa1e0a5b3d6d1ac60be1e81b03f9e512aa58e-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
-      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/2ae5e82e49aad44aca9eafac04b3eccd9a8ceb2d-1600x1066.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/83f76adf2c3c11aa1065f1bdc4d328eb69d0bef4-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
@@ -109,7 +109,7 @@ export const charityPrograms: CharityProgram[] = [
       "https://cdn.sanity.io/images/shcw5txc/production/168a13614469e2c48babeb394973f9356e741e12-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/14e519858d8961e071fd34dc3fb0d0c85e20ac84-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/95925a5125bd0c15009c393c655ea99bc31d9a05-3508x2480.jpg?w=600&q=80&fm=webp&fit=crop",
-      "https://cdn.sanity.io/images/shcw5txc/production/a9eb84be8ca4b5fd282eaca02789c439b01a6f55-4000x6000.jpg?w=600&q=80&fm=webp&fit=crop",
+      "https://cdn.sanity.io/images/shcw5txc/production/2ae5e82e49aad44aca9eafac04b3eccd9a8ceb2d-1600x1066.jpg?w=600&q=80&fm=webp&fit=crop",
       "https://cdn.sanity.io/images/shcw5txc/production/83f76adf2c3c11aa1065f1bdc4d328eb69d0bef4-1890x1417.jpg?w=600&q=80&fm=webp&fit=crop",
     ],
     highlights: [
