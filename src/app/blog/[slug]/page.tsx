@@ -94,7 +94,7 @@ export default async function BlogPostPage({
         {post.coverImage && (
           <div className="header-straddle-cream relative">
             <Container>
-              <div className="relative aspect-16/9 overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/9]">
+              <div className="relative overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)]">
                 <FitImage src={heroImage(post.coverImage)} alt={post.title} sizes="(min-width: 1280px) 1216px, 100vw" priority />
               </div>
             </Container>

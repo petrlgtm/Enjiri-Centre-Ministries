@@ -51,7 +51,7 @@ export default function EventsGrid({ events }: EventsGridProps) {
                 <span className="mt-1 block font-mono text-xs tracking-[0.2em] text-white/50 uppercase">{event.month}</span>
               </span>
               {event.image && (
-                <span className="relative block aspect-4/3 overflow-hidden">
+                <span className="relative block overflow-hidden">
                   <FitImage src={event.image} alt={event.title} sizes="192px" className="transition-transform duration-700 group-hover:scale-105" />
                 </span>
               )}

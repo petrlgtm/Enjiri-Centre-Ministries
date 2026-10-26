@@ -107,7 +107,7 @@ export default function GatherDiary({ events, schedule, address, photo }: Gather
             )}
 
             {photo && (
-              <div className="relative z-10 mt-12 ml-auto hidden h-96 w-72 overflow-hidden lg:-mb-60 lg:block">
+              <div className="relative z-10 mt-12 ml-auto hidden w-72 overflow-hidden lg:-mb-24 lg:block">
                 <FitImage src={photo.src} alt={photo.alt} sizes="288px" />
               </div>
             )}

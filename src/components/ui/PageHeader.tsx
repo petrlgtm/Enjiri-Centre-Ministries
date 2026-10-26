@@ -70,7 +70,7 @@ export default function PageHeader({ label, title, description, backgroundImage,
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.35, ease }}
-              className="relative aspect-[16/9] overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] sm:aspect-[21/8]"
+              className="relative overflow-hidden shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)]"
             >
               <FitImage src={backgroundImage} alt="" sizes="(min-width: 1280px) 1216px, 100vw" priority />
             </motion.div>

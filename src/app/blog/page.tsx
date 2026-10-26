@@ -66,7 +66,7 @@ export default async function BlogPage() {
               {/* Lead story */}
               <Link href={`/blog/${lead.slug}`} className="group mt-10 grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
                 {lead.coverImage && (
-                  <span className="relative block aspect-16/10 overflow-hidden bg-navy lg:col-span-7">
+                  <span className="relative block overflow-hidden bg-navy lg:col-span-7">
                     <FitImage src={cardImage(lead.coverImage, 1200)} alt={lead.title} sizes="(min-width: 1024px) 58vw, 100vw" priority className="transition-transform duration-700 group-hover:scale-[1.03]" />
                   </span>
                 )}
@@ -93,7 +93,7 @@ export default async function BlogPage() {
                       <Reveal as="li" key={post._id} delay={(i % 3) * 0.06}>
                         <Link href={`/blog/${post.slug}`} className="group block">
                           {post.coverImage && (
-                            <span className="relative block aspect-16/10 overflow-hidden bg-navy">
+                            <span className="relative block overflow-hidden bg-navy">
                               <FitImage src={cardImage(post.coverImage)} alt={post.title} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="transition-transform duration-700 group-hover:scale-105" />
                             </span>
                           )}

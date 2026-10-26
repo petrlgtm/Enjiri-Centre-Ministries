@@ -184,7 +184,7 @@ export default async function CharityPage() {
               href={`/charity/${featured.slug}`}
               className="group grid bg-navy shadow-[0_30px_80px_-30px_rgba(10,10,10,0.6)] lg:grid-cols-12"
             >
-              <span className="relative block aspect-16/10 overflow-hidden lg:col-span-7 lg:aspect-auto lg:min-h-[26rem]">
+              <span className="relative block self-center overflow-hidden lg:col-span-7">
                 <FitImage src={featured.image} alt={featured.title} sizes="(min-width: 1024px) 60vw, 100vw" className="transition-transform duration-700 group-hover:scale-105" />
               </span>
               <span className="flex flex-col justify-center p-6 sm:p-10 lg:col-span-5">
@@ -206,7 +206,7 @@ export default async function CharityPage() {
               {otherPrograms.map((program, i) => (
                 <Reveal as="li" key={`${program.slug}-${i}`} delay={(i % 3) * 0.06}>
                   <Link href={`/charity/${program.slug}`} className="group grid grid-cols-[7.5rem_1fr] gap-4 sm:block">
-                    <span className="relative block aspect-square overflow-hidden sm:aspect-4/3">
+                    <span className="relative block self-start overflow-hidden">
                       <FitImage src={program.image} alt={program.title} sizes="(min-width: 1024px) 33vw, 50vw" className="transition-transform duration-700 group-hover:scale-105" />
                     </span>
                     <span className="block sm:mt-5">
@@ -274,7 +274,7 @@ export default async function CharityPage() {
           </div>
 
           <div className="relative lg:col-span-5">
-            <div className="relative aspect-4/5 overflow-hidden shadow-[0_40px_90px_-30px_rgba(10,10,10,0.55)] lg:absolute lg:inset-x-0 lg:-top-36 lg:-bottom-36 lg:aspect-auto">
+            <div className="relative overflow-hidden shadow-[0_40px_90px_-30px_rgba(10,10,10,0.55)]">
               <FitImage src={campaignImage} alt="I Am A Soul Winner campaign — crusade outreach" sizes="(min-width: 1024px) 40vw, 100vw" />
               <dl className="absolute right-0 bottom-0 left-0 grid grid-cols-3 gap-3 bg-navy/90 px-4 py-4 text-white backdrop-blur-sm sm:px-6 sm:py-5">
                 {[

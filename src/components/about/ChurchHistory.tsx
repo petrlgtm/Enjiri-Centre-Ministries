@@ -64,7 +64,7 @@ export default function ChurchHistory({ image, title, text, stats, timeline }: C
 
           {image && (
             <Reveal delay={0.1} className="lg:col-span-5">
-              <div className="relative aspect-4/5 overflow-hidden">
+              <div className="relative overflow-hidden">
                 <FitImage src={image} alt="Enjiri Center Ministries — our story" sizes="(min-width: 1024px) 40vw, 100vw" />
               </div>
             </Reveal>

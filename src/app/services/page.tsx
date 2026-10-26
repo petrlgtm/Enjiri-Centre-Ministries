@@ -102,7 +102,7 @@ export default async function ServicesPage() {
                 {recentData.map((e) => (
                   <li key={e.slug}>
                     <Link href={`/services/${e.slug}`} className="group block">
-                      <span className="relative block aspect-4/5 overflow-hidden">
+                      <span className="relative block overflow-hidden">
                         <FitImage src={e.image} alt={e.title} sizes="(min-width: 1024px) 25vw, 50vw" className="transition-transform duration-700 group-hover:scale-105" />
                       </span>
                       <span className="mt-4 block font-mono text-xs text-gold-light">{e.date}</span>

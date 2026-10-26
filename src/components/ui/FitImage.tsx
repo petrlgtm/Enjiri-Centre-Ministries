@@ -9,12 +9,24 @@ interface FitImageProps {
   className?: string;
 }
 
-/** Shows the whole photo inside a fixed-ratio frame, over a blurred copy of itself — nothing is cropped. */
+/** Sanity asset URLs carry the original size ("…-1600x1066.jpg"); fall back to 3:2 otherwise. */
+function dimensionsOf(src: string) {
+  const match = src.match(/-(\d+)x(\d+)\.(?:jpe?g|png|webp|gif)/i);
+  return match ? { width: Number(match[1]), height: Number(match[2]) } : { width: 1200, height: 800 };
+}
+
+/** Shows the whole photo at its natural proportions — the frame takes the photo's shape, so nothing is cropped or padded. */
 export default function FitImage({ src, alt, sizes, priority, className }: FitImageProps) {
+  const { width, height } = dimensionsOf(src);
   return (
-    <>
-      <Image src={src} alt="" aria-hidden fill sizes="64px" className="scale-125 object-cover blur-2xl brightness-75" />
-      <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className={cn("object-contain", className)} />
-    </>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes={sizes}
+      priority={priority}
+      className={cn("block h-auto w-full", className)}
+    />
   );
 }

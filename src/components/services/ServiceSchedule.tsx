@@ -53,7 +53,7 @@ export default function ServiceSchedule({ image, heading }: ServiceScheduleProps
             </p>
             {image && (
               <figure className="mt-10">
-                <div className="relative aspect-4/5 max-w-sm overflow-hidden">
+                <div className="relative max-w-sm overflow-hidden">
                   <FitImage src={image} alt="Congregation gathered in worship" sizes="384px" />
                 </div>
                 <figcaption className="mt-5 max-w-sm">
